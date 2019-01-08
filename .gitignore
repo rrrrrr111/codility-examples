@@ -1,0 +1,33 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+### Artefacts ###
+/coverage
+/web/node_modules
+/build/
+/out/
+/logs/
+/conf/local/
+/parser/pages/
+
+### IntelliJ IDEA ###
+*.iws
+#*.iml
+*.ipr
+/.idea
+/classes
+
+### Node,js ### 
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Gradle ###
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+/local.properties
