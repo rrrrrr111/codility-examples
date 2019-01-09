@@ -2,7 +2,11 @@ package ru.roman.task.codility.a90_2015_challenge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * You are helping a geologist friend investigate an area with mountain lakes. A recent heavy rainfall has flooded these lakes and their water levels have reached the highest possible point. Your friend is interested to know the maximum depth in the deepest part of these lakes.
@@ -55,7 +59,7 @@ class Solution2MeasureLakes {
             return 0;
         }
 
-        final List<Integer> tops = findAllTops(A);
+        List<Integer> tops = findAllTops(A);
         System.out.println("Top indexes found: " + tops);
         if (tops.size() < 2) {
             return 0;
@@ -64,17 +68,41 @@ class Solution2MeasureLakes {
         int peakIndex = findPeak(tops, A);
         System.out.println("Peak value found at index: " + peakIndex);
 
-        int topsRemoved;
-        while ((topsRemoved = removeMinorTops(tops, A, 1, peakIndex)) != 0) {
-            peakIndex -= topsRemoved;
+        Set<Integer> beforePeakTops = new LinkedHashSet<>(tops.subList(0, peakIndex + 1));
+        while ((removeMinorTops(beforePeakTops, A))) {
         }
-        System.out.println("Minor tops before peak removed: " + tops);
+        System.out.println("Tops before peak cleared: " + beforePeakTops);
 
-        while (removeMinorTops(tops, A, peakIndex + 1, tops.size() - 1) != 0) {
+        Set<Integer> afterPeakTops = new LinkedHashSet<>(tops.subList(peakIndex, tops.size()));
+        while (removeMinorTops(afterPeakTops, A)) {
         }
-        System.out.println("Minor tops after peak removed: " + tops);
+        System.out.println("Tops after peak cleared: " + afterPeakTops);
+
+        tops = new ArrayList<>(beforePeakTops.size() + afterPeakTops.size());
+        tops.addAll(beforePeakTops);
+        tops.addAll(afterPeakTops);
 
         return findDeepestLake(tops, A);
+    }
+
+    private boolean removeMinorTops(Set<Integer> tops, int[] A) {
+        Set<Integer> toRemove = new HashSet<>();
+        Iterator<Integer> iterator = tops.iterator();
+        Integer prevTop = iterator.hasNext() ? iterator.next() : null;
+        Integer current = iterator.hasNext() ? iterator.next() : null;
+
+
+        while (iterator.hasNext()) {
+            Integer nextTop = iterator.next();
+
+            if (A[current] <= A[prevTop] && A[current] <= A[nextTop]) {
+                toRemove.add(current);
+            }
+            prevTop = current;
+            current = nextTop;
+        }
+        tops.removeAll(toRemove);
+        return !toRemove.isEmpty();
     }
 
     private int findDeepestLake(List<Integer> tops, int[] A) {
@@ -103,20 +131,6 @@ class Solution2MeasureLakes {
             maxDepth = Math.max(depth, maxDepth);
         }
         return maxDepth;
-    }
-
-    private int removeMinorTops(List<Integer> tops, int[] A, int start, int end) {
-        int topsRemoved = 0;
-        for (int i = end - 1; i >= start; i--) {
-            Integer top = tops.get(i);
-            Integer prevTop = tops.get(i - 1);
-            Integer nextTop = tops.get(i + 1);
-            if (A[top] <= A[prevTop] && A[top] <= A[nextTop]) {
-                tops.remove(i);
-                topsRemoved++;
-            }
-        }
-        return topsRemoved;
     }
 
     private List<Integer> findAllTops(int[] A) {
