@@ -1,0 +1,5 @@
+rootProject.name = 'codility-examples'
+
+include 'codility-solutions'
+
+project(":codility-solutions").projectDir = "$rootDir/codility-solutions" as File
