@@ -11,7 +11,7 @@ package ru.roman.task.codility.a01_iteration;
  * *
  * N is an integer within the range [1..2,147,483,647].
  */
-class Solution1Iteration {
+class Solution1CountSeq {
     int solution(int N) {
         // write your code in Java SE 8
         String strValue = Integer.toBinaryString(N);

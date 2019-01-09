@@ -6,9 +6,9 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution1IterationTest {
+class Solution1CountSeqTest {
 
-    private Solution1Iteration subj = new Solution1Iteration()
+    private Solution1CountSeq subj = new Solution1CountSeq()
 
     @DataProvider
     private Object[][] provider() {
