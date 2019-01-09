@@ -111,7 +111,7 @@ class Solution2MeasureLakes {
             Integer top = tops.get(i);
             Integer prevTop = tops.get(i - 1);
             Integer nextTop = tops.get(i + 1);
-            if (A[top] < A[prevTop] && A[top] < A[nextTop]) {
+            if (A[top] <= A[prevTop] && A[top] <= A[nextTop]) {
                 tops.remove(i);
                 topsRemoved++;
             }
