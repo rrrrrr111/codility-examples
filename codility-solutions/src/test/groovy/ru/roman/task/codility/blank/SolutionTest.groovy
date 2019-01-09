@@ -2,6 +2,7 @@ package ru.roman.task.codility.blank
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
+import org.testng.annotations.Test
 
 @CompileStatic
 //@Test
