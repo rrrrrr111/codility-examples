@@ -1,7 +1,6 @@
 package ru.roman.task.codility.a90_2015_challenge;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -53,30 +52,30 @@ import java.util.Set;
  */
 class Solution2MeasureLakes {
     public int solution(int[] A) {
-        System.out.println("On input: " + Arrays.toString(A));
+        //System.out.println("On input: " + Arrays.toString(A));
 
         if (A.length < 3) {
             return 0;
         }
 
         List<Integer> tops = findAllTops(A);
-        System.out.println("Top indexes found: " + tops);
+        //System.out.println("Top indexes found: " + tops);
         if (tops.size() < 2) {
             return 0;
         }
 
         int peakIndex = findPeak(tops, A);
-        System.out.println("Peak value found at index: " + peakIndex);
+        //System.out.println("Peak value found at index: " + peakIndex);
 
         Set<Integer> beforePeakTops = new LinkedHashSet<>(tops.subList(0, peakIndex + 1));
         while ((removeMinorTops(beforePeakTops, A))) {
         }
-        System.out.println("Tops before peak cleared: " + beforePeakTops);
+        //System.out.println("Tops before peak cleared: " + beforePeakTops);
 
         Set<Integer> afterPeakTops = new LinkedHashSet<>(tops.subList(peakIndex, tops.size()));
         while (removeMinorTops(afterPeakTops, A)) {
         }
-        System.out.println("Tops after peak cleared: " + afterPeakTops);
+        //System.out.println("Tops after peak cleared: " + afterPeakTops);
 
         tops = new ArrayList<>(beforePeakTops.size() + afterPeakTops.size());
         tops.addAll(beforePeakTops);

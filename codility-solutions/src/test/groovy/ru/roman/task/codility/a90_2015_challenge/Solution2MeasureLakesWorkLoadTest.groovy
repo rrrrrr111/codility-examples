@@ -7,10 +7,11 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution2MeasureLakesLoadTest {
-    private final Solution2MeasureLakes subj = new Solution2MeasureLakes()
+class Solution2MeasureLakesWorkLoadTest {
+    //private final Solution2MeasureLakes subj = new Solution2MeasureLakes()
+    private final Solution3MeasureLakes subj = new Solution3MeasureLakes()
 
-    static int[] list
+    private static int[] list
 
     @BeforeClass
     static void setUp() {
@@ -27,17 +28,9 @@ class Solution2MeasureLakesLoadTest {
 
         for (int i = 0; i < list.length; i++) {
             if (i >= half) {
-                if (turn) {
-                    val = val + step
-                } else {
-                    val = val - step.intdiv(2)
-                }
+                val = turn ? val + step : val - step.intdiv(2)
             } else {
-                if (turn) {
-                    val = val - step
-                } else {
-                    val = val + step.intdiv(2)
-                }
+                val = turn ? val - step : val + step.intdiv(2)
             }
             list[i] = val
             turn = !turn
@@ -47,11 +40,11 @@ class Solution2MeasureLakesLoadTest {
     @DataProvider
     private Object[][] provider() {
         [
-                [list, 12500000],
+                [list, 12_500_000],
         ] as Object[][]
     }
 
-    @Test(dataProvider = "provider", timeOut = 3_000L)
+    @Test(dataProvider = "provider")
     void test(int[] value, int expected) {
 
         def actual = subj.solution(value)

@@ -7,7 +7,8 @@ import org.testng.annotations.Test
 @CompileStatic
 @Test
 class Solution2MeasureLakesTest {
-    private Solution2MeasureLakes subj = new Solution2MeasureLakes()
+    //private Solution2MeasureLakes subj = new Solution2MeasureLakes()
+    private Solution3MeasureLakes subj = new Solution3MeasureLakes()
 
     @DataProvider
     private Object[][] provider() {
