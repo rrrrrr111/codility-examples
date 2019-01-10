@@ -6,14 +6,13 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution2FindAbsentTest {
-    private Solution2FindAbsent subj = new Solution2FindAbsent()
+class Solution3TypeEquilibriumTest {
+    private Solution3TypeEquilibrium subj = new Solution3TypeEquilibrium()
 
     @DataProvider
     private Object[][] provider() {
         [
-                [[2, 3, 1, 5] as int[], 4],
-                [[2, 3, 4, 5] as int[], 1],
+                [[3, 1, 2, 4, 3] as int[], 1],
         ] as Object[][]
     }
 
