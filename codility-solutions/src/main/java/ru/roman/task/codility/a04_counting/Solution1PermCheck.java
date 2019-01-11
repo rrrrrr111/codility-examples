@@ -52,26 +52,16 @@ class Solution1PermCheck {
     public int solution(int[] A) {
         System.out.println("On input: " + Arrays.toString(A));
 
-        int smallest = findSmallest(A);
-        int[] counters = new int[A.length];
+        int[] counters = new int[A.length + 1];
         for (int a : A) {
-            int val = a - smallest;
-            if (val > A.length - 1) {
+            if (a > counters.length - 1) {
                 return 0;
             }
-            counters[val]++;
-            if (counters[val] > 1) {
+            counters[a]++;
+            if (counters[a] > 1) {
                 return 0;
             }
         }
         return 1;
-    }
-
-    private int findSmallest(int[] A) {
-        int s = Integer.MAX_VALUE;
-        for (int a : A) {
-            s = Math.min(a, s);
-        }
-        return s;
     }
 }
