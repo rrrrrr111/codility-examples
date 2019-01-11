@@ -12,13 +12,12 @@ class SolutionTest {
     @DataProvider
     private Object[][] provider() {
         [
-                [0, 0],
-
+                [[] as int[], 0],
         ] as Object[][]
     }
 
     //@Test(dataProvider = "provider")
-    void test(int value, int expected) {
+    void test(int[] value, int expected) {
 
         def actual = subj.solution(value)
         assert actual == expected

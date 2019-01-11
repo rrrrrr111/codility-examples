@@ -1,4 +1,4 @@
-package ru.roman.task.codility.a00_demo;
+package ru.roman.task.codility.a100_other_сhallenges;
 
 import java.util.Arrays;
 
