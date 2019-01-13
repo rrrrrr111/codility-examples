@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -65,7 +66,7 @@ import java.util.stream.Collectors;
 class Solution4Ski {
 
     private static boolean log = false;
-    private static boolean withTimePoints = true;
+    private static boolean withTimePoints = false;
     private static long time;
     private static Map<String, Long> timePoints;
 
@@ -96,26 +97,22 @@ class Solution4Ski {
     private int calcMaxGates(Set<Path> paths) {
 
         int maxGates = 0;
-        for (Path path : paths) {
-            log("\nStarting from: %s, max=%s", path, maxGates);
+        final LinkedList<Path> queue = new LinkedList<>(paths);
 
-            path.init(path.gate, null, true, 1);
+        while (!queue.isEmpty()) {
 
-            while (path != null) {
+            Path path = queue.pop();
 
-                log("\t\t\t\t=>: %s, max=%s", path, maxGates);
+            log("\t\t\t\t=>: %s, max=%s", path, maxGates);
 
-                Path next = path.nextPath();
-                if (next == null) {
-                    maxGates = Math.max(maxGates, path.count);
+            boolean end = path.pushNext(queue);
+            if (end) {
+                maxGates = Math.max(maxGates, path.count);
 
-                    log("Child exhausting: %s, max=%s", path, maxGates);
-                    path = path.prev;
-                } else {
-                    path = next;
-                }
+                log("Child exhausting: %s, max=%s", path, maxGates);
             }
         }
+
         return maxGates;
     }
 
@@ -129,7 +126,7 @@ class Solution4Ski {
                     }
                     return less;
                 })
-                .map(gate -> gate.getPath(null, true, 1))
+                .map(gate -> new Path(gate, null, true, 1))
                 .collect(Collectors.toCollection(HashSet::new));
 
         i[0] = gates.size();
@@ -143,7 +140,7 @@ class Solution4Ski {
                     }
                     return less;
                 })
-                .map(gate -> gate.getPath(null, true, 1))
+                .map(gate -> new Path(gate, null, true, 1))
                 .collect(Collectors.toList()));
         return res;
     }
@@ -192,18 +189,9 @@ class Solution4Ski {
         private int value;
         private final Set<Gate> rights = new HashSet<>();
         private final Set<Gate> lefts = new HashSet<>();
-        private Path path;
 
         boolean isLeftTo(Gate g) {
             return this.compareTo(g) > 0;
-        }
-
-        Path getPath(Path prev, boolean left, int count) {
-            if (path == null) {
-                path = new Path();
-            }
-            path.init(this, prev, left, count);
-            return path;
         }
 
         @Override
@@ -239,22 +227,17 @@ class Solution4Ski {
     }
 
     private static class Path {
-        private Gate gate;
-        private Path prev;
-        private boolean left;
-        private int count;
-        private int turns;
-        private boolean exhausted;
-        private final Set<Gate> visited = new HashSet<>();
+        private final Gate gate;
+        private final boolean left;
+        private final int count;
+        private final int turns;
+        private boolean exhausted = false;
 
-        void init(Gate gate, Path prev, boolean left, int count) {
+        Path(Gate gate, Path prev, boolean left, int count) {
             this.gate = gate;
-            this.prev = prev;
             this.left = left;
             this.count = count;
             this.turns = prev == null ? 0 : prev.left == left ? prev.turns : prev.turns + 1;
-            this.exhausted = false;
-            this.visited.clear();
         }
 
         @Override
@@ -267,28 +250,25 @@ class Solution4Ski {
             return gate.hashCode();
         }
 
-        Path nextPath() {
+        boolean pushNext(LinkedList<Path> queue) {
             if (exhausted) {
-                return null;
+                return true;
             }
+            boolean notEmpty = false;
             if (turns < 2 || (turns == 2 && left)) {
                 for (Gate gate : gate.lefts) {
-                    if (!visited.contains(gate)) {
-                        visited.add(gate);
-                        return gate.getPath(this, true, count + 1);
-                    }
+                    queue.push(new Path(gate, this, true, count + 1));
+                    notEmpty = true;
                 }
             }
             if (turns < 2 || (turns == 2 && !left)) {
                 for (Gate gate : gate.rights) {
-                    if (!visited.contains(gate)) {
-                        visited.add(gate);
-                        return gate.getPath(this, false, count + 1);
-                    }
+                    queue.push(new Path(gate, this, false, count + 1));
+                    notEmpty = true;
                 }
             }
-            exhausted = true;
-            return null;
+            exhausted = !notEmpty;
+            return exhausted;
         }
 
         @Override
