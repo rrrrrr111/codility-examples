@@ -66,7 +66,7 @@ import java.util.stream.Collectors;
 class Solution4Ski {
 
     private static boolean log = false;
-    private static boolean withTimePoints = false;
+    private static boolean withTimePoints = true;
     private static long time;
     private static Map<String, Long> timePoints;
 
