@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -189,6 +190,7 @@ class Solution4Ski {
         private int value;
         private final Set<Gate> rights = new HashSet<>();
         private final Set<Gate> lefts = new HashSet<>();
+        private final LinkedList<Record> records = new LinkedList<>();
 
         boolean isLeftTo(Gate g) {
             return this.compareTo(g) > 0;
@@ -257,27 +259,83 @@ class Solution4Ski {
             boolean notEmpty = false;
             if (turns < 2 || (turns == 2 && left)) {
                 for (Gate gate : gate.lefts) {
-                    queue.push(new Path(gate, this, true, count + 1));
-                    notEmpty = true;
+                    Path p = new Path(gate, this, true, count + 1);
+                    if (false || !p.isBeaten()) {
+                        queue.push(p);
+                        notEmpty = true;
+                    } else {
+                        log("%s beaten by records: %s", p, p.gate.records);
+                    }
                 }
             }
             if (turns < 2 || (turns == 2 && !left)) {
                 for (Gate gate : gate.rights) {
-                    queue.push(new Path(gate, this, false, count + 1));
-                    notEmpty = true;
+                    Path p = new Path(gate, this, false, count + 1);
+                    if (false || !p.isBeaten()) {
+                        queue.push(p);
+                        notEmpty = true;
+                    } else {
+                        log("%s beaten by records: %s", p, p.gate.records);
+                    }
                 }
             }
             exhausted = !notEmpty;
             return exhausted;
         }
 
+        private boolean isBeaten() {
+            final Record r = new Record(count, turns, left);
+
+            Iterator<Record> itr = gate.records.iterator();
+            while (itr.hasNext()) {
+                Record record = itr.next();
+
+                if (r.isBeatenBy(record)) {
+                    return true;
+                } else if (record.isBeatenBy(r)) {
+                    itr.remove();
+                    gate.records.push(r);
+                    return false;
+
+                }
+            }
+            gate.records.push(r);
+            return false;
+        }
+
         @Override
         public String toString() {
             return "Path{" +
                     "i=" + gate.index +
+                    " v=" + gate.value +
                     " l=" + left +
                     " c=" + count +
                     " t=" + turns +
+                    '}';
+        }
+    }
+
+    private static class Record {
+        private final int count;
+        private final int turns;
+        private final boolean left;
+
+        private Record(int count, int turns, boolean left) {
+            this.count = count;
+            this.turns = turns;
+            this.left = left;
+        }
+
+        boolean isBeatenBy(Record r) {
+            return left == r.left && count <= r.count && r.turns <= turns;
+        }
+
+        @Override
+        public String toString() {
+            return "Rec{" +
+                    "c=" + count +
+                    " t=" + turns +
+                    " l=" + left +
                     '}';
         }
     }
