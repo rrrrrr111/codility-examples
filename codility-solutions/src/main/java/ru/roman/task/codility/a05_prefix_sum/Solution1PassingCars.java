@@ -53,11 +53,9 @@ class Solution1PassingCars {
         int zeroCounter = 0, oneCounter = 0;
 
         for (int i = 0; i < A.length; i++) {
-            int fi = i;
-            int bi = A.length - i - 1;
 
-            int f = A[fi];
-            int b = A[bi];
+            int f = A[i];
+            int b = A[A.length - i - 1];
 
             if (f == 0) {
                 zeroCounter++;
