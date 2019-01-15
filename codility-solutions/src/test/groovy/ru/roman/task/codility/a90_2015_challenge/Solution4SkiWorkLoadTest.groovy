@@ -13,7 +13,7 @@ class Solution4SkiWorkLoadTest {
 
     @BeforeClass
     static void setUp() {
-        final int size = 50_000
+        final int size = 30_000
         final int half = size.intdiv(2).intValue()
         list = new int[size]
 
