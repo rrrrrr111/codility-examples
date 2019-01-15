@@ -6,8 +6,8 @@ import java.util.Arrays;
  *
  */
 class Solution {
-    public int solution(int[] N) {
-        System.out.printf("On input: %s\n", Arrays.toString(N));
+    public int solution(int[] A) {
+        System.out.printf("On input: %s\n", Arrays.toString(A));
 
 
         return 0;
