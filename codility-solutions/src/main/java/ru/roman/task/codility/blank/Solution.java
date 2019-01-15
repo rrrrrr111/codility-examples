@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 class Solution {
     public int solution(int[] N) {
-        System.out.println("On input: " + Arrays.toString(N));
+        System.out.printf("On input: %s\n", Arrays.toString(N));
 
 
         return 0;
