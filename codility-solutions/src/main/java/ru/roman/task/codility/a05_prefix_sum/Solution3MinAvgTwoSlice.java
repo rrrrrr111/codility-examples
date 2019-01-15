@@ -47,7 +47,32 @@ class Solution3MinAvgTwoSlice {
     public int solution(int[] A) {
         System.out.println("On input: " + Arrays.toString(A));
 
+        int minIndex = 0;
+        double minSumm = (A[0] + A[1]) / 2d,
+                summ;
 
-        return 0;
+
+        for (int i = 0; i < A.length - 1; i++) {
+            int a0 = A[i];
+            int a1 = A[i + 1];
+
+            summ = (a0 + a1) / 2d;
+
+            if (summ < minSumm) {
+                minSumm = summ;
+                minIndex = i;
+            }
+
+            if (i < A.length -2) {
+                int a2 = A[i + 2];
+                summ = (a0 + a1 + a2) / 3d;
+
+                if (summ < minSumm) {
+                    minSumm = summ;
+                    minIndex = i;
+                }
+            }
+        }
+        return minIndex;
     }
 }
