@@ -62,16 +62,21 @@ class Solution4NumberOfDiscIntersections {
         int[] d = new int[plus.length];
         long[] s = new long[plus.length];
 
-        int disks = 0, prev;
+        int disks = 0;
         long intersections = 0;
         for (int i = 0; i < plus.length - 1; i++) {
-            prev = disks;
-            disks += plus[i] + minus[i];
+            disks += minus[i];
 
             if (plus[i] > 0) {
-                intersections += countSelfIntersections(disks) - countSelfIntersections(prev);
-                //intersections += prev * plus[i];
+                intersections += disks == 0
+                        ? countIntersectionsFor(plus[i])
+                        : (
+                        disks == 1
+                                ? countIntersectionsFor(plus[i] + 1)
+                                : plus[i] * disks);
             }
+            disks += plus[i];
+
             if (intersections > Integer.MAX_VALUE) {
                 return -1;
             }
@@ -85,7 +90,7 @@ class Solution4NumberOfDiscIntersections {
         return (int) intersections;
     }
 
-    private long countSelfIntersections(int i) {
+    private long countIntersectionsFor(int i) {
         int count = 0;
         for (int j = 2; j <= i; j++) {
             count += j - 1;

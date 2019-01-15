@@ -260,7 +260,7 @@ class Solution4Ski {
             if (turns < 2 || (turns == 2 && left)) {
                 for (Gate gate : gate.lefts) {
                     Path p = new Path(gate, this, true, count + 1);
-                    if (false || !p.isBeaten()) {
+                    if (!p.isBeaten()) {
                         queue.push(p);
                         notEmpty = true;
                     } else {
@@ -271,7 +271,7 @@ class Solution4Ski {
             if (turns < 2 || (turns == 2 && !left)) {
                 for (Gate gate : gate.rights) {
                     Path p = new Path(gate, this, false, count + 1);
-                    if (false || !p.isBeaten()) {
+                    if (!p.isBeaten()) {
                         queue.push(p);
                         notEmpty = true;
                     } else {
