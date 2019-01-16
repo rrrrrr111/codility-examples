@@ -48,21 +48,21 @@ class Solution1EquiLeader {
     public int solution(int[] A) {
         System.out.printf("On input: %s\n", Arrays.toString(A));
 
-        if (A.length < 3) {
+        if (A.length < 2) {
             return 0;
         }
 
         int[] counters = new int[A.length];
         Integer leader = findLeader(A, counters);
-        System.out.printf("Leader  :%s, counters:%s\n", leader, Arrays.toString(counters));
+        if (leader == null) {
+            return 0;
+        }
 
         int count = 0;
         for (int i = 0; i < counters.length - 1; i++) {
 
             int leftCount = counters[i];
             int rightCount = counters[counters.length - 1] - counters[i];
-
-            //System.out.printf("Check :%s > %s, %s > %s\n", leftCount, (i + 1) / 2, rightCount, (counters.length - i - 1) / 2);
 
             if (leftCount > (i + 1) / 2
                     && rightCount > (counters.length - i - 1) / 2) {
@@ -87,6 +87,9 @@ class Solution1EquiLeader {
                 leader = null;
             }
         }
+        if (leader == null) {
+            return null;
+        }
         count = 0;
         for (int i = 0; i < A.length; i++) {
             int a = A[i];
@@ -95,6 +98,6 @@ class Solution1EquiLeader {
             }
             counters[i] = count;
         }
-        return (leader != null && count > A.length / 2) ? leader : null;
+        return count > A.length / 2 ? leader : null;
     }
 }
