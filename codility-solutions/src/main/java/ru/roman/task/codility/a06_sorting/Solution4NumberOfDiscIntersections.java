@@ -56,8 +56,6 @@ class Solution4NumberOfDiscIntersections {
             plus[plusIndex]++;
             minus[minusIndex]--;
         }
-        System.out.printf("Plus   : %s\n", Arrays.toString(plus));
-        System.out.printf("Minus  : %s\n", Arrays.toString(minus));
 
         int[] d = new int[plus.length];
         long[] s = new long[plus.length];
@@ -73,20 +71,17 @@ class Solution4NumberOfDiscIntersections {
                         : (
                         disks == 1
                                 ? countIntersectionsFor(plus[i] + 1)
-                                : plus[i] * disks);
+                                : plus[i] * disks + countIntersectionsFor(plus[i]));
             }
             disks += plus[i];
 
-            if (intersections > Integer.MAX_VALUE) {
+            if (intersections > 10_000_000) {
                 return -1;
             }
 
             d[i] = disks;
             s[i] = intersections;
         }
-        System.out.printf("Disks  : %s\n", Arrays.toString(d));
-        System.out.printf("Count  : %s\n", Arrays.toString(s));
-
         return (int) intersections;
     }
 
