@@ -6,8 +6,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution1BracketsTest {
-    private Solution1Brackets subj = new Solution1Brackets()
+class Solution1BracketsNestingTest {
+    private Solution1BracketsNesting subj = new Solution1BracketsNesting()
 
     @DataProvider
     private Object[][] provider() {

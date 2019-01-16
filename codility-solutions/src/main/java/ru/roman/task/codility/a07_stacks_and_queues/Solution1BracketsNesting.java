@@ -24,7 +24,7 @@ import java.util.LinkedList;
  * N is an integer within the range [0..200,000];
  * string S consists only of the following characters: "(", "{", "[", "]", "}" and/or ")".
  */
-class Solution1Brackets {
+class Solution1BracketsNesting {
     public int solution(String S) {
         System.out.printf("On input: %s\n", S);
 
