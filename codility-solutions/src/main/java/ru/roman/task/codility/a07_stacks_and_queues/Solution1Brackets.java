@@ -28,16 +28,16 @@ class Solution1Brackets {
     public int solution(String S) {
         System.out.printf("On input: %s\n", S);
 
-        Deque<Character> q = new LinkedList<>();
+        Deque<Character> stack = new LinkedList<>();
         for (char c : S.toCharArray()) {
             if (c == '{' || c == '[' || c == '(') {
 
-                q.push(c);
+                stack.push(c);
             } else {
-                if (q.isEmpty()) {
+                if (stack.isEmpty()) {
                     return 0;
                 }
-                Character bracket = q.pop();
+                Character bracket = stack.pop();
                 if ((bracket == '[' && c != ']')
                         || (bracket == '{' && c != '}')
                         || (bracket == '(' && c != ')')) {
@@ -45,6 +45,6 @@ class Solution1Brackets {
                 }
             }
         }
-        return !q.isEmpty() ? 0 : 1;
+        return !stack.isEmpty() ? 0 : 1;
     }
 }
