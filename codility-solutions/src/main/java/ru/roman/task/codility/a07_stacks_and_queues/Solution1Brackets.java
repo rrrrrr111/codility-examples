@@ -40,7 +40,7 @@ class Solution1Brackets {
                 Character bracket = q.pop();
                 if ((bracket == '[' && c != ']')
                         || (bracket == '{' && c != '}')
-                        || bracket == '(' && (c != ')')) {
+                        || (bracket == '(' && c != ')')) {
                     return 0;
                 }
             }
