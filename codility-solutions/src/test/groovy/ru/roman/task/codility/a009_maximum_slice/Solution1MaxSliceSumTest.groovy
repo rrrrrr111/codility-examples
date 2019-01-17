@@ -1,4 +1,4 @@
-package ru.roman.task.codility.a009_maximum_slice_problem
+package ru.roman.task.codility.a009_maximum_slice
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
