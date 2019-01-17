@@ -19,6 +19,7 @@ class Solution1CountFactorsTest {
                 [5, 2],
                 [6, 4],
                 [24, 8],
+                [Integer.MAX_VALUE, 2],
         ] as Object[][]
     }
 
