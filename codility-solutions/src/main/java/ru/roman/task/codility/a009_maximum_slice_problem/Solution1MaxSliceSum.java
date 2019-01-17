@@ -31,15 +31,14 @@ class Solution1MaxSliceSum {
     public int solution(int[] A) {
         System.out.printf("On input: %s\n", Arrays.toString(A));
 
-        int max = 0;
+        int max = Integer.MIN_VALUE;
+        int maxA = Integer.MIN_VALUE;
         int summ = 0;
         for (int a : A) {
-            summ += a;
-            if (summ < 0) {
-                summ = 0;
-            }
+            summ = Math.max(0, summ + a);
             max = Math.max(summ, max);
+            maxA = Math.max(a, maxA);
         }
-        return max;
+        return maxA >=0 ? max : maxA;
     }
 }
