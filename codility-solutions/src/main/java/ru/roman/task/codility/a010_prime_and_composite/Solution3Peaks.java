@@ -95,15 +95,14 @@ class Solution3Peaks {
 
         double sqrt = Math.sqrt((double) A.length);
 
-        int maxDiv = (int) sqrt;
-        if (sqrt - maxDiv > 0) {
-            while (A.length % maxDiv != 0) {
-                maxDiv--;
+        int div = (int) sqrt;
+        if (sqrt - div > 0) {
+            while (A.length % div != 0) {
+                div--;
             }
         }
 
         TreeSet<Integer> dividers = new TreeSet<>();
-        int div = maxDiv;
         while (div > 1) {
             if (A.length % div == 0) {
                 dividers.add(div);
@@ -125,7 +124,7 @@ class Solution3Peaks {
                 int stopIndex = i - 1;
                 int peaksCount = peaks[stopIndex] - (startIndex > 0 ? peaks[startIndex] : 0);
 
-                System.out.printf("Check: [%s;%s], peaksCount: %s, divider: %s \n", startIndex, stopIndex, peaksCount, d);
+                System.out.printf("Check: [%s;%s], peaks: %s, divider: %s \n", startIndex, stopIndex, peaksCount, d);
                 if (peaksCount < 1) {
                     continue outer;
                 }
