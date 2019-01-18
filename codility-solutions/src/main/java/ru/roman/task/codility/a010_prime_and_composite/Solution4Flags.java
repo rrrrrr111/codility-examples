@@ -75,16 +75,12 @@ class Solution4Flags {
         int[] dist = new int[A.length];
         int peakCount = 0;
         int prevPeakIndex = -1;
-        int minDist = Integer.MAX_VALUE, maxDist = Integer.MIN_VALUE;
+
         for (int i = 1; i < A.length - 1; i++) {
             if (A[i - 1] < A[i] && A[i + 1] < A[i]) {
                 peakCount++;
                 int d = i - prevPeakIndex;
                 dist[i] = d;
-                if (peakCount > 1) {
-                    minDist = Math.min(minDist, d);
-                    maxDist = Math.max(maxDist, d);
-                }
                 prevPeakIndex = i;
             }
             peaks[i] = peakCount;
@@ -92,7 +88,7 @@ class Solution4Flags {
         peaks[peaks.length - 1] = peaks[peaks.length - 2];
 
         System.out.printf("Peaks   : %s\n", Arrays.toString(peaks));
-        System.out.printf("Distance: %s, min:%s, max:%s\n", Arrays.toString(dist), minDist, maxDist);
+        System.out.printf("Distance: %s\n", Arrays.toString(dist));
 
         if (peakCount == 0) {
             return 0;
@@ -102,7 +98,7 @@ class Solution4Flags {
         int maxFlags = (int) sqrt;
         int range = A.length / maxFlags;
         int maxCount = 0;
-        System.out.printf("Square root: %s, maxFlags:%s\n", sqrt, maxFlags);
+        System.out.printf("Square root: %s, maxFlags:%s, range:%s\n", sqrt, maxFlags, range);
 
         while (range > 1) {
 
