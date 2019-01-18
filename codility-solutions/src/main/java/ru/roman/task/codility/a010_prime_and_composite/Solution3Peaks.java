@@ -111,6 +111,7 @@ class Solution3Peaks {
             }
             div--;
         }
+        dividers.add(A.length);
 
         System.out.printf("Square root: %s, dividers: %s\n", sqrt, dividers);
 
