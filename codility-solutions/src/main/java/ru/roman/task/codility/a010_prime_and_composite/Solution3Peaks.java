@@ -1,6 +1,8 @@
 package ru.roman.task.codility.a010_prime_and_composite;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
  * A non-empty array A consisting of N integers is given.
@@ -75,7 +77,60 @@ class Solution3Peaks {
     public int solution(int[] A) {
         System.out.printf("On input: %s\n", Arrays.toString(A));
 
+        if (A.length < 3) {
+            return 0;
+        }
 
+        int[] peaks = new int[A.length];
+        int count = 0;
+        for (int i = 1; i < A.length - 1; i++) {
+            if (A[i - 1] < A[i] && A[i + 1] < A[i]) {
+                count++;
+            }
+            peaks[i] = count;
+        }
+        peaks[peaks.length - 1] = peaks[peaks.length - 2];
+
+        System.out.printf("Peaks   : %s\n", Arrays.toString(peaks));
+
+        double sqrt = Math.sqrt((double) A.length);
+
+        int maxDiv = (int) sqrt;
+        if (sqrt - maxDiv > 0) {
+            while (A.length % maxDiv != 0) {
+                maxDiv--;
+            }
+        }
+
+        TreeSet<Integer> dividers = new TreeSet<>();
+        int div = maxDiv;
+        while (div > 1) {
+            if (A.length % div == 0) {
+                dividers.add(div);
+                dividers.add(A.length / div);
+            }
+            div--;
+        }
+
+        System.out.printf("Square root: %s, dividers: %s\n", sqrt, dividers);
+
+        Iterator<Integer> iterator = dividers.iterator();
+        outer:
+        while (iterator.hasNext()) {
+            Integer d = iterator.next();
+
+            for (int i = d; i <= A.length; i += d) {
+                int startIndex = i - d - 1;
+                int stopIndex = i - 1;
+                int peaksCount = peaks[stopIndex] - (startIndex > 0 ? peaks[startIndex] : 0);
+
+                System.out.printf("Check: [%s;%s], peaksCount: %s, divider: %s \n", startIndex, stopIndex, peaksCount, d);
+                if (peaksCount < 1) {
+                    continue outer;
+                }
+            }
+            return A.length / d;
+        }
         return 0;
     }
 }
