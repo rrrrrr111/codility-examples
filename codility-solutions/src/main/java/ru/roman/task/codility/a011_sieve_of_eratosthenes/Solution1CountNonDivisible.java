@@ -2,7 +2,6 @@ package ru.roman.task.codility.a011_sieve_of_eratosthenes;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -62,16 +61,16 @@ class Solution1CountNonDivisible {
         }
 
         int[] counters = new int[max];
-        for (int i = 0; i < A.length; i++) {
-            counters[A[i]]++;
+        for (int a : A) {
+            counters[a]++;
         }
 
         int totalDividers = A.length;
 
         System.out.printf("Total dividers : %s, ones: %s\n", totalDividers, counters[1]);
-        System.out.printf("Factors : %s...\n", Arrays.toString(IntStream.of(factors).limit(33).mapToObj(value -> " " + value).toArray()));
-        System.out.printf("Nums    : %s...\n", Arrays.toString(IntStream.range(0, 33).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
-        System.out.printf("Counters: %s...\n", Arrays.toString(IntStream.of(counters).limit(33).mapToObj(value -> " " + value).toArray()));
+        System.out.printf("Factors : %s...\n", Arrays.toString(IntStream.of(factors).limit(133).mapToObj(value -> " " + value).toArray()));
+        System.out.printf("Nums    : %s...\n", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
+        System.out.printf("Counters: %s...\n", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
 
         int[] result = new int[A.length];
 
@@ -81,18 +80,14 @@ class Solution1CountNonDivisible {
             int a = A[i];
 
             if (a == 1) {
-                System.out.printf("Count for one is %s\n", result[i]);
+                //System.out.printf("Count for one is %s\n", result[i]);
 
             } else {
-
                 System.out.printf("\nCalculation started for %s, counter:%s\n", a, result[i]);
                 Set<Integer> divs = new HashSet<>();
-                divs.add(1);
 
-                LinkedList<Integer> q = new LinkedList<>();
-                q.add(a);
-                while (!q.isEmpty()) {
-                    int d = q.poll();
+                int d = a;
+                while (d > 1) {
 
                     if (!divs.contains(d)) {
                         result[i] -= counters[d];
@@ -101,14 +96,22 @@ class Solution1CountNonDivisible {
                     }
                     int f = factors[d];
 
-                    if (f > 0){
-                        if (!divs.contains(f)) {
-                            q.push(f);
+                    if (f > 1) {
+                        d /= f;
+
+                        if (f != d && !divs.contains(f)) {
+                            result[i] -= counters[f];
+                            divs.add(f);
+                            System.out.printf("Removing factor %s(%s), counter: %s\n", f, counters[f], result[i]);
                         }
-                        int sd = a / f;
-                        if (sd > 0 && !divs.contains(sd)){
-                            q.push(sd);
+                        int sf = a / f;
+                        if (sf != f && sf != d && !divs.contains(sf)) {
+                            result[i] -= counters[sf];
+                            divs.add(sf);
+                            System.out.printf("Removing subdiv %s(%s), counter: %s\n", sf, counters[sf], result[i]);
                         }
+                    } else {
+                        break;
                     }
                 }
             }
