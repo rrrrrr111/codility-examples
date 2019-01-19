@@ -9,7 +9,8 @@ import java.util.stream.IntStream
 @CompileStatic
 @Test
 class Solution1CountNonDivisibleWorkLoadTest {
-    private Solution1CountNonDivisibleWithSieve subj = new Solution1CountNonDivisibleWithSieve()
+    //private Solution1CountNonDivisibleWithSieve subj = new Solution1CountNonDivisibleWithSieve()
+    private Solution1CountNonDivisible subj = new Solution1CountNonDivisible()
 
     @DataProvider
     private Object[][] provider() {

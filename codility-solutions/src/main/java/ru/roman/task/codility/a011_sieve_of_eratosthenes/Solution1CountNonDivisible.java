@@ -1,8 +1,6 @@
 package ru.roman.task.codility.a011_sieve_of_eratosthenes;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.Arrays;
 
 /**
  * You are given an array A consisting of N integers.
@@ -49,89 +47,39 @@ class Solution1CountNonDivisible {
     private static boolean log = false;
 
     public int[] solution(int[] A) {
-        //log("On input: %s", Arrays.toString(A));
-
-        int[] factors = new int[100_001];
-        int i = 2;
-        int j;
-        for (; ; ) {
-            j = i * i;
-            if (j >= 100_001) {
-                break;
-            }
-            int k = j;
-            while (k < 100_001) {
-                factors[k] = i;
-                k += i;
-            }
-            i++;
-        }
+        log("On input: %s", Arrays.toString(A));
 
         int[] counters = new int[100_001];
         for (int a : A) {
             counters[a]++;
         }
 
-        //log("Total dividers : %s, ones: %s", totalDividers, counters[1]);
-        //log("Factors : %s...", Arrays.toString(IntStream.of(factors).limit(133).mapToObj(value -> " " + value).toArray()));
-        //log("Nums    : %s...", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
-        //log("Counters: %s...", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
-
         final int totalDividers = A.length;
         final int[] result = new int[A.length];
-        final Set<Integer> divs = new HashSet<>();
-        final LinkedList<Integer> queue = new LinkedList<>();
 
-        for (int i1 = 0; i1 < A.length; i1++) {
-            int a = A[i1];
-
-            //log("\nCalculation started for %s, totalDividers:%s", a, totalDividers);
-
-            divs.clear();
+        for (int i = 0; i < A.length; i++) {
+            int a = A[i];
 
             int count = 0;
-            divs.add(a);
-            queue.push(a);
             count += counters[a];
+            if (a != 1) {
+                count += counters[1];
+            }
 
-            while (!queue.isEmpty()) {
-                int d = queue.pop();
-                int f = factors[d];
-
-                int c1 = a / d;
-                if (divs.add(c1)) {
-                    queue.push(c1);
-                    count += counters[c1];
-                    //log("Removing a/x %s(%s), counter: %s", c1, counters[c1], count);
-                }
-
-                if (f > 0) {
-
-                    if (divs.add(f)) {
-                        queue.push(f);
-                        count += counters[f];
-                        //log("Removing factor %s(%s), counter: %s", f, counters[f], result[i]);
+            for (int m = 2; m * m <= a; m++) {
+                if (a % m == 0) {
+                    count += counters[m];
+                    int sf = a / m;
+                    if (sf != m) {
+                        count += counters[sf];
                     }
 
-                    int c2 = d / f;
-                    if (divs.add(c2)) {
-                        queue.push(c2);
-                        count += counters[c2];
-                        //log("Removing x/f %s(%s), counter: %s", c2, counters[c2], count);
+                    if (count == totalDividers) {
+                        break;
                     }
-                    int c3 = a / f;
-                    if (divs.add(c3)) {
-                        queue.push(c3);
-                        count += counters[c3];
-                        //log("Removing a/f %s(%s), counter: %s", c3, counters[c3], count);
-                    }
-                }
-                if (count == totalDividers) {
-                    queue.clear();
-                    break;
                 }
             }
-            result[i1] = totalDividers - count;
+            result[i] = totalDividers - count;
         }
         return result;
     }
