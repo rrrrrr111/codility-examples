@@ -2,6 +2,7 @@ package ru.roman.task.codility.a011_sieve_of_eratosthenes;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -72,51 +73,55 @@ class Solution1CountNonDivisible {
         System.out.printf("Nums    : %s...\n", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
         System.out.printf("Counters: %s...\n", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
 
-        int[] result = new int[A.length];
-
+        final int[] result = new int[A.length];
+        final Set<Integer> divs = new HashSet<>();
+        final LinkedList<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < A.length; i++) {
-            result[i] = totalDividers - counters[1];
+            result[i] = totalDividers;
             int a = A[i];
 
-            if (a == 1) {
-                //System.out.printf("Count for one is %s\n", result[i]);
+            System.out.printf("\nCalculation started for %s, counter:%s\n", a, result[i]);
 
-            } else {
-                System.out.printf("\nCalculation started for %s, counter:%s\n", a, result[i]);
-                Set<Integer> divs = new HashSet<>();
+            divs.clear();
 
-                int d = a;
-                while (d > 1) {
+            divs.add(a);
+            queue.push(a);
+            result[i] -= counters[a];
 
-                    if (!divs.contains(d)) {
-                        result[i] -= counters[d];
-                        divs.add(d);
-                        System.out.printf("Removing divider %s(%s), counter: %s\n", d, counters[d], result[i]);
+            while (!queue.isEmpty()) {
+                int d = queue.pop();
+                int f = factors[d];
+
+                int c1 = a / d;
+                if (c1 != d && divs.add(c1)) {
+                    queue.push(c1);
+                    result[i] -= counters[c1];
+                    System.out.printf("Removing a/x %s(%s), counter: %s\n", c1, counters[c1], result[i]);
+                }
+
+                if (f > 0) {
+                    if (f != c1 && divs.add(f)) {
+                        queue.push(f);
+                        result[i] -= counters[f];
+                        System.out.printf("Removing factor %s(%s), counter: %s\n", f, counters[f], result[i]);
                     }
-                    int f = factors[d];
 
-                    if (f > 1) {
-                        d /= f;
-
-                        if (f != d && !divs.contains(f)) {
-                            result[i] -= counters[f];
-                            divs.add(f);
-                            System.out.printf("Removing factor %s(%s), counter: %s\n", f, counters[f], result[i]);
-                        }
-                        int sf = a / f;
-                        if (sf != f && sf != d && !divs.contains(sf)) {
-                            result[i] -= counters[sf];
-                            divs.add(sf);
-                            System.out.printf("Removing subdiv %s(%s), counter: %s\n", sf, counters[sf], result[i]);
-                        }
-                    } else {
-                        break;
+                    int c2 = d / f;
+                    if (c2 != c1 && c2 != f && divs.add(c2)) {
+                        queue.push(c2);
+                        result[i] -= counters[c2];
+                        System.out.printf("Removing x/f %s(%s), counter: %s\n", c2, counters[c2], result[i]);
+                    }
+                    int c3 = a / f;
+                    if (c3 != c2 && c3 != c1 && c3 != f && divs.add(c3)) {
+                        queue.push(c3);
+                        result[i] -= counters[c3];
+                        System.out.printf("Removing a/f %s(%s), counter: %s\n", c3, counters[c3], result[i]);
                     }
                 }
             }
         }
-
         return result;
     }
 }
