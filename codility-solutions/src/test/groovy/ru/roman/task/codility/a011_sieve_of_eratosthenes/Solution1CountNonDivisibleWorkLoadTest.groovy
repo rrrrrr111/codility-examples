@@ -9,20 +9,22 @@ import java.util.stream.IntStream
 @CompileStatic
 @Test
 class Solution1CountNonDivisibleWorkLoadTest {
-    private Solution1CountNonDivisible subj = new Solution1CountNonDivisible()
+    private Solution1CountNonDivisibleWithSieve subj = new Solution1CountNonDivisibleWithSieve()
 
     @DataProvider
     private Object[][] provider() {
-        int size = 1_000_000
+        int size = 100_000
         [
-                [IntStream.range(0, size).map({ 83160 }).toArray(), IntStream.range(0, size).map({ 0 }).toArray()],
+                [IntStream.range(0, size).map({ 83160 }).toArray()],
+                [new Random().ints(size, 1, 100_000).toArray()],
         ] as Object[][]
     }
 
     @Test(dataProvider = "provider")
-    void test(int[] value, int[] expected) {
+    void test(int[] value) {
 
-        def actual = subj.solution(value)
-        assert actual == expected
+        int[] res = subj.solution(value)
+
+        println("Result has ${res.length} elements")
     }
 }

@@ -7,7 +7,7 @@ import org.testng.annotations.Test
 @CompileStatic
 @Test
 class Solution1CountNonDivisibleTest {
-    private Solution1CountNonDivisible subj = new Solution1CountNonDivisible()
+    private Solution1CountNonDivisibleWithSieve subj = new Solution1CountNonDivisibleWithSieve()
 
     @DataProvider
     private Object[][] provider() {
