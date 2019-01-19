@@ -48,8 +48,10 @@ import java.util.stream.IntStream;
  * each element of array A is an integer within the range [1..2 * N].
  */
 class Solution1CountNonDivisible {
+    private static boolean log = false;
+
     public int[] solution(int[] A) {
-        System.out.printf("On input: %s\n", Arrays.toString(A));
+        log("On input: %s", Arrays.toString(A));
         int max = 100_001;
 
         int[] factors = new int[max];
@@ -68,60 +70,65 @@ class Solution1CountNonDivisible {
 
         int totalDividers = A.length;
 
-        System.out.printf("Total dividers : %s, ones: %s\n", totalDividers, counters[1]);
-        System.out.printf("Factors : %s...\n", Arrays.toString(IntStream.of(factors).limit(133).mapToObj(value -> " " + value).toArray()));
-        System.out.printf("Nums    : %s...\n", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
-        System.out.printf("Counters: %s...\n", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
+        log("Total dividers : %s, ones: %s", totalDividers, counters[1]);
+        log("Factors : %s...", Arrays.toString(IntStream.of(factors).limit(133).mapToObj(value -> " " + value).toArray()));
+        log("Nums    : %s...", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
+        log("Counters: %s...", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
 
         final int[] result = new int[A.length];
         final Set<Integer> divs = new HashSet<>();
         final LinkedList<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < A.length; i++) {
-            result[i] = totalDividers;
             int a = A[i];
+            int count = 0;
 
-            System.out.printf("\nCalculation started for %s, counter:%s\n", a, result[i]);
+            //log("\nCalculation started for %s, totalDividers:%s", a, totalDividers);
 
             divs.clear();
 
             divs.add(a);
             queue.push(a);
-            result[i] -= counters[a];
+            count += counters[a];
 
             while (!queue.isEmpty()) {
                 int d = queue.pop();
                 int f = factors[d];
 
                 int c1 = a / d;
-                if (c1 != d && divs.add(c1)) {
+                if (divs.add(c1)) {
                     queue.push(c1);
-                    result[i] -= counters[c1];
-                    System.out.printf("Removing a/x %s(%s), counter: %s\n", c1, counters[c1], result[i]);
+                    count += counters[c1];
+                    //log("Removing a/x %s(%s), counter: %s", c1, counters[c1], count);
                 }
 
                 if (f > 0) {
-                    if (f != c1 && divs.add(f)) {
-                        queue.push(f);
-                        result[i] -= counters[f];
-                        System.out.printf("Removing factor %s(%s), counter: %s\n", f, counters[f], result[i]);
-                    }
 
                     int c2 = d / f;
-                    if (c2 != c1 && c2 != f && divs.add(c2)) {
+                    if (divs.add(c2)) {
                         queue.push(c2);
-                        result[i] -= counters[c2];
-                        System.out.printf("Removing x/f %s(%s), counter: %s\n", c2, counters[c2], result[i]);
+                        count += counters[c2];
+                        //log("Removing x/f %s(%s), counter: %s", c2, counters[c2], count);
                     }
                     int c3 = a / f;
-                    if (c3 != c2 && c3 != c1 && c3 != f && divs.add(c3)) {
+                    if (divs.add(c3)) {
                         queue.push(c3);
-                        result[i] -= counters[c3];
-                        System.out.printf("Removing a/f %s(%s), counter: %s\n", c3, counters[c3], result[i]);
+                        count += counters[c3];
+                        //log("Removing a/f %s(%s), counter: %s", c3, counters[c3], count);
                     }
                 }
+                if (count == totalDividers) {
+                    queue.clear();
+                    break;
+                }
             }
+            result[i] = totalDividers - count;
         }
         return result;
+    }
+
+    static void log(String str, Object... params) {
+        if (log)
+            System.out.printf(str + "\n", params);
     }
 }
