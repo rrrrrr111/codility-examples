@@ -138,6 +138,6 @@ class Solution1CountNonDivisibleWithSieve {
 
     private static void log(String str, Object... params) {
         if (log)
-            System.out.printf(str + "\n", params);
+            System.out.printf(str + "&n", params);
     }
 }
