@@ -72,11 +72,11 @@ class Solution1CountNonDivisibleWithSieve {
             counters[a]++;
         }
 
-        //log("Total dividers : %s, ones: %s", totalDividers, counters[1]);
-        //log("Factors : %s...", Arrays.toString(IntStream.of(factors).limit(133).mapToObj(value -> " " + value).toArray()));
-        //log("Nums    : %s...", Arrays.toString(IntStream.range(0, 133).mapToObj(value -> value > 9 ? "" + value : " " + value).toArray()));
-        //log("Counters: %s...", Arrays.toString(IntStream.of(counters).limit(133).mapToObj(value -> " " + value).toArray()));
+        return sieveAlg1(A, factors, counters);
+        //return sieveAlg2(A, factors, counters);
+    }
 
+    private int[] sieveAlg1(int[] A, int[] factors, int[] counters) {
         final int totalDividers = A.length;
         final int[] result = new int[A.length];
         final Set<Integer> divs = new HashSet<>();
@@ -95,35 +95,36 @@ class Solution1CountNonDivisibleWithSieve {
             count += counters[a];
 
             while (!queue.isEmpty()) {
-                int d = queue.pop();
-                int f = factors[d];
+                int next = queue.pollFirst();
+                int prime = factors[next];
 
-                int c1 = a / d;
-                if (divs.add(c1)) {
-                    queue.push(c1);
-                    count += counters[c1];
-                    //log("Removing a/x %s(%s), counter: %s", c1, counters[c1], count);
+                int nextSymmetric = a / next;
+                if (divs.add(nextSymmetric)) {
+                    queue.push(nextSymmetric);
+                    count += counters[nextSymmetric];
+                    //log("Removing a/x %s(%s), counter: %s", nextSymmetric, counters[nextSymmetric], count);
                 }
 
-                if (f > 0) {
+                if (prime > 0) {
 
-                    if (divs.add(f)) {
-                        queue.push(f);
-                        count += counters[f];
-                        //log("Removing factor %s(%s), counter: %s", f, counters[f], result[i]);
+                    if (divs.add(prime)) {
+                        queue.push(prime);
+                        count += counters[prime];
+                        //log("Removing factor %s(%s), counter: %s", prime, counters[prime], result[i]);
                     }
 
-                    int c2 = d / f;
-                    if (divs.add(c2)) {
-                        queue.push(c2);
-                        count += counters[c2];
-                        //log("Removing x/f %s(%s), counter: %s", c2, counters[c2], count);
+                    int primeSymmetric = a / prime;
+                    if (divs.add(primeSymmetric)) {
+                        queue.push(primeSymmetric);
+                        count += counters[primeSymmetric];
+                        //log("Removing a/prime %s(%s), counter: %s", primeSymmetric, counters[primeSymmetric], count);
                     }
-                    int c3 = a / f;
-                    if (divs.add(c3)) {
-                        queue.push(c3);
-                        count += counters[c3];
-                        //log("Removing a/f %s(%s), counter: %s", c3, counters[c3], count);
+
+                    int primeToNextSymmetric = next / prime;
+                    if (divs.add(primeToNextSymmetric)) {
+                        queue.push(primeToNextSymmetric);
+                        count += counters[primeToNextSymmetric];
+                        //log("Removing x/prime %s(%s), counter: %s", primeToNextSymmetric, counters[primeToNextSymmetric], count);
                     }
                 }
                 if (count == totalDividers) {
@@ -136,8 +137,67 @@ class Solution1CountNonDivisibleWithSieve {
         return result;
     }
 
+    private int[] sieveAlg2(int[] A, int[] primeFactors, int[] counters) {
+        final int totalDividers = A.length;
+        final int[] result = new int[A.length];
+        final Set<Integer> divs = new HashSet<>();
+        final LinkedList<Integer> queue = new LinkedList<>();
+
+        for (int k = 0; k < A.length; k++) {
+            int a = A[k];
+
+            //log("\nCalculation started for %s, totalDividers:%s", a, totalDividers);
+
+            int count = 0;
+            divs.clear();
+            queue.push(a);
+
+            while (!queue.isEmpty()) {
+                int next = queue.pollLast();
+
+                if (divs.add(next)) {
+                    count += counters[next];
+                    //log("Counting next %s(%s), counter: %s", next, counters[next], count);
+                }
+
+                int nextSymmetric = a / next;
+                if (!divs.contains(nextSymmetric)) {
+                    queue.push(nextSymmetric);
+                    //log("Removing a/x %s(%s), counter: %s", nextSymmetric, counters[nextSymmetric], count);
+                }
+
+                int prime = primeFactors[next];
+                if (prime > 0) {
+
+                    if (!divs.contains(prime)) { // add primeFactor
+                        queue.push(prime);
+                        //log("Pushing prime %s(%s), counter: %s", prime, counters[prime], count);
+                    }
+
+                    int primeSymmetric = a / prime;
+                    if (!divs.contains(primeSymmetric)) {
+                        queue.push(primeSymmetric);
+                        //log("Pushing primeSymmetric %s(%s), counter: %s", primeSymmetric, counters[primeSymmetric], count);
+                    }
+
+                    int primeToNextSymmetric = next / prime;
+                    if (!divs.contains(primeToNextSymmetric)) {
+                        queue.push(primeToNextSymmetric);
+                        //log("Pushing primeToNextSymmetric %s(%s), counter: %s", next, counters[primeToNextSymmetric], count);
+                    }
+                }
+                if (count == totalDividers) {
+                    queue.clear();
+                    break;
+                }
+            }
+            result[k] = totalDividers - count;
+        }
+        return result;
+    }
+
     private static void log(String str, Object... params) {
         if (log)
-            System.out.printf(str + "&n", params);
+            System.out.printf(str + "%n", params);
     }
 }
