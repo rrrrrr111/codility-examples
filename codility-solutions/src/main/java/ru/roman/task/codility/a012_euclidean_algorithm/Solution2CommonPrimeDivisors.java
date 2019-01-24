@@ -33,10 +33,61 @@ import java.util.Arrays;
  * each element of arrays A, B is an integer within the range [1..2,147,483,647].
  */
 class Solution2CommonPrimeDivisors {
-    public int solution(int[] A) {
-        System.out.printf("On input: %s%n", Arrays.toString(A));
+    public int solution(int[] A, int[] B) {
+        System.out.printf("On input: %s %s%n", Arrays.toString(A), Arrays.toString(B));
 
+        int count = 0;
 
-        return 0;
+        for (int i = 0; i < A.length; i++) {
+            int gcd = gcd(A[i], B[i]);
+            if (isValid(A[i], B[i], gcd) && isValid(B[i], A[i], gcd)) {
+                count++;
+            }
+        }
+
+        return count;
     }
+
+    private boolean isValid(int val1, int val2, int gcd) {
+
+        if (val1 == val2) {
+            return true;
+        }
+        if (val1 == 1 || val2 == 1) {
+            return false;
+        }
+
+        while (gcd > 1) {
+            val1 /= gcd;
+            if (val1 == 1) {
+                return true;
+            }
+            gcd = gcd(val1, val2);
+        }
+        return false;
+    }
+
+    private int gcd(int N, int M) {
+        int a = N, b = M, res = 1;
+
+        for (; ; ) {
+            if (a == b) {
+                return res * a;
+            } else if ((a % 2 == 0) && (b % 2 == 0)) {
+                a /= 2;
+                b /= 2;
+                res *= 2;
+            } else if (a % 2 == 0) {
+                a /= 2;
+            } else if (b % 2 == 0) {
+                b /= 2;
+
+            } else if (a > b) {
+                a -= b;
+            } else {
+                b -= a;
+            }
+        }
+    }
+
 }
