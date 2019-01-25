@@ -130,7 +130,7 @@ class Solution2FibFrog {
                         return jump + 1;
                     }
 
-                    if (jump <= pointRecords[index]) {
+                    if (jump < pointRecords[index]) {
 
                         Point newPoint = new Point(index, p, jump);
                         queue.addLast(newPoint);
