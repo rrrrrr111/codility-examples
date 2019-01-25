@@ -7,7 +7,8 @@ import org.testng.annotations.Test
 @CompileStatic
 @Test
 class Solution1FibFrogTest {
-    private Solution1FibFrog subj = new Solution1FibFrog()
+    //private Solution1FibFrog subj = new Solution1FibFrog()
+    private Solution2FibFrog subj = new Solution2FibFrog()
 
     @DataProvider
     private Object[][] provider() {

@@ -2,6 +2,7 @@ package ru.roman.task.codility.a013_fibonacci_numbers;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.StringJoiner;
 
 /**
  * The Fibonacci sequence is defined using the following recursive formula:
@@ -58,7 +59,7 @@ import java.util.LinkedList;
  * N is an integer within the range [0..100,000];
  * each element of array A is an integer that can have one of the following values: 0, 1.
  */
-class Solution1FibFrog {
+class Solution2FibFrog {
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
@@ -82,6 +83,8 @@ class Solution1FibFrog {
         }
         int[] points = new int[leafsCount];
         int[] pointRecords = new int[leafsCount];
+        LinkedList<Point> queue = new LinkedList<>();
+
         int fullPath = A.length + 1;
         int pointLength = 0;
         int pointIndex = 0;
@@ -90,27 +93,33 @@ class Solution1FibFrog {
             if (a == 1) {
                 points[pointIndex] = pointLength;
                 pointRecords[pointIndex] = Integer.MAX_VALUE;
+
+                if (fibonacciCounters[pointLength]) {
+                    queue.push(new Point(pointIndex, pointLength, 1));
+                    pointRecords[pointIndex] = 1;
+
+                    if (fibonacciCounters[fullPath - pointLength]) {
+                        System.out.printf("Path finalised on first collect %n");
+                        return 2;
+                    }
+                }
                 pointIndex++;
             }
         }
         System.out.printf("Points : %s, fullPath: %s%n", Arrays.toString(points), fullPath);
 
-        LinkedList<Integer> stack = new LinkedList<>();
 
-        int jumpsAttempt = 0;
-        while (jumpsAttempt <= A.length + 1) {
-            ++jumpsAttempt;
+        int jump;
+        int length;
+        while (!queue.isEmpty()) {
 
-            System.out.printf("%nAttempt with jumps: %s%n", jumpsAttempt + 1);
+            Point pt = queue.pollFirst();
+            System.out.printf("%nGot new point %s%n", pt);
 
-            int jump = 0;
-            int length = 0;
-            int index = points.length;
-            int lastIndex = -1;
-            stack.clear();
+            length = pt.length;
+            jump = pt.jump + 1;
 
-            while (lastIndex < index - 1) {
-                index--;
+            for (int index = pt.index + 1; index < points.length; index++) {
                 int p = points[index];
 
                 if (fibonacciCounters[p - length]) {
@@ -118,36 +127,23 @@ class Solution1FibFrog {
                     if (fibonacciCounters[fullPath - p]) {
                         System.out.printf("Path finalised, length is %s, jump %s, rest path %s, point %s(%s) %n",
                                 length, jump, (fullPath - p), p, index);
-                        return jump + 2;
+                        return jump + 1;
                     }
 
-                    if (jump + 1 < jumpsAttempt
-                            && jump + 1 <= pointRecords[index]
-                    ) {
+                    if (jump <= pointRecords[index]) {
 
-                        stack.push(index);
-                        jump++;
-                        pointRecords[index] = jump;
+                        Point newPoint = new Point(index, p, jump);
+                        queue.addLast(newPoint);
+                        pointRecords[index] = newPoint.jump;
 
-                        lastIndex = index;
-                        index = points.length;
-                        length = p;
-                        System.out.printf("Restarting the points cycle to [%s, %s], length %s jump %s stack %s%n",
-                                lastIndex, (index - 1), length, jump, stack);
+                        System.out.printf("Found point for jump %s%n", newPoint);
+                    } else {
+                        System.out.printf("Point missed in record favor %s(%s)%n", p, index);
                     }
-                }
-
-                while (index - 1 == lastIndex && !stack.isEmpty()) {
-                    index = stack.pop();
-                    lastIndex = stack.isEmpty() ? -1 : stack.peek();
-                    length = stack.isEmpty() ? 0 : points[stack.peek()];
-                    jump--;
-
-                    System.out.printf("End of cycle reached, restart to [%s, %s], length %s jump %s stack %s%n",
-                            lastIndex - 1, (index - 1), length, jump, stack);
                 }
             }
         }
+
         return -1;
     }
 
@@ -160,5 +156,26 @@ class Solution1FibFrog {
             result[i] = result[i - 1] + result[i - 2];
         }
         return result;
+    }
+
+    private static class Point {
+        final int index;
+        final int length;
+        final int jump;
+
+        Point(int index, int length, int jump) {
+            this.index = index;
+            this.length = length;
+            this.jump = jump;
+        }
+
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", Point.class.getSimpleName() + "[", "]")
+                    .add("index=" + index)
+                    .add("length=" + length)
+                    .add("jump=" + jump)
+                    .toString();
+        }
     }
 }
