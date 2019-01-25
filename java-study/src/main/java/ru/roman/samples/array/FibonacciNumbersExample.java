@@ -13,7 +13,7 @@ public class FibonacciNumbersExample {
     public static void main(String[] args) {
 
         int maxValue = 46;
-        int[] factors = prepareFibonacciNumbers(maxValue);
+        int[] fibonacci = prepareFibonacciNumbers(maxValue);
 
         System.out.printf("Nums     : %s%n",
                 Arrays.toString(
@@ -22,7 +22,7 @@ public class FibonacciNumbersExample {
         );
         System.out.printf("Fibonacci: %s%n",
                 Arrays.toString(
-                        IntStream.of(factors).mapToObj(v -> leftPad("" + v, 10)).toArray()
+                        IntStream.of(fibonacci).mapToObj(v -> leftPad("" + v, 10)).toArray()
                 )
         );
     }
@@ -32,7 +32,7 @@ public class FibonacciNumbersExample {
         int[] result = new int[max];
         result[1] = 1;
 
-        for (int i = 2; i < max; i++) {
+        for (int i = 2; i < result.length; i++) {
             result[i] = result[i - 1] + result[i - 2];
         }
         return result;
