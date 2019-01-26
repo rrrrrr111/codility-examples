@@ -90,7 +90,7 @@ class Solution2FibFrog {
 
                 if (fibonacciCounters[pointLength]) {
                     if (fibonacciCounters[fullPath - pointLength]) {
-                        //System.out.printf("Path finalised on first collect %n");
+                        System.out.printf("Path finalised on first collect %n");
                         return 2;
                     }
 
@@ -112,15 +112,15 @@ class Solution2FibFrog {
         while (!queue.isEmpty()) {
 
             Point pt = queue.poll();
-            //System.out.printf("%nGot new point %s%n", pt);
+            System.out.printf("%nGot new point %s%n", pt);
 
             Point curr = pt.next;
             while (curr != null) {
 
                 if (fibonacciCounters[curr.length - pt.length]) {
                     if (fibonacciCounters[fullPath - curr.length]) {
-//                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, %s %n",
-  //                              pt.length, pt.jump + 1, (fullPath - curr.length), curr);
+                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, %s %n",
+                                pt.length, pt.jump + 1, (fullPath - curr.length), curr);
 
                         return pt.jump + 2;
                     }
@@ -129,7 +129,7 @@ class Solution2FibFrog {
                     curr.remove();
                     queue.addLast(curr);
 
-    //                System.out.printf("Found point for jump %s%n", curr);
+                    System.out.printf("Found point for jump %s%n", curr);
                 }
                 curr = curr.next;
             }
