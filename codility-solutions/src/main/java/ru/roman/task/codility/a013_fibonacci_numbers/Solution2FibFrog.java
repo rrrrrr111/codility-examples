@@ -1,7 +1,9 @@
 package ru.roman.task.codility.a013_fibonacci_numbers;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.StringJoiner;
 
 /**
@@ -75,75 +77,63 @@ class Solution2FibFrog {
             return 1;
         }
 
-        int leafsCount = 0;
-        for (int a : A) {
-            if (a == 1) {
-                leafsCount++;
-            }
-        }
-        int[] points = new int[leafsCount];
-        int[] pointRecords = new int[leafsCount];
         LinkedList<Point> queue = new LinkedList<>();
-
         int fullPath = A.length + 1;
         int pointLength = 0;
-        int pointIndex = 0;
+        Point prev = null;
+
         for (int a : A) {
             pointLength++;
             if (a == 1) {
-                points[pointIndex] = pointLength;
-                pointRecords[pointIndex] = Integer.MAX_VALUE;
+
+                Point point = new Point(pointLength);
 
                 if (fibonacciCounters[pointLength]) {
-                    queue.push(new Point(pointIndex, pointLength, 1));
-                    pointRecords[pointIndex] = 1;
-
                     if (fibonacciCounters[fullPath - pointLength]) {
-                        System.out.printf("Path finalised on first collect %n");
+                        //System.out.printf("Path finalised on first collect %n");
                         return 2;
                     }
+
+                    point.jump = 1;
+                    queue.addLast(point);
                 }
-                pointIndex++;
+
+                point.setPrev(prev);
+                if (prev != null && prev.jump == 1) {
+                    prev.remove();
+                }
+                prev = point;
             }
         }
-        System.out.printf("Points : %s, fullPath: %s%n", Arrays.toString(points), fullPath);
+        if (prev != null && prev.jump == 1) {
+            prev.remove();
+        }
 
-
-        int jump;
-        int length;
         while (!queue.isEmpty()) {
 
-            Point pt = queue.pollFirst();
-            System.out.printf("%nGot new point %s%n", pt);
+            Point pt = queue.poll();
+            //System.out.printf("%nGot new point %s%n", pt);
 
-            length = pt.length;
-            jump = pt.jump + 1;
+            Point curr = pt.next;
+            while (curr != null) {
 
-            for (int index = pt.index + 1; index < points.length; index++) {
-                int p = points[index];
+                if (fibonacciCounters[curr.length - pt.length]) {
+                    if (fibonacciCounters[fullPath - curr.length]) {
+//                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, %s %n",
+  //                              pt.length, pt.jump + 1, (fullPath - curr.length), curr);
 
-                if (fibonacciCounters[p - length]) {
-
-                    if (fibonacciCounters[fullPath - p]) {
-                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, point %s(%s) %n",
-                                length, jump, (fullPath - p), p, index);
-                        return jump + 1;
+                        return pt.jump + 2;
                     }
 
-                    if (jump < pointRecords[index]) {
+                    curr.jump = pt.jump + 1;
+                    curr.remove();
+                    queue.addLast(curr);
 
-                        Point newPoint = new Point(index, p, jump);
-                        queue.addLast(newPoint);
-                        pointRecords[index] = newPoint.jump;
-
-                        System.out.printf("Found point for jump %s%n", newPoint);
-                    } else {
-                        System.out.printf("Point missed in record favor %s(%s)%n", p, index);
-                    }
+    //                System.out.printf("Found point for jump %s%n", curr);
                 }
+                curr = curr.next;
             }
         }
-
         return -1;
     }
 
@@ -159,23 +149,52 @@ class Solution2FibFrog {
     }
 
     private static class Point {
-        final int index;
         final int length;
-        final int jump;
+        int jump;
 
-        Point(int index, int length, int jump) {
-            this.index = index;
+        Point prev;
+        Point next;
+        List<Point> removedPrev = Collections.emptyList();
+
+        Point(int length, int jump) {
             this.length = length;
             this.jump = jump;
+        }
+
+        Point(int length) {
+            this(length, -1);
         }
 
         @Override
         public String toString() {
             return new StringJoiner(", ", Point.class.getSimpleName() + "[", "]")
-                    .add("index=" + index)
                     .add("length=" + length)
                     .add("jump=" + jump)
                     .toString();
+        }
+
+        void setPrev(Point prev) {
+            if (prev != null) {
+                this.prev = prev;
+                this.prev.next = this;
+            }
+        }
+
+        void remove() {
+            if (next != null) {
+                next.prev = prev;
+                if (next.removedPrev.isEmpty()) {
+                    next.removedPrev = new LinkedList<>();
+                }
+                next.removedPrev.add(this);
+                next.removedPrev.addAll(removedPrev);
+            }
+            if (prev != null) {
+                prev.next = next;
+            }
+            for (Point p : removedPrev) {
+                p.next = next;
+            }
         }
     }
 }
