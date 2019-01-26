@@ -8,7 +8,8 @@ import org.testng.annotations.Test
 @Test
 class Solution1FibFrogTest {
     //private Solution1FibFrog subj = new Solution1FibFrog()
-    private Solution2FibFrog subj = new Solution2FibFrog()
+    //private Solution2FibFrog subj = new Solution2FibFrog()
+    private Solution3FibFrog subj = new Solution3FibFrog()
 
     @DataProvider
     private Object[][] provider() {
