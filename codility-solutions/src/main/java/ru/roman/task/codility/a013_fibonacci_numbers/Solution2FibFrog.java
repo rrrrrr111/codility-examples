@@ -63,14 +63,14 @@ import java.util.StringJoiner;
  */
 class Solution2FibFrog {
     public int solution(int[] A) {
-        System.out.printf("On input: %s%n", Arrays.toString(A));
+      //  System.out.printf("On input: %s%n", Arrays.toString(A));
 
         int[] fibonacci = prepareFibonacciNumbers();
 
         int maxJump = 100_000 + 2;
         boolean[] fibonacciCounters = new boolean[maxJump];
         for (int f : fibonacci) {
-            fibonacciCounters[f] = true;
+            if (f < maxJump) fibonacciCounters[f] = true;
         }
 
         if (fibonacciCounters[A.length + 1]) {
@@ -90,7 +90,7 @@ class Solution2FibFrog {
 
                 if (fibonacciCounters[pointLength]) {
                     if (fibonacciCounters[fullPath - pointLength]) {
-                        System.out.printf("Path finalised on first collect %n");
+        //                System.out.printf("Path finalised on first collect %n");
                         return 2;
                     }
 
@@ -112,15 +112,15 @@ class Solution2FibFrog {
         while (!queue.isEmpty()) {
 
             Point pt = queue.poll();
-            System.out.printf("%nGot new point %s%n", pt);
+          //  System.out.printf("%nGot new point %s%n", pt);
 
             Point curr = pt.next;
             while (curr != null) {
 
                 if (fibonacciCounters[curr.length - pt.length]) {
                     if (fibonacciCounters[fullPath - curr.length]) {
-                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, %s %n",
-                                pt.length, pt.jump + 1, (fullPath - curr.length), curr);
+            //            System.out.printf("Path finalised, length is %s, jump %s, rest path %s, %s %n",
+              //                  pt.length, pt.jump + 1, (fullPath - curr.length), curr);
 
                         return pt.jump + 2;
                     }
@@ -129,7 +129,7 @@ class Solution2FibFrog {
                     curr.remove();
                     queue.addLast(curr);
 
-                    System.out.printf("Found point for jump %s%n", curr);
+                //    System.out.printf("Found point for jump %s%n", curr);
                 }
                 curr = curr.next;
             }
@@ -138,7 +138,7 @@ class Solution2FibFrog {
     }
 
     private static int[] prepareFibonacciNumbers() {
-        int max = 21;
+        int max = 26;
         int[] result = new int[max];
         result[1] = 1;
 

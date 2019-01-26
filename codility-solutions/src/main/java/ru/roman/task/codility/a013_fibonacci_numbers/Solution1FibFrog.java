@@ -60,14 +60,14 @@ import java.util.LinkedList;
  */
 class Solution1FibFrog {
     public int solution(int[] A) {
-        System.out.printf("On input: %s%n", Arrays.toString(A));
+       // System.out.printf("On input: %s%n", Arrays.toString(A));
 
         int[] fibonacci = prepareFibonacciNumbers();
 
         int maxJump = 100_000 + 2;
         boolean[] fibonacciCounters = new boolean[maxJump];
         for (int f : fibonacci) {
-            fibonacciCounters[f] = true;
+            if (f < maxJump) fibonacciCounters[f] = true;
         }
 
         if (fibonacciCounters[A.length + 1]) {
@@ -93,7 +93,7 @@ class Solution1FibFrog {
                 pointIndex++;
             }
         }
-        System.out.printf("Points : %s, fullPath: %s%n", Arrays.toString(points), fullPath);
+        //System.out.printf("Points : %s, fullPath: %s%n", Arrays.toString(points), fullPath);
 
         LinkedList<Integer> stack = new LinkedList<>();
 
@@ -101,7 +101,7 @@ class Solution1FibFrog {
         while (jumpsAttempt <= A.length + 1) {
             ++jumpsAttempt;
 
-            System.out.printf("%nAttempt with jumps: %s%n", jumpsAttempt + 1);
+          //  System.out.printf("%nAttempt with jumps: %s%n", jumpsAttempt + 1);
 
             int jump = 0;
             int length = 0;
@@ -116,8 +116,8 @@ class Solution1FibFrog {
                 if (fibonacciCounters[p - length]) {
 
                     if (fibonacciCounters[fullPath - p]) {
-                        System.out.printf("Path finalised, length is %s, jump %s, rest path %s, point %s(%s) %n",
-                                length, jump, (fullPath - p), p, index);
+            //            System.out.printf("Path finalised, length is %s, jump %s, rest path %s, point %s(%s) %n",
+              //                  length, jump, (fullPath - p), p, index);
                         return jump + 2;
                     }
 
@@ -132,8 +132,8 @@ class Solution1FibFrog {
                         lastIndex = index;
                         index = points.length;
                         length = p;
-                        System.out.printf("Restarting the points cycle to [%s, %s], length %s jump %s stack %s%n",
-                                lastIndex, (index - 1), length, jump, stack);
+                //        System.out.printf("Restarting the points cycle to [%s, %s], length %s jump %s stack %s%n",
+                  //              lastIndex, (index - 1), length, jump, stack);
                     }
                 }
 
@@ -143,8 +143,8 @@ class Solution1FibFrog {
                     length = stack.isEmpty() ? 0 : points[stack.peek()];
                     jump--;
 
-                    System.out.printf("End of cycle reached, restart to [%s, %s], length %s jump %s stack %s%n",
-                            lastIndex - 1, (index - 1), length, jump, stack);
+            //        System.out.printf("End of cycle reached, restart to [%s, %s], length %s jump %s stack %s%n",
+              //              lastIndex - 1, (index - 1), length, jump, stack);
                 }
             }
         }
@@ -152,7 +152,7 @@ class Solution1FibFrog {
     }
 
     private static int[] prepareFibonacciNumbers() {
-        int max = 21;
+        int max = 26;
         int[] result = new int[max];
         result[1] = 1;
 

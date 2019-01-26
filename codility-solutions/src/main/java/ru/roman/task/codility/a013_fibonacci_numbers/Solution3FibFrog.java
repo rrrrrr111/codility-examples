@@ -59,14 +59,15 @@ import java.util.Arrays;
  */
 class Solution3FibFrog {
     public int solution(int[] A) {
-        System.out.printf("On input: %s%n", Arrays.toString(A));
+        //System.out.printf("On input: %s%n", Arrays.toString(A));
 
         int[] fibonacci = prepareFibonacciNumbers();
+        //System.out.printf("fibonacci: %s%n", Arrays.toString(fibonacci));
 
         int maxJump = 100_000 + 2;
         boolean[] fibonacciCounters = new boolean[maxJump];
         for (int f : fibonacci) {
-            fibonacciCounters[f] = true;
+            if (f < maxJump) fibonacciCounters[f] = true;
         }
 
         if (fibonacciCounters[A.length + 1]) {
@@ -99,12 +100,12 @@ class Solution3FibFrog {
                 }
             }
         }
-        System.out.printf("Points  : %s%n", Arrays.toString(points));
+        //System.out.printf("Points  : %s%n", Arrays.toString(points));
         return points[points.length - 1];
     }
 
     private static int[] prepareFibonacciNumbers() {
-        int max = 21;
+        int max = 26;
         int[] result = new int[max];
         result[0] = 1;
         result[1] = 1;
