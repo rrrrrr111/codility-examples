@@ -54,7 +54,7 @@ public class ExceptionReturnAndFinally {
             try {
                 throw new Exception("exept from try");
             } finally {
-                throw new Exception("exept from finally");   // только этот будет отловлен
+                throw new Exception("exept from finally");   // только этот будет проброшен
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class ExceptionReturnAndFinally {
             try {
                 throw new Exception("exept from try");
             } catch (Exception e) {
-                e.printStackTrace();               // если исключение отловлено до finally , то все нармуль оно обработается
+                e.printStackTrace();               // если исключение отловлено до finally , то все нарм оно обработается
             } finally {
                 throw new Exception("exept from finally");
 
@@ -75,35 +75,18 @@ public class ExceptionReturnAndFinally {
             e.printStackTrace();
         }
     }
+
 
     void foo3() throws Exception {
+
         try {
-            try {
-                throw new Exception("exept from try");
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                throw new Exception("exept from finally");
-            }
+            throw new Exception("exept from try");
+            //int i = 0;                                                 //unrechable statement
         } catch (Exception e) {
-            e.printStackTrace();
+        } finally {
         }
     }
 
-    /*
-    void foo4() throws Exception {
-
-    try {
-    throw new Exception("exept from try");
-    int i = 0;                                                 //unrechable statement
-    } catch (Exception e) {
-
-
-    } finally {
-
-    }
-
-    }*/
     void foo4() throws Exception {
         try {
             try {
@@ -113,7 +96,7 @@ public class ExceptionReturnAndFinally {
                 throw new Exception("exept from catch");
                 //return;
             } finally {
-                throw new Exception("exept from finally");   // только этот будет отловлен , Exception и return из блоков try catch будет проигнорирован
+                throw new Exception("exept from finally");   // только этот будет отловлен , Exception или return из блоков try catch будет проигнорирован
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +110,7 @@ public class ExceptionReturnAndFinally {
             } catch (Exception e) {
                 throw new Exception("exept from catch");
             } finally {
-                return;                                      // исключения игнорируются ...
+                return;                // исключения игнорятся несмотря на то что метод ничего не возвращает
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -143,7 +126,7 @@ public class ExceptionReturnAndFinally {
                 //throw new Exception("exept from catch");
                 return "returned by catch";
             } finally {
-                return "returned by finally inner";              // предыдущие return и Exception игнорируются и последующий return и Exception тоже
+                return "returned by finally inner";  // блок finally выполняется, но return игнорится т к есть оборачивающий finally
                 // если он не в блоке finally верхнего уровня .. .
                 //throw new Exception("exept from finally");
             }
@@ -151,33 +134,33 @@ public class ExceptionReturnAndFinally {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            return "returned by finally outer";
+            return "returned by finally outer";         // вернется этот
         }
         //return "returned in the end";                 //  игнорируются ...
-        //throw new Exception("exept in the end");        //  игнорируются ...
+        //throw new Exception("exept in the end");      //  игнорируются ...
 
     }
 
     public static void main(String[] args) throws Exception {
 
+        ExceptionReturnAndFinally o = new ExceptionReturnAndFinally();
+
         System.out.println("===================================================1");
-        new ExceptionReturnAndFinally().foo1();
+        o.foo1();
         Thread.sleep(1000);
         System.out.println("===================================================2");
-        new ExceptionReturnAndFinally().foo2();
+        o.foo2();
         Thread.sleep(1000);
         System.out.println("===================================================3");
-        new ExceptionReturnAndFinally().foo3();
+        o.foo3();
         Thread.sleep(1000);
         System.out.println("===================================================4");
-        new ExceptionReturnAndFinally().foo4();
+        o.foo4();
         Thread.sleep(1000);
         System.out.println("===================================================5");
-        new ExceptionReturnAndFinally().foo5();
+        o.foo5();
         Thread.sleep(1000);
         System.out.println("===================================================6");
-        System.out.println(new ExceptionReturnAndFinally().foo6());
-
-
+        System.out.println(o.foo6());
     }
 }
