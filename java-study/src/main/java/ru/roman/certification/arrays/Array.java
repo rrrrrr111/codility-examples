@@ -39,19 +39,18 @@ class Array {
         int[][] it6 = new int[3][];  // legal
         // it2[0, 0] = 0;  // not legal
 
-        List<Object> l = Arrays.asList(new Object[]{new Object(), new Object()
+        List<Object> l = Arrays.asList(new Object[]{new Object(), new Object()  // излишнее создание массива на vararg методе
                 , // лишняя запятая допустима
         });
         System.out.println(l);
         System.out.println(new Object[]{new Object(), new Object()});
-        //System.out.println({new Object(),new Object()});        // не компилится
-        //System.out.println({1,2,3});// не компилится
-        int[] i = {1, 2, 3};                            // компилится
-        Object[] i2 = {new Object(), new Object(), new Object()};         // компилится
+        //System.out.println({new Object(),new Object()});        // не legal
+        //System.out.println({1,2,3});// не legal
+        int[] i = {1, 2, 3};                            // legal
+        Object[] i2 = {new Object(), new Object(), new Object()};         // legal
 
-        //foo({new Object(), new Object(), new Object()});                // не компилится
+        //foo({new Object(), new Object(), new Object()});                // не legal
     }
-
 
     static void foo(Object[] obj) {
         System.out.println(obj);

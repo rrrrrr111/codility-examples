@@ -36,7 +36,7 @@ public class NeighbourInPackage extends AllAccessTypesFoo {
 
     public static void main(String[] args) {
         new AllAccessTypesFoo().publicMethod();          // accessible everywhere
-        new AllAccessTypesFoo().protectedMethod();       // accessible in package and in subclasses, but not in static context of subclasses
+        new AllAccessTypesFoo().protectedMethod();       // accessible in static context in same package
         new AllAccessTypesFoo().packagePrivateMethod();  // accessible in package only
         //new AllAccessTypesFoo().privateMethod();         // accessible in own class only
     }

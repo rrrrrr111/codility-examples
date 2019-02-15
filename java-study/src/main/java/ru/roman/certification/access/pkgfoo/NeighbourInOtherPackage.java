@@ -36,12 +36,12 @@ import ru.roman.certification.access.pkgbar.AllAccessTypesFoo;
  *
  * @author myno 13.01.2008
  */
-public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
+public class NeighbourInOtherPackage extends AllAccessTypesFoo {
 
-    public String publicField = "publicField in FooSubClassInOtherPackage";               // hiding
-    protected String protectedField = "protectedField in FooSubClassInOtherPackage";      // hiding
-    String packagePrivateField = "packagePrivateField in FooSubClassInOtherPackage";      // duplicates but not hiding
-    private String privateField = "privateField in FooSubClassInOtherPackage";
+    public String publicField = "publicField in NeighbourInOtherPackage";               // hiding
+    protected String protectedField = "protectedField in NeighbourInOtherPackage";      // hiding
+    String packagePrivateField = "packagePrivateField in NeighbourInOtherPackage";      // duplicates but not hiding
+    private String privateField = "privateField in NeighbourInOtherPackage";            // duplicates
 
     @Override
     public void publicMethod() {
@@ -66,10 +66,10 @@ public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
         HAMSU;
 
         NestedEnum() {
-            System.out.println(new FooSubClassInOtherPackage().publicField);
-            System.out.println(new FooSubClassInOtherPackage().packagePrivateField);
-            System.out.println(new FooSubClassInOtherPackage().protectedField);
-            System.out.println(new FooSubClassInOtherPackage().privateField);
+            System.out.println(new NeighbourInOtherPackage().publicField);
+            System.out.println(new NeighbourInOtherPackage().packagePrivateField);
+            System.out.println(new NeighbourInOtherPackage().protectedField);
+            System.out.println(new NeighbourInOtherPackage().privateField);
 
             //System.out.println(publicField);            // fields not accessible
             //System.out.println(packagePrivateField);
@@ -80,10 +80,10 @@ public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
 
     static class NestedStaticClass {  // аналогично как в енуме
         NestedStaticClass() {
-            System.out.println(new FooSubClassInOtherPackage().publicField);
-            System.out.println(new FooSubClassInOtherPackage().packagePrivateField);
-            System.out.println(new FooSubClassInOtherPackage().protectedField);
-            System.out.println(new FooSubClassInOtherPackage().privateField);
+            System.out.println(new NeighbourInOtherPackage().publicField);
+            System.out.println(new NeighbourInOtherPackage().packagePrivateField);
+            System.out.println(new NeighbourInOtherPackage().protectedField);
+            System.out.println(new NeighbourInOtherPackage().privateField);
 
             //System.out.println(publicField);            // fields not accessible
             //System.out.println(packagePrivateField);
@@ -94,10 +94,10 @@ public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
 
     class NonStaticNestedClass {
         NonStaticNestedClass() {
-            System.out.println(new FooSubClassInOtherPackage().publicField);
-            System.out.println(new FooSubClassInOtherPackage().packagePrivateField);
-            System.out.println(new FooSubClassInOtherPackage().protectedField);
-            System.out.println(new FooSubClassInOtherPackage().privateField);
+            System.out.println(new NeighbourInOtherPackage().publicField);
+            System.out.println(new NeighbourInOtherPackage().packagePrivateField);
+            System.out.println(new NeighbourInOtherPackage().protectedField);
+            System.out.println(new NeighbourInOtherPackage().privateField);
 
             System.out.println(publicField);            // all accessible
             System.out.println(packagePrivateField);
@@ -107,20 +107,20 @@ public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
 
         class NonStaticNestedInNonStaticNestedClass {
             NonStaticNestedInNonStaticNestedClass() {
-                System.out.println(new FooSubClassInOtherPackage().publicField);
-                System.out.println(new FooSubClassInOtherPackage().packagePrivateField);
-                System.out.println(new FooSubClassInOtherPackage().protectedField);
-                System.out.println(new FooSubClassInOtherPackage().privateField);
+                System.out.println(new NeighbourInOtherPackage().publicField);
+                System.out.println(new NeighbourInOtherPackage().packagePrivateField);
+                System.out.println(new NeighbourInOtherPackage().protectedField);
+                System.out.println(new NeighbourInOtherPackage().privateField);
 
                 System.out.println(publicField);
                 System.out.println(packagePrivateField);
                 System.out.println(protectedField);
                 System.out.println(privateField);
 
-                System.out.println(FooSubClassInOtherPackage.super.publicField); // super still accessible, same as in FooSubClassInOtherPackage
-                //System.out.println(FooSubClassInOtherPackage.super.packagePrivateField);  // not legal
-                System.out.println(FooSubClassInOtherPackage.super.protectedField);
-                //System.out.println(FooSubClassInOtherPackage.super.privateField);         // not legal
+                System.out.println(NeighbourInOtherPackage.super.publicField); // super still accessible, same as in NeighbourInOtherPackage
+                //System.out.println(NeighbourInOtherPackage.super.packagePrivateField);  // not legal
+                System.out.println(NeighbourInOtherPackage.super.protectedField);
+                //System.out.println(NeighbourInOtherPackage.super.privateField);         // not legal
 
                 //System.out.println(AllAccessTypesFoo.super.publicField);              // not legal
                 //System.out.println(AllAccessTypesFoo.super.packagePrivateField);
@@ -138,10 +138,10 @@ public class FooSubClassInOtherPackage extends AllAccessTypesFoo {
         //new AllAccessTypesFoo().packagePrivateMethod();  // accessible in package only
         //new AllAccessTypesFoo().privateMethod();         // accessible in own class only
 
-        new FooSubClassInOtherPackage().publicMethod();
-        new FooSubClassInOtherPackage().packagePrivateMethod();
-        new FooSubClassInOtherPackage().protectedMethod();
-        new FooSubClassInOtherPackage().privateMethod();
+        new NeighbourInOtherPackage().publicMethod();
+        new NeighbourInOtherPackage().packagePrivateMethod();
+        new NeighbourInOtherPackage().protectedMethod();
+        new NeighbourInOtherPackage().privateMethod();
 
         System.out.println(NestedEnum.HAMPA);
     }
