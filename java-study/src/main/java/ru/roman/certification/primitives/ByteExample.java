@@ -27,7 +27,7 @@ package ru.roman.certification.primitives;
  *
  * @author churganov_r 15.03.2011
  */
-public class Byte {
+public class ByteExample {
 
     public static void main(String[] args) {
         int mask = 0xff;
