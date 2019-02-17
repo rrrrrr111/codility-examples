@@ -70,5 +70,16 @@ public class Wrappers {
             Float.valueOf((short) 0).doubleValue();
             //Short.valueOf((short) 0).booleanValue();
         }
+
+        {                 // примитив в строку
+            Short.toString((short) 0);
+            Byte.toString((byte) 0);
+            Character.toString('c');
+            Integer.toString(0);
+            Long.toString(0L);
+            Float.toString(0f);
+            Double.toString(0d);
+            Boolean.toString(true);
+        }
     }
 }
