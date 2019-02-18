@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * @author churganov_r
  */
-public class RandomClass {
+public class RandomExample {
 
     private static final Random random = new Random();
 
@@ -25,6 +25,5 @@ public class RandomClass {
             System.out.println("Int:" + random.nextInt());
             System.out.println("Int 10:" + random.nextInt(10));
         }
-
     }
 }

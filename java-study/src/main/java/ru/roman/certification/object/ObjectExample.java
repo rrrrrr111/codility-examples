@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.classes;
+package ru.roman.certification.object;
 
 /**
  * @author churganov_r
@@ -12,6 +12,8 @@ public class ObjectExample {
     public static void main(String args[]) {
 
         try {
+            Thread.yield();
+
             // методы объекта object
             new Object().equals(args);
             new Object().getClass();

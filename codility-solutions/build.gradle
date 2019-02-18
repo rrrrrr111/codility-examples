@@ -9,3 +9,5 @@ dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8

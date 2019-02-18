@@ -31,6 +31,8 @@ public class RegExps {
     }
 
     void foo2() {
+        Pattern p1 = Pattern.compile("\\Q<([{\\^-=$!|]})?*+.>\\E"); // техника экранирования \Q.\E , всё кроме слэша заэкранировано
+
         //Pattern pattern = Pattern.compile("(\\[\\d\\])(\\[.{1}\\])(\\[\\d\\])");
         //Pattern pattern = Pattern.compile("(\\[\\d\\])(\\[[+\\-\\*/]{1}\\])(\\[\\d\\])");
         //Pattern pattern = Pattern.compile("(\\[\\d*\\])\\[\\+\\](\\[\\d*\\])");

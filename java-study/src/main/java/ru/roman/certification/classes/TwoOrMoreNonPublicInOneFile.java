@@ -6,7 +6,7 @@ package ru.roman.certification.classes;
 
 /**
  * - В одном файле может быть много классов, при этом public класс может быть только один
- *
+ * <p>
  * - В файле может быть много не public классов и ни одного public, и они все по имени
  * могут не совпадать с именем файла, или один их них может совпадать, public класс всегда
  * должен иметь такое же имя как файл.
@@ -16,7 +16,7 @@ package ru.roman.certification.classes;
 class Foo {
 }
 
-abstract class Bar extends ObjectMethods {
+abstract class Bar extends Object {
 }
 
 strictfp class Bazz {
