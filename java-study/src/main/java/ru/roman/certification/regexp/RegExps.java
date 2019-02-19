@@ -57,14 +57,15 @@ public class RegExps {
 
 
         // также имеется синтаксис обратных ссылок для замены
-        System.out.println("[10][+][10]".replaceAll("(\\[)(\\d*)(\\])\\[\\+\\]\\1\\2\\3", "<$2><+><$2>"));
+        System.out.println("[10][+][10]"
+                .replaceAll("(\\[)(\\d*)(\\])\\[\\+\\]\\1\\2\\3", "<$2><+><$2>"));
 
     }
 
 
     public static void main(String[] args) {
 
-        new RegExps().foo1();
+        new RegExps().foo3();
 
     }
 }

@@ -13,21 +13,22 @@ import java.util.IllegalFormatException;
 public class ReplUtil {
 
 
-    public static int counter;
+    private static int counter;
 
     /**
      * oper - new Oper(){public Object e(){return ...;}}
      */
-    public final static void evaluate(String eval, Object... arg) {
+    public static void evaluate(String eval, Object... arg) {
         if (arg == null) {
             arg = new Object[0];
         }
         counter++;
-        String pattern = counter + ". ";
+        String str = counter + ". ";
+
         try {
             int controlParamsCount = 0;
             if (eval != null) {
-                pattern += "Evaluation %s => %s  ";
+                str += "Evaluation %s => %s  ";
                 //Interpreter bsh = new Interpreter();
                 //Object result = bsh.eval(eval);
                 arg = ArrayUtils.add(arg, 0, eval);
@@ -35,15 +36,16 @@ public class ReplUtil {
                 controlParamsCount = 2;
             }
             if (arg.length > controlParamsCount) {
-                pattern += "[Params to console : ";
+                str += "[Params to console : ";
                 for (int i = controlParamsCount; i < arg.length; i++) {
-                    pattern += "%s, ";
+                    str += "%s, ";
                 }
-                pattern = pattern.substring(0, pattern.length() - 2) + "]";
+                str = str.substring(0, str.length() - 2) + "]";
             }
-            System.out.printf(pattern + "%n", arg);
+            System.out.printf(str + "%n", arg);
+
         } catch (IllegalFormatException fe) {
-            System.err.println("Pattern : " + pattern);
+            System.err.println("Pattern : " + str);
             fe.printStackTrace();
             //} catch (bsh.TargetError e) {
             //Throwable ex = e.getTarget();
