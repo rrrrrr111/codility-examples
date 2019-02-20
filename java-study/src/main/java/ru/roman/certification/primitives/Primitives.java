@@ -298,8 +298,9 @@ public class Primitives {
             char c14 = '\'';
             char c15 = '\\';
             char c16 = '™';
+            char c17 = '\uuuuuuuuuuuuuuuuuu0177';
 
-            System.out.printf("chars: %s %n", c11);
+            System.out.printf("chars: %s %n", '\uuuuuuuuuuuuuuuuuu0177' == '\u0177');
         }
 
         // При сравнении литералы приводятся к значению в int
