@@ -32,7 +32,9 @@ public class ByteExample {
     public static void main(String[] args) {
         int mask = 0xff;
         byte b = java.lang.Byte.MIN_VALUE;
-        System.out.printf("0xff => %s = %s %n", mask, Integer.toBinaryString(mask));
+        System.out.printf("0xff => %s = %s = %s = %s %n", mask,
+                Integer.toBinaryString(mask), Integer.toBinaryString(-1), (byte)0b11111111111111111111111111111111);
+
         for (; ; ) {
             System.out.printf("byte:%s  maskedIntToByte:%s  maskedInt:%s  binByteToInt:%s  binMaskedByteToInt:%s  %n",
                     b, (byte) (b & mask), (b & mask), Integer.toBinaryString(b), Integer.toBinaryString((b & mask)));

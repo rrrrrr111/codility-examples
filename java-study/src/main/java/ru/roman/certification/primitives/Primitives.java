@@ -148,6 +148,8 @@ public class Primitives {
             //byte b2 = 0x80; // illegal hex для отрицательного не работает, литерал 0x80 воспринимается как int литерал и он вылизит за границы byte
             //byte b2 = 0x80b; // illegal у byte нет своего спец литерала
 
+            int i = 1;
+            // byte b3 = i;  //  illegal
             System.out.println(b1);
         }
 
@@ -176,6 +178,7 @@ public class Primitives {
             int i7 = 0x7fffffff; // Integer.MAX_VALUE
             int i8 = 0x80000000; // Integer.MIN_VALUE
             int i9 = 0xFFFFFFFF; // -1  литерал отрицательного числа не имеет минуса в hex (с Integer и Octal так нельзя)
+            int i99 = 0b11111111111111111111111111111111; // -1
             // int i98 =  2147483648; // illegal Integer, по идее это -2147483648
             // int i99 =  040000000000; // illegal Octal, по идее это -2147483648
             int i98 = -2147483648; // Integer.MIN_VALUE - исключение, компилятор разрешает недопустимый литерал с отрицанием
@@ -187,7 +190,7 @@ public class Primitives {
 
             System.out.println(-0xFFFFFFFF == 0x1);  // true
             System.out.println(-i8 == i8);  // true - отрицание минимального числа не приводит по факту к его изменению (исключение)
-            System.out.println(i98);
+            System.out.println(i99);
             System.out.println(Integer.MAX_VALUE);
         }
 
@@ -195,14 +198,16 @@ public class Primitives {
             long l1 = 1l;
             long l2 = 1L;
             long l3 = 1;
+
             //long l4 = 1000000000000000000;  // illegal, т к литерал int
             long l5 = 1000000000000000000L;
             long l6 = -9223372036854775808L;  // Long.MIN_VALUE, аналогичное исключение
             long l7 = 9223372036854775807L;  // Long.MIN_VALUE, аналогичное исключение
             // long l8 = 0b1010000101000101101000010100010110100001010001011010000101000101;   // illegal, т к литерал int, хоть и binary
-            long l9 = 0b1010000101000101101000010100010110100001010001011010000101000101L;
+            long l31 = 0b1111111111111111111111111111111111111111111111111111111111111111L;
+            long l9 =  0b1010000101000101101000010100010110100001010001011010000101000101L;
 
-            System.out.println(l6);
+            System.out.printf("longs: %s %n", l31);
         }
 
         {
@@ -237,7 +242,7 @@ public class Primitives {
             float f44 = 0x1e;
             float f46 = (float) -0x2p2;
 
-            System.out.printf("floats: %s %s %s %s %n", f20, f21, f22, f23);
+            System.out.printf("floats: %s %n", 3.4e38f * 2 * 0);
 
         }
 
@@ -247,18 +252,24 @@ public class Primitives {
             double d3 = 0.0;
             double d4 = 0.0d;
             double d5 = 0.0D;
+            double d51 = 0D;       // с D можно без точки
+            double d52 = 0xffffffffffffffffL;  // длиннее нельзя т к это long литерал
+            double d53 = 000999999999999999999999999999999999999999999999999999999999999999999999999999999999999999d;
             //double d55 = 0.0_D; // illegal
             //double d55 = 0._0D; // illegal
             //double d55 = 0_.0D; // illegal
-            double d56 = 0.0_0D; // норм, нули на хвосте игнорятся, подчеркивание можно пихать
+            double d56 = 0.0_0D; // норм, нули на хвосте игнорятся, подчеркивание можно
             double d6 = 0.0F;
             double d7 = 0xF;
             //double d8 = 09;
             double d9 = 09d;
             double d10 = 0.0f; // 0
             double d11 = 0x0f; // 15
+            double d12 = 1.7e308; //
+            double d13 = -0; //
+            double d14 = -0D; //
 
-            System.out.println(d11);
+            System.out.printf("doubles: %s %n", -0D == 0D);
         }
         {
             boolean b1 = false;
@@ -274,7 +285,14 @@ public class Primitives {
             char c4 = 0x42;
             char c5 = 0x434;
             char c6 = 434;
+            // char c7 = 99999; //
             // char c7 = (char) "c"; // illegal
+            // char c8 = -1; // illegal
+            // char c9 = 1.0;
+            char c10 = 0177777;
+            char c11 = 0b1111111111111111;
+
+            System.out.printf("chars: %s %n", c11);
         }
 
         // При сравнении литералы приводятся к значению в int
