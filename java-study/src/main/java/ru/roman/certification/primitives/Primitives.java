@@ -221,6 +221,7 @@ public class Primitives {
             float f13 = (float) .0;
             float f2 = 0.0f;
             float f3 = 0.0F;
+            float f41 = 0.F;
             float f4 = .0F;
             float f5 = 0F;
             float f6 = 09F;
@@ -249,6 +250,7 @@ public class Primitives {
         {
             double d1 = 0;
             double d2 = .0;
+            double d21 = 0.;
             double d3 = 0.0;
             double d4 = 0.0d;
             double d5 = 0.0D;
@@ -291,6 +293,11 @@ public class Primitives {
             // char c9 = 1.0;
             char c10 = 0177777;
             char c11 = 0b1111111111111111;
+            char c12 = '\377';
+            char c13 = '\n';
+            char c14 = '\'';
+            char c15 = '\\';
+            char c16 = '™';
 
             System.out.printf("chars: %s %n", c11);
         }
