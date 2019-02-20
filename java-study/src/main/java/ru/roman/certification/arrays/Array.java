@@ -68,22 +68,16 @@ class Array {
         Arrays.setAll(arr1, IntUnaryOperator.identity());  // в один поток, без FJPCP
 
 
-
-
-
-
-
-
-        Arrays.asList(new Object[]{new Object(), new Object()  // излишнее создание массива на vararg методе
-                , // лишняя запятая допустима
-        });
+        Arrays.asList(new Object[]{new Object()});  // излишнее создание массива на vararg методе
 
         var a = new Object[]{new Object(), new Object()};
         //System.out.println({new Object(),new Object()});        // illegal
-        //System.out.println({1,2,3});// не legal
-        int[] i = {1, 2, 3};                            // legal
-        Object[] i2 = {new Object(), new Object(), new Object()};         // legal
-
-        //foo({new Object(), new Object(), new Object()});                // не legal
+        //System.out.println({1,2,3});                            // illegal
+        int[] i = {1, 2, 3};
+        Object[] i2 = {new Object(), new Object(), new Object()};
+        //var i2 = {new Object(), new Object(), new Object()};      // illegal
+        String[] i3 = {new String()};
+        Object[] i4 = i3;
+        i4[0] = 1;
     }
 }
