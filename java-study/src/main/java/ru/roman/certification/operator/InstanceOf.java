@@ -51,10 +51,5 @@ public class InstanceOf {
         // boolean r15 = l instanceof List<Integer>; // illegal
         boolean r16 = l instanceof List<?>;          // false
         boolean r17 = l instanceof List;             // false
-
-
-
     }
-
-
 }
