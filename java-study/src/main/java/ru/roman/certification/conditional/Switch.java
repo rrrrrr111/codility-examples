@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.operator;
+package ru.roman.certification.conditional;
 
 /**
  * 1. Работает только в типами размеров меньше и равно 32 , тоесть видимо

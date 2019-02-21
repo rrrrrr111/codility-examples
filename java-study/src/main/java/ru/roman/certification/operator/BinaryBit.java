@@ -90,7 +90,10 @@ public class BinaryBit {
         int h03 = -1 >>> 31;         // 1
         int h04 = -1 >>> -1;         // 1 минус двигает наоборот, правый конец вылазит справа
                                      // при этом остаток слева заполняется нолями
-        int h0 = 0x7fffffff >>> -2;  // 1
+        int h05 = 0x7fffffff >>> -2;  // 1
+
+        //int e0 = 1f >>> 1;  // illegal
+        //int e1 = 1 >>> 1f;  // illegal
 
 
         System.out.println("=4=>>> " + Long.toBinaryString(h0));

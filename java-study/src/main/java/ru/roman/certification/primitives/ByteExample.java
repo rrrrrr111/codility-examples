@@ -30,6 +30,10 @@ package ru.roman.certification.primitives;
 public class ByteExample {
 
     public static void main(String[] args) {
+
+        int r = -1 & 0xff;  // ....00011111111 - приведение по маске, для любого числа отбрасывает старшие биты
+
+
         int mask = 0xff;
         byte b = java.lang.Byte.MIN_VALUE;
         System.out.printf("0xff => %s = %s = %s = %s %n", mask,
