@@ -41,8 +41,15 @@ class Array {
         //it[0, 0] = 0;                   // not legal
         int[][] it2 = new int[1][];
         int[] it3[] = new int[1][];
-        int[][] it4 = new int[1][];       // кривое форматирование
-        int[] it5[] = new int[1][];       // кривое форматирование
+
+        int[][][][][][][][][][][] ary6 = new int[1][][][][][][][][][][];
+        int ary7[][] = new int[][]{
+                {1, 1, 1, 4},
+                {2,},
+                {1, 2, 3},
+        };
+        int ary8[][][][][] = new int[][][][][]{{{{{0}}}}};
+
 
         Arrays.copyOfRange(arr1, 0, 1);  // аналог arraycopy, создает и возвр массив, half open range
         Arrays.binarySearch(arr1, 0);        // бинарный поиск, массив должен быть отстрирован
@@ -62,9 +69,9 @@ class Array {
         Arrays.copyOf(arr1, 1);         // копирование с обрезанием/добавлением
         Arrays.mismatch(arr1, arr1);              // поиск индекса с которого начинаются различия
         Arrays.parallelPrefix(arr1, Math::max);   // функция бежит по элементам начиная со второго,
-                                                  // выполняется с текущим и предыдущ элементом, и заменет значение в массиве
+        // выполняется с текущим и предыдущ элементом, и заменет значение в массиве
         Arrays.parallelSetAll(arr1, IntUnaryOperator.identity());  // функция пробегает и заменяет,
-                                                  // IntUnaryOperator.identity() - заглушка позвращ свойже параметер
+        // IntUnaryOperator.identity() - заглушка позвращ свойже параметер
         Arrays.setAll(arr1, IntUnaryOperator.identity());  // в один поток, без FJPCP
 
 
