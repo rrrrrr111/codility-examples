@@ -16,7 +16,7 @@ public class Restrictions<T> {
 
         List<Integer> list = null;
         //if (list instanceof List<Integer>) {           // not legal - compile-time error
-        }
+        //}
 
         //List<String>[] s = {new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>()}; // not legal
         //List<String>[] rrr = new List<String>[0];           // not legal, создать массив с женериком вручную невозможно, исключение - vararg
@@ -36,6 +36,7 @@ public class Restrictions<T> {
 
         List<Integer> l3 = null;
         //ArrayList<String> l4 = (ArrayList<String>)l3;  // not legal
+
 
     }
 

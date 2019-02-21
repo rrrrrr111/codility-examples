@@ -81,5 +81,16 @@ public class Wrappers {
             Double.toString(0d);
             Boolean.toString(true);
         }
+
+        {                 // примитив в строку
+            //Short.toBinaryString((short) 0);  // illegal
+            //Byte.toBinaryString((byte) 0);  // illegal
+            //Character.toBinaryString('c');  // illegal
+            Integer.toBinaryString(0);
+            Long.toBinaryString(0L);
+            //Float.toBinaryString(0f);  // illegal
+            //Double.toBinaryString(0d);  // illegal
+            //Boolean.toBinaryString(true);  // illegal
+        }
     }
 }
