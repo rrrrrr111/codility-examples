@@ -15,8 +15,8 @@ public class Restrictions<T> {
         // List<int> p = new ArrayList<>(); // not legal
 
         List<Integer> list = null;
-        //if (list instanceof ArrayList<Integer>) {           // not legal - compile-time error
-        //}
+        //if (list instanceof List<Integer>) {           // not legal - compile-time error
+        }
 
         //List<String>[] s = {new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>()}; // not legal
         //List<String>[] rrr = new List<String>[0];           // not legal, создать массив с женериком вручную невозможно, исключение - vararg

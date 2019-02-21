@@ -16,15 +16,12 @@ public class Compare {
         boolean isEqual, isNonEqual, isGreater,
                 isGreaterOrEqual, isLess, isLessOrEqual;
 
-        int x1 = 5, x2 = 5, x3 = 3, x4 = 7;
-        isEqual = x1
-                == x2; // isEqual = true
-        isNonEqual = x1 != x2; // isNonEqual = false
-        isGreater = x1 > x3; // isGreater = true
-// isGreaterOrEqual = true
-        isGreaterOrEqual = x2 >= x3;
-        isLess = x3 < x1; // isLess = true
-        isLessOrEqual = x1 <= x3; // isLessOrEqual = false
+
+        boolean r1 = 5 == 5;        // true
+        boolean r2 = 5 != 5;        // false
+        boolean r3 = 5 <= 5;        // true
+
+
         System.out.print((one() < two()) + "\n");
         System.out.print((one() <= two()) + "\n");
         System.out.print((one() >= two()) + "\n");
