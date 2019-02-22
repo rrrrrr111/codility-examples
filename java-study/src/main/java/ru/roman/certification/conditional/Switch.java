@@ -5,94 +5,95 @@
 package ru.roman.certification.conditional;
 
 /**
- * 1. Работает только в типами размеров меньше и равно 32 , тоесть видимо
- * производит преобразование всех типов в int,
- *
- * 2. При принудительном преобразовании работает и с остальными , кроме boolean
- * устественно. поскольку не преобразовывается boolean
- *
- * 3. Если после case ни стоит выражение с действиями, то такие case-ы
- * объединяются в группы и работают вместе последовательно до первого break;
- *
- * 4. switch поддерживает блоки кода .. .
- *
- * 5. default: - выполняется всегда
- *
- * 6. Выражения после сработавшего блока - тоже выполняются ,
- * после не сработавшего блока не выполняются .. ., это значит ,
- * что использвания блоков кода в операторе абсолютно не
- * обязательно  .. . тем не менее переменная объявленная
- * вне switch не доступна
+ * 1. Работает только с byte, short, char, int / Character, Byte, Short, Integer, enum types и String (Java 7)
+ * 2. Если после case ни стоит выражение с действиями, то такие case-ы (включая default) объединяются в группы и работают вместе последовательно до первого break;
+ * 3. switch поддерживает блоки кода опционально
+ * 4. default: - выполняется если ни один case не сработал
  *
  * @author дтоь 13.03.2011
  */
-public class Switch {
+class Switch {
 
-    // числовые типы
-    // целые типы           размер      мин                 макс
-    static short a1;        //16       -32768               32767       знаковый
-    static int a2;          //32       -2147483648          2147483648  знаковый
-    static long a3;         //64       -922372036854775808  922372036854775807  знаковый
-    static char a4;         //16        0                   65536       беззнаковый
-    static byte a5;         //8         -128                127         знаковый
-    // числовые типы
-    // вещественные типы                                        точность
-    static float a6;        //32        3,4e-38 < |x| < 3,4e38      7-8 цифр
-    static double a7;       //64        1,7e-308 < |x| < 1,7e308    17 цифр
-    //булевский тип
-    static boolean a8;      //8
 
     public static void main(String[] args) {
-        switch (a1) {
-            case 34:
-                System.out.println(a1);
-        }
+        foo1((byte) 34);
+    }
 
-        switch (a2) {
+    private static void foo(byte a) {
+        switch (a) {                                     // body of a switch statement is known as a switch block
             case 34:
-                System.out.println(a2);
-        }
-
-        switch ((int) a3) {      // long не катит , только с преобразованием
-            case 34:
-                System.out.println(a3);
-        }
-
-        switch (a4) {
-            case 34:
-                System.out.println(a4);
-        }
-
-        switch (a5) {
-            case 34:
-                System.out.println(a5);
-        }
-
-        switch ((int) a6) {        // float не катит , только с преобразованием
-            case 0:
-            case 34:
-                System.out.println("6 - " + a6);
-                System.out.println("1");
-        }
-        System.out.println("2");
-
-        switch ((int) a7) {       // double не катит , только с преобразованием
-            case 34: {
-                int b = 0;
-                System.out.println(a7);
+                System.out.println("34 >>> " + a);
+                int c;
+                break;
+            default:                                     // default может быть в любом месте
+                System.out.println("default >>> " + a);  //
+                                                         // если break нету выполняются следующий case, даже для default блока
+            case 35: {                                   // это не block braces а обычный блок, перед ним можно вставить чтонить
+                System.out.println("35 >>> " + a);
             }
-            System.out.println("3");
+            int b = 0;                                   // перед/после блока может быть что угодно
+            break;
+            //a++;                                       // illegal, unreachable
+            case 36:
+                c = 0;                                   // переменные из одного case доступны в другом, если они в том же блоке
+            case 37:
+                //c++;                                   // illegal компилятор не проверяет варианты ветвления
+                                                         // инициализация обязательно должна быть минимум в текущем case
+                System.out.println("36,37 >>> " + a);
+                break;
+            //case 38                                    // illegal двоеточие обязательно
+            //case 37:                                   // illegal duplicate
+            //case 128:                                  // illegal, too much for byte
+            case 39:                                     // пустой блок вконце норм
+        }                                                // тем не менее рекомендуется юзать break в последнем case
+    }
+
+    private static void foo1(byte a) {
+        switch (a) {
+            case 34:
+                System.out.println("34 >>> " + a);      // если нет break, default тоже выполняется
             default:
-                System.out.println("4");
-                int t = 0;
+                System.out.println("default >>> " + a);
         }
-        //System.out.println(t);  переменная вне switch не доступна
+    }
 
-        //switch (a8) {        // boolean вообще ни как ни катит
-        //    case 34:
-        //        System.out.println(a1);
-        //}
+    private static final String CONST = "v";
+    private static final String CONST_INIT_IN_STATIC_BLOCK;
+    static {
+        CONST_INIT_IN_STATIC_BLOCK = "r";
+    }
 
+    private static void foo2(String str) {
+        String part = "ss";
+        switch (str.toLowerCase()) {                   // сравнение с case'ами идет через String.equals(...), можно поймать NullPointerException
+            //case "jan" + getPart():                  // illegal, только константы времени компиляции
+            //case "jan" + part:                       // illegal
 
+            case "feb" + "dd":
+            case CONST:
+            //case CONST_INIT_IN_STATIC_BLOCK:         // illegal
+
+                break;
+        }
+    }
+
+    private static short foo3(MyEnum myEnum) {
+        switch (myEnum) {
+            case VAL1:
+                return 1;
+            case VAL2:
+                return 2;
+            //case null:                               // illegal
+        }
+        return 0;                                      // несмостря на то что все элементы enum перебраны, компилятор требует
+    }
+
+    private static String getPart() {
+        return null;
+    }
+
+    private enum MyEnum {
+        VAL1,
+        VAL2
     }
 }
