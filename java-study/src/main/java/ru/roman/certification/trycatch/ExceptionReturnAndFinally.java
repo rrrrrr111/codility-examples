@@ -44,123 +44,142 @@
  */
 package ru.roman.certification.trycatch;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @author churganov_r 21.03.2011
  */
 public class ExceptionReturnAndFinally {
 
-    void foo1() {
+    void foo1() throws Exception {
         try {
-            try {
-                throw new Exception("exept from try");
-            } finally {
-                throw new Exception("exept from finally");   // только этот будет проброшен
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception("exept from try");
+        } finally {
+            throw new Exception("exept from finally");   // этот будет проброшен
         }
     }
 
-    void foo2() {
+    void foo2() throws Exception {
         try {
-            try {
-                throw new Exception("exept from try");
-            } catch (Exception e) {
-                e.printStackTrace();               // если исключение отловлено до finally , то все нарм оно обработается
-            } finally {
-                throw new Exception("exept from finally");
-
-            }
+            throw new Exception("exept from try");
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();      // если исключение отловлено до finally , то все нарм оно обработается
+        } finally {
+            throw new Exception("exept from finally");  // но далее прокидывается это
         }
     }
-
 
     void foo3() throws Exception {
 
         try {
             throw new Exception("exept from try");
-            //int i = 0;                                                 //unrechable statement
-        } catch (Exception e) {
+            //int i = 0;                             // illegal, unrechable statement
         } finally {
+            // finally тут не припятствует
         }
     }
 
     void foo4() throws Exception {
         try {
-            try {
-                throw new Exception("exept from try");
-                //return;
-            } catch (Exception e) {
-                throw new Exception("exept from catch");
-                //return;
-            } finally {
-                throw new Exception("exept from finally");   // только этот будет отловлен , Exception или return из блоков try catch будет проигнорирован
-            }
+            throw new Exception("exept from try");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception("exept from catch");
+        } finally {
+            // этот будет отловлен , Exception или return из блоков try и catch будет проигнорирован
+            throw new Exception("exept from finally");
         }
     }
 
     void foo5() throws Exception {
         try {
-            try {
-                throw new Exception("exept from try");
-            } catch (Exception e) {
-                throw new Exception("exept from catch");
-            } finally {
-                return;                // исключения игнорятся несмотря на то что метод ничего не возвращает
-            }
+            throw new Exception("exept from try");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception("exept from catch");
+        } finally {
+            return;                // исключения игнорятся несмотря на то что метод ничего не возвращает
+            //int i;               // illegal, unrechable statement
         }
+
+        //return;                                       // illegal, unrechable statement
+        //throw new Exception("exept in the end");      // illegal, unrechable statement
     }
 
     String foo6() throws Exception {
         try {
             try {
-                //throw new Exception("exept from try");
                 return "returned by try";
             } catch (Exception e) {
-                //throw new Exception("exept from catch");
                 return "returned by catch";
             } finally {
-                return "returned by finally inner";  // блок finally выполняется, но return игнорится т к есть оборачивающий finally
-                // если он не в блоке finally верхнего уровня .. .
+                return "returned by finally inner";
+                // блок finally выполняется, но return игнорится т к есть оборачивающий finally
+                // аналогично было бы с Exception
                 //throw new Exception("exept from finally");
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             return "returned by finally outer";         // вернется этот
         }
-        //return "returned in the end";                 //  игнорируются ...
-        //throw new Exception("exept in the end");      //  игнорируются ...
+    }
 
+    String foo7() throws Exception {
+        try {
+            try {
+                return "returned by try";
+            } finally {
+                throw new Exception("exept from finally"); // игнорится, как и если бы return
+            }
+        } finally {
+            throw new Exception("exept from outer finally");  // прокидывается в итоге внешний
+        }
     }
 
     public static void main(String[] args) throws Exception {
 
         ExceptionReturnAndFinally o = new ExceptionReturnAndFinally();
+        ExecutorService e = Executors.newFixedThreadPool(1);
 
-        System.out.println("===================================================1");
-        o.foo1();
-        Thread.sleep(1000);
-        System.out.println("===================================================2");
-        o.foo2();
-        Thread.sleep(1000);
-        System.out.println("===================================================3");
-        o.foo3();
-        Thread.sleep(1000);
-        System.out.println("===================================================4");
-        o.foo4();
-        Thread.sleep(1000);
-        System.out.println("===================================================5");
-        o.foo5();
-        Thread.sleep(1000);
-        System.out.println("===================================================6");
-        System.out.println(o.foo6());
+        e.submit(wrap(o::foo1)).get();
+        e.submit(wrap(o::foo2)).get();
+        e.submit(wrap(o::foo3)).get();
+        e.submit(wrap(o::foo4)).get();
+        e.submit(wrap(o::foo5)).get();
+        e.submit(wrap(o::foo6)).get();
+        e.submit(wrap(o::foo7)).get();
+
+        e.shutdown();
+    }
+
+    private static Callable<Void> wrap(Call c) {
+        return () -> {
+            try {
+                c.run();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        };
+    }
+
+    private static Callable<Void> wrap(CallAndPrint c) {
+        return () -> {
+            try {
+                System.out.println(c.run());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        };
+    }
+
+    @FunctionalInterface
+    private interface Call {
+        void run() throws Exception;
+    }
+
+    @FunctionalInterface
+    private interface CallAndPrint {
+        Object run() throws Exception;
     }
 }
