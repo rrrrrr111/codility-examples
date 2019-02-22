@@ -33,5 +33,13 @@ public class Increment extends Thread {
         //int y, i;
         //y = ++i;
         //System.out.println(y);
+
+        int a = 1;
+        int r = a+++ ++a;  // 4
+
+        String s = "1";
+        //++s;           // illegal
+
+        System.out.println(r);
     }
 }

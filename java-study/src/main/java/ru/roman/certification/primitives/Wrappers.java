@@ -15,7 +15,7 @@ public class Wrappers {
             Long.parseLong("0");        // у целых есть оверлоды с передачей radix
             Float.parseFloat("0");
             Double.parseDouble("0");
-            Boolean.parseBoolean("sdfsd.0"); // true только если передать true ignoreCase, не кидает ошибок формата
+            Boolean.parseBoolean("sdfsd.0"); // true только если передать true (ignoreCase), не кидает ошибок формата
         }
 
         {           // получение систем пропертей
@@ -23,10 +23,10 @@ public class Wrappers {
             //Byte.getByte("0");
             //Character.getCharacter("");
             Integer.getInteger("obance");            // null если нету или если кривое
-            Long.getLong("obance", 0L);    // оверлод с дефолтным значением
+            Long.getLong("obance", 0L);    // оверлоды с дефолтным значением
             //Float.getFloat("0");
             //Double.getDouble("0");
-            Boolean.getBoolean("obance"); // true если есть такое систем проперти и оно true, иначе false не очевидно
+            Boolean.getBoolean("obance"); // true если есть такое систем проперти и оно true, иначе false, не очевидно/криво
         }
 
         {            // методы с кэшом значений от -128 до 127
@@ -69,6 +69,10 @@ public class Wrappers {
             Float.valueOf((short) 0).floatValue();
             Float.valueOf((short) 0).doubleValue();
             //Short.valueOf((short) 0).booleanValue();
+
+            Character.valueOf('c').charValue();
+            //Integer.valueOf((short) 0).charValue();
+            Boolean.valueOf(true).booleanValue();
         }
 
         {                 // примитив в строку
@@ -82,15 +86,10 @@ public class Wrappers {
             Boolean.toString(true);
         }
 
-        {                 // примитив в строку
-            //Short.toBinaryString((short) 0);  // illegal
-            //Byte.toBinaryString((byte) 0);  // illegal
-            //Character.toBinaryString('c');  // illegal
-            Integer.toBinaryString(0);
-            Long.toBinaryString(0L);
-            //Float.toBinaryString(0f);  // illegal
-            //Double.toBinaryString(0d);  // illegal
-            //Boolean.toBinaryString(true);  // illegal
+        {
+            Integer.toBinaryString(0); // примитив в бинарную строку, у Long есть аналогичные методы
+            Integer.toHexString(0);
+            Long.toOctalString(0);
         }
     }
 }
