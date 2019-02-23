@@ -9,30 +9,29 @@ import ru.roman.certification.access.pkgbar.AllAccessTypesFoo;
 
 /**
  * 1. Внутри самого класса можем все
- *
+ * <p>
  * 2. Нет такого отдельного понятия как права на доступ для переопределения, переопределить
  * , точнее объявить можно любой класс, но некоторые методы суперкласса доступны
  * внутри нашего класса и если мы создаем метод с такими же параметрами то счита
  * ется что мы переопределили метод
- *
+ * <p>
  * 3. Порядок сужжаемости прав
- *
+ * <p>
  * public
  * protected
  * package
  * private
- *
+ * <p>
  * 4. При наследовании , если происходит переопределение метода можно
  * расширять права модификатором, но не сужжать
- *
+ * <p>
  * 5. Аннотация @Override для того чтобы четко обозначить что метод именно переопределен,
  * а не просто метод, если метод не переопределен компилятор бросит исключение
- *
+ * <p>
  * 6. метод private, даже если доступен, это уже не переорпеделение, а объявление
  * такого же метода
- *
+ * <p>
  * 7. В наследнике в другом пакете можем все кроме вызова метода private и package private
- *
  *
  * @author myno 13.01.2008
  */
@@ -109,25 +108,33 @@ public class NeighbourInOtherPackage extends AllAccessTypesFoo {
 
         class NonStaticNestedInNonStaticNestedClass {
             NonStaticNestedInNonStaticNestedClass() {
-                System.out.println(new NeighbourInOtherPackage().publicField);
-                System.out.println(new NeighbourInOtherPackage().protectedField);
-                System.out.println(new NeighbourInOtherPackage().packagePrivateField);
-                System.out.println(new NeighbourInOtherPackage().privateField);
+                NeighbourInOtherPackage o = new NeighbourInOtherPackage();
+                System.out.println(o.publicField);
+                System.out.println(o.protectedField);
+                System.out.println(o.packagePrivateField);
+                System.out.println(o.privateField);
 
                 System.out.println(publicField);
                 System.out.println(protectedField);
                 System.out.println(packagePrivateField);
                 System.out.println(privateField);
 
-                System.out.println(NeighbourInOtherPackage.super.publicField);
-                System.out.println(NeighbourInOtherPackage.super.protectedField);
-                //System.out.println(NeighbourInOtherPackage.super.packagePrivateField);  // not legal
-                //System.out.println(NeighbourInOtherPackage.super.privateField);         // not legal
-
-                System.out.println(NeighbourInOtherPackage.this.publicField);              // not legal
+                System.out.println(NeighbourInOtherPackage.this.publicField);
                 System.out.println(NeighbourInOtherPackage.this.protectedField);
                 System.out.println(NeighbourInOtherPackage.this.packagePrivateField);
                 System.out.println(NeighbourInOtherPackage.this.privateField);
+
+                System.out.println(((AllAccessTypesFoo) o).publicField);   // доступ к hidden после приведения к типу
+                //System.out.println(((AllAccessTypesFoo)o).protectedField);   // illegal, у protected особая смантик
+                // его можно переопределить или обратиться через super
+                // но через инстанс можно обращаться только из того же пакета
+                //System.out.println(((AllAccessTypesFoo)o).packagePrivateField);         // illegal
+                //System.out.println(((AllAccessTypesFoo)o).privateField);                // illegal
+
+                System.out.println(NeighbourInOtherPackage.super.publicField);
+                System.out.println(NeighbourInOtherPackage.super.protectedField);
+                //System.out.println(NeighbourInOtherPackage.super.packagePrivateField);  // illegal
+                //System.out.println(NeighbourInOtherPackage.super.privateField);         // illegal
 
             }
         }

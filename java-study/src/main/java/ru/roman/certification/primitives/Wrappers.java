@@ -114,7 +114,12 @@ public class Wrappers {
 
         boolean r7 = Integer.valueOf(128) == 128;                            // true, второй операнд разбоксивается до приметива
         boolean r8 = 128 == Integer.valueOf(128);                            // true, если праппер будет равен null все равно будет
-        // попытка разбоксинга и вылетит NullPointerException
+                                                                             // попытка разбоксинга и вылетит NullPointerException
+        Number n = null;
+        //boolean r80 = 128 == n;                             // illegal, Number не unboxing
+        //boolean r80 = 128 == null;                             // illegal
+        boolean r81 = 128 == Float.valueOf(128.f);                // true
+
         boolean r9 = 128d > Integer.valueOf(127);           // true
         boolean r10 = 127L <= Byte.valueOf((byte) 127);           // true
         boolean r11 = Short.valueOf((short) 127) >= Float.valueOf(127f);           // true
@@ -130,6 +135,6 @@ public class Wrappers {
         //boolean r17 = i1 >= i2;           // NullPointerException
 
 
-        System.out.println(r);
+        System.out.println(r81);
     }
 }

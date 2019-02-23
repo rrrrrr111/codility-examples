@@ -32,7 +32,7 @@ public class Compare {
         //boolean r19 = "dd" == run;              // illegal String is final
         //boolean r19 = l1 == run;                // illegal Long is final
         boolean r19 = (Number)l1 == run;
-        boolean r = dec == run;                   // ok BigDecimal не final
+        boolean r20 = dec == run;                   // ok BigDecimal не final
 
         System.out.println(r);
 
