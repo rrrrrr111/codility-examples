@@ -1,5 +1,11 @@
 package ru.roman.certification.primitives;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
+
 /**
  *
  */
@@ -91,5 +97,39 @@ public class Wrappers {
             Integer.toHexString(0);
             Long.toOctalString(0);
         }
+
+        compare();
+    }
+
+    private static void compare() {
+
+        boolean r1 = Integer.valueOf(1).equals(Byte.valueOf((byte) 1));      // false
+        boolean r2 = Integer.valueOf(1).equals(Short.valueOf((short) 1));    // false
+        boolean r3 = Integer.valueOf(1).equals(Integer.valueOf(1));          // true, врапперы матчатчатся только со своим типом
+
+        //boolean r4 = Integer.valueOf(1) == Long.valueOf(1);                // illegal, assign сравнимает только одинаковые типы
+        //boolean r4 = Integer.valueOf(1) != Long.valueOf(1);                // illegal
+        boolean r5 = Integer.valueOf(127) == Integer.valueOf(127);           // true  кэширование
+        boolean r6 = Integer.valueOf(128) == Integer.valueOf(128);           // false только для -128 <= x <= 127
+
+        boolean r7 = Integer.valueOf(128) == 128;                            // true, второй операнд разбоксивается до приметива
+        boolean r8 = 128 == Integer.valueOf(128);                            // true, если праппер будет равен null все равно будет
+        // попытка разбоксинга и вылетит NullPointerException
+        boolean r9 = 128d > Integer.valueOf(127);           // true
+        boolean r10 = 127L <= Byte.valueOf((byte) 127);           // true
+        boolean r11 = Short.valueOf((short) 127) >= Float.valueOf(127f);           // true
+        boolean r12 = 127L > Float.valueOf(126f);              // true
+
+        boolean r13 = 127L > Character.valueOf('0');              // true
+        boolean r14 = 'z' > 'Z';              // true
+
+
+        Integer i1 = null, i2 = null;
+        boolean r15 = i1 == i2;
+        boolean r16 = i1 != i2;
+        //boolean r17 = i1 >= i2;           // NullPointerException
+
+
+        System.out.println(r);
     }
 }
