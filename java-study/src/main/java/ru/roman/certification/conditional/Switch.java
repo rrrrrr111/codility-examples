@@ -6,9 +6,9 @@ package ru.roman.certification.conditional;
 
 /**
  * 1. Работает только с byte, short, char, int / Character, Byte, Short, Integer, enum types и String (Java 7)
- * 2. Если после case ни стоит выражение с действиями, то такие case-ы (включая default) объединяются в группы и работают вместе последовательно до первого break;
+ * 2. Если после case ни стоит выражение с действиями, то такие case-ы (включая default) объединяются в группы (falls through labels) и работают вместе последовательно до первого break;
  * 3. switch поддерживает блоки кода опционально
- * 4. default: - выполняется если ни один case не сработал
+ * 4. default: выполняется если ни один case не сработал
  *
  * @author дтоь 13.03.2011
  */
@@ -59,6 +59,7 @@ class Switch {
 
     private static final String CONST = "v";
     private static final String CONST_INIT_IN_STATIC_BLOCK;
+    private static final String CONST_INIT_BY_METHOD = getPart();
     static {
         CONST_INIT_IN_STATIC_BLOCK = "r";
     }
@@ -72,6 +73,7 @@ class Switch {
             case "feb" + "dd":
             case CONST:
             //case CONST_INIT_IN_STATIC_BLOCK:         // illegal
+            //case CONST_INIT_BY_METHOD:         // illegal
 
                 break;
         }
