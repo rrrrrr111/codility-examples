@@ -1,5 +1,7 @@
 package ru.roman.certification.conditional;
 
+import java.util.ArrayList;
+
 /**
  *
  */
@@ -18,10 +20,22 @@ public class CyclesExample {
 
         }
 
+        out:
+        if (true) {
+
+        }
+        out:
         for (
                 //String i    // illegal
                 String str
                 : args) {
+
+            break out;
+        }
+
+        http://hi.there.com
+        if (true) {
+
         }
     }
 }

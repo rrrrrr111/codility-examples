@@ -14,7 +14,7 @@ public abstract class OverloadingNullExample {
     abstract void foo(double p);
 
     //abstract void foo(byte... p);
-    //abstract void foo(double... p);
+    abstract void foo(double... p);
     //abstract void foo(Byte... p);
     //abstract void foo(Double... p);
     //abstract void foo(Byte p);
@@ -24,8 +24,7 @@ public abstract class OverloadingNullExample {
     //abstract void foo(Number... p);
     //abstract void foo(Number p);
 
-    abstract void foo(Object... p);
+    //abstract void foo(Object... p);
 
     abstract void foo(Object p);
-
 }
