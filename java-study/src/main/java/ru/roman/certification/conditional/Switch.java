@@ -23,7 +23,7 @@ class Switch {
         switch (a) {                                     // body of a switch statement is known as a switch block
             case 34:
                 System.out.println("34 >>> " + a);
-                int c;
+                int c = 1;
                 break;
             default:                                     // default может быть в любом месте
                 System.out.println("default >>> " + a);  //
@@ -40,6 +40,10 @@ class Switch {
                 //c++;                                   // illegal компилятор не проверяет варианты ветвления
                                                          // инициализация обязательно должна быть минимум в текущем case
                 System.out.println("36,37 >>> " + a);
+
+                class AmInSwitch {                       // класс внутри Switch, почему нет
+                    int pop = 0;
+                }
                 break;
             //case 38                                    // illegal двоеточие обязательно
             //case 37:                                   // illegal duplicate
