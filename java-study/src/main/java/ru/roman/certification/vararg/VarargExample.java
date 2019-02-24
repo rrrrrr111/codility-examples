@@ -15,6 +15,7 @@ public class VarargExample {
         foo(new String[]{null});
 
 
+        System.gc();
     }
 
     static void foo(Object... args) {
