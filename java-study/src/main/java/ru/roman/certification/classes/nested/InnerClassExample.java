@@ -1,12 +1,13 @@
 package ru.roman.certification.classes.nested;
 
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 public class InnerClassExample {
 
     private void foo() {}
-    private void foo1(long param1) {
+    private <S extends Serializable> void foo1(long param1) {
 
         for (Integer i : Arrays.asList(1, 2, 3, 4, 5, 6)) {
 
@@ -17,16 +18,18 @@ public class InnerClassExample {
                 //static {}             // illegal
                 //static int l;             // illegal
 
-                public int i1;
+                S p;
+
+                public S i1;
                 protected int i2;
                 int i3;
                 private int i4;
 
-                public void f1() {}
+                public S f1() {}
                 protected void f2() {}
                 void f3() {}
                 private void f4() {
-
+                    S c;
                     fooStatic1();
                     foo();
 
@@ -39,17 +42,20 @@ public class InnerClassExample {
             //interface Bazz {}             // illegal
             //enum Bazz {}             // illegal
 
-            var v = new SimpleInner() {
+            var v = new SimpleInner(2) {
                 static final String FAREWELL = "Bye bye";
                 int p = 9;
                 {
                     t = 0;
+                    class Baaz {}
                 }
 
                 @Override
                 void f4() {
 
                 }
+
+                abstract strictfp class InnInn {}
             };
         }
     }
@@ -63,11 +69,18 @@ public class InnerClassExample {
                 //foo();                   // illegal
             }
         }
+
+        //  static class Local1 {}          // illegal
     }
 
     class SimpleInner {
         static final String FAREWELL = "Bye bye";
         int t;
+
+        SimpleInner(int i) {
+            t = i;
+        }
+
 
         void f4() {
 
