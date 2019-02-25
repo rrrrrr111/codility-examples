@@ -35,9 +35,7 @@ public class LexicallyScopedExample {
             myConsumer.accept(x);
 
 
-            MyCons v = (p) -> {
-
-            };
+            MyCons v = (d) -> {};
 
         }
     }
@@ -52,6 +50,6 @@ public class LexicallyScopedExample {
     interface MyCons {
         int d = 67;
 
-        void boo(int p);
+        void boo(int d);
     }
 }
