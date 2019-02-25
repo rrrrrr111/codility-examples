@@ -1,7 +1,7 @@
 /*
  *
  */
-package ru.roman.certification.interfaces;
+package ru.roman.certification.classes.interfaces;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -22,10 +22,8 @@ public class A028_InterfacesAccess {
 
         // доступ к обычному вложенному классу
         // вложенный класс
-        new A028_Interfaces.A028_Classes1().new A028_Classes2();
-        // статический метод не статического класса
-        A028_Interfaces.A028_Classes1.foo1();
-        new A028_Interfaces.A028_Classes1().foo1();
+        //new A028_Interfaces.A028_Classes1().new A028_Classes2();
+
         // не статический метод не статического класса
         new A028_Interfaces.A028_Classes1().foo();
 

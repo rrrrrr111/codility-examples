@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.interfaces;
+package ru.roman.certification.classes.interfaces;
 
 /**
- * 1. Методы интерфейса всегда не определены
+ *
  *
  * 2. Интерфейс и его методы могут принимать модификаторы public и abstract
  * но если эти модификаторы не указаны, они используются по умолчанию
@@ -32,13 +32,6 @@ package ru.roman.certification.interfaces;
  * интерфейс - это статическая сущность, в остальном интерфейсы можно класть
  * куда угодно
  *
- * 10. Класс внутри интерфейса не считается
- * вложенным и в нем можно создавать статические
- * сущности, такой класс приравнивается к статическому вложенному классу
- *
- * 11. Чтобы обратиться к внутреннему интерфейсу указвается внешний класс, например
- * A025_Classes2.A025_Classes1.A025_Interface1
- *
  * 12. Класс не может реализовать свой внутренний интерфейс, ошибка
  * циклического наследования
  *
@@ -59,30 +52,9 @@ interface A028_Interfaces {
 
         void foo() {
             class A028_Classes2 {
-                //class A028_Classes1 {            //ошибка
-                //}
-                //static void foo(){               //ошибка
-                //}
+                class A028_Classes3 {
+                }
             }
-
-        }
-
-        static int i = 2;
-
-        static {
-        }
-
-        static void foo1() {
-        }
-
-        interface A028_Interfaces1 {  // класс внутри интерфейса не считается
-            // вложенным и в нем можно создавать статические
-            // сущности
-        }
-
-        class A028_Classes2 {
-            //interface A028_Interfaces1 {      // ОШИБКА - класс-то вложенный
-            //}
         }
     }
 
@@ -109,9 +81,8 @@ interface A028_Interfaces {
         void foo() {
         }
 
-        public abstract class A028_Classes5 {
-            //interface A028_Interfaces1 {    // ошибка
-            //}
+        public static abstract class A028_Classes5 {
+            interface A028_Interfaces1 {}
         }
 
         interface A028_Interfaces1 {
@@ -186,5 +157,3 @@ abstract interface A028_Interface2 {
     interface A028_Interfaces1 {
     }
 }
-
-
