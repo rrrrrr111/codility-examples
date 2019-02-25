@@ -42,7 +42,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.trycatch;
+package ru.roman.certification.exception;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
