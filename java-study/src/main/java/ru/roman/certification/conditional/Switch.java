@@ -78,7 +78,6 @@ class Switch {
             case CONST:
             //case CONST_INIT_IN_STATIC_BLOCK:         // illegal
             //case CONST_INIT_BY_METHOD:         // illegal
-
                 break;
         }
     }

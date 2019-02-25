@@ -10,8 +10,8 @@ public abstract class OverloadingPrimitiveExample {
 
         //o.foo((byte) 1);
         //o.foo(Byte.valueOf((byte) 1));
+        o.foo(1);
 
-        o.foo(true);
         //o.foo('c');
     }
 
@@ -22,7 +22,7 @@ public abstract class OverloadingPrimitiveExample {
     abstract void foo(long p);
     abstract void foo(float p);
     abstract void foo(double p);
-    //abstract void foo(boolean p);
+    abstract void foo(boolean p);
 
     abstract void foo(byte... p);
     abstract void foo(short... p);
@@ -31,7 +31,7 @@ public abstract class OverloadingPrimitiveExample {
     abstract void foo(long... p);
     abstract void foo(float... p);
     abstract void foo(double... p);
-    //abstract void foo(boolean... p);
+    abstract void foo(boolean... p);
 
     abstract void foo(Byte p);
     abstract void foo(Short p);
@@ -40,10 +40,10 @@ public abstract class OverloadingPrimitiveExample {
     abstract void foo(Long p);
     abstract void foo(Float p);
     abstract void foo(Double p);
-    //abstract void foo(Boolean p);
+    abstract void foo(Boolean p);
 
     abstract void foo(Number p);
-    //abstract void foo(Object p);
+    abstract void foo(Object p);
 
     abstract void foo(Byte... p);
     abstract void foo(Short... p);
@@ -52,7 +52,7 @@ public abstract class OverloadingPrimitiveExample {
     abstract void foo(Long... p);
     abstract void foo(Float... p);
     abstract void foo(Double... p);
-    //abstract void foo(Boolean... p);
+    abstract void foo(Boolean... p);
 
     abstract void foo(Number... p);
     abstract void foo(Object... p);
