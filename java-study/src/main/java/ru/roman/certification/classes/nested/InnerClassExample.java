@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class InnerClassExample {
 
     private void foo() {}
-    private <S extends Serializable> void foo1(long param1) {
+    private <S extends Serializable> void foo1(long param1, int vari) {
 
         for (Integer i : Arrays.asList(1, 2, 3, 4, 5, 6)) {
 
@@ -25,7 +25,7 @@ public class InnerClassExample {
                 int i3;
                 private int i4;
 
-                public S f1() {}
+                public S f1() { return null; }
                 protected void f2() {}
                 void f3() {}
                 private void f4() {
@@ -51,8 +51,8 @@ public class InnerClassExample {
                 }
 
                 @Override
-                void f4() {
-
+                void f4(int vari) {
+                    int v = vari;   // shadowing разрешен
                 }
 
                 abstract strictfp class InnInn {}
@@ -82,7 +82,7 @@ public class InnerClassExample {
         }
 
 
-        void f4() {
+        void f4(int vari) {
 
             fooStatic1();
             foo();
