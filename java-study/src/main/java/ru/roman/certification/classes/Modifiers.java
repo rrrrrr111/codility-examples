@@ -44,7 +44,7 @@ public strictfp abstract class Modifiers {
     private static transient final int a = 1;   // final поле всегда должно инициализироваться явно (константа)
     private transient final int с;          // не static должно инициализ во всех конструкторах, компилятор проверяет
     private static transient volatile int b;
-    //private final volatile int bb;  // not legal
+    //private final volatile int bb;  // illegal
 
     // конструкторы можно дергать друг из друга и нельзя дергать из методов и блоков
     Modifiers() {

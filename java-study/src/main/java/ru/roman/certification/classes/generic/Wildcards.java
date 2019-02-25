@@ -20,8 +20,8 @@ public class Wildcards {
             upperBound = unbounded;
             upperBound = lowerBound;
 
-            //lowerBound = unbounded;   // not legal
-            //lowerBound = upperBound;  // not legal
+            //lowerBound = unbounded;   // illegal
+            //lowerBound = upperBound;  // illegal
         }
 
         {
@@ -32,11 +32,11 @@ public class Wildcards {
             unbounded = upperBound;
             unbounded = lowerBound;
 
-            //upperBound = unbounded;   // not legal
-            //upperBound = lowerBound;  // not legal
+            //upperBound = unbounded;   // illegal
+            //upperBound = lowerBound;  // illegal
 
-            //lowerBound = unbounded;   // not legal
-            //lowerBound = upperBound;  // not legal
+            //lowerBound = unbounded;   // illegal
+            //lowerBound = upperBound;  // illegal
         }
 
         {
@@ -45,11 +45,11 @@ public class Wildcards {
             List<? extends Integer> upperBound = null;
             List<? super Integer> lowerBound = null;
 
-            //unbounded.add(new Object());  // not legal
+            //unbounded.add(new Object());  // illegal
             unbounded.add(null);
             unbounded.get(0).hashCode(); // Object methods only
 
-            //upperBound.add(new Integer(1));  // not legal
+            //upperBound.add(new Integer(1));  // illegal
             upperBound.add(null);
             upperBound.get(0).intValue();
 

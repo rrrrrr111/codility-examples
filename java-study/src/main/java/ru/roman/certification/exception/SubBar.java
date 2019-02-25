@@ -21,7 +21,7 @@ class SubBar implements Bar { // компилятор не требует ник
     public void foo4() {
     }
 
-    //public void foo5() throws Exception { // not legal, однако если мы объявляем екзепш, он должен быть таким же либо ковариантным
+    //public void foo5() throws Exception { // illegal, однако если мы объявляем екзепш, он должен быть таким же либо ковариантным
     //}
 
     @Override

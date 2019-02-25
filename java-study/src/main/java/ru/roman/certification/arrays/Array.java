@@ -37,8 +37,8 @@ class Array {
         it[2] = new int[0];
         int[] kt = it[2];
 
-        //int[][] it1 = new int[3, 1];    // not legal
-        //it[0, 0] = 0;                   // not legal
+        //int[][] it1 = new int[3, 1];    // illegal
+        //it[0, 0] = 0;                   // illegal
         int[][] it2 = new int[1][];
         int[] it3[] = new int[1][];
 

@@ -7,21 +7,21 @@ import java.util.Set;
 
 public class Restrictions<T> {
 
-    // private static T os; // not legal
+    // private static T os; // illegal
     private T os; // legal
 
     public static void main(String[] args) {
 
-        // List<int> p = new ArrayList<>(); // not legal
+        // List<int> p = new ArrayList<>(); // illegal
 
         List<Integer> list = null;
-        //if (list instanceof List<Integer>) {           // not legal - compile-time error
+        //if (list instanceof List<Integer>) {           // illegal - compile-time error
         //}
 
-        //List<String>[] s = {new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>()}; // not legal
-        //List<String>[] rrr = new List<String>[0];           // not legal, создать массив с женериком вручную невозможно, исключение - vararg
-        //List<String>[] rrrr = {new ArrayList<String>()};    // not legal
-        //List<String>[] rrrrrr = {new ArrayList()};          // not legal
+        //List<String>[] s = {new ArrayList<String>(), new ArrayList<String>(), new ArrayList<String>()}; // illegal
+        //List<String>[] rrr = new List<String>[0];           // illegal, создать массив с женериком вручную невозможно, исключение - vararg
+        //List<String>[] rrrr = {new ArrayList<String>()};    // illegal
+        //List<String>[] rrrrrr = {new ArrayList()};          // illegal
         List[] rrrrr = {new ArrayList<String>()};             // но можно с row типом
         List[] ss = {new ArrayList<Integer>(), new LinkedList<String>()};             // OK
         List[] sss = new List[]{new ArrayList<Integer>(), new LinkedList<String>()};  // OK
@@ -35,7 +35,7 @@ public class Restrictions<T> {
         ArrayList<String> l2 = (ArrayList<String>)l1;  // OK
 
         List<Integer> l3 = null;
-        //ArrayList<String> l4 = (ArrayList<String>)l3;  // not legal
+        //ArrayList<String> l4 = (ArrayList<String>)l3;  // illegal
 
 
     }

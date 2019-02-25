@@ -6,11 +6,10 @@ package ru.roman.certification.exception;
 class Bazz {
 
     void foo1() throws Exception {
-
-        if (true) throw new MyException();   // legal, checked родительское прокинуто
+        if (true) throw new MyException();   // checked родительское прокинуто
 
         try {
-        } catch (Exception e) {  // legal, компилятор не ругается если Exception никто не кидает, хотя он checked
+        } catch (Exception e) {  // компилятор не ругается если Exception никто не кидает, хотя он checked
         }
     }
 
@@ -22,13 +21,13 @@ class Bazz {
 
     void foo3() throws Throwable {
         try {
-        } catch (Throwable e) {  // legal, компилятор не ругается если Throwable никто не кидает, хотя он checked
+        } catch (Throwable e) {  // компилятор не ругается если Throwable никто не кидает, хотя он checked
         }
     }
 
-    void foo4() throws MyThrowable {
+    void foo4() throws MyThrowable {  // throws .. для checked не заперщается если даже его не кидают
         try {
-        //} catch (MyThrowable e) { // not legal, checked никто не кидает
+        //} catch (MyThrowable e) { // illegal, checked никто не кидает
         } finally {
         }
     }
@@ -37,11 +36,11 @@ class Bazz {
 
         if (true) throw new YourException(); // legal, checked прокинуто
         if (true) throw new MyException();   // legal, checked прокинуто
-        //throw new Exception();     // not legal, checked не прокинуто и не перехвачено
+        //throw new Exception();     // illegal, checked не прокинуто и не перехвачено
 
         try {
-        //} catch (YourException e) { // not legal, checked никто не кидает
-        //} catch (MyException e) {  // not legal, checked никто не кидает
+        //} catch (YourException e) { // illegal, checked никто не кидает
+        //} catch (MyException e) {  // illegal, checked никто не кидает
         } finally {
         }
     }

@@ -23,6 +23,6 @@ class SuperAccess extends AllAccessTypesFoo {
     }
 
     public static void main(String[] args) {
-        // new SuperAccess().super.toString();  // not legal
+        // new SuperAccess().super.toString();  // illegal
     }
 }
