@@ -1,4 +1,4 @@
-package ru.roman.certification.generics;
+package ru.roman.certification.classes.generic;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
