@@ -17,7 +17,16 @@ public class Cast {
         int r4 = (char) -1;         // 65535
         int r5 =  (char) -1.0;      // 65535
 
+        //System.out.println(r + "(" + Integer.toBinaryString(r) + ")");
 
-        System.out.println(r + "(" + Integer.toBinaryString(r) + ")");
+
+        int s1 = (short) -1;             // -1
+        short s2 = (short) 0x7fff_ffff;  // 2147483647 % 65536 = 65535(111111111....) -> -1
+        short s3 = (short) 0x8000_0000;  // -2147483648 % 65536 = 0
+        short s4 = (short) 0x8000_0001;  // -2147483647 % 65536 = 1 - деление происходит в бинарном виде,
+                                         // -2147483647 в бинарном виде это 2147483649
+        int s = (short) -32_768;         // -32_768 диапазон допустимый, narrowing потом widening норм
+        System.out.println(s + "(" + Integer.toBinaryString(s) + ")");
+        System.out.println(0);
     }
 }
