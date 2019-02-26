@@ -4,13 +4,9 @@
  */
 package ru.roman.certification.operator;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-
-import static ru.roman.certification.util.ReplUtil.evaluate;
 
 /**
  * 1. В качестве первого операнда может быть исполь-зовано любое выражение,
@@ -45,5 +41,8 @@ public class Ternary {
         //byte a6 = true ?  -129 : 127;  // illegal, аналогично обчной инициализации
         List<String> a7 = true ?  new ArrayList<>() : new LinkedList<>();
         // List<String> a = true ?  new HashSet<String>() : new LinkedList<>(); // illegal
+
+        int t = 1;
+        //var v = false ? t = 0: t = 1;  // illegal
     }
 }
