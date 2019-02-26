@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.constructor;
 
-public class ConstructorExample {
+class ConstructorExample {
 
     public static void main(String[] args) {
         new Sub(0);
@@ -8,8 +8,6 @@ public class ConstructorExample {
 }
 
 class Sub extends Parent {
-    final static int s = AbsParent.foo1();
-
     static {
         System.out.println("sub 2 static 0");
     }
@@ -33,10 +31,6 @@ class Sub extends Parent {
 
     public int foo() {
         return 666;
-    }
-
-    public static int foo1() {
-        return 777;
     }
 }
 
@@ -76,7 +70,6 @@ class AbsParent {
     int x;
     final int d;
     final int f = foo();
-    final static int s = Sub.foo1();
 
     public int foo() {
         return 33;
@@ -93,9 +86,5 @@ class AbsParent {
 
     static {
         System.out.println("static 4");
-    }
-
-    public static int foo1() {
-        return 777;
     }
 }
