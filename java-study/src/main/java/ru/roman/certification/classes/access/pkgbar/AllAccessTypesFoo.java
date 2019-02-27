@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package ru.roman.certification.access.pkgbar;
+package ru.roman.certification.classes.access.pkgbar;
 
 /**
  * @author myno 13.01.2008

@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package ru.roman.certification.access.pkgbar.subpkg;
+package ru.roman.certification.classes.access.pkgbar.subpkg;
 
-import ru.roman.certification.access.pkgbar.AllAccessTypesFoo;
+import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
 
 /**
  * @author myno 13.01.2008

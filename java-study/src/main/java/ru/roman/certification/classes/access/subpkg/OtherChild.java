@@ -1,6 +1,6 @@
-package ru.roman.certification.access.subpkg;
+package ru.roman.certification.classes.access.subpkg;
 
-import ru.roman.certification.access.Parent;
+import ru.roman.certification.classes.access.Parent;
 
 public class OtherChild extends Parent {
 

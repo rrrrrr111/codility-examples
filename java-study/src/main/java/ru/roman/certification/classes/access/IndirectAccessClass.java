@@ -1,6 +1,6 @@
-package ru.roman.certification.access;
+package ru.roman.certification.classes.access;
 
-import ru.roman.certification.access.pkgbar.AllAccessTypesFoo;
+import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
 
 public class IndirectAccessClass extends AllAccessTypesFoo.IndirectAccessor {
 

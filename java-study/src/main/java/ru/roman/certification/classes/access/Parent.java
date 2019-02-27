@@ -1,4 +1,4 @@
-package ru.roman.certification.access;
+package ru.roman.certification.classes.access;
 
 public class Parent {
     public void publicMethod() {}

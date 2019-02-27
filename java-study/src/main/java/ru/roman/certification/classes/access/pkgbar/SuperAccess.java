@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package ru.roman.certification.access.pkgbar;
+package ru.roman.certification.classes.access.pkgbar;
 
 /**
  * 1. Через super нельзя тупо сослаться на родителский класс, но через

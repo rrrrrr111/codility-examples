@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package ru.roman.certification.access.pkgfoo;
+package ru.roman.certification.classes.access.pkgfoo;
 
-import ru.roman.certification.access.pkgbar.AllAccessTypesFoo;
+import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
 
 /**
  * В не наследнике в другом пакете можем вызвать только public
