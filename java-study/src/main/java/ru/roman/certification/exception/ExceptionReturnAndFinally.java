@@ -51,7 +51,7 @@ import java.util.concurrent.Executors;
 /**
  * @author churganov_r 21.03.2011
  */
-public class ExceptionReturnAndFinally {
+class ExceptionReturnAndFinally {
 
     void foo1() throws Exception {
         try {

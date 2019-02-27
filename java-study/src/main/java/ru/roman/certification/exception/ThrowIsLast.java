@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.compilation;
+package ru.roman.certification.exception;
 
 /**
  * 1. Компилятор отследит если есть какая-то строка после throw и не даст скомпилировать
@@ -17,7 +17,7 @@ package ru.roman.certification.compilation;
  *
  * @author churganov_r 19.03.2011
  */
-public class ThrowIsLast {
+class ThrowIsLast {
 
     public static void main(String args[]) {
         try {
