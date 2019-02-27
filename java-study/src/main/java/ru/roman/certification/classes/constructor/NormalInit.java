@@ -9,6 +9,9 @@ class NormalInit {
         this.cc = 18;
         this.mm = 28;
     }
+    {
+        //System.out.println(cc);            // illegal, forward reference
+    }
     int cc;
     final int mm;
     final int ss = 38;

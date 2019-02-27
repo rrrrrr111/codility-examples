@@ -279,6 +279,10 @@ public class Primitives {
         }
 
         {
+            char vv = (byte)127;
+            //char v2 = (byte)128;    // illegal хотя и влазит в char, при кастинге к byte оно станет равно -128
+            char vb = (short)32_767;
+            //char vv = (byte)-1;     // illegal
 
             char c1 = 'f';
             char c2 = '\u0042';       // только в одинарных кавычках, от 0000 до FFFF, код символа в Unicode

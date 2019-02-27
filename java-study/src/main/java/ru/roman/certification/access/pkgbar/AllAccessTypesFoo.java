@@ -10,6 +10,11 @@ package ru.roman.certification.access.pkgbar;
  */
 public class AllAccessTypesFoo {
 
+    public static String publicStaticField = "static publicField in AllAccessTypesFoo";
+    protected static String protectedStaticField = "static protectedField in AllAccessTypesFoo";
+    static String packageStaticPrivateField = "static packagePrivateField in AllAccessTypesFoo";
+    private static String privateStaticField = "static privateField in AllAccessTypesFoo";
+
     public String publicField = "publicField in AllAccessTypesFoo";
     protected String protectedField = "protectedField in AllAccessTypesFoo";
     String packagePrivateField = "packagePrivateField in AllAccessTypesFoo";
@@ -25,5 +30,11 @@ public class AllAccessTypesFoo {
     }
 
     private void privateMethod() {
+    }
+
+    public static class IndirectAccessor extends AllAccessTypesFoo {
+        private void fo() {
+            var v = privateStaticField;
+        }
     }
 }
