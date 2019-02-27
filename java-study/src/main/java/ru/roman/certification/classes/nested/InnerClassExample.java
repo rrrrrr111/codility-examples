@@ -41,7 +41,7 @@ public class InnerClassExample {
 
             //interface Bazz {}             // illegal
             //enum Bazz {}             // illegal
-
+            Integer f = 0;
             var v = new SimpleInner(2) {
                 static final String FAREWELL = "Bye bye";
                 int p = 9;
@@ -52,7 +52,9 @@ public class InnerClassExample {
 
                 @Override
                 void f4(int vari) {
-                    int v = vari;   // shadowing разрешен
+                    var f = "";
+                    var v = "";
+                    //int v = vari;   // shadowing разрешен
                 }
 
                 abstract strictfp class InnInn {}

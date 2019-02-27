@@ -28,9 +28,8 @@ public class A028_InterfacesAccess {
         new A028_Interfaces.A028_Classes1().foo();
 
 
-        // класс не статический
-        new A028_Interfaces.A028_Classes1();
         // класс статический
+        new A028_Interfaces.A028_Classes1();
         new A028_Interfaces.A028_Classes2();
 
 

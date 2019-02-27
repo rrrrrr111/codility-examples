@@ -1,4 +1,4 @@
-package ru.roman.certification.annotation;
+package ru.roman.certification.classes.annotation;
 
 import java.lang.annotation.Documented;
 
@@ -12,3 +12,5 @@ import java.lang.annotation.Documented;
     // Note use of array
     String[] reviewers();
 }
+
+
