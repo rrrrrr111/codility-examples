@@ -28,11 +28,13 @@ public class StringExample {
         var r7 = "r".equals(r4);                               // true, всегда сравнивает побайтно
         var r8 = "r" == r41;                                   // true, compile-time константа
         var r9 = "r" == r4.intern();                           // true, native метод делает всю магию
-        var rf = "r" == new String("r");                // false
-        var rg = "r" == new String("r").intern();       // true
-        var rh = "r" == STR;                                    // false
-        var r = "r" == String.valueOf(STR);                    // false  - для объекта просто делает toString()
+        var rf = "r" == new String("r");               // false
+        var rg = "r" == new String("r").intern();      // true
+        var rh = "r" == STR;                                   // false
+        var rk = "r" == String.valueOf(STR);                   // false  - для объекта просто делает toString()
+        var rt = "rtts".regionMatches(1,"1tt1", 1, 2);   // true
+        var r = "rtts".matches("\\b\\wtt\\w\\b");        // true
 
-        System.out.println(r21);
+        System.out.println(r);
     }
 }
