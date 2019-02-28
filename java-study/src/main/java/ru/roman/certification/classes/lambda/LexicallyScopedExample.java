@@ -51,5 +51,7 @@ public class LexicallyScopedExample {
         int d = 67;
 
         void boo(int d);
+
+        String toString();
     }
 }
