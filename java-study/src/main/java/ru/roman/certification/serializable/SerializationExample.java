@@ -8,11 +8,11 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
-public class SerializationExample {
+class SerializationExample {
 
     public static void main(String[] args) throws Exception {
 
-        var filename = "serialization-example.txt";
+        var filename = "serialization-example-1.txt";
 
         try (ObjectOutputStream out = new ObjectOutputStream(
                 new FileOutputStream(filename));

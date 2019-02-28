@@ -24,7 +24,7 @@ package ru.roman.certification.serializable;
  *
  * @author churganov_r 21.03.2011
  */
-public class SerializableExample implements java.io.Serializable {
+class SerializableExample implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
 }
