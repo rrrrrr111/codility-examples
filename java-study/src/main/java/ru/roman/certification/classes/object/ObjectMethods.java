@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.object;
+package ru.roman.certification.classes.object;
 
 /**
  * 1. Класс Object базовый для всех классов, его методы наследуют
