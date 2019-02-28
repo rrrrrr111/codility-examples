@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.classes;
+package ru.roman.certification.classes.infile;
 
 /**
  * - В одном файле может быть много классов, при этом public класс может быть только один

@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.classes;
+package ru.roman.certification.classes.statics;
+
+import ru.roman.certification.classes.A025_Classes;
 
 import java.lang.reflect.InvocationTargetException;
 

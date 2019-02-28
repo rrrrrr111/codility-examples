@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.classes;
+package ru.roman.certification.classes.statics;
 
 /**
  * 1.  static - доступен только для вложенных классов, это сделано лдя того
