@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.string;
+package ru.roman.certification.jcl;
 
 /**
  * 1. Метод .intern()  означает - сохранить строку в глоюольный пул строк, а в пуле строк
@@ -33,11 +33,10 @@ public class InternalStrings {
         System.out.println("hello" == new String("hello").intern());
 
         System.out.println(hello == "Hel" + "lo");
-        System.out.println(hello == "Hel" + lo);           // тут false потому что результат конкатенации хранится в пока в стеке
-        // и будет интернирован полько по завершении метода
+        System.out.println(hello == "Hel" + lo);           //
         System.out.println((hello == ("Hel" + lo).intern()));
 
-        System.out.println((hello == "Hello") + " ");       // обманка
+        System.out.println((hello == "Hello") + " ");       //
 
     }
 }

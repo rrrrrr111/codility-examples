@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.parameters;
+package ru.roman.certification.vararg;
 
 /**
  * 1. Последний параметр можно задать как массив (тоесть получается переменное

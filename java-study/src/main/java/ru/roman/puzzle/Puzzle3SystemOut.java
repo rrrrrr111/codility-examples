@@ -35,6 +35,6 @@ public class Puzzle3SystemOut {
             public void write(int b) throws IOException {
             }
         }));
-        System.console().writer().println("Hello world");
+//        System.console().writer().println("Hello world");
     }
 }
