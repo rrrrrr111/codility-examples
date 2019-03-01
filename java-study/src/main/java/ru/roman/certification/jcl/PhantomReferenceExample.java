@@ -20,8 +20,11 @@ class PhantomReferenceExample {
         ReferenceQueue rq = new ReferenceQueue();
 
         SoftReference sf = new SoftReference(new Foo("soft"), rq);
+        System.out.println(sf + " with " + sf.get() + " prepared");
         WeakReference wf = new WeakReference(new Foo("weak"), rq);
+        System.out.println(wf + " with " + wf.get() + " prepared");
         PhantomReference pf = new PhantomReference(new Foo("phantom"), rq);
+        System.out.println(pf + " with " + pf.get() + " prepared");
 
         gc(3_000);
         Reference reference;
