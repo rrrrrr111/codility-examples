@@ -1,4 +1,4 @@
-package ru.roman.certification.concurrecy;
+package ru.roman.certification.concurrency;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +14,7 @@ import static java.lang.Thread.sleep;
  */
 public class SemaphoreExample {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         ExecutorService executor = Executors.newFixedThreadPool(10);
         Semaphore semaphore = new Semaphore(5); // permit only 5, others go father
