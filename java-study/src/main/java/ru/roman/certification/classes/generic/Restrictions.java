@@ -37,6 +37,8 @@ public class Restrictions<T> {
         List<Integer> l3 = null;
         //ArrayList<String> l4 = (ArrayList<String>)l3;  // illegal
 
+        var r = new ArrayList<Integer>().getClass() == new ArrayList<Double>().getClass();  // true
+        System.out.println(r);
 
     }
 
