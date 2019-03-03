@@ -122,6 +122,28 @@ public class TypeConversion {
         char c7 = (char) 0xFFFFF; // ￿/'?'  - любое число вне диапазона привращается в символ '?'
         char c9 = (char) (0xFFFF + 49); // '0' - не совсем любое
 
-        System.out.println(c7);
+        //System.out.println(c7);
+
+        foo();
+        foo1();
+    }
+
+    private static void foo() {
+
+        byte r11 = (byte) 3e10;                         // -1
+        short r12 = (short) Double.NEGATIVE_INFINITY;   // 0
+        int r13 = (char) 3e10;                            // 65535
+        int r14 = (int) .99999997f;                         // 0
+        int r15 = (int) .99999998f;                         // 1
+        int r16 = (int) .99999999999999994;                         // 0
+        int r17 = (int) .99999999999999995;                         // 1
+        long r18 = (long) 2e19;                       // 9223372036854775807
+
+        //System.out.println(r);
+    }
+
+    private static void foo1() {
+        System.out.println("(short)0x12345678 == 0x" + Integer.toHexString((short) 0x12345678));
+        System.out.println(0x12345678 + " vs " + (short) 0x12345678);
     }
 }

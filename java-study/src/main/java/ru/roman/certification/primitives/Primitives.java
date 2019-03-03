@@ -235,15 +235,19 @@ public class Primitives {
             float f20 = Float.intBitsToFloat(0x7fc00000);
             float f21 = Float.intBitsToFloat(2143289344);
             float f22 = Float.NaN;
-            float f23 = 0.0f / 0.0f;
+            float f23 = 123 / 0.0f;
             float f24 = 3.7e6f;
             float f34 = -1.8E-7f;
             BigDecimal.valueOf(-1.8E-7f).toPlainString();
             float f45 = (float) -2e1;
             float f44 = 0x1e;
             float f46 = (float) -0x2p2;
+            float f47 = 3.4e38f * 2 * 0;  // Infinity * 0 = NaN
+            float f48 = 3.4e38f * 2 / -0.f;  // Infinity / -0 = -Infinity
+            float f4j = 3.4e38f * 2  - 1;  // Infinity - 1 = Infinity
+            float f49 = 3.4e38f * 2 % 1;  // Infinity % 0 = NaN
 
-            System.out.printf("floats: %s %n", 3.4e38f * 2 * 0);
+            System.out.printf("floats: %s %n", f4j);
 
         }
 
