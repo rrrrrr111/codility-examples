@@ -37,4 +37,10 @@ public class CyclesExample {
 
         }
     }
+
+    int foo (int b) {
+        for(;;) {
+            if (b > 0) return 1;
+        }
+    }
 }
