@@ -1,7 +1,5 @@
 package ru.roman.certification.classes.shadowing;
 
-class ScopeExample {}
-
 class Foo { void f2(String s) {} }
 class Test {
     void f1(int i) {}
