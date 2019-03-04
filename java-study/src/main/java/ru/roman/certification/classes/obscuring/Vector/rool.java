@@ -4,4 +4,8 @@ public class rool {
 
     public static final int baboo = 69;
     public static class baboo { public static void valueOf(int i){} }
+
+    void foo() {
+        var i = baboo;
+    }
 }
