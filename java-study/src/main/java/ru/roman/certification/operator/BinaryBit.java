@@ -48,6 +48,9 @@ public class BinaryBit {
                                // всё остальное правее заполнется нолями
         int r62 = -1 << -5;    // 11111000000....
         int r07 = 1 << -31;     // ...010
+
+        byte b = 0;
+        int r77 = b << -31L;  // ...010 , Unary Widening Promotion (WP) для byte до int, binary WP в операциях сдвига не делается
         long r08 = 1L << -63;     // ...010 long длинн
 
         int r10 = new Character('c') << 32;  // 1100011

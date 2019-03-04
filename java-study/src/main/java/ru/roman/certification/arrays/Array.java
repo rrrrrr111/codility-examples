@@ -1,6 +1,8 @@
 package ru.roman.certification.arrays;
 
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.IntUnaryOperator;
 
 /**
@@ -86,5 +88,23 @@ class Array {
         String[] i3 = {new String()};
         Object[] i4 = i3;
         i4[0] = 1;
+
+
+        //Integer[] t1 = new int[0];   // illegal
+        //Object[] t1 = new int[0];   // illegal
+        Object t1 = new int[0];
+        Cloneable t11 = new int[0];   // также можно Serializable
+        //Cloneable[] t12 = new int[0];   // illegal
+        Number[] t2 = new Integer[0];
+        Object[] t3 = new Integer[0];
+        Serializable[] t33 = new Integer[0];  // можно и Cloneable[]
+        Cloneable t34 = new Integer[0];  // можно и Cloneable[]
+        Object t4 = new Integer[0];
+        //int[] t = new byte[0];         // illegal
+
+        List<Integer>[] t5 = null;
+        //List<Number>[] t6 = t5;   // illegal
+        List<? extends Number>[] t6 = t5;   // ok, массивы женерика ведут себя аналогично женерику
+
     }
 }
