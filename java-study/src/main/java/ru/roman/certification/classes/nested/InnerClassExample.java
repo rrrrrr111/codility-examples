@@ -91,3 +91,14 @@ public class InnerClassExample {
         }
     }
 }
+
+class Outer {
+    int outerVar;
+    static void classMethod() {
+        final int localVar = 0;
+        class LocalInStaticContext {
+            //int i = outerVar;  // illegal
+            int i = localVar;
+        }
+    }
+}
