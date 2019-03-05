@@ -17,7 +17,7 @@ class ForwardReferenceExample {
     int j = i;
     {g = 78;}          // ссылаемся на поле, это контект инициализации а не декларации,
                        // поле было декларировано в классе еще при компиляции (поля != локальные переменные)
-    int p = g;         // illegal forward reference
+    //int p = g;         // illegal forward reference
     final int g;
     final int f;
     //int h = f;       // illegal, variable might not have been initialised
