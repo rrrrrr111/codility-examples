@@ -42,6 +42,4 @@ class Test1 {
     }
 }
 
-class Vector {
-    int val[] = { 1 , 2 };
-}
+//class Vector {}
