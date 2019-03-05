@@ -1,5 +1,6 @@
 package ru.roman.certification.classes.overriding;
 
+import javax.print.attribute.standard.NumberUp;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -17,6 +18,7 @@ interface Boo {
     void foo1(Collection<String> list);
     void foo2(Collection list);
     <T extends String & Serializable> void foo3(Collection<T> list);
+    <T extends String & Serializable> T foo4(Collection<T> list);
 
     @Override
     String toString(); // переопределение Object.toString() абстрактным методом, это ни к чему не обязывает наследников
@@ -40,6 +42,10 @@ abstract class OverridingExample extends BooGoo implements Boo {
     //public abstract <T extends String & Serializable & Cloneable> void foo3(Collection<T> list);  // illegal
     public abstract void foo3(Collection list);
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public abstract String foo4(Collection list);     // return type not covariant
+
     public String toString() {
         return help();
     }
@@ -50,8 +56,15 @@ abstract class OverridingExample extends BooGoo implements Boo {
             public void foo1(Collection list) {}
             public void foo2(Collection list) {}
             public void foo3(Collection list) {}
+            public String foo4(Collection list) {return null;}
         });
     }
 }
 
 
+class C<T> {      T id(T x) {return null;}    }
+interface I<T> {  T id(T x);   }
+class D extends C<Number> implements I<Number> {
+    //public Number  id(Number x)  {return null;}                 // signature is different and is not a subsignature
+    public Number id(Number x) {return null;}                 // overridden methods have the same erasure
+}

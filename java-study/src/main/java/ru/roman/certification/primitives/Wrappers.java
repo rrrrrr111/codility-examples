@@ -120,7 +120,7 @@ public class Wrappers {
 
         //boolean r80 = 128 == n;                             // illegal, Number не unboxing
         //boolean r80 = 128 == null;                             // illegal
-        boolean r80 = n >= 12;                                   // illegal, Number не unboxing
+        //boolean r80 = n >= 12;                                   // illegal, Number не unboxing
         boolean r81 = 128 == Float.valueOf(128.f);                // true
 
         boolean r9 = 128d > Integer.valueOf(127);           // true

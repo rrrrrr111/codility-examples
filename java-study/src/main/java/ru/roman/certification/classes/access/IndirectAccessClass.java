@@ -2,12 +2,20 @@ package ru.roman.certification.classes.access;
 
 import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
 
-public class IndirectAccessClass extends AllAccessTypesFoo.IndirectAccessor {
+class IndirectAccessClass extends AllAccessTypesFoo.IndirectAccessor {
 
-    private void fo() {
-        //var v = super.privateStaticField;
+    IndirectAccessClass() {
+        new AllAccessTypesFoo().super();
+    }
+
+    @Override
+    protected String fo() {
+        return super.fo();
     }
 
     public static void main(String[] args) {
+
+        IndirectAccessClass e = new IndirectAccessClass();
+        System.out.println(e.fo());
     }
 }

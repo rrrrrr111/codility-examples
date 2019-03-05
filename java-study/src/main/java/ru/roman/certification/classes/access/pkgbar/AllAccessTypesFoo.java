@@ -32,9 +32,9 @@ public class AllAccessTypesFoo {
     private void privateMethod() {
     }
 
-    public static class IndirectAccessor extends AllAccessTypesFoo {
-        private void fo() {
-            var v = privateStaticField;
+    public class IndirectAccessor {
+        protected String fo() {
+            return privateField;
         }
     }
 }
