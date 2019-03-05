@@ -2,6 +2,7 @@ package ru.roman.certification.classes.interfaces;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -65,3 +66,43 @@ interface MultipleInheritanceIntfs extends Intf1, Intf2 {
     @Override
     default void def3() {}
 }
+
+
+interface Top {
+    //default String name() { return "unnamed"; }
+    String name();
+}
+interface Left extends Top {
+    default String name() { return getClass().getName(); }
+    //String name();
+
+    String abstr();
+}
+interface Right extends Top {
+    String abstr();
+
+}
+
+interface Bottom extends Left, Right {
+    default String abstr(){ return null; }
+}
+
+class Test {
+    public static void main(String[] args) {
+        Bottom bottom = new Bottom(){};
+
+        new ArrayList<String[]>();
+    }
+}
+
+abstract class Boo {
+    public abstract String name();
+}
+
+interface BaBoo {
+    default String name(){ return null; }
+}
+
+abstract class BadaBoo extends Boo implements BaBoo {
+}
+

@@ -1,8 +1,8 @@
 package ru.roman.certification.classes.overriding;
 
-import javax.print.attribute.standard.NumberUp;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Iterator;
 
 abstract class BooGoo {
 
@@ -16,7 +16,7 @@ abstract class BooGoo {
 
 interface Boo {
     void foo1(Collection<String> list);
-    void foo2(Collection list);
+    Iterable foo2(Collection list);
     <T extends String & Serializable> void foo3(Collection<T> list);
     <T extends String & Serializable> T foo4(Collection<T> list);
 
@@ -35,8 +35,8 @@ abstract class OverridingExample extends BooGoo implements Boo {
     public abstract void foo1(Collection list);              // можно переопределять только с row типом или с таким же женериком
 
     @Override
-    //public abstract void foo2(Collection<Integer> list);   // illegal
-    public abstract void foo2(Collection list);
+    //public abstract Iterable foo2(Collection<Integer> list);   // illegal
+    public abstract Iterable<Integer> foo2(Collection list); //
 
     @Override
     //public abstract <T extends String & Serializable & Cloneable> void foo3(Collection<T> list);  // illegal
@@ -54,7 +54,7 @@ abstract class OverridingExample extends BooGoo implements Boo {
 
         System.out.println(new OverridingExample() {
             public void foo1(Collection list) {}
-            public void foo2(Collection list) {}
+            public Iterable foo2(Collection list) {return null;}
             public void foo3(Collection list) {}
             public String foo4(Collection list) {return null;}
         });

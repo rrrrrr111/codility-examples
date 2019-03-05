@@ -25,7 +25,8 @@ public class Restrictions<T> {
         List[] rrrrr = {new ArrayList<String>()};             // но можно с row типом
         List[] ss = {new ArrayList<Integer>(), new LinkedList<String>()};             // OK
         List[] sss = new List[]{new ArrayList<Integer>(), new LinkedList<String>()};  // OK
-        List<String>[] rr = new List[0];                      // или так
+        List<String>[] rr = new List[1];                      // или так
+        rr[0] = new ArrayList<>();                            // норма
         List<String>[] ssss = null;
 
         List<Integer> li = null;
@@ -39,6 +40,9 @@ public class Restrictions<T> {
 
         var r = new ArrayList<Integer>().getClass() == new ArrayList<Double>().getClass();  // true
         System.out.println(r);
+
+        List<? extends String> wild = null;
+        List<String> nowild = (List<String>) wild;
 
     }
 
