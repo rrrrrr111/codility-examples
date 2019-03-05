@@ -8,7 +8,7 @@ import java.util.List;
     String author();
     String date();
     int currentRevision() default 1;          // default значения опциональны
-    String lastModified() default "N/A";
+    String value() default "N/A";
     String lastModifiedBy() default "N/A";
     // Note use of array
     String[] reviewers();
@@ -28,13 +28,10 @@ import java.util.List;
     static interface Mamou{}
 }
 
-
 enum Foo {}
 class Bazz {
-
     void foo() {
-
-        Class[] dd =  {List.class};  // массим из одного элемента можно схлопывать
+        Class[] dd =  {List.class};
     }
 }
 
