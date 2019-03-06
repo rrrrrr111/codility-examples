@@ -31,3 +31,28 @@ class Foozz<T, N extends Number> {
         //new Foozz<Integer, Integer>().m(1);  // illegal ambiguous method m(..)
     }
 }
+
+interface X { <T>   T execute(T a); }
+interface Y { <S,T> S execute(S a); }
+interface Z { <S>   S execute(S a); }
+//interface Exec extends X, Y {}          // illegal: different signatures, same erasure
+@FunctionalInterface
+interface Exec extends X, Z {}
+@FunctionalInterface
+interface Exec1 extends X, Z {}
+
+
+interface I    { Object m(Class c); }
+interface J<S> { S m(Class<?> c); }
+interface K<T> { T m(Class<?> c); }
+@FunctionalInterface
+interface Functional<S, T> extends I, J<S>, K<T> {}
+@FunctionalInterface
+interface Funcy extends Functional<Integer, String>{} // illegal methods with unrelated types
+
+
+
+interface G1 {    <E extends Exception> Object m() throws E;         }
+interface G2 {    <F extends Exception> String m() throws Exception; }
+@FunctionalInterface
+interface G extends G1, G2 {}
