@@ -97,8 +97,8 @@ class Array {
         //Cloneable[] t12 = new int[0];   // illegal
         Number[] t2 = new Integer[0];
         Object[] t3 = new Integer[0];
-        Serializable[] t33 = new Integer[0];  // можно и Cloneable[]
-        Cloneable t34 = new Integer[0];  // можно и Cloneable[]
+        Serializable[] t33 = new Integer[0];  // можно и Serializable[]
+        Cloneable t34 = new Integer[0];  // но Cloneable[] нельзя, врапперы не Cloneable
         Object t4 = new Integer[0];
         //int[] t = new byte[0];         // illegal
 
