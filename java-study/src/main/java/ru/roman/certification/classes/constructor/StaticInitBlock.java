@@ -16,14 +16,14 @@ class StaticInitBlock {
 
     public static void main(String[] args) {
 
-        System.out.println("kop = " + UseBeforeDeclaration.kop);
+        System.out.println("kop = " + new UseBeforeDeclaration().kop);
     }
 }
 
 class UseBeforeDeclaration {
 
-    static int kop = new Object() {int run() { return jop;}}.run();
-    public static final int jop = 1;
+    int kop = new Object() {int run() { return jop;}}.run();
+    public final int jop = 1;
     static {
         x = 100;                              // ok - assignment
 //       int y = x + 1;                      // illegal - read before declaration

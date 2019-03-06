@@ -16,7 +16,7 @@ package ru.roman.certification.classes.constructor;
  *
  * @author дтоь 12.01.2008
  */
-public class DefaultValuesExample {
+class DefaultValuesExample {
 
     private static short aShort;
     private static int aInt = 000000000; // octal value

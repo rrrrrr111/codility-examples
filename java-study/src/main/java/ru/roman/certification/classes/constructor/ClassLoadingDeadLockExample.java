@@ -2,7 +2,7 @@ package ru.roman.certification.classes.constructor;
 
 import ru.roman.certification.classes.access.Child;
 
-public class ClassLoadingDeadLockExample {
+class ClassLoadingDeadLockExample {
 
     public static void main(String[] args) {
         System.out.println(new ParentFoo());    // 33 и далее StackOverflowError
