@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.constructor;
 
-class ClassLoadingDeadlock {
+class StaticClassLoadingOrder {
 
     public static void main(String[] args) {
         new First();                                    // загрузим класс и инициализируем его
