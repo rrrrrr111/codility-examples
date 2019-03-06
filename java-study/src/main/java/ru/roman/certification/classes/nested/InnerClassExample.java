@@ -83,11 +83,25 @@ public class InnerClassExample {
             t = i;
         }
 
-
+        class Local{}
         void f4(int vari) {
 
             fooStatic1();
             foo();
+
+            {
+                new Local();
+                class Local{}
+
+                {
+                    //class Inner{}  // illegal
+                }
+            }
+            {
+                class Local{}
+                //class Inner extends Inner{}    // cyclic
+            }
+
         }
     }
 }
@@ -100,5 +114,37 @@ class Outer {
             //int i = outerVar;  // illegal
             int i = localVar;
         }
+    }
+}
+
+//class Buzzy extends Buzzy.Inner {         // illegal, cyclic inheritance, свой inner нельзя
+class Buzzy {
+    class Inner {}                          // 1
+    void foo() {
+        {
+            new Inner();                    // инстанс 1, т к следующее объявление идет позже
+            class Inner {}                  // 2
+            new Buzzy.Inner();              // инстанс 1, более полное имя, похоже на nested класс но это inner
+            new Inner();                    // инстанс 2, не 1
+            {
+                //class Inner{}             // illegal
+            }
+        }
+        {
+            class Inner {}                  // 3
+            class MoreLocal {
+                void bar() {
+                    class Inner {           // 4
+                        //class MoreLocal{} // illegal, в одной линии вложенности нельзя дублить имя
+                        //class Buzzy{}     // illegal
+                    }
+                }
+            }
+            new Inner();                    // инстанс 3
+        }
+        //class Inner extends Inner{}       // illegal cyclic inheritance, сам себя нельзя
+        class Localy extends Inner {}       // ok
+        class Inner {}                      // 5, ok т к в этом скоупе еще нет Inner, но если перенести его
+                                            // в начало метода, то 2 и 3 не смогут скомпилиться, но 4 сможет
     }
 }
