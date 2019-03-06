@@ -1,11 +1,11 @@
 package ru.roman.certification.classes.constructor;
 
-class NormalInit {
+class InitBlock {
     public static void main(String[] args) {
-        new NormalInit();
+        new InitBlock();
     }
 
-    NormalInit() {
+    InitBlock() {
         this.cc = 18;
         this.mm = 28;
     }

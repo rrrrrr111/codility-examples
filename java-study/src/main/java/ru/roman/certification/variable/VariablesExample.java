@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.roman.certification.initialisation;
+package ru.roman.certification.variable;
 
 /**
  * 1. При задании локальной переменной, нельзя задать модификатор доступа,
@@ -22,7 +22,7 @@ package ru.roman.certification.initialisation;
  *
  * @author churganov_r 16.03.2011
  */
-public class Variables {
+public class VariablesExample {
 
     void foo() {
 
@@ -42,6 +42,6 @@ public class Variables {
     }
 
     public static void main(String[] args) {
-        new Variables().foo();
+        new VariablesExample().foo();
     }
 }

@@ -1,4 +1,4 @@
-package ru.roman.certification.initialisation;
+package ru.roman.certification.classes.constructor;
 
 /**
  * 1. Поля инициализируются автоматически null/0/false
@@ -16,7 +16,7 @@ package ru.roman.certification.initialisation;
  *
  * @author дтоь 12.01.2008
  */
-public class Primitives {
+public class DefaultValuesExample {
 
     private static short aShort;
     private static int aInt = 000000000; // octal value

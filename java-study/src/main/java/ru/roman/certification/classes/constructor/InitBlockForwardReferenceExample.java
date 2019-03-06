@@ -3,12 +3,12 @@ package ru.roman.certification.classes.constructor;
 /**
  *
  */
-class ForwardReferenceExample {
+class InitBlockForwardReferenceExample {
 
     //int k = i;       // illegal forward reference
     int k = i = 0;   // а так норм,
 
-    ForwardReferenceExample() {
+    InitBlockForwardReferenceExample() {
         k = i;         // 0 - i еще дефолтное
         i = 33;        // i было 0, стало 33
     }
@@ -36,7 +36,7 @@ class ForwardReferenceExample {
 
 
     public static void main(String[] args) {
-        ForwardReferenceExample e = new ForwardReferenceExample();
+        InitBlockForwardReferenceExample e = new InitBlockForwardReferenceExample();
         System.out.println(e.k + " " + e.i + " " + e.j + " " + e.g + " " + e.y + " " + e.m);
 
         int z3, y2, x1 = x1 = z3 = 3, p = z3 = y2 = x1;
