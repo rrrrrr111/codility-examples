@@ -48,7 +48,7 @@ interface K<T> { T m(Class<?> c); }
 @FunctionalInterface
 interface Functional<S, T> extends I, J<S>, K<T> {}
 @FunctionalInterface
-interface Funcy extends Functional<Integer, String>{} // illegal methods with unrelated types
+//interface Funcy extends Functional<Integer, String>{} // illegal methods with unrelated types
 
 
 
