@@ -1,4 +1,4 @@
-package ru.roman.certification.conditional;
+package ru.roman.certification.cycle;
 
 /**
  *
