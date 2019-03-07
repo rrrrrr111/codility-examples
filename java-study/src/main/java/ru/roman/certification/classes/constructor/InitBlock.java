@@ -5,9 +5,13 @@ class InitBlock {
         new InitBlock();
     }
 
-    InitBlock() {
-        this.cc = 18;
+    InitBlock(boolean b) {
         this.mm = 28;
+    }
+    InitBlock() {
+        this(false);                    // this для консруктора
+        this.foo();                         // this для метода
+        this.cc = 18;
     }
     {
         //System.out.println(cc);            // illegal, forward reference

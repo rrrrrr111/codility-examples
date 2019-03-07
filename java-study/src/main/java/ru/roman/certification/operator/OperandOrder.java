@@ -3,7 +3,7 @@ package ru.roman.certification.operator;
 /**
  *
  */
-class OperationOrder {
+class OperandOrder {
     public static void main(String[] args) throws Exception {
 
         //int i = 1 / (0 * throwException());  // Exception
