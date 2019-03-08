@@ -35,7 +35,7 @@ public class Ternary {
 
         float a1 = true ?  1L : 1f;  // проверки резулитирующего типа как при приведении, если widening то компилит
         //long a2 = true ?  1L : 1f;  // illegal, narrowing только если явно указать приведение
-        long a3 = true ?  Integer.valueOf(1) : 1L;  // врапперы норм, если если widening
+        long a3 = true ?  Integer.valueOf(1) : 1L;  // врапперы норм, если widening
         float a4 = true ?  Long.valueOf(1) : 1f;
         byte a5 = true ?  -128 : 127;
         //byte a6 = true ?  -129 : 127;  // illegal, аналогично обчной инициализации
@@ -44,5 +44,11 @@ public class Ternary {
 
         int t = 1;
         //var v = false ? t = 0: t = 1;  // illegal
+
+        final var i1 = 50;
+         //var i1 = 50;
+        var c1 = 'f';
+        var r = true ? i1 : c1;
+        System.out.println(r);            // 2
     }
 }

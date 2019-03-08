@@ -34,5 +34,6 @@ public class Naming {
     private static String $___123abc;
     private static String a_b$c;
 
+    //void _() {}    illegal from java 9
 
 }

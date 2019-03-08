@@ -28,6 +28,9 @@ class InitBlockForwardReferenceExample {
     int h = f = 1;   // норма
     int d = f;       // нор
 
+    final String gg = InitBlockForwardReferenceExample.this.ff + "java";       // nulljava
+    final String ff = InitBlockForwardReferenceExample.this.ff + "java";       // nulljava
+
     final int y = foo();      // норма
     final int m = foo1();
     int foo() { return m + u + y + 1;}  // y читается как 0 но потом становитя = 1

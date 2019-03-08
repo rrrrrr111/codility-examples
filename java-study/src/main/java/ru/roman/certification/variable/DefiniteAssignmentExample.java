@@ -35,8 +35,14 @@ public class DefiniteAssignmentExample {
 
         boolean flag = foo();
         final int k1;
-        if (flag) k1 = 3;
-        //if (!flag) k1 = 4;                // illegal variable might already have been assigned
+        if (false) k1 = 3;
+//        if (true) k1 = 4;                 // illegal variable might already have been assigned
+        if (false) k1 = 5;                // ok
+
+        final boolean reek;
+        if (false && (reek = false)) {}
+        //if (true && (reek = true)) {}      // illegal
+        //System.out.println(reek);            // illegal
 
     }
 
