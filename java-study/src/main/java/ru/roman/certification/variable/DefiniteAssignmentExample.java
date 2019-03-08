@@ -13,12 +13,12 @@ public class DefiniteAssignmentExample {
         if (v > 0 && (k = System.in.read()) >= 0)
             System.out.println(k);                         // ok, т к выполнится только если было присвоение
 
-        int k;
+        int k2;
         while (true) {                                  // если заменить на while (n < 4) { то illegal,
-            k = n;                                      // на строке ... println(k) - k is not "definitely assigned"
-            if (k >= 5) break;
+            k2 = n;                                      // на строке ... println(k) - k is not "definitely assigned"
+            if (k2 >= 5) break;
         }
-        System.out.println(k);                           // ok
+        System.out.println(k2);                           // ok
 
         final int p1;
         try {
@@ -27,10 +27,10 @@ public class DefiniteAssignmentExample {
             //System.out.print(">>> " + p1);                   // illegal
         }
 
-        int k;
-        if (foo()) k = 3;
-        else k = 4;
-        System.out.println(k);
+        int k4;
+        if (foo()) k4 = 3;
+        else k4 = 4;
+        System.out.println(k4);
 
 
         boolean flag = foo();

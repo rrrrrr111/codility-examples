@@ -13,7 +13,7 @@ class TryCatchFinallyExample {
             Thread.sleep(1_000); // finally может быть не выполнен если тред прерван, аналогично если прервано в catch
             throw new FileNotFoundException();
             // statement completes normally
-        } catch (InterruptedException e) {    // statement completes abruptly
+        } catch (final InterruptedException e) {    // statement completes abruptly
             // exception handler подбираются по порядку сверху вниз, если исключение словлено, остальные
         } catch (FileNotFoundException e) {   // блоки catch игнорятся
 

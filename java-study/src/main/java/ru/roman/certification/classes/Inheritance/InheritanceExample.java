@@ -19,10 +19,18 @@ interface StringBass {
     Integer get();
 }
 
-class Bass implements Fish, StringBass {
+class Boo {
+    public final static int pp = 1;
+    static final void fazoo(){}
+}
+
+class Bass extends Boo implements Fish, StringBass {
     @Override
     public Integer get() {
         return null;
     }
     //public int getNumberOfScales() {return 0;}   // illegal
+
+    public final static int pp = 1;
+    //static final  void fazoo(){}               // illegal
 }
