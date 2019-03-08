@@ -1,4 +1,4 @@
-package ru.roman.certification.concurrency.happensbefore;
+package ru.roman.certification.concurrency;
 
 /**
  *
