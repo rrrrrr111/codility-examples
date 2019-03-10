@@ -54,19 +54,18 @@ public class Shift {
 
 class CountBits {
 
-    static int count(int s) {
+    static int count(short s) {
         int bits = 0;
         while (s != 0) {
-            bits += s & 1;
-
-
+            bits += s & 1;               // BNP & infinite loop,
+            s >>>= 1;
             System.out.println(Integer.toBinaryString(s));
         }
         return bits;
     }
 
     public static void main(String[] args) {
-        int count = count(-1);
+        int count = count((short) -1);
         System.out.println(count);
         System.out.println(Integer.toBinaryString(-1 >>> 31));
     }
