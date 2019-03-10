@@ -53,32 +53,12 @@ package ru.roman.certification.comparable;
  *
  * @author churganov_r 17.03.2011
  */
-public class Comparable implements java.lang.Comparable {
+ class ComparableClazz implements Comparable<ComparableClazz> {
 
     private Integer a, b;
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof java.lang.Comparable)) return false;
-
-        Comparable that =
-                (Comparable) o;
-
-        if (a != null ? !a.equals(that.a) : that.a != null) return false;
-        if (b != null ? !b.equals(that.b) : that.b != null) return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = a != null ? a.hashCode() : 0;
-        result = 31 * result + (b != null ? b.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException();
+    public int compareTo(ComparableClazz this, ComparableClazz o) {
+        return this.a.compareTo(o.b);
     }
 }

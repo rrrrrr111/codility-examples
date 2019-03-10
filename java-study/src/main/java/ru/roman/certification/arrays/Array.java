@@ -106,5 +106,10 @@ class Array {
         //List<Number>[] t6 = t5;   // illegal
         List<? extends Number>[] t6 = t5;   // ok, массивы женерика ведут себя аналогично женерику
 
+        int v = foo(new long[0][0])[0][0];
+    }
+
+    static int foo (long va[][])[][] {
+        return new int[0][0];
     }
 }
