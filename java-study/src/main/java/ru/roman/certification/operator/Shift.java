@@ -51,3 +51,22 @@ public class Shift {
 
     }
 }
+
+class CountBits {
+
+    static int count(int s) {
+        int bits = 0;
+        while (s != 0) {
+            bits += s & 1;
+            s >>>= 1;
+            System.out.println(Integer.toBinaryString(s));
+        }
+        return bits;
+    }
+
+    public static void main(String[] args) {
+        int count = count(-1);
+        System.out.println(count);
+        System.out.println(Integer.toBinaryString(-1 >>> 31));
+    }
+}
