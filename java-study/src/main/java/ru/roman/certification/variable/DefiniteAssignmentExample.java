@@ -27,6 +27,13 @@ public class DefiniteAssignmentExample {
             //System.out.print(">>> " + p1);                   // illegal
         }
 
+        final int id;
+        try {
+            id = 1;
+        } catch (Exception e) {
+            //id = 2;                          // illegal, variable id might already have been assigned
+        }
+
         int k4;
         if (foo()) k4 = 3;
         else k4 = 4;
