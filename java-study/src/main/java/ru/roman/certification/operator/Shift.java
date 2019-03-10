@@ -58,7 +58,8 @@ class CountBits {
         int bits = 0;
         while (s != 0) {
             bits += s & 1;
-            s >>>= 1;
+
+
             System.out.println(Integer.toBinaryString(s));
         }
         return bits;
