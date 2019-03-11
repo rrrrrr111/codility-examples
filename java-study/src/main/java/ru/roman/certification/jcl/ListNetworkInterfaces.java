@@ -1,11 +1,13 @@
 package ru.roman.certification.jcl;
 
 import java.net.InetAddress;
+import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -21,6 +23,7 @@ public class ListNetworkInterfaces {
             out.printf("Display name: %s\n", netIf.getDisplayName());
             out.printf("Name: %s\n", netIf.getName());
             printAddresses(netIf);
+            printInterfaceAddresses(netIf);
             printProps(netIf);
 
             Enumeration<NetworkInterface> subIfs = netIf.getSubInterfaces();
@@ -29,6 +32,7 @@ public class ListNetworkInterfaces {
                 out.printf("\tSub Interface Display name: %s\n", subIf.getDisplayName());
                 out.printf("\tSub Interface Name: %s\n", subIf.getName());
                 printAddresses(subIf);
+                printInterfaceAddresses(subIf);
                 printProps(subIf);
             }
             out.println();
@@ -38,7 +42,17 @@ public class ListNetworkInterfaces {
     private static void printAddresses(NetworkInterface netIf) {
         Enumeration<InetAddress> inetAddresses = netIf.getInetAddresses();
         for (InetAddress inetAddress : Collections.list(inetAddresses)) {
-            out.printf("InetAddress: %s\n", inetAddress);
+            out.printf("InetAddresses:%s, ", inetAddress);
+        }
+        out.println();
+    }
+
+    private static void printInterfaceAddresses(NetworkInterface netIf) {
+        List<InterfaceAddress> inetAddresses = netIf.getInterfaceAddresses();
+        for (InterfaceAddress inetAddress : inetAddresses) {
+            out.printf("Address:%s, ", inetAddress.getAddress());
+            out.printf("Broadcast:%s, ", inetAddress.getBroadcast());
+            out.printf("NetworkPrefixLength:%s%n", inetAddress.getNetworkPrefixLength());
         }
     }
 
