@@ -1,5 +1,6 @@
 package ru.roman.certification.classes.annotation;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.Documented;
 import java.util.List;
 
@@ -28,7 +29,24 @@ import java.util.List;
     static interface Mamou{}
 }
 
-enum Foo {}
+
+@interface MyAnn {
+    String value() default "N/A";
+}
+
+enum Foo implements MyAnn{
+    GG;
+
+    @Override
+    public String value() {
+        return null;
+    }
+
+    @Override
+    public Class<? extends Annotation> annotationType() {
+        return Foo.class;
+    }
+}
 class Bazz {
     void foo() {
         Class[] dd =  {List.class};
