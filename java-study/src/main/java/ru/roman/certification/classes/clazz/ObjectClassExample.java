@@ -11,6 +11,7 @@ public class ObjectClassExample {
 
         System.out.println(String.class);
         System.out.println(int.class);
+        System.out.println(void.class);
         System.out.println(Class.forName("java.lang.Long"));
         System.out.println(Integer.valueOf(1).getClass());
 
