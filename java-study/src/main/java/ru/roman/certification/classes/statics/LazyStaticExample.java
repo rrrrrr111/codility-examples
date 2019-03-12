@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.statics;
 
-public class LazyStaticExample {
+class LazyStaticExample {
 
     public static void main(String[] args) {
 

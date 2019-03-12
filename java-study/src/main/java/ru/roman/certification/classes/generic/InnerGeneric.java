@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.generic;
 
-public class InnerGeneric {
+class InnerGeneric {
 }
 
 class Seq<T> {

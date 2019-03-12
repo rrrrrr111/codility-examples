@@ -6,7 +6,7 @@ import java.util.List;
 /**
  *
  */
-public class LocalVariableTypeInference {
+class LocalVariableTypeInference {
     public static void main(String[] args) {
 
         //var v = null;                          // illegal, can not infer type

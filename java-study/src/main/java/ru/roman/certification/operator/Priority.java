@@ -11,7 +11,7 @@ package ru.roman.certification.operator;
  *
  * @author churganov_r 15.03.2011
  */
-public class Priority {
+class Priority {
 
     public static void main(String[] args) {
 //Приоритеты операций в Java

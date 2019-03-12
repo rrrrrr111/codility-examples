@@ -47,7 +47,7 @@ interface A028_Interfaces {
 
     public static final int i = 0;
 
-    public class A028_Classes1 {
+    class A028_Classes1 {
         public static final int с = 0;
 
         void foo() {

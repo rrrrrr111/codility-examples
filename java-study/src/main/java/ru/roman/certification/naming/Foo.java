@@ -13,7 +13,7 @@ package ru.roman.certification.naming;
  *
  * @author дтоь 12.01.2008
  */
-public class Foo {
+class Foo {
 
     public static void main(String[] args) {
 

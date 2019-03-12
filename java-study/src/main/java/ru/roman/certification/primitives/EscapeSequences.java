@@ -15,7 +15,7 @@ package ru.roman.certification.primitives;
  *
  * @author churganov_r 17.03.2011
  */
-public class EscapeSequences {
+class EscapeSequences {
 
     char f1 = 0x08;
     char f2 = '\b';  // Забой (backspace)   	\u0008

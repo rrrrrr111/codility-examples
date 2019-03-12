@@ -3,7 +3,7 @@ package ru.roman.certification.classes.interfaces;
 /**
  *
  */
-public class FunctionalInterfaceExample {
+class FunctionalInterfaceExample {
 }
 
 @FunctionalInterface

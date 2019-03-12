@@ -8,7 +8,7 @@ package ru.roman.certification.classes.access.pkgbar;
 /**
  * @author myno 13.01.2008
  */
-public class NeighbourInPackage extends AllAccessTypesFoo {
+class NeighbourInPackage extends AllAccessTypesFoo {
 
     public String publicField = "publicField in NeighbourInPackage";            // hiding
     protected String protectedField = "protectedField in NeighbourInPackage";   // hiding

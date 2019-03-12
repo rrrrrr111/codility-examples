@@ -7,7 +7,7 @@ package ru.roman.certification.operator;
 /**
  * @author churganov_r 22.03.2011
  */
-public class Shift {
+class Shift {
 
     public static void main(String[] args) {
 

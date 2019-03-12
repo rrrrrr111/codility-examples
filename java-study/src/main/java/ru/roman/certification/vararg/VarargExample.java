@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  *
  */
-public class VarargExample {
+class VarargExample {
 
     public static void main(String[] args) {
 

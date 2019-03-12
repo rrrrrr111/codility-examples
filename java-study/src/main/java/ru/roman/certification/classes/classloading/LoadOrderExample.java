@@ -2,7 +2,7 @@ package ru.roman.certification.classes.classloading;
 
 import static ru.roman.certification.classes.classloading.Helper.*;
 
-public class LoadOrderExample {
+class LoadOrderExample {
 
     public static void main(String[] args) {
         One o = null;

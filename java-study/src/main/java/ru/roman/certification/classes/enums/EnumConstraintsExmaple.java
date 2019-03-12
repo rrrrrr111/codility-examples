@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  *
  */
-public class EnumConstraintsExmaple {
+class EnumConstraintsExmaple {
 
     public static void main(String[] args) {
         System.out.println(Color.GREEN);

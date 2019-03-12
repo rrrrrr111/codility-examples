@@ -1,6 +1,6 @@
 package ru.roman.certification.conditional;
 
-public class IfThenElseExample {
+class IfThenElseExample {
 
 
     public static void main(String[] args) {

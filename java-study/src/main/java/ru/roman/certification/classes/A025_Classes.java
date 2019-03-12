@@ -44,7 +44,7 @@ public class A025_Classes {
      *
      * @author churganov_r 19.03.2011
      */
-    public class A025_Classes1 {
+    class A025_Classes1 {
 
         void foo() {
             class A025_Classes2 {

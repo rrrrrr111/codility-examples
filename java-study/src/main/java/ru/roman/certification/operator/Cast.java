@@ -1,6 +1,6 @@
 package ru.roman.certification.operator;
 
-public class Cast {
+class Cast {
 
     public static void main(String[] args) {
 

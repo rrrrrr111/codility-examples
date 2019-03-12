@@ -79,7 +79,7 @@ package ru.roman.certification.primitives;
  *
  * @author churganov_r 21.03.2011
  */
-public class TypeConversion {
+class TypeConversion {
 
     public static void main(String[] args) {
 

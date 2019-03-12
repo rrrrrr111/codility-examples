@@ -12,7 +12,7 @@ import static java.lang.Thread.sleep;
 /**
  *
  */
-public class SemaphoreExample {
+class SemaphoreExample {
 
     public static void main(String[] args) throws Exception {
 

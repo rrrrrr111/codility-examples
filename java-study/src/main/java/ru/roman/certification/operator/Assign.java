@@ -10,7 +10,7 @@ package ru.roman.certification.operator;
  *
  * @author churganov_r 21.03.2011
  */
-public class Assign {
+class Assign {
 
     public static void main(String[] args) {
 

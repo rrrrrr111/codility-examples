@@ -19,11 +19,11 @@ class SerializationExample {
              ObjectInputStream in = new ObjectInputStream(
                      new FileInputStream(filename))) {
 
-            var objBefore = new Demo(777);
+            var objBefore = new Demom(777);
 
             System.out.println("Before >>> " + objBefore);
             out.writeObject(objBefore);
-            var objAfter = (Demo) in.readObject();
+            var objAfter = (Demom) in.readObject();
 
             System.out.println("After >>> " + objAfter);
 
@@ -55,7 +55,7 @@ class Demo implements Serializable {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Demo.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Demom.class.getSimpleName() + "[", "]")
                 .add("i1=" + i1)
                 .add("i2=" + i2)
                 .add("i3=" + i3)

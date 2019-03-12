@@ -2,7 +2,7 @@ package ru.roman.certification.classes.access.subpkg;
 
 import ru.roman.certification.classes.access.Parent;
 
-public class OtherChild extends Parent {
+class OtherChild extends Parent {
 
     @Override
     public void publicMethod() {}

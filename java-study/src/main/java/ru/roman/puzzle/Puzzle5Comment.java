@@ -7,7 +7,7 @@ package ru.roman.puzzle;
 
  * Wednesday, June 17, 1998 6:44:40 o'clock AM GMT+00:00
  */
-public class Puzzle5Comment {
+class Puzzle5Comment {
 
    //  \\units - illegal unicode escape
 

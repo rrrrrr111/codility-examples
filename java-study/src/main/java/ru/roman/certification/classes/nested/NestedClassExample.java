@@ -1,7 +1,7 @@
 package ru.roman.certification.classes.nested;
 
 
-public class NestedClassExample {
+class NestedClassExample {
 
     private void foo() {}
     private void foo1(long param1) {}

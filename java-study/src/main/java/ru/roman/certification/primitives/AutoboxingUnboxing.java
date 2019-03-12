@@ -1,6 +1,6 @@
 package ru.roman.certification.primitives;
 
-public class AutoboxingUnboxing {
+class AutoboxingUnboxing {
 
     public static void main(String[] args) {
 

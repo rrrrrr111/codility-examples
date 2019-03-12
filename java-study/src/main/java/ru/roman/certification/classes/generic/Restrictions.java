@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class Restrictions<T> {
+class Restrictions<T> {
 
     // private static T os; // illegal
     private T os; // legal

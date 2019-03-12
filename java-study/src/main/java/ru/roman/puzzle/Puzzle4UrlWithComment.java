@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * URL = label + comment
  */
-public class Puzzle4UrlWithComment {
+class Puzzle4UrlWithComment {
 
     public static void main(String[] args) {
 

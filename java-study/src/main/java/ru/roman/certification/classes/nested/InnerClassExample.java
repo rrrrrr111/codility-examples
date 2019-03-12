@@ -4,7 +4,7 @@ package ru.roman.certification.classes.nested;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class InnerClassExample {
+class InnerClassExample {
 
     private void foo() {}
     private <S extends Serializable> void foo1(long param1, int vari) {

@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
  * - для получения инстанса не статического класса нужен интсанс класса
  * в который данный класс вложен
  */
-public class A028_InterfacesAccess {
+class A028_InterfacesAccess {
 
     void foo() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException {
 

@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 /**
  *
  */
-public class LexicallyScopedExample {
+class LexicallyScopedExample {
 
     public int x = 0;
     public int z = 0;

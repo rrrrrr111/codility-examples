@@ -9,7 +9,7 @@ import java.util.concurrent.Callable;
 /**
  *
  */
-public class Wrappers {
+class Wrappers {
 
     public static void main(String[] args) {
 

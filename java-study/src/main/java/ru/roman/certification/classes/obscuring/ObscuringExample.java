@@ -3,7 +3,7 @@ package ru.roman.certification.classes.obscuring;
 import java.lang.String;      // obscured by type declared bellow
 import java.lang.*;
 
-public class ObscuringExample {
+class ObscuringExample {
     Integer String;
 
     void foo() {

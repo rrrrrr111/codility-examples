@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author дтоь 12.01.2008
  */
-public class Compare {
+class Compare {
 
     public static void main(String[] args) {
 

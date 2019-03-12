@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class NonReifiableTypes {
+class NonReifiableTypes {
 
     public static void main(String[] args) {
 

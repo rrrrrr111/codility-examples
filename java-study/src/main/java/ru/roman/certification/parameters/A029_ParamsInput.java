@@ -12,7 +12,7 @@ package ru.roman.certification.parameters;
  *
  * @author churganov_r 22.03.2011
  */
-public class A029_ParamsInput {
+class A029_ParamsInput {
 
 
     void foo(String str, int i) {

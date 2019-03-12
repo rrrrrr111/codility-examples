@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * @author churganov_r
  */
-public class RegExps {
+class RegExps {
 
     void foo1() {
         Pattern pattern = Pattern.compile("(s(o)m)");

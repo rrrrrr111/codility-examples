@@ -10,7 +10,7 @@ package ru.roman.certification.naming;
  *
  * @author churganov_r 15.03.2011
  */
-public class Main {
+class Main {
 
     //    public static void main(String[] args) {
     //    }

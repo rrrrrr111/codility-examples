@@ -22,7 +22,7 @@ package ru.roman.certification.naming;
  *
  * @author churganov_r 16.03.2011
  */
-public class Naming {
+class Naming {
 
     boolean boolVarable;
     public static final boolean SOME_CONSTANT = false;

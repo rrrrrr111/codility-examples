@@ -7,7 +7,7 @@ package ru.roman.certification.primitives;
 /**
  * @author churganov_r
  */
-public class Increment extends Thread {
+class Increment extends Thread {
 
     int y, i;
 

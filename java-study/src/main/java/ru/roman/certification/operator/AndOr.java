@@ -3,7 +3,7 @@ package ru.roman.certification.operator;
 /**
  *
  */
-public class AndOr {
+class AndOr {
 
     public static void main(String[] args) {
 

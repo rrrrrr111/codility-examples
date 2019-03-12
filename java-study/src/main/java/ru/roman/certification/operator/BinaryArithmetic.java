@@ -17,7 +17,7 @@ package ru.roman.certification.operator;
  *
  * @author churganov_r 19.03.2011
  */
-public class BinaryArithmetic {
+class BinaryArithmetic {
 
     public static void main(String[] args) {
 

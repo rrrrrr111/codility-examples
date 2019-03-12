@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.constructor;
 
-public class InterfaceLoadingExample {
+class InterfaceLoadingExample {
 
     public static void main(String[] args) {
 

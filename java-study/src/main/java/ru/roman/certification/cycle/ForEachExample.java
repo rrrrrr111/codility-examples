@@ -6,7 +6,7 @@ import java.util.List;
 /**
  *
  */
-public class ForEachExample {
+class ForEachExample {
 
     public static void main(String[] args) {
 

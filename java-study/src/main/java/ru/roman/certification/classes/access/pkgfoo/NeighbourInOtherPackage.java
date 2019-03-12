@@ -35,7 +35,7 @@ import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
  *
  * @author myno 13.01.2008
  */
-public class NeighbourInOtherPackage extends AllAccessTypesFoo {
+class NeighbourInOtherPackage extends AllAccessTypesFoo {
 
     public String publicField = "publicField in NeighbourInOtherPackage";               // hiding
     protected String protectedField = "protectedField in NeighbourInOtherPackage";      // hiding

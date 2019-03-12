@@ -1,6 +1,6 @@
 package ru.roman.samples.hibernate;
 
-public class Cat {
+class Cat {
 
     private String id;
     private String name;

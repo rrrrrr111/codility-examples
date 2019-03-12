@@ -10,7 +10,7 @@ package ru.roman.certification.naming;
  *
  * @author churganov_r 19.03.2011
  */
-public class KeyWords {
+class KeyWords {
 
     //abstract
     //boolean

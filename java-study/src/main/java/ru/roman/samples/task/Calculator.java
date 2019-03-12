@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  *
  * @author churganov_r 01.03.10
  */
-public class Calculator {
+class Calculator {
 
     public static void main(String[] args) {
 

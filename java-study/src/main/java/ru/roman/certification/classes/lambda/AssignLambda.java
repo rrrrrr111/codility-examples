@@ -5,7 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.function.DoubleFunction;
 import java.util.function.Function;
 
-public class AssignLambda {
+class AssignLambda {
 
     public static void main(String[] args) throws Exception {
                                                     // Variable declarations

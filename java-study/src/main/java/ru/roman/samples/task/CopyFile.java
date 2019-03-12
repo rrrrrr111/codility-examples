@@ -16,7 +16,7 @@ import java.nio.channels.FileChannel;
  *
  * @author churganov_r 19.03.2011
  */
-public class CopyFile {
+class CopyFile {
 
     void copy(String src, String dst) throws IOException, FileNotFoundException {
         long now = System.currentTimeMillis();

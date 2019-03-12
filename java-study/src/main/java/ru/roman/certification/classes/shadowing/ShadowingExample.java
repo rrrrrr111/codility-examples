@@ -4,7 +4,7 @@ import java.util.Vector;
 /**
  *
  */
-public class ShadowingExample {
+class ShadowingExample {
     int foo;
     int bar;
 

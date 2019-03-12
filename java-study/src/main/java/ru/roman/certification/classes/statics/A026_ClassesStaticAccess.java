@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * @author churganov_r 16.03.2011
  */
-public class A026_ClassesStaticAccess {
+class A026_ClassesStaticAccess {
 
 
     class A026_Classes1 {

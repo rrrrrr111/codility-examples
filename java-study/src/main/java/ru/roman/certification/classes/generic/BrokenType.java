@@ -5,7 +5,7 @@ import static ru.roman.certification.classes.generic.TigerThrower.sneakyThrow;
 /**
  *
  */
-public class BrokenType {
+class BrokenType {
 
     public static void main(String[] args) {
 

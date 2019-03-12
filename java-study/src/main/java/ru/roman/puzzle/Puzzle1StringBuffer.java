@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author churganov_r 15.03.2011
  */
-public class Puzzle1StringBuffer {
+class Puzzle1StringBuffer {
 
     private static Random rnd = new Random();
 

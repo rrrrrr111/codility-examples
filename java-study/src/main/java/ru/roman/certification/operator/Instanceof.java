@@ -5,7 +5,7 @@ import java.util.List;
 /**
  *
  */
-public class Instanceof {
+class Instanceof {
 
     interface MyInterface {}
 

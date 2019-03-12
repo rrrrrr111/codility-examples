@@ -9,7 +9,7 @@ package ru.roman.samples.task;
  *
  * @author churganov_r
  */
-public class Recursion {
+class Recursion {
 
     int i;
 

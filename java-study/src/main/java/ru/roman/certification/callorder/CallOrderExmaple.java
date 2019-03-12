@@ -3,7 +3,7 @@ package ru.roman.certification.callorder;
 
 import java.util.stream.Stream;
 
-public class CallOrderExmaple {
+class CallOrderExmaple {
 
     public static void main(String[] args) {
         exec1();

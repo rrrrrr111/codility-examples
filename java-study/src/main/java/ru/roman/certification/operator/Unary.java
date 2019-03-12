@@ -20,7 +20,7 @@ package ru.roman.certification.operator;
  *
  * @author дтоь 13.03.2011
  */
-public class Unary {
+class Unary {
 
     public static void main(String[] args) {
 

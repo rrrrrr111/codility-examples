@@ -29,7 +29,7 @@ import java.util.List;
  *
  * @author churganov_r 17.03.2011
  */
-public class Ternary {
+class Ternary {
 
 
     public static void main(String[] args) {

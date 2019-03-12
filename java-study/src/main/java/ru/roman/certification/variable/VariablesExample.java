@@ -22,7 +22,7 @@ package ru.roman.certification.variable;
  *
  * @author churganov_r 16.03.2011
  */
-public class VariablesExample {
+class VariablesExample {
 
     void foo() {
 

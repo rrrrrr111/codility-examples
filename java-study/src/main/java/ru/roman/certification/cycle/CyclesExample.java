@@ -3,7 +3,7 @@ package ru.roman.certification.cycle;
 /**
  *
  */
-public class CyclesExample {
+class CyclesExample {
 
 
     public static void main(String[] args) {

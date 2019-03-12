@@ -12,7 +12,7 @@ package ru.roman.certification.classes;
  */
 public abstract class A027_ClassesAbstract {
 
-    public class A027_Classes1 {
+    class A027_Classes1 {
 
         //static void foo1(){     // ОШИБКА - класс внутри абстрактного класса
         //}                         // считается вложенным

@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * @author churganov_r 16.03.2011
  */
-public class A025_ClassesAccess {
+class A025_ClassesAccess {
 
     void foo() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, InstantiationException {
 

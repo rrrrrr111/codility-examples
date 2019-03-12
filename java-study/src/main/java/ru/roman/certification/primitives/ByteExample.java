@@ -27,7 +27,7 @@ package ru.roman.certification.primitives;
  *
  * @author churganov_r 15.03.2011
  */
-public class ByteExample {
+class ByteExample {
 
     public static void main(String[] args) {
 

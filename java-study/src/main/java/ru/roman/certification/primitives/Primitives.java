@@ -123,7 +123,7 @@ import java.math.BigDecimal;
  *
  * @author дтоь 12.01.2008
  */
-public class Primitives {
+class Primitives {
 
     // числовые типы
     // целые типы           размер      мин                 макс

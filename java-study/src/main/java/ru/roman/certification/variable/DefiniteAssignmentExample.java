@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  *
  */
-public class DefiniteAssignmentExample {
+class DefiniteAssignmentExample {
 
     public static void main(String[] args) throws IOException {
 

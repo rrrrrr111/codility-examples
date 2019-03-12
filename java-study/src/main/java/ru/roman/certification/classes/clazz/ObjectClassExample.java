@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 /**
  *
  */
-public class ObjectClassExample {
+class ObjectClassExample {
 
     public static void main(String[] args) throws Exception {
 

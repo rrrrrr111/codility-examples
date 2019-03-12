@@ -3,7 +3,7 @@ package ru.roman.certification.classes.hiding;
 /**
  *
  */
-public class HidingExample {}
+class HidingExample {}
 
 class Foo {
            int n = 1;

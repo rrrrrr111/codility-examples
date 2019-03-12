@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class RegexTestHarness {
+class RegexTestHarness {
 
     public static void main(String[] args) {
         Console console = System.console();

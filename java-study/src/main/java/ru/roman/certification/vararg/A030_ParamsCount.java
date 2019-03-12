@@ -12,7 +12,7 @@ package ru.roman.certification.vararg;
  *
  * @author churganov_r 21.03.2011
  */
-public class A030_ParamsCount {
+class A030_ParamsCount {
 
     A030_ParamsCount(int i, String... str) {
         for (String s : str) {

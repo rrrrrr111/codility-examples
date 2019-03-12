@@ -20,7 +20,7 @@ package ru.roman.certification.classes.statics;
 public final class A026_ClassesStatic {
 
 
-    public class A026_Classes1 {
+    class A026_Classes1 {
 
         void foo() {
             class A026_Classes2 {

@@ -12,7 +12,7 @@ import ru.roman.certification.classes.access.pkgbar.AllAccessTypesFoo;
  *
  * @author myno 13.01.2008
  */
-public class JustInPackage {
+class JustInPackage {
 
     public static void main(String[] args) {
 

@@ -28,7 +28,7 @@ package ru.roman.certification.operator;
  *
  * @author churganov_r 17.03.2011
  */
-public class Boolean {
+class Boolean {
 
     public static void main(String[] args) {
 

@@ -9,7 +9,7 @@ package ru.roman.samples.task;
  *
  * @author churganov_r
  */
-public class Factorial {
+class Factorial {
 
     int factorial1(int arg) {
         int res = arg > 0 ? arg : 1;

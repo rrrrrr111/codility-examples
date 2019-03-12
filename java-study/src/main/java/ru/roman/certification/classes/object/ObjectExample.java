@@ -7,7 +7,7 @@ package ru.roman.certification.classes.object;
 /**
  * @author churganov_r
  */
-public class ObjectExample {
+class ObjectExample {
 
     public static void main(String args[]) {
 
