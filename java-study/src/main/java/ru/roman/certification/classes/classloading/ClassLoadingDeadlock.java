@@ -7,7 +7,6 @@ public class ClassLoadingDeadlock {
     }
 }
 
-
 class Foo {
     static {
         Thread t = new Thread(() -> foo(2));
@@ -20,6 +19,7 @@ class Foo {
             throw new RuntimeException(e);
         }
     }
+
     static void foo(int i) {
         System.out.println(Thread.currentThread().getName() + " >> " + i);
     }
