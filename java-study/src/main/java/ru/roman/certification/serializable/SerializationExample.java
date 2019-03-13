@@ -19,11 +19,11 @@ class SerializationExample {
              ObjectInputStream in = new ObjectInputStream(
                      new FileInputStream(filename))) {
 
-            var objBefore = new Demom(777);
+            var objBefore = new Demo(777);
 
             System.out.println("Before >>> " + objBefore);
             out.writeObject(objBefore);
-            var objAfter = (Demom) in.readObject();
+            var objAfter = (Demo) in.readObject();
 
             System.out.println("After >>> " + objAfter);
 
@@ -33,6 +33,7 @@ class SerializationExample {
 
 class Demo implements Serializable {
     private static final long serialVersionUID = 88888888L;
+    private static final Object INSTANCE = "GAGA";
 
     transient int i1 = 1231231;
     int i2 = 0xffff;
@@ -53,9 +54,11 @@ class Demo implements Serializable {
         System.out.println("read >>> ");
     }
 
+    //private Object readResolve() { return INSTANCE; }
+
     @Override
     public String toString() {
-        return new StringJoiner(", ", Demom.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Demo.class.getSimpleName() + "[", "]")
                 .add("i1=" + i1)
                 .add("i2=" + i2)
                 .add("i3=" + i3)

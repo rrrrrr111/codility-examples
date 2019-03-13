@@ -4,11 +4,12 @@ import static ru.roman.certification.classes.shadowing.Food.toFoo;
 
 class MethodsExample {
 
-    public static void main(String[] args) {
+    public void gg() {
 
         Food.toFoo(new Object());
         toFoo(new Object());
+        toFoo(1);
     }
 
-    //static void toFoo(int i) {}  // шавдовит импорт, сразу все overloaded методы
+    //void toFoo(int i) {}  // шавдовит импорт, сразу все overloaded методы
 }

@@ -31,11 +31,11 @@ class SerializableDemo {
         ArrayList list = new ArrayList();
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
-            Demom obj = new Demom(r.nextInt() % 1000);
+            Demo obj = new Demo(r.nextInt() % 1000);
             list.add(obj);
         }
 //--- 2. Добавим еще один элемент в 10-ю позицию списка
-        list.add(10, new Demom(1111));
+        list.add(10, new Demo(1111));
 //--- 3. Распечатаем результат
         print("Исходный список", list);
 //--- 4. Сохраним это в файле
@@ -55,7 +55,7 @@ class SerializableDemo {
                 }
         }
 //--- 5. Восстановим все из файла
-        Demom.dropCounter();     // сброс счетчика объектов
+        //Demo.dropCounter();     // сброс счетчика объектов
         ObjectInputStream in = null;
         try {
             in = new ObjectInputStream(new BufferedInputStream(

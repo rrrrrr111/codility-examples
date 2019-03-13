@@ -37,4 +37,10 @@ public class AllAccessTypesFoo {
             return privateField;
         }
     }
+
+    private static class PrivateMamber {
+        public void foo() {
+            System.out.println("Private call");
+        }
+    }
 }
