@@ -1,8 +1,8 @@
-package ru.roman.jcl.io;
+package ru.roman.jcl.lang;
 
 import java.nio.charset.Charset;
 
-class SystePropertyExample {
+class SystemPropertyExample {
 
     public static void main(String[] args) {
 
