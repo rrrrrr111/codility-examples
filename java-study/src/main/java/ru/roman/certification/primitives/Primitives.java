@@ -167,6 +167,7 @@ class Primitives {
         }
         {
             int i1 = 1;
+            int i = -0xFFFFFFFF;                       //
             int i2 = 0x1;
             int i21 = 0XfFbFAFfF;
             int i3 = 07;
@@ -190,7 +191,7 @@ class Primitives {
 
             System.out.println(-0xFFFFFFFF == 0x1);  // true
             System.out.println(-i8 == i8);  // true - отрицание минимального числа не приводит по факту к его изменению (исключение)
-            System.out.println(i99);
+            System.out.println("MY INT >>>> " + i);
             System.out.println(Integer.MAX_VALUE);
         }
 
