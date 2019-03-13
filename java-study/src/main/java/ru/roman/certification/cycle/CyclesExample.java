@@ -39,6 +39,9 @@ class CyclesExample {
     }
 
     int foo (int b) {
+
+        //for (int i = 0; i < 1; i++) int some = 1;   // illegal, statement
+
         for(;;) {
             if (b > 0) return 1;
         }
