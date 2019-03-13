@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.classloading;
 
-public class ClassLoadingDeadlock {
+class ClassLoadingDeadlock {
 
     public static void main(String[] args) {
         Foo.foo(1);
