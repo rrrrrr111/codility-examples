@@ -33,7 +33,7 @@ class ShadowingExample {
 
 class Test1 {
     static int x;
-    public static void main(String[] args) {
+    public synchronized final strictfp static <T extends String> void main(String... args) {
         //int x = x;
         int x = (x = 2) * 2;
 
