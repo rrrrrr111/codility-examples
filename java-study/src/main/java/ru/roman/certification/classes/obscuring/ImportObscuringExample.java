@@ -3,14 +3,14 @@ package ru.roman.certification.classes.obscuring;
 import java.lang.String;      // obscured by type declared bellow
 import java.lang.*;
 
-class ObscuringExample {
+class ImportObscuringExample {
     Integer String;
 
     void foo() {
         // new String("");    // illegal, java.lang.String obscured
         new String();
 
-        String.valueOf(123);  // ObscuringExample.String type obscured by variable String это не static метод
+        String.valueOf(123);  // ImportObscuringExample.String type obscured by variable String это не static метод
                               // String а static метод Integer вызванный на переменной String типа Integer
                               // если переменную убрать, нескомпилится, т к у типа ниже нет такого метода
     }

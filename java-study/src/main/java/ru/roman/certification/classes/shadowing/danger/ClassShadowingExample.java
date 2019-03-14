@@ -1,4 +1,4 @@
-package ru.roman.certification.classes.shadowing;
+package ru.roman.certification.classes.shadowing.danger;
 
 public class ClassShadowingExample {
 }
