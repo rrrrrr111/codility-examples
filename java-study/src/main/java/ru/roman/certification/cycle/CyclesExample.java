@@ -31,10 +31,12 @@ class CyclesExample {
             break out;
         }
 
-        http:
-//hi.there.com
-        if (true) {
+        http://hi.there.com
 
+        if (true) {
+            for (;;);
+        } else {
+            //for (;;);;       // illegal
         }
     }
 
@@ -45,5 +47,6 @@ class CyclesExample {
         for(;;) {
             if (b > 0) return 1;
         }
+        //;                                             // illegal
     }
 }
