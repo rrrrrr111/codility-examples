@@ -12,7 +12,12 @@ class ThisSuperExample {
     class InnerShanTaram extends InnerSham {
         InnerShanTaram() {
             ThisSuperExample.this.super();  // передаем инстанс обрамляющего класса на вызов конструктора суперкласса
-            //this.super();
+        }
+    }
+
+    static class InnerBarabah extends InnerSham {
+        InnerBarabah() {
+            new ThisSuperExample().super();  // передаем инстанс обрамляющего класса на вызов конструктора суперкласса
         }
     }
 }
