@@ -26,8 +26,11 @@ class NestedClassExample {
         static class Bbb<T> {
         }
 
-        class Boo<T> {
+        class Boo<T> extends SimpleNested1 {
         }
+    }
+
+    static class Boo<T> extends NestedClassExample {
     }
 
     interface Intf{}
