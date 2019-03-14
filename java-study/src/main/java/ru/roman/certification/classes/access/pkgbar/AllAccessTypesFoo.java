@@ -38,9 +38,10 @@ public class AllAccessTypesFoo {
         }
     }
 
-    private static class PrivateMamber {
+    private static class NestedPrivate {
         public void foo() {
             System.out.println("Private call");
         }
     }
+    protected static class NestedProtected {}
 }

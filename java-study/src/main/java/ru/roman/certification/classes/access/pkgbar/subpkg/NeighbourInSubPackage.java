@@ -42,5 +42,7 @@ class NeighbourInSubPackage extends AllAccessTypesFoo {
         //new AllAccessTypesFoo().protectedMethod();       // not accessible in subpackage
         //new AllAccessTypesFoo().packagePrivateMethod();  // not accessible in subpackage
         //new AllAccessTypesFoo().privateMethod();         // accessible in own class only
+
+        //new NestedProtected();  // illegal, класс protected и DC protected
     }
 }
