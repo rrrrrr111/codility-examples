@@ -65,7 +65,7 @@ public class A025_Classes {
         }
     }
 
-    public static class A025_Classes2 {
+    static class A025_Classes2 {
 
         static int i = 0;
 
@@ -80,24 +80,24 @@ public class A025_Classes {
         }
     }
 
-    public abstract class A025_Classes3 {
+    abstract class A025_Classes3 {
 
         void foo() {
         }
     }
 
-    public static abstract class A025_Classes4 {
+    static abstract class A025_Classes4 {
 
         static void foo() {
         }
     }
 
-    public interface A025_Interface1 {
+    interface A025_Interface1 {
 
         void foo();
     }
 
-    public abstract interface A025_Interface2 {
+    abstract interface A025_Interface2 {
 
         abstract void foo();
     }
@@ -234,6 +234,6 @@ interface A025_Interface1 {
 
 abstract interface A025_Interface2 {
 }
-//public static abstract interface A025_Interface3 {
+//static abstract interface A025_Interface3 {
 //}
 

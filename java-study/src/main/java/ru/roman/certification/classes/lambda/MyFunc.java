@@ -4,7 +4,7 @@ package ru.roman.certification.classes.lambda;
  *
  */
 @FunctionalInterface
-public interface MyFunc {
+interface MyFunc {
 
     void foo();
 

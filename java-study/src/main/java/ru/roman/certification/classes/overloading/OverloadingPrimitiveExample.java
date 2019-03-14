@@ -3,7 +3,7 @@ package ru.roman.certification.classes.overloading;
 
 import java.util.Arrays;
 
-public abstract class OverloadingPrimitiveExample {
+abstract class OverloadingPrimitiveExample {
 
     public static void main(String[] args) {
         OverloadingPrimitiveExample o = null;

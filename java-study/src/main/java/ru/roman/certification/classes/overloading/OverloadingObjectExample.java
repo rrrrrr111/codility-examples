@@ -1,7 +1,7 @@
 package ru.roman.certification.classes.overloading;
 
 
-public abstract class OverloadingObjectExample {
+abstract class OverloadingObjectExample {
 
     public static void main(String[] args) {
         OverloadingObjectExample o = null;

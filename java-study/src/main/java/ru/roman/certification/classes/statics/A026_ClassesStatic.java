@@ -37,7 +37,7 @@ public final class A026_ClassesStatic {
         }
     }
 
-    public static class A026_Classes2 {
+    static class A026_Classes2 {
 
         static void foo() {
         }
@@ -47,29 +47,29 @@ public final class A026_ClassesStatic {
         }
     }
 
-    public abstract class A026_Classes3 {
+    abstract class A026_Classes3 {
 
         void foo() {
         }
     }
 
-    public static abstract class A026_Classes4 {
+    static abstract class A026_Classes4 {
 
         static void foo() {
         }
     }
 
-    public interface A026_Interface1 {
+    interface A026_Interface1 {
 
         void foo();
     }
 
-    public abstract interface A026_Interface2 {
+    abstract interface A026_Interface2 {
 
         abstract void foo();
     }
 
-    public static abstract interface A026_Interface3 {
+    static abstract interface A026_Interface3 {
 
         abstract void foo();
     }

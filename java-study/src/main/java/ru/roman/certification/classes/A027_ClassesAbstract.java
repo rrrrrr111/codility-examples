@@ -10,7 +10,7 @@ package ru.roman.certification.classes;
  *
  * 2. В абстрактном классе абстрактный метод можно дернуть из не абстрактного
  */
-public abstract class A027_ClassesAbstract {
+abstract class A027_ClassesAbstract {
 
     class A027_Classes1 {
 
@@ -30,7 +30,7 @@ public abstract class A027_ClassesAbstract {
         }
     }
 
-    public static class A027_Classes2 {
+    static class A027_Classes2 {
 
         static int i = 0;
 
@@ -45,30 +45,30 @@ public abstract class A027_ClassesAbstract {
         }
     }
 
-    public abstract class A027_Classes3 {
+    abstract class A027_Classes3 {
 
         void foo() {
         }
 
     }
 
-    public static abstract class A027_Classes4 {
+    static abstract class A027_Classes4 {
 
         static void foo() {
         }
     }
 
-    public interface A027_Interface1 {
+    interface A027_Interface1 {
 
         void foo();
     }
 
-    public abstract interface A027_Interface2 {
+    abstract interface A027_Interface2 {
 
         abstract void foo();
     }
 
-    public static abstract interface A027_Interface3 {
+    static abstract interface A027_Interface3 {
 
         void foo();
 

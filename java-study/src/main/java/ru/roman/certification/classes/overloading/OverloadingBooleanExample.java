@@ -1,7 +1,7 @@
 package ru.roman.certification.classes.overloading;
 
 
-public abstract class OverloadingBooleanExample {
+abstract class OverloadingBooleanExample {
 
     public static void main(String[] args) {
         OverloadingBooleanExample o = null;

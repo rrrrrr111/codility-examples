@@ -58,7 +58,7 @@ interface A028_Interfaces {
         }
     }
 
-    public static class A028_Classes2 {
+    static class A028_Classes2 {
 
         static int i = 0;
 
@@ -76,12 +76,12 @@ interface A028_Interfaces {
         }
     }
 
-    public abstract class A028_Classes3 {
+    abstract class A028_Classes3 {
 
         void foo() {
         }
 
-        public static abstract class A028_Classes5 {
+        static abstract class A028_Classes5 {
             interface A028_Interfaces1 {}
         }
 
@@ -89,7 +89,7 @@ interface A028_Interfaces {
         }
     }
 
-    public static abstract class A028_Classes4 {
+    static abstract class A028_Classes4 {
 
         static void foo() {
         }
@@ -98,7 +98,7 @@ interface A028_Interfaces {
         }
     }
 
-    public interface A028_Interface1 {
+    interface A028_Interface1 {
 
         void foo();
 
@@ -106,7 +106,7 @@ interface A028_Interfaces {
         }
     }
 
-    public abstract interface A028_Interface2 {
+    abstract interface A028_Interface2 {
         public static final int INT = 2;
 
         abstract void foo();
@@ -115,7 +115,7 @@ interface A028_Interfaces {
         }
     }
 
-    public static abstract interface A028_Interface3 {
+    static abstract interface A028_Interface3 {
         public static final int INT = 3;
 
         void foo();

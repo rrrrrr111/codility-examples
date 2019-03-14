@@ -1,6 +1,6 @@
 package ru.roman.certification.classes.method;
 
-public class StaticMethodCallExample {
+class StaticMethodCallExample {
 
     public static void main(String[] args) {
         ((StaticMethodCallExample) null).call();

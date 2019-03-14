@@ -3,7 +3,7 @@ package ru.roman.certification.classes.overloading;
 
 import java.util.concurrent.Callable;
 
-public abstract class OverloadingLambdaExample {
+abstract class OverloadingLambdaExample {
 
     public static void main(String[] args) {
         OverloadingLambdaExample o = null;
