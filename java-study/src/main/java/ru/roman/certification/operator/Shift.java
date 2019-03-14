@@ -4,6 +4,8 @@
  */
 package ru.roman.certification.operator;
 
+import static org.apache.commons.lang3.StringUtils.leftPad;
+
 /**
  * @author churganov_r 22.03.2011
  */
@@ -65,8 +67,14 @@ class CountBits {
     }
 
     public static void main(String[] args) {
-        int count = count((short) -1);
-        System.out.println(count);
-        System.out.println(Integer.toBinaryString(-1 >>> 31));
+        //int count = count((short) -1);
+        //System.out.println(count);
+        //System.out.println(Integer.toBinaryString(-1 >>> 31));
+
+        int i = 0xfffda7f6;
+        System.out.println((i * 32 == i << 5)
+                + " \n>> " + leftPad(Integer.toBinaryString(i), 50)
+                + " \n>> " + leftPad(Integer.toBinaryString(i * 32), 50)
+                + " \n>> " + leftPad(Integer.toBinaryString(i << 5), 50));
     }
 }
