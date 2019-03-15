@@ -58,18 +58,18 @@ class Solution1EquiLeader {
             return 0;
         }
 
-        int count = 0;
+        int equiLeaderCount = 0;
         for (int i = 0; i < counters.length - 1; i++) {
 
             int leftCount = counters[i];
             int rightCount = counters[counters.length - 1] - counters[i];
 
-            if (leftCount > (i + 1) / 2
-                    && rightCount > (counters.length - i - 1) / 2) {
-                count++;
+            if (leftCount > (i + 1) / 2                                 // checking the the leader is a leader of the sub range
+                    && rightCount > (counters.length - i - 1) / 2) {    // and in the second subrange
+                equiLeaderCount++;
             }
         }
-        return count;
+        return equiLeaderCount;
     }
 
     private Integer findLeader(int[] A, int[] counters) {
