@@ -6,8 +6,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution2RotateTest {
-    private Solution2Rotate subj = new Solution2Rotate()
+class Solution2CyclicRotationTest {
+    private Solution2CyclicRotation subj = new Solution2CyclicRotation()
 
     @DataProvider
     private Object[][] provider() {

@@ -6,9 +6,9 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution1CountSeqTest {
+class Solution1BinaryGapTest {
 
-    private Solution1CountSeq subj = new Solution1CountSeq()
+    private Solution1BinaryGap subj = new Solution1BinaryGap()
 
     @DataProvider
     private Object[][] provider() {

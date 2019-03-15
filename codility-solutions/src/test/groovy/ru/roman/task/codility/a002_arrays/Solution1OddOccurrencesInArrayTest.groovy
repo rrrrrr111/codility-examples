@@ -6,8 +6,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution1FindDuplicatesTest {
-    private Solution1FindDuplicates subj = new Solution1FindDuplicates()
+class Solution1OddOccurrencesInArrayTest {
+    private Solution1OddOccurrencesInArray subj = new Solution1OddOccurrencesInArray()
 
     @DataProvider
     private Object[][] provider() {
