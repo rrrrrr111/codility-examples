@@ -1,9 +1,7 @@
 package ru.roman.algo;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
-import static org.apache.commons.lang3.StringUtils.leftPad;
+import static ru.roman.algo.PrintUtil.printArray;
+import static ru.roman.algo.PrintUtil.printRange;
 
 /**
  *
@@ -15,16 +13,8 @@ class FibonacciNumbersExample {
         int maxValue = 46;
         int[] fibonacci = prepareFibonacciNumbers(maxValue);
 
-        System.out.printf("Nums     : %s%n",
-                Arrays.toString(
-                        IntStream.range(0, maxValue + 1).mapToObj(v -> leftPad("" + v, 10)).toArray()
-                )
-        );
-        System.out.printf("Fibonacci: %s%n",
-                Arrays.toString(
-                        IntStream.of(fibonacci).mapToObj(v -> leftPad("" + v, 10)).toArray()
-                )
-        );
+        System.out.printf("Nums     : %s%n", printRange(0, maxValue + 1, 10));
+        System.out.printf("Fibonacci: %s%n", printArray(fibonacci, 10));
     }
 
     private static int[] prepareFibonacciNumbers(int maxValue) {
@@ -37,5 +27,4 @@ class FibonacciNumbersExample {
         }
         return result;
     }
-
 }

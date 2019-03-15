@@ -1,9 +1,5 @@
 package ru.roman.algo;
 
-import java.util.Arrays;
-
-import static org.apache.commons.lang3.StringUtils.leftPad;
-
 /**
  *
  */
@@ -15,8 +11,8 @@ class CountersExample {
         int[] arr = {1, 2, 3, 0, 0, 0, 4, 5, 6, 7, 8, 56, 7, 6, 2, 2, 2, 23, 4};
         int[] counters = prepareCounters(arr, maxValue);
 
-        System.out.printf("Nums     : %s%n", printArray(arr, 3));
-        System.out.printf("Counters : %s%n", printArray(counters, 3));
+        System.out.printf("Nums     : %s%n", PrintUtil.printArray(arr, 3));
+        System.out.printf("Counters : %s%n", PrintUtil.printArray(counters, 3));
     }
 
     private static int[] prepareCounters(int[] A, int maxValue) {
@@ -29,9 +25,4 @@ class CountersExample {
         return counters;
     }
 
-    private static String printArray(int[] arr, int leftPad) {
-        return Arrays.toString(
-                Arrays.stream(arr).mapToObj(v -> leftPad("" + v, leftPad)).toArray()
-        );
-    }
 }

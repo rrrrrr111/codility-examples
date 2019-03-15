@@ -1,9 +1,7 @@
 package ru.roman.algo;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
-import static org.apache.commons.lang3.StringUtils.leftPad;
+import static ru.roman.algo.PrintUtil.printArray;
+import static ru.roman.algo.PrintUtil.printRange;
 
 /**
  *
@@ -15,16 +13,8 @@ class SieveOfEratosthenesExample {
         int maxValue = 1_000;
         int[] factors = preparePrimeFactors(maxValue);
 
-        System.out.printf("Nums    : %s%n",
-                Arrays.toString(
-                        IntStream.range(0, maxValue + 1).mapToObj(v -> leftPad("" + v, 3)).toArray()
-                )
-        );
-        System.out.printf("Factors : %s%n",
-                Arrays.toString(
-                        IntStream.of(factors).mapToObj(v -> leftPad("" + v, 3)).toArray()
-                )
-        );
+        System.out.printf("Nums    : %s%n", printRange(0, maxValue + 1, 3));
+        System.out.printf("Factors : %s%n", printArray(factors, 3));
     }
 
     private static int[] preparePrimeFactors(int maxValue) {
@@ -41,5 +31,4 @@ class SieveOfEratosthenesExample {
         }
         return factors;
     }
-
 }
