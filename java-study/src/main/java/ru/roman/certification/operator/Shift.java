@@ -70,6 +70,7 @@ class CountBits {
         //int count = count((short) -1);
         //System.out.println(count);
         //System.out.println(Integer.toBinaryString(-1 >>> 31));
+        System.out.println(Math.pow(2, 30) == 1 << 30);
 
         int i = 0xfffda7f6;
         System.out.println((i * 32 == i << 5)

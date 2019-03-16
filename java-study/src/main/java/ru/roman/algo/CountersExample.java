@@ -18,11 +18,14 @@ class CountersExample {
     private static int[] prepareCounters(int[] A, int maxValue) {
         int[] counters = new int[maxValue + 1];
         for (int a : A) {
-            if (a > maxValue) throw new IllegalArgumentException("Value:" + a + " exceed max value:" + maxValue);
-            if (a < 0) throw new IllegalArgumentException("Value:" + a + " less then zero");
+            if (a > maxValue) {
+                throw new IllegalArgumentException("Value:" + a + " exceed max value:" + maxValue);
+            }
+            if (a < 0) {
+                throw new IllegalArgumentException("Value:" + a + " less then zero");
+            }
             counters[a]++;
         }
         return counters;
     }
-
 }

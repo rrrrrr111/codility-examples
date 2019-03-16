@@ -9,6 +9,12 @@ final class PrintUtil {
     private PrintUtil() {
     }
 
+    static String printArray(Object[] arr, int leftPad) {
+        return Arrays.toString(
+                Arrays.stream(arr).map(v -> leftPad("" + v, leftPad)).toArray()
+        );
+    }
+
     static String printArray(int[] arr, int leftPad) {
         return Arrays.toString(
                 Arrays.stream(arr).mapToObj(v -> leftPad("" + v, leftPad)).toArray()

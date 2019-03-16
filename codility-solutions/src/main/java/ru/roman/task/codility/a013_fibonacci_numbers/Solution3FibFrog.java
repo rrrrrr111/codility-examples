@@ -107,7 +107,6 @@ class Solution3FibFrog {
     private static int[] prepareFibonacciNumbers() {
         int max = 26;
         int[] result = new int[max];
-        result[0] = 1;
         result[1] = 1;
 
         for (int i = 2; i < result.length; i++) {
