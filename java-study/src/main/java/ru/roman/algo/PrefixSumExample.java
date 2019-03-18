@@ -20,12 +20,13 @@ public class PrefixSumExample {
     private static int[][] prepareSums(int[] array) {
         int[][] pref = new int[2][array.length];
 
-        for (int i = 0; i < array.length; i++) {
+        pref[0][0] = array[0];                                 // установим первый элемент
+        pref[1][array.length - 1] = array[array.length - 1];
 
-            pref[0][i] = i == 0 ? array[i] : pref[0][i - 1] + array[i];
-            pref[1][array.length - i - 1] = i == 0
-                    ? array[array.length - 1]
-                    : pref[1][array.length - i] + array[array.length - i - 1];
+        for (int i = 1; i < array.length; i++) {               // первый не обязателен, последний обязателен
+
+            pref[0][i] = pref[0][i - 1] + array[i];
+            pref[1][array.length - i - 1] = pref[1][array.length - i] + array[array.length - i - 1];
         }
         return pref;
     }

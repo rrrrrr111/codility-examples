@@ -51,7 +51,7 @@ class Solution1CountNonDivisibleWithSieve {
     public int[] solution(int[] A) {
         //log("On input: %s", Arrays.toString(A));
 
-        int[] factors = new int[100_001];
+        int[] sieve = new int[100_001];
         int i = 2;
         int j;
         for (; ; ) {
@@ -61,7 +61,7 @@ class Solution1CountNonDivisibleWithSieve {
             }
             int k = j;
             while (k < 100_001) {
-                factors[k] = i;
+                sieve[k] = i;
                 k += i;
             }
             i++;
@@ -72,11 +72,11 @@ class Solution1CountNonDivisibleWithSieve {
             counters[a]++;
         }
 
-        return sieveAlg1(A, factors, counters);
-        //return sieveAlg2(A, factors, counters);
+        return sieveAlg1(A, sieve, counters);
+        //return sieveAlg2(A, sieve, counters);
     }
 
-    private int[] sieveAlg1(int[] A, int[] factors, int[] counters) {
+    private int[] sieveAlg1(int[] A, int[] sieve, int[] counters) {
         final int totalDividers = A.length;
         final int[] result = new int[A.length];
         final Set<Integer> divs = new HashSet<>();
@@ -96,7 +96,7 @@ class Solution1CountNonDivisibleWithSieve {
 
             while (!queue.isEmpty()) {
                 int next = queue.pollFirst();
-                int prime = factors[next];
+                int factor = sieve[next];
 
                 int nextSymmetric = a / next;
                 if (divs.add(nextSymmetric)) {
@@ -105,26 +105,26 @@ class Solution1CountNonDivisibleWithSieve {
                     //log("Removing a/x %s(%s), counter: %s", nextSymmetric, counters[nextSymmetric], count);
                 }
 
-                if (prime > 0) {
+                if (factor > 0) {
 
-                    if (divs.add(prime)) {
-                        queue.push(prime);
-                        count += counters[prime];
-                        //log("Removing factor %s(%s), counter: %s", prime, counters[prime], result[i]);
+                    if (divs.add(factor)) {
+                        queue.push(factor);
+                        count += counters[factor];
+                        //log("Removing factor %s(%s), counter: %s", factor, counters[factor], result[i]);
                     }
 
-                    int primeSymmetric = a / prime;
-                    if (divs.add(primeSymmetric)) {
-                        queue.push(primeSymmetric);
-                        count += counters[primeSymmetric];
-                        //log("Removing a/prime %s(%s), counter: %s", primeSymmetric, counters[primeSymmetric], count);
+                    int symmetric = a / factor;
+                    if (divs.add(symmetric)) {
+                        queue.push(symmetric);
+                        count += counters[symmetric];
+                        //log("Removing a/factor %s(%s), counter: %s", symmetric, counters[symmetric], count);
                     }
 
-                    int primeToNextSymmetric = next / prime;
-                    if (divs.add(primeToNextSymmetric)) {
-                        queue.push(primeToNextSymmetric);
-                        count += counters[primeToNextSymmetric];
-                        //log("Removing x/prime %s(%s), counter: %s", primeToNextSymmetric, counters[primeToNextSymmetric], count);
+                    int factorForNextSymmetric = next / factor;
+                    if (divs.add(factorForNextSymmetric)) {
+                        queue.push(factorForNextSymmetric);
+                        count += counters[factorForNextSymmetric];
+                        //log("Removing x/factor %s(%s), counter: %s", factorForNextSymmetric, counters[factorForNextSymmetric], count);
                     }
                 }
                 if (count == totalDividers) {

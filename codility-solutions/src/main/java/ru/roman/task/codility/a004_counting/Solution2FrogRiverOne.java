@@ -10,7 +10,7 @@ import java.util.Arrays;
  * The goal is to find the earliest time when the frog can jump to the other side of the river. The frog can cross only when leaves appear at every position across the river from 1 to X (that is, we want to find the earliest moment when all the positions from 1 to X are covered by leaves). You may assume that the speed of the current in the river is negligibly small, i.e. the leaves do not change their positions once they fall in the river.
  * <p>
  * For example, you are given integer X = 5 and array A such that:
- * <p>
+ * <p><pre>
  * A[0] = 1
  * A[1] = 3
  * A[2] = 1
@@ -18,7 +18,7 @@ import java.util.Arrays;
  * A[4] = 2
  * A[5] = 3
  * A[6] = 5
- * A[7] = 4
+ * A[7] = 4</pre>
  * In second 6, a leaf falls into position 5. This is the earliest time when leaves appear in every position across the river.
  * <p>
  * Write a function:
@@ -30,7 +30,7 @@ import java.util.Arrays;
  * If the frog is never able to jump to the other side of the river, the function should return −1.
  * <p>
  * For example, given X = 5 and array A such that:
- * <p>
+ * <pre>
  * A[0] = 1
  * A[1] = 3
  * A[2] = 1
@@ -38,7 +38,7 @@ import java.util.Arrays;
  * A[4] = 2
  * A[5] = 3
  * A[6] = 5
- * A[7] = 4
+ * A[7] = 4</pre>
  * the function should return 6, as explained above.
  * <p>
  * Write an efficient algorithm for the following assumptions:
@@ -50,30 +50,6 @@ class Solution2FrogRiverOne {
     public int solution(int X, int[] A) {
         System.out.println("On input: " + Arrays.toString(A) + " X=" + X);
 
-        int[] counters = transformToCounters(A, X);
-        System.out.println("counters: " + Arrays.toString(counters) + " X=" + X);
-
-        for (int i = 1; i < counters.length; i++) {
-            int counter = counters[i];
-            if (counter < 1) {
-                return -1;
-            }
-        }
-        return find(A, X);
-    }
-
-    private int[] transformToCounters(int[] A, int range) {
-        int[] counters = new int[range + 1];
-        for (int a : A) {
-            if (a > counters.length - 1) {
-                continue;
-            }
-            counters[a]++;
-        }
-        return counters;
-    }
-
-    private int find(int[] A, int X) {
         int maxIndex = -1;
         int counter = 0;
         int[] counters = new int[X + 1];
@@ -91,6 +67,6 @@ class Solution2FrogRiverOne {
                 break;
             }
         }
-        return maxIndex;
+        return counter < X ? -1 : maxIndex;
     }
 }

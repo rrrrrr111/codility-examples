@@ -13,6 +13,9 @@ class Solution4CountDivTest {
     private Object[][] provider() {
         [
                 [6, 11, 2, 3],
+                [5, 16, 8, 2],
+                [8, 16, 8, 2],
+                [9, 16, 8, 1],
         ] as Object[][]
     }
 

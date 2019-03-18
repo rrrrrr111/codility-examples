@@ -10,7 +10,7 @@ import java.util.Arrays;
  * The sum of double slice (X, Y, Z) is the total of A[X + 1] + A[X + 2] + ... + A[Y − 1] + A[Y + 1] + A[Y + 2] + ... + A[Z − 1].
  * <p>
  * For example, array A such that:
- * <p>
+ * <pre>
  * A[0] = 3
  * A[1] = 2
  * A[2] = 6
@@ -18,12 +18,12 @@ import java.util.Arrays;
  * A[4] = 4
  * A[5] = 5
  * A[6] = -1
- * A[7] = 2
+ * A[7] = 2</pre>
  * contains the following example double slices:
- * <p>
+ * <pre>
  * double slice (0, 3, 6), sum is 2 + 6 + 4 + 5 = 17,
  * double slice (0, 3, 7), sum is 2 + 6 + 4 + 5 − 1 = 16,
- * double slice (3, 4, 5), sum is 0.
+ * double slice (3, 4, 5), sum is 0.</pre>
  * The goal is to find the maximal sum of any double slice.
  * <p>
  * Write a function:
@@ -33,7 +33,7 @@ import java.util.Arrays;
  * that, given a non-empty array A consisting of N integers, returns the maximal sum of any double slice.
  * <p>
  * For example, given:
- * <p>
+ * <pre>
  * A[0] = 3
  * A[1] = 2
  * A[2] = 6
@@ -41,7 +41,7 @@ import java.util.Arrays;
  * A[4] = 4
  * A[5] = 5
  * A[6] = -1
- * A[7] = 2
+ * A[7] = 2</pre>
  * the function should return 17, because no double slice of array A has a sum of greater than 17.
  * <p>
  * Write an efficient algorithm for the following assumptions:
@@ -70,7 +70,6 @@ class Solution3MaxDoubleSliceSum {
 
             max = Math.max(max, pref[i - 1] + suff[i + 1]);
         }
-
         return max;
     }
 }

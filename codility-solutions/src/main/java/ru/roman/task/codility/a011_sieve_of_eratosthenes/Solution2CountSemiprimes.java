@@ -12,15 +12,15 @@ import java.util.Arrays;
  * Query K requires you to find the number of semiprimes within the range (P[K], Q[K]), where 1 ≤ P[K] ≤ Q[K] ≤ N.
  * <p>
  * For example, consider an integer N = 26 and arrays P, Q such that:
- * <p>
+ * <pre>
  * P[0] = 1    Q[0] = 26
  * P[1] = 4    Q[1] = 10
- * P[2] = 16   Q[2] = 20
+ * P[2] = 16   Q[2] = 20</pre>
  * The number of semiprimes within each of these ranges is as follows:
- * <p>
+ * <pre>
  * (1, 26) is 10,
  * (4, 10) is 4,
- * (16, 20) is 0.
+ * (16, 20) is 0.</pre>
  * Write a function:
  * <p>
  * class Solution { public int[] solution(int N, int[] P, int[] Q); }
@@ -28,10 +28,10 @@ import java.util.Arrays;
  * that, given an integer N and two non-empty arrays P and Q consisting of M integers, returns an array consisting of M elements specifying the consecutive answers to all the queries.
  * <p>
  * For example, given an integer N = 26 and arrays P, Q such that:
- * <p>
+ * <pre>
  * P[0] = 1    Q[0] = 26
  * P[1] = 4    Q[1] = 10
- * P[2] = 16   Q[2] = 20
+ * P[2] = 16   Q[2] = 20</pre>
  * the function should return the values [10, 4, 0], as explained above.
  * <p>
  * Write an efficient algorithm for the following assumptions:
@@ -45,22 +45,22 @@ class Solution2CountSemiprimes {
     public int[] solution(int N, int[] P, int[] Q) {
         System.out.printf("On input: %s %s %s\n", N, Arrays.toString(P), Arrays.toString(Q));
 
-        final int[] factors = new int[N + 1];
+        final int[] sieve = new int[N + 1];
         for (int i = 2; i * i <= N; i++) {
             int k = i * i;
             while (k <= N) {
-                factors[k] = i;
+                sieve[k] = i;
                 k += i;
             }
         }
 
-        //System.out.printf("Factors   : %s\n", Arrays.toString(factors));
+        //System.out.printf("Factors   : %s\n", Arrays.toString(sieve));
 
         int count = 0;
         final int[] semiPrimeCount = new int[N + 1];
         for (int i = 4; i <= N; i++) {
-            int f = factors[i];
-            if (f > 0 && factors[f] == 0 && factors[i / f] == 0) {
+            int f = sieve[i];
+            if (f > 0 && sieve[f] == 0 && sieve[i / f] == 0) {
                 count++;
             }
 

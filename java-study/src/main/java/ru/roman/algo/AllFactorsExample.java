@@ -10,7 +10,7 @@ import static ru.roman.algo.PrintUtil.printArray;
 /**
  *
  */
-class AllDivisorsExample {
+class AllFactorsExample {
 
     public static void main(String[] args) {
 
@@ -25,6 +25,6 @@ class AllDivisorsExample {
         Collections.sort(divs);
 
         System.out.printf("Num: %s, Sqrt: %s%n", num, Math.sqrt(num));
-        System.out.printf("Divisors     : %s%n", printArray(divs.toArray(), 3));
+        System.out.printf("All factors  : %s%n", printArray(divs.toArray(), 3));
     }
 }
