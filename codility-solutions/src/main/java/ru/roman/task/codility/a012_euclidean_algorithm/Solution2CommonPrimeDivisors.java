@@ -44,7 +44,6 @@ class Solution2CommonPrimeDivisors {
                 count++;
             }
         }
-
         return count;
     }
 
@@ -89,5 +88,4 @@ class Solution2CommonPrimeDivisors {
             }
         }
     }
-
 }
