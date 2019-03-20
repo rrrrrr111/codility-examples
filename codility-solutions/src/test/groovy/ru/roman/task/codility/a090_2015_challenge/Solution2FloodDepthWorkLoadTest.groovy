@@ -7,13 +7,15 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution4SkiWorkLoadTest {
-    private Solution4Ski subj = new Solution4Ski()
+class Solution2FloodDepthWorkLoadTest {
+    //private final Solution2FloodDepth subj = new Solution2FloodDepth()
+    private final Solution3FloodDepth subj = new Solution3FloodDepth()
+
     private static int[] list
 
     @BeforeClass
     static void setUp() {
-        final int size = 30_000
+        final int size = 100_000
         final int half = size.intdiv(2).intValue()
         list = new int[size]
 
@@ -38,7 +40,7 @@ class Solution4SkiWorkLoadTest {
     @DataProvider
     private Object[][] provider() {
         [
-                [list, 8],
+                [list, 12_500_000],
         ] as Object[][]
     }
 

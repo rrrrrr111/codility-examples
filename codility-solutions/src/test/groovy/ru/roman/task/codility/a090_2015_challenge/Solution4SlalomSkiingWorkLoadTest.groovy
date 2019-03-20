@@ -7,15 +7,13 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution2MeasureLakesWorkLoadTest {
-    //private final Solution2MeasureLakes subj = new Solution2MeasureLakes()
-    private final Solution3MeasureLakes subj = new Solution3MeasureLakes()
-
+class Solution4SlalomSkiingWorkLoadTest {
+    private Solution4SlalomSkiing subj = new Solution4SlalomSkiing()
     private static int[] list
 
     @BeforeClass
     static void setUp() {
-        final int size = 100_000
+        final int size = 30_000
         final int half = size.intdiv(2).intValue()
         list = new int[size]
 
@@ -40,7 +38,7 @@ class Solution2MeasureLakesWorkLoadTest {
     @DataProvider
     private Object[][] provider() {
         [
-                [list, 12_500_000],
+                [list, 8],
         ] as Object[][]
     }
 

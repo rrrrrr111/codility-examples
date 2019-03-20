@@ -6,8 +6,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution4SkiTest {
-    private Solution4Ski subj = new Solution4Ski()
+class Solution4SlalomSkiingTest {
+    private Solution4SlalomSkiing subj = new Solution4SlalomSkiing()
 
     @DataProvider
     private Object[][] provider() {
