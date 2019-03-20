@@ -1,6 +1,7 @@
 package ru.roman.algo;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.apache.commons.lang3.StringUtils.leftPad;
@@ -19,6 +20,10 @@ final class PrintUtil {
         return Arrays.toString(
                 Arrays.stream(arr).mapToObj(v -> leftPad("" + v, leftPad)).toArray()
         );
+    }
+
+    static String printList(List<?> list, int leftPad) {
+        return printArray(list.toArray(), leftPad);
     }
 
     static String printRange(int from, int to, int leftPad) {
