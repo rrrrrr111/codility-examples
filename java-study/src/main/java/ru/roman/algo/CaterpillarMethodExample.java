@@ -26,9 +26,9 @@ public class CaterpillarMethodExample {
              back < A.length;
              back++) {
 
-            while (front < A.length && total + A[front] <= sum) {
+            for (;front < A.length && total + A[front] <= sum;
+                 front++) {
                 total += A[front];
-                front += 1;
             }
             if (total == sum) {
                 return true;

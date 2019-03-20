@@ -8,6 +8,7 @@ import org.testng.annotations.Test
 @Test
 class Solution2NailingPlanksTest {
     private Solution2NailingPlanks subj = new Solution2NailingPlanks()
+    //private Solution2NailingPlanks_failing subj = new Solution2NailingPlanks_failing()
 
     @DataProvider
     private Object[][] provider() {
