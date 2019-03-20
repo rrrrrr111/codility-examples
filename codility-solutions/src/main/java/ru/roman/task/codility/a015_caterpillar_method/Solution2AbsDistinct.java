@@ -57,11 +57,6 @@ class Solution2AbsDistinct {
     }
 
     private int caterpillarAlg(int[] A) {
-        if (A.length == 1) {
-            return 1;
-        } else if (A.length == 2) {
-            return abs(A[0]) == abs(A[1]) ? 1 : 2;
-        }
 
         int counter = 0;
         if ((A[0] >= 0 && A[A.length - 1] >= 0)                    // only positive or negative range
@@ -80,11 +75,11 @@ class Solution2AbsDistinct {
         int forwardIdx = 0, backwardIdx = A.length - 1;
         int forwardVal = abs(A[forwardIdx]), backwardVal = A[backwardIdx];
         counter = 2;
-        int count, prevCount = 2;
+        int count, prevCount = counter;
         boolean forwardFinish = false, backwardFinish = false;
 
-        for (;;) {                                              // has positive and negative range
-            System.out.printf(">> %s(%s)  %s(%s) >> %s%n", -forwardVal, forwardIdx, backwardVal, backwardIdx, counter);
+        for (; ; ) {                                              // has positive and negative range
+            //System.out.printf(">> %s(%s)  %s(%s) >> %s%n", -forwardVal, forwardIdx, backwardVal, backwardIdx, counter);
 
             count = 0;
             if ((backwardVal < forwardVal || forwardVal == Integer.MIN_VALUE || backwardFinish) && !forwardFinish) {
@@ -92,11 +87,13 @@ class Solution2AbsDistinct {
                     forwardVal = abs(A[++forwardIdx]);
                     if (abs(A[forwardIdx - 1]) != forwardVal) count++;
                 } else forwardFinish = true;
+
             } else if ((forwardVal < backwardVal || forwardFinish) && !backwardFinish) {
                 if (A[backwardIdx - 1] >= 0 && backwardVal != 0) {
                     backwardVal = A[--backwardIdx];
                     if (A[backwardIdx + 1] != backwardVal) count++;
                 } else backwardFinish = true;
+
             } else {
                 if (prevCount > 0) {
                     counter--;
@@ -106,11 +103,13 @@ class Solution2AbsDistinct {
                     forwardVal = abs(A[++forwardIdx]);
                     if (abs(A[forwardIdx - 1]) != forwardVal) count++;
                 } else forwardFinish = true;
+
                 if (A[backwardIdx - 1] >= 0 && backwardVal != 0) {
                     backwardVal = A[--backwardIdx];
                     if (A[backwardIdx + 1] != backwardVal) count++;
                 } else backwardFinish = true;
             }
+
             prevCount = count;
             counter += count;
             if (forwardFinish && backwardFinish) {
