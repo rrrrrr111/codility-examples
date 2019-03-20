@@ -42,21 +42,28 @@ class Solution3CountTriangles {
 
             for (int y = x + 1; y < A.length - 1; y++) {
 
-                int z = findZByBinarySearch(A, y + 1, A.length - 1, x, y);
+                int z = findZ(A, y + 1, A.length - 1, x, y);
                 counter += z - y;
             }
         }
         return counter;
     }
 
-    private int findZByBinarySearch(int[] A, int from, int to, int x, int y) {
+    private int findZ(int[] A, int from, int to, int x, int y) {
+        if (A[to] < A[x] + A[y]) {
+            return to;
+        }
+        return findZByBinarySearch(A, from, to, A[x] + A[y]);
+    }
+
+    private int findZByBinarySearch(int[] A, int from, int to, int i) {
         int beg = from, end = to;
 
         int res = from - 1;
         for (int mid; beg <= end; ) {
             mid = (beg + end) / 2;
 
-            if (A[mid] < A[x] + A[y]) {
+            if (A[mid] < i) {
                 res = mid;
                 beg = mid + 1;
             } else {
