@@ -52,9 +52,6 @@ class Solution4MinAbsSumOfTwo {
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
-        if (A.length == 1) {
-            return abs(A[0] + A[0]);
-        }
         Arrays.sort(A);
         if (A[0] >= 0 && A[A.length - 1] >= 0) {          // only positive range
             return A[0] * 2;

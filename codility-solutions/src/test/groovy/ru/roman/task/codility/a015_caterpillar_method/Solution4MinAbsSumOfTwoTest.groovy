@@ -15,6 +15,9 @@ class Solution4MinAbsSumOfTwoTest {
     @DataProvider
     private Object[][] provider() {
         [
+                [[0] as int[], 0],
+                [[1] as int[], 2],
+                [[-1] as int[], 2],
                 [[MIN_VALUE + 3, -3] as int[], 6],
                 [[MIN_VALUE + 3, 0] as int[], 0],
                 [[MAX_VALUE - 3, 3] as int[], 6],
