@@ -39,6 +39,10 @@ class Solution2MaxNonoverlappingSegments {
     public int solution(int[] A, int[] B) {
         System.out.printf("On input: %s%s%n", Arrays.toString(A), Arrays.toString(B));
 
+        if (A.length < 2) {
+            return A.length;
+        }
+
         int count = 1, tail = B[0];
         for (int i = 1; i < A.length; i++) {
             if (A[i] > tail) {
