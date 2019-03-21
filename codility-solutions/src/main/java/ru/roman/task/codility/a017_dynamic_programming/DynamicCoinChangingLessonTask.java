@@ -26,7 +26,6 @@ public class DynamicCoinChangingLessonTask {
 
         twoDimArrayAlg(C, k);
         oneDimArrayAlg(C, k);
-
     }
 
     private static void twoDimArrayAlg(int[] coins, int sum) {
