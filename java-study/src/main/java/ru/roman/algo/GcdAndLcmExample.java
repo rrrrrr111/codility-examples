@@ -1,7 +1,7 @@
 package ru.roman.algo;
 
 /**
- *
+ * Euclidean algorithms
  */
 public class GcdAndLcmExample {
 
