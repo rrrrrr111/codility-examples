@@ -40,7 +40,7 @@ import java.util.Map;
  * N is an integer within the range [1..1,000];
  * the height of tree T (number of edges on the longest path from root to leaf) is within the range [0..500].
  */
-class Solution1TreeHeight {
+class Solution2TreeHeight {
     public int solution(Tree T) {
         //System.out.printf("On input: %s%n", Arrays.toString(A));
 

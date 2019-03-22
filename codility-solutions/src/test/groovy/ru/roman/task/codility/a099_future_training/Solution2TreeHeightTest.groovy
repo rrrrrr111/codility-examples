@@ -6,8 +6,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution1TreeHeightTest {
-    private Solution1TreeHeight subj = new Solution1TreeHeight()
+class Solution2TreeHeightTest {
+    private Solution2TreeHeight subj = new Solution2TreeHeight()
 
     @DataProvider
     private Object[][] provider() {
