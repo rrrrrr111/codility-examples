@@ -32,6 +32,9 @@ import java.util.stream.Stream;
  * each element of array A is an integer within the range [−100..100].
  */
 class Solution2MinAbsSum {
+    /**
+     * https://codility.com/media/train/solution-min-abs-sum.pdf
+     */
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
@@ -39,8 +42,8 @@ class Solution2MinAbsSum {
             return 0;
         }
 
-        return slowAlg(A);           // O(A^2 * 100)
-        //return fastAlg(A);             // O(A * (100^2))
+        //return slowAlg(A);           // O(A^2 * 100)
+        return fastAlg(A);             // O(A * (100^2))
     }
 
     private int fastAlg(int[] A) {
@@ -60,12 +63,12 @@ class Solution2MinAbsSum {
         System.out.printf(">>          %s%n", Arrays.toString(dp));
         for (int a = 1; a < counters.length; a++)
             if (counters[a] > 0)
-                for (int s = 0; s < sum; s++) {
-                    if (dp[s] >= 0)
-                        dp[s] = counters[a];
-                    else if (s >= a && dp[s - a] > 0)
-                        dp[s] = dp[s - a] - 1;
-                    System.out.printf(">> a:%s, s:%s %s%n", a, s, Arrays.toString(dp));
+                for (int se = 0; se < dp.length; se++) {
+                    if (dp[se] >= 0)
+                        dp[se] = counters[a];
+                    else if (se >= a && dp[se - a] > 0)
+                        dp[se] = dp[se - a] - 1;
+                    System.out.printf(">> a:%s, se:%s %s%n", a, se, Arrays.toString(dp));
                 }
 
         int res = sum;
