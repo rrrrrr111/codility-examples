@@ -39,8 +39,8 @@ class Solution2MinAbsSum {
             return 0;
         }
 
-        //return slowAlg(A);           // O(A^2 * 100)
-        return fastAlg(A);             // O(A * (100^2))
+        return slowAlg(A);           // O(A^2 * 100)
+        //return fastAlg(A);             // O(A * (100^2))
     }
 
     private int fastAlg(int[] A) {
@@ -54,9 +54,9 @@ class Solution2MinAbsSum {
         }
 
         int[] dp = new int[sum];
+
         Arrays.fill(dp, -1);
         dp[0] = 0;
-
         System.out.printf(">>          %s%n", Arrays.toString(dp));
         for (int a = 1; a < counters.length; a++)
             if (counters[a] > 0)
@@ -82,18 +82,18 @@ class Solution2MinAbsSum {
                 .map(i -> A[i] = Math.abs(A[i]))
                 .sum();
 
-        int[] dp = new int[sum + 1];
-        dp[0] = 1;
+        boolean[] dp = new boolean[sum + 1];
 
+        dp[0] = true;
         for (int a : A)
             for (int i = dp.length - 1; i >= 0; i--)
-                if (dp[i] == 1 && i + a <= sum) {
-                    dp[i + a] = 1;
+                if (dp[i] && i + a <= sum) {
+                    dp[i + a] = true;
                 }
 
         int res = sum;
         for (int i = 0; i < sum / 2 + 1; i++)
-            if (dp[i] == 1)
+            if (dp[i])
                 res = Math.min(res, sum - 2 * i);
         return res;
     }
