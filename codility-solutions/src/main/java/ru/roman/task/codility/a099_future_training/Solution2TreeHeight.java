@@ -44,6 +44,13 @@ class Solution2TreeHeight {
     public int solution(Tree T) {
         //System.out.printf("On input: %s%n", Arrays.toString(A));
 
+        return dfsAlg(T);
+    }
+
+    /**
+     * DFS - Depth-first search algorithm
+     */
+    private int dfsAlg(Tree T) {
         final Map<Tree, Tree> map = new IdentityHashMap<>(1_000);
         int currDepth = 0, maxDepth = 0;
 
