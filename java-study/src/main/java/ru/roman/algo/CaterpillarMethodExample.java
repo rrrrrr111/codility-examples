@@ -5,7 +5,7 @@ import static ru.roman.algo.PrintUtil.printArray;
 /**
  *
  */
-public class CaterpillarMethodExample {
+class CaterpillarMethodExample {
 
     public static void main(String[] args) {
 

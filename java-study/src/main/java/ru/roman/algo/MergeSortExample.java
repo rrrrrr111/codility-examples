@@ -5,7 +5,7 @@ import static ru.roman.algo.PrintUtil.printArray;
 /**
  *
  */
-public class MergeSortExample {
+class MergeSortExample {
 
     public static void main(String[] args) {
 

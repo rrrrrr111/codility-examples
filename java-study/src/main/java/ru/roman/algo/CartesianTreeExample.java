@@ -3,7 +3,7 @@ package ru.roman.algo;
 /**
  *
  */
-public class CartesianTreeExample {
+class CartesianTreeExample {
 
     public static void main(String[] args) {
 

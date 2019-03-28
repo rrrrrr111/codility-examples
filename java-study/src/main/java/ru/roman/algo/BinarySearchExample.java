@@ -8,7 +8,7 @@ import static ru.roman.algo.PrintUtil.printRange;
 /**
  *
  */
-public class BinarySearchExample {
+class BinarySearchExample {
 
     public static void main(String[] args) {
 

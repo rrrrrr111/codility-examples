@@ -14,7 +14,7 @@ import static ru.roman.algo.PrintUtil.printList;
 /**
  *
  */
-public class StackAndQueueExample {
+class StackAndQueueExample {
 
     public static void main(String[] args) {
 
