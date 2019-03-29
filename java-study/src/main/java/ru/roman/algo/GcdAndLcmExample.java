@@ -1,5 +1,9 @@
 package ru.roman.algo;
 
+import org.apache.commons.lang3.StringUtils;
+
+import static org.apache.commons.lang3.StringUtils.leftPad;
+
 /**
  * Euclidean algorithms
  */
@@ -7,9 +11,17 @@ class GcdAndLcmExample {
 
     public static void main(String[] args) {
 
-        System.out.println("gcd: " + gcd3(132, 176) + " lcm: " + lcm(132, 176));
-        System.out.println("gcd: " + gcd3(122, 44) + " lcm: " + lcm(122, 44));
-        System.out.println("gcd: " + gcd3(9, 3) + " lcm: " + lcm(9, 3));
+        System.out.println(printFor(132, 176));
+        System.out.println(printFor(122, 44));
+        System.out.println(printFor(9, 3));
+        System.out.println(printFor(12, 16));
+    }
+
+    private static String printFor(int a, int b) {
+        return  "for " + leftPad(a + "", 3)
+                + " and " + leftPad(b + "", 3)
+                + " -> gcd: " + leftPad(gcd3(a, b) + "", 6)
+                + ", lcm: " + leftPad(lcm(a, b) + "", 6);
     }
 
     private static int lcm(int a, int b) {

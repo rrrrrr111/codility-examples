@@ -25,4 +25,11 @@ interface InterfaceExample {   // implicitly abstract, but not public
     }
     abstract class Papua {}     // implicitly public static
     enum Ennu {}                // implicitly public static, enums always static only
+    //protected interface Ingh {}  // illegal
+    //private enum  Gogu {}        // illegal
+
+    private void java9Method(){}        // illegal
+     // protected void java9Method(){}  // illegal
+     // public void java9Method(){}     // illegal
+     // void java9Method(){}            // illegal
 }

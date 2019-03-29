@@ -87,7 +87,7 @@ class Array {
         //var i2 = {new Object(), new Object(), new Object()};      // illegal
         String[] i3 = {new String()};
         Object[] i4 = i3;
-        i4[0] = 1;
+        //i4[0] = 1;                                 // ArrayStoreException
 
 
         //Integer[] t1 = new int[0];   // illegal
@@ -106,7 +106,24 @@ class Array {
         //List<Number>[] t6 = t5;   // illegal
         List<? extends Number>[] t6 = t5;   // ok, массивы женерика ведут себя аналогично женерику
 
-        int v = foo(new long[0][0])[0][0];
+        //int v = foo(new long[0][0])[0][0];    // ArrayIndexOutOfBoundsException
+
+        int[] arr = null;
+        //arr[0] = 10l;                // illegal, аналогично перемеенным
+//        arr[1] = 'a';               //  NullPointerException
+        int k = 1;
+        int b = -++k;
+        b = +--k;
+        //b = +++k;                    // illegal
+        //b = ---k;
+        b = -+-+-+k++;
+        b = -+(-k--);
+
+        System.out.println(k);
+
+        char c = 1;
+        c++;
+        //+c;           // illegal
     }
 
     static int foo (long va[][])[][] {
