@@ -4,7 +4,14 @@ import static ru.roman.algo.PrintUtil.printArray;
 import static ru.roman.algo.PrintUtil.printRange;
 
 /**
- *
+ * The Fibonacci numbers are the numbers in the following integer sequence.
+ * 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ……..
+ * <p>
+ * In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation
+ * <p>
+ * Fn = Fn-1 + Fn-2
+ * <p>
+ * with seed values F0 = 0 and F1 = 1.
  */
 class FibonacciNumbersExample {
 
@@ -26,5 +33,11 @@ class FibonacciNumbersExample {
             result[i] = result[i - 1] + result[i - 2];
         }
         return result;
+    }
+
+    private static int getFibNum(int n) {
+        if (n <= 1)
+            return n;
+        return getFibNum(n - 1) + getFibNum(n - 2);
     }
 }
