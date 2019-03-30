@@ -1,4 +1,6 @@
-package ru.roman.algo;
+package ru.roman.algo.arrays;
+
+import ru.roman.algo.PrintUtil;
 
 /**
  *

@@ -1,4 +1,4 @@
-package ru.roman.algo;
+package ru.roman.algo.caterpillar;
 
 import static ru.roman.algo.PrintUtil.printArray;
 

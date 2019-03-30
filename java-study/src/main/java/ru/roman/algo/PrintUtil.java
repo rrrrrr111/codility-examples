@@ -6,27 +6,27 @@ import java.util.stream.IntStream;
 
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
-final class PrintUtil {
+public final class PrintUtil {
     private PrintUtil() {
     }
 
-    static String printArray(Object[] arr, int leftPad) {
+    public static String printArray(Object[] arr, int leftPad) {
         return Arrays.toString(
                 Arrays.stream(arr).map(v -> leftPad("" + v, leftPad)).toArray()
         );
     }
 
-    static String printArray(int[] arr, int leftPad) {
+    public static String printArray(int[] arr, int leftPad) {
         return Arrays.toString(
                 Arrays.stream(arr).mapToObj(v -> leftPad("" + v, leftPad)).toArray()
         );
     }
 
-    static String printList(List<?> list, int leftPad) {
+    public static String printList(List<?> list, int leftPad) {
         return printArray(list.toArray(), leftPad);
     }
 
-    static String printRange(int from, int to, int leftPad) {
+    public static String printRange(int from, int to, int leftPad) {
         return Arrays.toString(
                 IntStream.range(from, to).mapToObj(v -> leftPad("" + v, leftPad)).toArray()
         );

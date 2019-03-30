@@ -1,4 +1,4 @@
-package ru.roman.algo;
+package ru.roman.algo.search;
 
 import java.util.Arrays;
 

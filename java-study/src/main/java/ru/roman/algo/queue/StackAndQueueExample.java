@@ -1,4 +1,4 @@
-package ru.roman.algo;
+package ru.roman.algo.queue;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

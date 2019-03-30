@@ -1,4 +1,4 @@
-package ru.roman.algo;
+package ru.roman.algo.math;
 
 import static ru.roman.algo.PrintUtil.printArray;
 import static ru.roman.algo.PrintUtil.printRange;
