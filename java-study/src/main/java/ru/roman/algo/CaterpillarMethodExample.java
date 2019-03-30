@@ -14,7 +14,6 @@ class CaterpillarMethodExample {
         System.out.println(caterpillarMethod(array, 15));
         System.out.println(caterpillarMethod(array, 31));
         System.out.println(caterpillarMethod(array, 32));
-
     }
 
     /**
