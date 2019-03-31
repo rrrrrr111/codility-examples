@@ -29,11 +29,12 @@ class GfgKnapsackProblem {
         int i, w;
         int[][] K = new int[Iw.length + 1][W + 1];
 
-        for (i = 0; i <= Iw.length; i++) {
+        for (i = 0; i <= Iv.length; i++) {
             for (w = 0; w <= W; w++) {
 
                 if (i == 0 || w == 0)
                     K[i][w] = 0;
+
                 else if (Iw[i - 1] <= w)
                     K[i][w] = Math.max(Iv[i - 1] + K[i - 1][w - Iw[i - 1]], K[i - 1][w]);
                 else
@@ -41,15 +42,15 @@ class GfgKnapsackProblem {
             }
         }
 
-        int res = K[Iw.length][W];
+        int res = K[Iv.length][W];
         final List<Integer> items = new ArrayList<>();
         final String result = res + "";
 
         w = W;
         for (i = Iw.length; i > 0 && res > 0; i--) {
 
-            // either the result comes from the top (K[i-1][w]) or from (Iv[i-1] + K[i-1]
-            // [w-Iw[i-1]]) as in Knapsack table. If  it comes from the latter one/ it means the item is included.
+            // either the result comes from the top K[i-1][w] or from Iv[i-1] + K[i-1][w-Iw[i-1]]
+            // as in Knapsack table. If it comes from the latter one/ it means the item is included.
             if (res == K[i - 1][w])
                 continue;
             else {
