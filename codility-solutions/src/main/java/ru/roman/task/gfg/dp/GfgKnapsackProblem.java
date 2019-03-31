@@ -26,6 +26,27 @@ import java.util.List;
 class GfgKnapsackProblem {
 
     String test(int Iv[], int Iw[], int W) {
+        return alg0Recursive(Iv, Iw, W, Iv.length) + "";
+        //return alg1Dp(Iv, Iw, W);
+    }
+
+    /**
+     * Базовый рекурсивный подход O(2^n)
+     */
+    private static int alg0Recursive(int[] Iv, int[] Iw, int W, int itemIdx) {
+        if (itemIdx == 0 || W == 0)
+            return 0;
+
+        if (Iw[itemIdx - 1] > W)
+            return alg0Recursive(Iv, Iw, W, itemIdx - 1);
+
+        else return Math.max(
+                Iv[itemIdx - 1] + alg0Recursive(Iv, Iw, W - Iw[itemIdx - 1], itemIdx - 1),  // предмет в рюкзаке
+                alg0Recursive(Iv, Iw, W, itemIdx - 1) // предмет не в рюкзаке
+        );
+    }
+
+    private String alg1Dp(int[] Iv, int[] Iw, int W) {
         int i, w;
         int[][] K = new int[Iw.length + 1][W + 1];
 
