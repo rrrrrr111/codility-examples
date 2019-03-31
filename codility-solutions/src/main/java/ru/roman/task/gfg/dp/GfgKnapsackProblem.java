@@ -46,33 +46,36 @@ class GfgKnapsackProblem {
         );
     }
 
+    /**
+     * O(n*W)
+     */
     private String alg1Dp(int[] Iv, int[] Iw, int W) {
         int i, w;
-        int[][] K = new int[Iw.length + 1][W + 1];
+        int[][] dp = new int[Iw.length + 1][W + 1];
 
         for (i = 0; i <= Iv.length; i++) {
             for (w = 0; w <= W; w++) {
 
                 if (i == 0 || w == 0)
-                    K[i][w] = 0;
+                    dp[i][w] = 0;
 
                 else if (Iw[i - 1] <= w)
-                    K[i][w] = Math.max(Iv[i - 1] + K[i - 1][w - Iw[i - 1]], K[i - 1][w]);
+                    dp[i][w] = Math.max(Iv[i - 1] + dp[i - 1][w - Iw[i - 1]], dp[i - 1][w]);
                 else
-                    K[i][w] = K[i - 1][w];
+                    dp[i][w] = dp[i - 1][w];
             }
         }
 
-        int res = K[Iv.length][W];
+        int res = dp[Iv.length][W];
         final List<Integer> items = new ArrayList<>();
         final String result = res + "";
 
         w = W;
         for (i = Iw.length; i > 0 && res > 0; i--) {
 
-            // either the result comes from the top K[i-1][w] or from Iv[i-1] + K[i-1][w-Iw[i-1]]
+            // either the result comes from the top dp[i-1][w] or from Iv[i-1] + dp[i-1][w-Iw[i-1]]
             // as in Knapsack table. If it comes from the latter one/ it means the item is included.
-            if (res == K[i - 1][w])
+            if (res == dp[i - 1][w])
                 continue;
             else {
                 // This item is included.
