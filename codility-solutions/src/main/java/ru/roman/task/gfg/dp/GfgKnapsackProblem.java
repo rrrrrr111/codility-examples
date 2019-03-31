@@ -31,9 +31,7 @@ class GfgKnapsackProblem {
     String test(int Iv[], int Iw[], int W) {
         //return alg0Recursive(Iv, Iw, W, Iv.length) + "";
         //return alg1Dp(Iv, Iw, W);
-
-
-        return alg3UsingBranchAndBound(W, Iv, Iw);
+        return alg2UsingBranchAndBound(W, Iv, Iw);
     }
 
     /**
@@ -97,7 +95,7 @@ class GfgKnapsackProblem {
         return result + " " + items;
     }
 
-    private String alg3UsingBranchAndBound(int W, int[] Iv, int[] Iw) {
+    private String alg2UsingBranchAndBound(int W, int[] Iv, int[] Iw) {
 
         Item[] arr = new Item[Iv.length];
         int n = arr.length;
@@ -114,40 +112,40 @@ class GfgKnapsackProblem {
             return Double.compare(r1, r2);
         });
 
-        // make a queue for traversing the node
-        Deque<Node> queue = new LinkedList<>();
-        Node u = new Node(), v = new Node();
 
-        // dummy node at starting
-        u.level = -1;
-        u.profit = u.weight = 0;
-        queue.push(u);
+        Node node = new Node();   // first dummy node
+        node.level = -1;
+        node.profit = node.weight = 0;
 
-        // One by one extract an item from decision tree
-        // compute profit of all children of extracted item
-        // and keep saving maxProfit
+        final Deque<Node> queue = new LinkedList<>();
+        queue.push(node);
+
+        final Node v = new Node();
+
+        // One by one extract an item from decision tree compute profit of all children
+        // of extracted item and keep saving maxProfit
         float maxProfit = 0;
         while (!queue.isEmpty()) {
-            u = queue.getFirst();
+            node = queue.getFirst();
             queue.pop();
 
             // If it is starting node, assign level 0
-            if (u.level == -1)
+            if (node.level == -1)
                 v.level = 0;
 
             // If there is nothing on next level
-            if (u.level == n - 1)
+            if (node.level == n - 1)
                 continue;
 
             // Else if not last node, then increment level,
             // and compute profit of children nodes.
-            v.level = u.level + 1;
+            v.level = node.level + 1;
 
             // Taking current level's item add current
-            // level's weight and value to node u's
+            // level's weight and value to node node's
             // weight and value
-            v.weight = u.weight + arr[v.level].weight;
-            v.profit = u.profit + arr[v.level].value;
+            v.weight = node.weight + arr[v.level].weight;
+            v.profit = node.profit + arr[v.level].value;
 
             // If cumulated weight is less than W and
             // profit is greater than previous profit,
@@ -167,8 +165,8 @@ class GfgKnapsackProblem {
 
             // Do the same thing, but Without taking
             // the item in knapsack
-            v.weight = u.weight;
-            v.profit = u.profit;
+            v.weight = node.weight;
+            v.profit = node.profit;
             v.bound = bound(v, n, W, arr);
             if (v.bound > maxProfit)
                 queue.push(v);
@@ -180,8 +178,7 @@ class GfgKnapsackProblem {
     // Returns bound of profit in subtree rooted with u.
 // This function mainly uses Greedy solution to find
 // an upper bound on maximum profit.
-
-    private float bound(Node u, int n, int W, Item arr[]) {
+    private float bound(Node u, int n, int W, Item[] arr) {
         // if weight overcomes the knapsack capacity, return
         // 0 as expected bound
         if (u.weight >= W)
