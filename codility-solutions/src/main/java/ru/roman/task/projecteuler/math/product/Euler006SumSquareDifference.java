@@ -1,4 +1,4 @@
-package ru.roman.task.projecteuler.math;
+package ru.roman.task.projecteuler.math.product;
 
 /**
  * The sum of the squares of the first ten natural numbers is,

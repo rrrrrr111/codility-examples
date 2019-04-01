@@ -1,28 +1,27 @@
-package ru.roman.task.projecteuler.math;
+package ru.roman.task.projecteuler.math.prime;
 
-import com.google.common.base.Preconditions;
-
-import java.util.function.IntFunction;
 import java.util.stream.IntStream;
 
 /**
- * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+ * The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
  * <p>
- * What is the 10 001st prime number?
+ * Find the sum of all the primes below two million.
  */
-public class Euler007_10001stPrime {
+public class Euler010SummationOfPrimes {
 
     public static void main(String[] a) {
 
         int[] primes = preparePrimeNumbers();
 
-        int res = primes[primes.length - 1];
-        Preconditions.checkArgument(res == 104743);
+        long res = 0;
+        for (long prime : primes)
+            res += prime;
+
         System.out.println(res);
     }
 
     private static int[] preparePrimeNumbers() {
-        int max = 200_001;
+        int max = 10_000_000;
         int[] primes = new int[max];
 
         for (int i = 2; i * i <= max; i++) {
@@ -35,7 +34,7 @@ public class Euler007_10001stPrime {
         return IntStream.range(0, primes.length)
                 .filter(i -> i > 1)
                 .filter(i -> primes[i] == 0)
-                .limit(10_001)
+                .filter(i -> i < 2_000_000)
                 .toArray();
     }
 }

@@ -1,4 +1,4 @@
-package ru.roman.task.projecteuler.math;
+package ru.roman.task.projecteuler.math.product;
 
 /**
  * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,

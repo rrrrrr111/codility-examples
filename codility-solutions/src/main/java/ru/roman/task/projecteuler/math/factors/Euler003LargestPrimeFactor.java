@@ -1,4 +1,4 @@
-package ru.roman.task.projecteuler.math;
+package ru.roman.task.projecteuler.math.factors;
 
 import java.util.Set;
 import java.util.TreeSet;
