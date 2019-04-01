@@ -1,4 +1,4 @@
-package ru.roman.task.codility.blank;
+package ru.roman.task.blank;
 
 import java.util.Arrays;
 

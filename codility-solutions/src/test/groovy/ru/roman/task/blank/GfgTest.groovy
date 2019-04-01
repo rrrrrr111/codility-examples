@@ -1,13 +1,12 @@
-package ru.roman.task.codility.blank
+package ru.roman.task.blank
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
-import org.testng.annotations.Test
 
 @CompileStatic
 //@Test
-class SolutionTest {
-    private Solution subj = new Solution()
+class GfgTest {
+    private Gfg subj = new Gfg()
 
     @DataProvider
     private Object[][] provider() {
@@ -19,7 +18,7 @@ class SolutionTest {
     //@Test(dataProvider = "provider")
     void test(int[] value, int expected) {
 
-        def actual = subj.solution(value)
+        def actual = subj.test(value)
         assert actual == expected
     }
 }
