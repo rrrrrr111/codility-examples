@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
  * <p>
  * What is the 10 001st prime number?
  */
-public class Euler00710001stPrime {
+public class Euler007_10001stPrime {
 
     public static void main(String[] a) {
 
