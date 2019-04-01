@@ -1,7 +1,5 @@
 package ru.roman.algo.math;
 
-import org.apache.commons.lang3.StringUtils;
-
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
 /**
@@ -29,6 +27,9 @@ class GcdAndLcmExample {
     }
 
     private static int gcd1(int a, int b) {
+        if (a < 0 || b < 0)
+            throw new IllegalArgumentException("Negative a:" + a + " or b:" + b);
+
         for (; ; ) {
             if (a == b) {
                 return a;
@@ -42,8 +43,10 @@ class GcdAndLcmExample {
     }
 
     private static int gcd2(int a, int b) {
-        int c;
+        if (a < 0 || b < 0)
+            throw new IllegalArgumentException("Negative a:" + a + " or b:" + b);
 
+        int c;
         for (; ; ) {
             if (a % b == 0) {
                 return b;
@@ -55,7 +58,13 @@ class GcdAndLcmExample {
         }
     }
 
+    /**
+     * Most efficient
+     */
     private static int gcd3(int a, int b) {
+        if (a < 0 || b < 0)
+            throw new IllegalArgumentException("Negative a:" + a + " or b:" + b);
+
         int res = 1;
 
         for (; ; ) {

@@ -1,9 +1,10 @@
 package ru.roman.algo.math;
 
+import com.google.common.base.Preconditions;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,6 +25,9 @@ class FactorsExample {
     private static void printFor(long num) {
         Long[] divs = prepareAllFactors(num);
         Long[] primeDivs = preparePrimeFactors(num);
+        for (Long prime : primeDivs) {
+            Preconditions.checkArgument(isPrime(prime));
+        }
 
         System.out.printf("Num: %s, Sqrt: %s%n", num, Math.sqrt(num));
         System.out.printf("All factors    : %s%n", printArray(divs, 3));
@@ -67,5 +71,24 @@ class FactorsExample {
                 return i;
         }
         return num;  // num itself is prime
+    }
+
+    private static boolean isPrime(long a) {
+        if (a < 0)
+            throw new IllegalArgumentException("Negative a:" + a);
+
+        if (a == 0 || a == 1)
+            return false;
+        else if (a == 2)
+            return true;
+        else {
+            if (a % 2 == 0)
+                return false;
+            for (long i = 3, end = (long) Math.sqrt(a); i <= end; i += 2) {
+                if (a % i == 0)
+                    return false;
+            }
+            return true;
+        }
     }
 }
