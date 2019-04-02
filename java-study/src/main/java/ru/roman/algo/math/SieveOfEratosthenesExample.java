@@ -22,7 +22,7 @@ class SieveOfEratosthenesExample {
         System.out.printf("Primes  : %s%n", printArray(primes, 3));
     }
 
-    private static int[] prepareFactorsSieve(int maxValue) {
+    static int[] prepareFactorsSieve(int maxValue) {
         int max = maxValue + 1;
         int[] factors = new int[max];
 
@@ -37,7 +37,7 @@ class SieveOfEratosthenesExample {
         return factors;
     }
 
-    private static int[] preparePrimeNumbers(int maxValue) {
+    static int[] preparePrimeNumbers(int maxValue) {
         int max = maxValue + 1;
         int[] primes = new int[max];
 
