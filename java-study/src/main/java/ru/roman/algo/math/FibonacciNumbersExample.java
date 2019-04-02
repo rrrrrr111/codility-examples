@@ -29,7 +29,7 @@ class FibonacciNumbersExample {
     /**
      * O(n), space O(n)
      */
-    private static int[] prepareFibs(int num) {
+    static int[] prepareFibs(int num) {
         int[] result = new int[num + 1];  // 1 extra to handle case, num = 0
         result[1] = 1;
 

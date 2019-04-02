@@ -2,6 +2,11 @@ package ru.roman.algo.math;
 
 import com.google.common.base.Preconditions;
 
+import java.util.stream.IntStream;
+
+import static ru.roman.algo.PrintUtil.printArray;
+import static ru.roman.algo.PrintUtil.printRange;
+
 /**
  *
  */
@@ -13,6 +18,15 @@ class PowAndSqrtExample {
         Preconditions.checkArgument(sqrt(100_000_000L) == Math.sqrt(100_000_000));
         Preconditions.checkArgument(isSquare(16));
         Preconditions.checkArgument(pow(2, 4) == 16);
+
+        System.out.printf("Nums               : %s%n", printRange(0, 20, 10));
+        System.out.printf("Exponents 2^n      : %s%n", printArray(prepareExponent(20, 2), 10));
+    }
+
+    static int[] prepareExponent(int num, int b) {
+        return IntStream.range(0, num)
+                .map((int x) -> pow(b, x))
+                .toArray();
     }
 
     /**
