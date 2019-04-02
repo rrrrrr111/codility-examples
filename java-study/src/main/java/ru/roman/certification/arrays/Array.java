@@ -124,6 +124,13 @@ class Array {
         char c = 1;
         c++;
         //+c;           // illegal
+
+        boolean r1 = new int[]{1} == new int[]{1};                         // false
+        boolean r2 = new int[]{1}.equals(new int[]{1});                    // false
+        boolean r3 = new int[]{1}.hashCode() == new int[]{1}.hashCode();   // false
+
+        byte r = 0xff - 0xc0;
+        System.out.println("" + 0xff  +" " + 0xc0 +" "+ r);
     }
 
     static int foo (long va[][])[][] {
