@@ -3,7 +3,7 @@ package ru.roman.task.codility.other_tests
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
-import ru.roman.task.codility.other_tests.Solution2GirlLivingOnCage
+
 
 @CompileStatic
 @Test
