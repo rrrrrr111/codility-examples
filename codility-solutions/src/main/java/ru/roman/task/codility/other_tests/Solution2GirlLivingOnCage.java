@@ -1,4 +1,4 @@
-package ru.roman.task.codility.blank;
+package ru.roman.task.codility.other_tests;
 
 /**
  * The girl moves on points, she went from point (AX, AY) to point (BX, BY) turned right 90 degrees and goes straight, you need to determine the first point she will meet
