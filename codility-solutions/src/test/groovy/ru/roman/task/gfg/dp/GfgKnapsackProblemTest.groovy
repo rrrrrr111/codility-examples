@@ -3,7 +3,7 @@ package ru.roman.task.gfg.dp
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
-import ru.roman.task.gfg.blank.Gfg
+import ru.roman.task.blank.Gfg
 
 @CompileStatic
 @Test

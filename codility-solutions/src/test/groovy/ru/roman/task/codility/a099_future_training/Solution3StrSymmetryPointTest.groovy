@@ -3,7 +3,7 @@ package ru.roman.task.codility.a099_future_training
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
-import ru.roman.task.codility.blank.Solution
+import ru.roman.task.blank.Solution
 
 @CompileStatic
 @Test
