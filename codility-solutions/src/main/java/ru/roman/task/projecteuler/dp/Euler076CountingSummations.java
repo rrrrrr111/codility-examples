@@ -1,5 +1,7 @@
 package ru.roman.task.projecteuler.dp;
 
+import ru.roman.task.blank.Util;
+
 import java.math.BigInteger;
 
 /**
@@ -37,6 +39,7 @@ public class Euler076CountingSummations {
                     table[i][j] = table[i][j + 1].add(table[i - j][j]);
             }
         }
+        System.out.println(Util.matrixToString(table, 9));
         return table[n][k];
     }
 }
