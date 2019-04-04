@@ -7,7 +7,7 @@ package ru.roman.task.projecteuler.geometry;
  * <p>
  * For which value of p ≤ 1000, is the number of solutions maximised?
  */
-public class Euler039 {
+public class Euler039IntegerRightTriangles {
 
     public static void main(String[] a) {
 
