@@ -1,4 +1,4 @@
-package ru.roman.task.projecteuler.arrays;
+package ru.roman.task.projecteuler.crypto;
 
 import com.google.common.base.Preconditions;
 
