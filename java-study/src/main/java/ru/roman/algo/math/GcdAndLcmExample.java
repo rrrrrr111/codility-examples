@@ -1,5 +1,7 @@
 package ru.roman.algo.math;
 
+import java.util.stream.Stream;
+
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
 /**
@@ -8,7 +10,7 @@ import static org.apache.commons.lang3.StringUtils.leftPad;
 class GcdAndLcmExample {
 
     public static void main(String[] args) {
-
+        System.out.println(printFor(2, 3));
         System.out.println(printFor(132, 176));
         System.out.println(printFor(122, 44));
         System.out.println(printFor(9, 3));
@@ -16,7 +18,7 @@ class GcdAndLcmExample {
     }
 
     private static String printFor(int a, int b) {
-        return  "for " + leftPad(a + "", 3)
+        return "for " + leftPad(a + "", 3)
                 + " and " + leftPad(b + "", 3)
                 + " -> gcd: " + leftPad(gcd3(a, b) + "", 6)
                 + ", lcm: " + leftPad(lcm(a, b) + "", 6);
@@ -24,6 +26,13 @@ class GcdAndLcmExample {
 
     private static int lcm(int a, int b) {
         return a * b / gcd3(a, b);
+    }
+
+    private static int iterativeLcm(int a, int b) {
+        return Stream.iterate(1, i -> ++i)
+                .filter(i -> i % a == 0)
+                .filter(i -> i % b == 0)
+                .findFirst().get();
     }
 
     private static int gcd1(int a, int b) {
