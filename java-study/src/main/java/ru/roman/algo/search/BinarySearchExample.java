@@ -2,6 +2,7 @@ package ru.roman.algo.search;
 
 import java.util.Arrays;
 
+import static com.google.common.base.Preconditions.checkState;
 import static ru.roman.algo.PrintUtil.printArray;
 import static ru.roman.algo.PrintUtil.printRange;
 
@@ -12,16 +13,18 @@ class BinarySearchExample {
 
     public static void main(String[] args) {
 
-        int[] arr = {1, 2, 3, 4, 5, 5, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 9, 11, 13, 14, 14, 14, 15, 16, 17, 20, 21};
+        int[] arr = {-178, -98, -98, -1, 0, 1, 2, 3, 4, 4, 14, 14, 15, 67, 68, 98, 99};
         Arrays.sort(arr);
 
-        System.out.printf("Index    : %s%n", printRange(0, arr.length, 2));
-        System.out.printf("Array    : %s%n", printArray(arr, 2));
-        System.out.printf("%s -> %s%n", 0, binarySearch(arr, 0));
-        System.out.printf("%s -> %s%n", 7, binarySearch(arr, 7));
-        System.out.printf("%s -> %s%n", 8, binarySearch(arr, 8));
-        System.out.printf("%s -> %s%n", 16, binarySearch(arr, 16));
-        System.out.printf("%s -> %s%n", 22, binarySearch(arr, 22));
+        System.out.printf("Index    : %s%n", printRange(0, arr.length, 4));
+        System.out.printf("Array    : %s%n", printArray(arr, 4));
+        checkState(binarySearch(arr, -98) == 1);
+        checkState(binarySearch(arr, 0) == 4);
+        checkState(binarySearch(arr, 4) == 8);
+        checkState(binarySearch(arr, 14) == 10);
+        checkState(binarySearch(arr, 68) == 14);
+        checkState(binarySearch(arr, 98) == 15);
+        checkState(binarySearch(arr, 99) == 16);
     }
 
     private static int binarySearch(int[] arr, int value) {
