@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * JCL API Examples
  */
 class CompletableFutureExample {
 
