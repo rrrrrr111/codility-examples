@@ -1,11 +1,19 @@
 package ru.roman.jcl.util.stream;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.IntSummaryStatistics;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,6 +62,77 @@ public class StreamExamples {
                         LinkedHashMap::new)                                      // map factory
                 );
 
+        Map<Integer, String> brandMap = List.of("11", "22").stream()             // List as Map
+                .collect(Collectors.toMap(String::hashCode, Function.identity()));
 
+                                                                            // суммирующий коллектор
+        Collector<Person, ?, Integer> summingSalaries = Collectors.summingInt(Person::getSalary);
+
+        Collector<Person, ?, Map<Sex, List<Person>>> c1 =             // multimap с листом
+                Collectors.groupingBy(Person::getGender);             // classifier функция ключа
+
+        Collector<Person, ?, Map<Sex, Set<Integer>>> c2 =             // multimap с желаемой коллекцией
+                Collectors.groupingBy(Person::getGender,              // classifier функция ключа
+                        Collectors.mapping(Person::getSalary,         // вторым парамтером идет собирающий значение мапы коллектор
+                                Collectors.toCollection(LinkedHashSet::new)
+                                )
+                );
+
+        Collector<Person, ?, Map<Sex, Set<Integer>>> c3 =               // все groupingBy объединяют значения с одинаковым
+                Collectors.groupingBy(Person::getGender,                // classifier последующим коллектором
+                        LinkedHashMap::new,                             // c тремя параметрами, вторым идет фабрика самой мапы
+                        Collectors.mapping(Person::getSalary,           // мапиг коллектор трансфорирует и передает следующему
+                                Collectors.toCollection(LinkedHashSet::new)    // коллектору
+                        )
+                );
+
+        Map<String, ArrayList<Person>> map = Map.of();
+        Collector<String, ?, Map<String, List<Person>>> c4 = Collectors.toMap(
+                Function.identity(),
+                (Function<String, ArrayList<Person>>) id -> map.getOrDefault(id, new ArrayList<>()),
+                (left, right) -> {                              // в отличии от groupingBy Map бросит екзепшн на
+                    left.addAll(right);                         // одинаковом ключе нужно указать функцию объединения
+                    return left;
+                },
+                LinkedHashMap::new);
+
+        // комбинирование коллекторов для multimap
+        Map<Sex, List<String>> namesByGender = List.of(new Person()).stream().collect(     // собери
+                Collectors.groupingBy(                                // через коллектор группирующий, т е к Multimap
+                        Person::getGender,                            // classifier - функция ключа
+                        Collectors.mapping(               // значение мапы собирай коллектором мапящим (преобразование)
+                                Person::getName,          // classifier - функция на что мапить сущность
+                                Collectors.toList())      // коллектор собирающий результаты в лист
+                ));
+
+        Collector<Person, TreeSet<Person>, TreeSet<Person>> intoSet =       // свой Collector собрающий к TreeSet
+                Collector.of(
+                        TreeSet::new,                // supplier() - Supplier - создание контейнера
+                        TreeSet::add,                // accumulator() - BiConsumer - включение элемента в контейнер
+                        (set, element) -> {           // combiner() - BinaryOperator - сборка двух результирующих контейнеров в один
+                            set.addAll(element);
+                            return set;
+                        }
+                );                          // finisher() - Function - опционально финализирующая трансформация
+                                            // есть соотв оверлод
+        // аналог но только с  Supplier
+        Collector<Person, ?, NavigableSet<Person>> c = Collectors.toCollection(TreeSet::new);
+    }
+    private enum Sex {
+        MALE, FEMALE
+    }
+
+    private static class Person {
+        Sex getGender() {
+            return null;
+        }
+
+        String getName() {
+            return null;
+        }
+
+        int getSalary() {
+            return null;
+        }
     }
 }
