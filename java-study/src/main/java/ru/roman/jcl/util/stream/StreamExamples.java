@@ -122,9 +122,26 @@ public class StreamExamples {
                 .collect(HashMap::new,
                         (mapa, ch) -> mapa.merge((char) ch, 1L, (oldVal, newVal) -> oldVal + newVal),
                         (left, right) ->
-                                right.forEach((key, value) ->
+                                right.forEach((key, value) ->              // merge right map two left map
                                         left.merge(key, value, (oldVal, newVal) -> oldVal + newVal))
                 );
+
+        Map<Character, Long> m5 = Map.of();                                    // merge two maps
+        Map<Character, Long> m4 = m1.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey, Map.Entry::getValue,
+                        (value1, value2) -> value1 + value2,
+                        () -> new HashMap<>(m5)));
+
+        Map<Character, Long> m2 = Stream.concat(
+                m1.entrySet().stream(), m4.entrySet().stream()                           // merge two maps
+        ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
+
+        Map<Character, Long> m3 = Stream.of(m1, m2)                         // merge two maps
+                .flatMap(mapa -> mapa.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
+
+
     }
     private enum Sex {
         MALE, FEMALE

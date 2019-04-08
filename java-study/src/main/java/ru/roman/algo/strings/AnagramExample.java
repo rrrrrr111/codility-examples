@@ -54,10 +54,10 @@ public class AnagramExample {
 
         return a.chars()
                 .collect(HashMap::new,
-                        (map, ch) -> map.merge((char) ch, 1L, (oldVal, newVal) -> oldVal + newVal),
+                        (map, c) -> map.merge((char) c, 1L, (old, newVal) -> old + newVal),
                         (left, right) ->
                                 right.forEach((key, value) ->
-                                        left.merge(key, value, (oldVal, newVal) -> oldVal + newVal))
+                                        left.merge(key, value, (old, newVal) -> old + newVal))
                 );
     }
 }
