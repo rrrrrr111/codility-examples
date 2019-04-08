@@ -3,6 +3,7 @@ package ru.roman.jcl.util.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -12,7 +13,6 @@ import java.util.NavigableSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -117,6 +117,14 @@ public class StreamExamples {
                                             // есть соотв оверлод
         // аналог но только с  Supplier
         Collector<Person, ?, NavigableSet<Person>> c = Collectors.toCollection(TreeSet::new);
+
+        Map<Character, Long> m1 = "aaabb".chars()              // сделаем Map['a'->3, 'b'->2]
+                .collect(HashMap::new,
+                        (mapa, ch) -> mapa.merge((char) ch, 1L, (oldVal, newVal) -> oldVal + newVal),
+                        (left, right) ->
+                                right.forEach((key, value) ->
+                                        left.merge(key, value, (oldVal, newVal) -> oldVal + newVal))
+                );
     }
     private enum Sex {
         MALE, FEMALE
@@ -132,7 +140,7 @@ public class StreamExamples {
         }
 
         int getSalary() {
-            return null;
+            return 0;
         }
     }
 }

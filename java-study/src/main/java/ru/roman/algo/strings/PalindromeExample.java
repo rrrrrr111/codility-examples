@@ -18,7 +18,6 @@ public class PalindromeExample {
         System.out.println();
     }
 
-
     private static String reverse(String s) {
         return new StringBuilder(s).reverse().toString();
     }
