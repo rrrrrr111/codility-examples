@@ -1,8 +1,9 @@
-package ru.roman.task.codility.other_tests
+package ru.roman.task.codility.other_tests.strings
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
+import ru.roman.task.codility.other_tests.strings.Solution1AdjustStrings
 
 @CompileStatic
 @Test

@@ -1,6 +1,10 @@
 package ru.roman.task.codility.other_tests;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
+
+import static java.math.BigDecimal.valueOf;
 
 /**
  * <div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
@@ -11,12 +15,14 @@ import java.util.Arrays;
  * <div id="brinza-task-description">
  * <p>Arrays A and B consisting of N non-negative integers are given. Together, they represent N real numbers, denoted as C[0], ..., C[N−1]. Elements of A represent the integer parts and the corresponding elements of B (divided by 1,000,000) represent the fractional parts of the elements of C. More formally, A[I] and B[I] represent C[I] = A[I] + B[I] / 1,000,000.</p>
  * <p>For example, consider the following arrays A and B:</p>
- * <tt style="white-space:pre-wrap">  A[0] = 0	B[0] = 500,000
+ * <pre>
+ * A[0] = 0	B[0] = 500,000
  * A[1] = 1	B[1] = 500,000
  * A[2] = 2	B[2] = 0
- * A[3] = 2      B[3] = 0
+ * A[3] = 2 B[3] = 0
  * A[4] = 3	B[4] = 0
- * A[5] = 5	B[5] = 20,000</tt>
+ * A[5] = 5	B[5] = 20,000
+ * </pre>
  * <p>They represent the following real numbers:</p>
  * <tt style="white-space:pre-wrap">  C[0] = 0.5
  * C[1] = 1.5
@@ -53,9 +59,7 @@ import java.util.Arrays;
  * </ul>
  * </blockquote></div>
  * <div style="margin-top:5px">
- * <small>Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.</small>
  * </div>
- *
  * </div>
  */
 class CountMultiplicativePairs {
@@ -63,29 +67,29 @@ class CountMultiplicativePairs {
     public int solution(int[] A, int[] B) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
-        int n = A.length;
-        if (n == 0 || n == 1)
-            return 0;
-        if (B.length <= 1)
+        if (A.length < 2 || B.length < 2)
             return 0;
 
-        int count = 0;
-        float[] C = new float[n];
-        for (int i = 0; i < n; i++) {
-            C[i] = A[i] + ((float) B[i] / 1000000);
-            //System.out.println(C[i]);
+        BigDecimal[] C = new BigDecimal[A.length];
+
+        for (int i = 0; i < A.length; i++) {
+            C[i] = valueOf(A[i]).add((valueOf(B[i])
+                    .divide(valueOf(1_000_000L), 1_000_000, RoundingMode.HALF_UP)));
+            System.out.println(C[i]);
         }
-        for (int i = 0; i < n - 1; i++) {
-            if (C[i] >= 2.0 && C[i + 1] >= 2.0) {
-                count += ((n - 1 - i) * (n - i)) / 2;
-                //System.out.println(C[i]+"---"+count);
-                i = n;
+
+        long count = 0;
+        for (int i = 0; i < A.length - 1; i++) {
+            if (C[i].compareTo(valueOf(2.0)) >= 0
+                    && C[i + 1].compareTo(valueOf(2.0)) >= 0) {
+
+                count += ((A.length - 1 - i) * (A.length - i)) / 2;
+
+                i = A.length;
             } else {
-                for (int j = i + 1; j < n; j++) {
-                    //System.out.println(C[i]+"---"+C[j]+"--"+(C[i]*C[j]));
-                    //System.out.println(C[i].multiply(C[j]));
-                    //System.out.println(C[i].add(C[j]));
-                    if ((C[i] * C[j]) >= (C[i] + (C[j]))) {
+                for (int j = i + 1; j < A.length; j++) {
+
+                    if ((C[i].multiply(C[j])).compareTo(C[i].add(C[j])) >= 0) {
                         count++;
                         //System.out.println(C[i]+"---"+C[j]);
                     }
@@ -93,9 +97,9 @@ class CountMultiplicativePairs {
             }
         }
 
-        if (count > 1000000000)
-            return 1000000000;
+        if (count > 1_000_000_000)
+            return 1_000_000_000;
 
-        return count;
+        return (int) count;
     }
 }
