@@ -51,6 +51,11 @@ public class StreamExamples {
         Stream.of("aa", "bbb")                                         // print all
                 .forEach(System.out::println);
 
+        long i1 = List.of(1, 2, 3, 3, 3, 2, 1).stream()               // remove duplicates
+                .mapToInt(i -> i)
+                .distinct()
+                .count();
+
         Map<String, Integer> sorted = Map.of("word", 1, "foo", 2)    // sort Map in reverse order
                 .entrySet()
                 .stream()
@@ -65,7 +70,7 @@ public class StreamExamples {
         Map<Integer, String> brandMap = List.of("11", "22").stream()             // List as Map
                 .collect(Collectors.toMap(String::hashCode, Function.identity()));
 
-                                                                            // суммирующий коллектор
+        // суммирующий коллектор
         Collector<Person, ?, Integer> summingSalaries = Collectors.summingInt(Person::getSalary);
 
         Collector<Person, ?, Map<Sex, List<Person>>> c1 =             // multimap с листом
@@ -75,7 +80,7 @@ public class StreamExamples {
                 Collectors.groupingBy(Person::getGender,              // classifier функция ключа
                         Collectors.mapping(Person::getSalary,         // вторым парамтером идет собирающий значение мапы коллектор
                                 Collectors.toCollection(LinkedHashSet::new)
-                                )
+                        )
                 );
 
         Collector<Person, ?, Map<Sex, Set<Integer>>> c3 =               // все groupingBy объединяют значения с одинаковым
@@ -114,7 +119,7 @@ public class StreamExamples {
                             return set;
                         }
                 );                          // finisher() - Function - опционально финализирующая трансформация
-                                            // есть соотв оверлод
+        // есть соотв оверлод
         // аналог но только с  Supplier
         Collector<Person, ?, NavigableSet<Person>> c = Collectors.toCollection(TreeSet::new);
 
@@ -143,6 +148,7 @@ public class StreamExamples {
 
 
     }
+
     private enum Sex {
         MALE, FEMALE
     }
@@ -159,5 +165,10 @@ public class StreamExamples {
         int getSalary() {
             return 0;
         }
+    }
+
+    public static void main(String[] args) {
+
+
     }
 }
