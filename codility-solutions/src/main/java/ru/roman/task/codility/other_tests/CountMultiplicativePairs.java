@@ -1,10 +1,6 @@
 package ru.roman.task.codility.other_tests;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Arrays;
-
-import static java.math.BigDecimal.valueOf;
 
 /**
  * <div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
@@ -16,15 +12,16 @@ import static java.math.BigDecimal.valueOf;
  * <p>Arrays A and B consisting of N non-negative integers are given. Together, they represent N real numbers, denoted as C[0], ..., C[N−1]. Elements of A represent the integer parts and the corresponding elements of B (divided by 1,000,000) represent the fractional parts of the elements of C. More formally, A[I] and B[I] represent C[I] = A[I] + B[I] / 1,000,000.</p>
  * <p>For example, consider the following arrays A and B:</p>
  * <pre>
- * A[0] = 0	B[0] = 500,000
- * A[1] = 1	B[1] = 500,000
- * A[2] = 2	B[2] = 0
+ * A[0] = 0 B[0] = 500,000
+ * A[1] = 1 B[1] = 500,000
+ * A[2] = 2 B[2] = 0
  * A[3] = 2 B[3] = 0
- * A[4] = 3	B[4] = 0
- * A[5] = 5	B[5] = 20,000
+ * A[4] = 3 B[4] = 0
+ * A[5] = 5 B[5] = 20,000
  * </pre>
  * <p>They represent the following real numbers:</p>
- * <tt style="white-space:pre-wrap">  C[0] = 0.5
+ * <tt style="white-space:pre-wrap">
+ * C[0] = 0.5
  * C[1] = 1.5
  * C[2] = 2.0
  * C[3] = 2.0
@@ -65,41 +62,86 @@ import static java.math.BigDecimal.valueOf;
 class CountMultiplicativePairs {
 
     public int solution(int[] A, int[] B) {
-        System.out.printf("On input: %s%n", Arrays.toString(A));
+        System.out.printf("On input: %s %s%n", Arrays.toString(A), Arrays.toString(B));
 
-        if (A.length < 2 || B.length < 2)
+        final int length = A.length;
+        if (length < 2)
             return 0;
 
-        BigDecimal[] C = new BigDecimal[A.length];
+        CustomPredicate searchPredicate = (int[] a, int[] b, int i, int mid) -> {
 
-        for (int i = 0; i < A.length; i++) {
-            C[i] = valueOf(A[i]).add((valueOf(B[i])
-                    .divide(valueOf(1_000_000L), 1_000_000, RoundingMode.HALF_UP)));
-            System.out.println(C[i]);
-        }
+            long p = (a[i] * 1_000_000L + b[i]) * (a[mid] * 1_000_000L + b[mid]);
+            long product;
+            if (a[i] != 0 || a[mid] != 0) {
+                product = p / 1_000_000L;
+            } else {
+                product = p;
+            }
+            long sum = a[i] * 1_000_000L + a[mid] * 1_000_000L + b[i] + b[mid];
+
+            //  System.out.printf("Usual search indexes %s, %s  ->  prod: %s, sum: %s  :  res %s%n", i, mid, product, sum, res);
+            return product >= sum;
+        };
 
         long count = 0;
-        for (int i = 0; i < A.length - 1; i++) {
-            if (C[i].compareTo(valueOf(2.0)) >= 0
-                    && C[i + 1].compareTo(valueOf(2.0)) >= 0) {
+        for (int i = 0; i < length; i++) {
 
-                count += ((A.length - 1 - i) * (A.length - i)) / 2;
+            if (A[i] == 0 && B[i] == 0) {
 
-                i = A.length;
+                int idx = binarySearchOfLastZero(A, B, i + 1, length - 1);
+                if (idx > 0)
+                    count += idx - i;
+
             } else {
-                for (int j = i + 1; j < A.length; j++) {
 
-                    if ((C[i].multiply(C[j])).compareTo(C[i].add(C[j])) >= 0) {
-                        count++;
-                        //System.out.println(C[i]+"---"+C[j]);
-                    }
-                }
+                int idx = binarySearchLessOrEq(A, B, i, i + 1, length - 1, searchPredicate);
+                if (idx > 0)
+                    count += length - idx;
             }
+            if (count > 1_000_000_000) return 1_000_000_000;
         }
 
-        if (count > 1_000_000_000)
-            return 1_000_000_000;
-
         return (int) count;
+    }
+
+
+    private static int binarySearchLessOrEq(int[] a, int[] b, int i,
+                                            int fromIdx, int toIdx, CustomPredicate predicate) {
+
+        int beg = fromIdx, end = toIdx;
+        int res = -1;
+        for (int mid; beg <= end; ) {
+            mid = (beg + end) / 2;
+            if (predicate.test(a, b, i, mid)) {
+                res = mid;
+                end = mid - 1;
+            } else {
+                beg = mid + 1;
+            }
+        }
+        return res;
+    }
+
+    private static int binarySearchOfLastZero(int[] a, int[] b,
+                                              int fromIdx, int toIdx) {
+        int beg = fromIdx, end = toIdx;
+        int res = -1;
+        for (int mid; beg <= end; ) {
+
+            mid = (beg + end) / 2;
+            if (a[mid] == 0 && b[mid] == 0) {
+                res = mid;
+                beg = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+            //  System.out.printf("Zero search from %s to %s  ->  mid: %s, res: %s%n", fromIdx, toIdx, mid, res);
+        }
+        return res;
+    }
+
+    @FunctionalInterface
+    private interface CustomPredicate {
+        boolean test(int[] a, int[] b, int i, int idx);
     }
 }

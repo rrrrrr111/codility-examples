@@ -44,12 +44,11 @@ class BinomialAndFactorialExample {
         if (n < 0)
             throw new IllegalArgumentException("Factorial of negative number");
 
-        BigInteger prod = BigInteger.ONE;
+        BigInteger p = BigInteger.ONE;
         for (int i = 2; i <= n; i++)
-            prod = prod.multiply(BigInteger.valueOf(i));
-        return prod;
+            p = p.multiply(BigInteger.valueOf(i));
+        return p;
     }
-
 
     /**
      * Returns n choose k (Binomial Сoefficient)
@@ -58,9 +57,9 @@ class BinomialAndFactorialExample {
         if (k < 0 || k > n)
             throw new IllegalArgumentException();
 
-        BigInteger product = BigInteger.ONE;
+        BigInteger p = BigInteger.ONE;
         for (int i = 0; i < k; i++)
-            product = product.multiply(BigInteger.valueOf(n - i));
-        return product.divide(factorial(k));
+            p = p.multiply(BigInteger.valueOf(n - i));
+        return p.divide(factorial(k));
     }
 }
