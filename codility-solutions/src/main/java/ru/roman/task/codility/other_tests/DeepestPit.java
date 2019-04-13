@@ -49,20 +49,27 @@ class DeepestPit {
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
-        int N = A.length;
+        int length = A.length;
+        if (length < 3) {
+            return -1;
+        } else if (length == 3
+                && A[1] <= A[0] && A[1] <= A[2]) {
+            return Math.min(A[0], A[2]) - A[1];
+        }
 
         int depth = -1;
         int P, Q, R;
         int i = 0, j, k;
-        while (i < N - 2) {
-            P = A[i];
 
-            j = i + 1;
-            int p = P;
-            while (j < N - 1 && A[j] < p) {
-                p = A[j++];
+        while (i < length - 2) {
+            P = A[i]; // 1
+
+            j = i + 1;  // 1
+            int p = P;  // 1
+            while (j < length - 1 && A[j] < p) {
+                p = A[j++];    // 0
             }
-            if (j == N - 1) {
+            if (j == length - 1) {
                 break;
             }
             if (j > i + 1) {
@@ -73,7 +80,7 @@ class DeepestPit {
             }
             k = j;
             int q = Q;
-            while (k < N && A[k] > q) {
+            while (k < length && A[k] > q) {
                 q = A[k++];
             }
 
