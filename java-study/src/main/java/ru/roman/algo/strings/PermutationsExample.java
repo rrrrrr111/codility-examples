@@ -3,8 +3,11 @@ package ru.roman.algo.strings;
 public class PermutationsExample {
 
     public static void main(String[] args) {
-        String str = "ABC";
+        String str = "ABCD";
         permute(str.toCharArray(), 0, str.length() - 1);
+        
+        System.out.println();
+        permute("", str);
     }
 
     /**
@@ -31,5 +34,24 @@ public class PermutationsExample {
         arr[x] = arr[y];
         arr[y] = t;
         return arr;
+    }
+
+
+    /**
+     * Recursive method which actually prints all permutations
+     * of given String, but since we are passing an empty String
+     * as current permutation to start with
+     */
+    private static void permute(String perm, String word) {
+        if (word.isEmpty()) {
+            System.err.println(perm + word);
+        } else {
+            for (int i = 0; i < word.length(); i++) {
+                permute(
+                        perm + word.charAt(i),
+                        word.substring(0, i) + word.substring(i + 1, word.length())
+                );
+            }
+        }
     }
 }
