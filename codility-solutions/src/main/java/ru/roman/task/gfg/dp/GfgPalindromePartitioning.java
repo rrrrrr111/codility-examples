@@ -36,48 +36,39 @@ class GfgPalindromePartitioning {
         System.out.printf("On input: %s%n", str);
 
         int length = str.length();
+        boolean[][] dp = new boolean[length][length];   // dp[start][end] = true if substring str[start..end] is palindrome, else false
 
-        int[] C = new int[length];  // C[i] = Minimum number of cuts needed for palindrome partitioning of substring  str[0..i]
-        boolean[][] P = new boolean[length][length];   // P[i][j] = true if substring str[i..j] is palindrome, else false
-
-        int i, j, k, L;
-        for (i = 0; i < length; i++) {
-            P[i][i] = true;
+        for (int i = 0; i < length; i++) {
+            dp[i][i] = true;
         }
 
-        /* L is substring length. Build the solution in bottom up manner by considering all substrings of length starting from 2 to n. */
-        for (L = 2; L <= length; L++) {
-            // For substring of length L, set different
-            // possible starting indexes
-            for (i = 0; i < length - L + 1; i++) {
-                j = i + L - 1; // Set ending index
+        int start, end, len;
+        /* len is substring length. Build the solution in bottom up manner by considering all substrings of length starting from 2 to n. */
+        for (len = 2; len <= length; len++) {
+            // For substring of length len, set different possible starting indexes
+            for (start = 0; start < length - len + 1; start++) {
+                end = start + len - 1; // Set ending index
 
-                // If L is 2, then we just need to
-                // compare two characters. Else need to
-                // check two corner characters and value
-                // of P[i+1][j-1]
-                boolean charsEquals = str.charAt(i) == str.charAt(j);
-                if (L == 2)
-                    P[i][j] = charsEquals;
-                else
-                    P[i][j] = charsEquals && P[i + 1][j - 1];
+                // If len is 2, then we just need to compare two characters. Else need to
+                // check two corner characters and value of dp[start+1][end-1]
+                boolean charsEq = str.charAt(start) == str.charAt(end);
+                dp[start][end] = len == 2 ? charsEq : charsEq && dp[start + 1][end - 1];
             }
         }
 
-        for (i = 0; i < length; i++) {
-            if (P[0][i])
-                C[i] = 0;
+        int[] minCuts = new int[length];  // minCuts[start] = Minimum number of cuts needed for palindrome partitioning of substring  str[0..start]
+        for (int i = 0; i < length; i++) {
+            if (dp[0][i])
+                minCuts[i] = 0;
             else {
-                C[i] = Integer.MAX_VALUE;
-                for (j = 0; j < i; j++) {
-                    if (P[j + 1][i] && 1 +
-                            C[j] < C[i])
-                        C[i] = 1 + C[j];
+                minCuts[i] = Integer.MAX_VALUE;
+                for (int j = 0; j < i; j++) {
+                    if (dp[j + 1][i] && 1 + minCuts[j] < minCuts[i])
+                        minCuts[i] = 1 + minCuts[j];
                 }
             }
         }
-        // Return the min cut value for complete string. i.e., str[0..n-1]
-        return C[length - 1];
+        return minCuts[length - 1];
     }
 
     private static boolean isPalindrome(String s) {
