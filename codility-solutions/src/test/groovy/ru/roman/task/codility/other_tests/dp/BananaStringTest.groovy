@@ -1,14 +1,13 @@
-package ru.roman.task.codility.other_tests
+package ru.roman.task.codility.other_tests.dp
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
-import ru.roman.task.codility.other_tests.Solution3BananaString
 
 @CompileStatic
 @Test
-class Solution3BananaStringTest {
-    private Solution3BananaString subj = new Solution3BananaString()
+class BananaStringTest {
+    private BananaString subj = new BananaString()
 
     @DataProvider
     private Object[][] provider() {

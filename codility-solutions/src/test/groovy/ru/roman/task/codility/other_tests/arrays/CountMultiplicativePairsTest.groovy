@@ -1,4 +1,4 @@
-package ru.roman.task.codility.other_tests
+package ru.roman.task.codility.other_tests.arrays
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider

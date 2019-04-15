@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A simple java code to remove multiple occurences of characters which occurs morre than or equal to the given limit.
+ * A simple java code to remove multiple occurrences of characters which occurs more than or equal to the given limit.
  */
 class RemoveRecurringCharacters {
     public String solution(String input, int limit) {

@@ -1,9 +1,9 @@
-package ru.roman.task.codility.other_tests;
+package ru.roman.task.codility.other_tests.geometry;
 
 /**
  * The girl moves on points, she went from point (AX, AY) to point (BX, BY) turned right 90 degrees and goes straight, you need to determine the first point she will meet
  */
-class Solution2GirlLivingOnCage {
+class GirlLivingOnCage {
     public String solution(int AX, int AY, int BX, int BY) {
         System.out.printf("On input: %s %s %s %s%n", AX, AY, BX, BY);
 

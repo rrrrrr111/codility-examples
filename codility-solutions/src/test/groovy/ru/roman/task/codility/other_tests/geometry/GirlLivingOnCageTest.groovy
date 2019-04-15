@@ -1,4 +1,4 @@
-package ru.roman.task.codility.other_tests
+package ru.roman.task.codility.other_tests.geometry
 
 import groovy.transform.CompileStatic
 import org.testng.annotations.DataProvider
@@ -7,8 +7,8 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class Solution2GirlLivingOnCageTest {
-    private Solution2GirlLivingOnCage subj = new Solution2GirlLivingOnCage()
+class GirlLivingOnCageTest {
+    private GirlLivingOnCage subj = new GirlLivingOnCage()
 
     @DataProvider
     private Object[][] provider() {
