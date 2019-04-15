@@ -1,7 +1,7 @@
 package ru.roman.task.gfg.dp;
 
 /**
- *
+ * Given a string, a partitioning of the string is a palindrome partitioning if every substring of the partition is a palindrome. For example, “aba|b|bbabb|a|b|aba” is a palindrome partitioning of “ababbbabbababa”. Determine the fewest cuts needed for palindrome partitioning of a given string. For example, minimum 3 cuts are needed for “ababbbabbababa”. The three cuts are “a|babbbab|b|ababa”. If a string is palindrome, then minimum 0 cuts are needed. If a string of length n containing all different characters, then minimum n-1 cuts are needed.
  */
 class GfgPalindromePartitioning {
     int test(String str) {
@@ -13,7 +13,6 @@ class GfgPalindromePartitioning {
 
         String subStr = str.substring(from, to);
         //System.out.println("Checking: " + subStr);
-
         if (subStr.length() < 2
                 || isPalindrome(subStr)) return 0;
 
@@ -21,7 +20,6 @@ class GfgPalindromePartitioning {
         for (int i = from; i < to - 1; i++) {
 
             //System.out.println("Splitting onto " + str.substring(from, i + 1) + " and " + str.substring(i + 1, to));
-
             minCuts = Math.min(
                     minCuts,
                     recursionAlg(str, from, i + 1)
