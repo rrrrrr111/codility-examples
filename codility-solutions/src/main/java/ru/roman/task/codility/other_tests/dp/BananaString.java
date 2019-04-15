@@ -1,5 +1,6 @@
 package ru.roman.task.codility.other_tests.dp;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -73,12 +74,15 @@ class BananaString {
 
     private static char[] removeElement(char[] arr, int index) {
         if (arr == null || index < 0 || index >= arr.length) throw new IllegalArgumentException();
-        char[] res = new char[arr.length - 1];
+        final int length = Array.getLength(arr) - 1;
+        final char[] res = (char[]) newArrayFor(arr, length);
 
-        for (int i = 0, k = 0; i < arr.length; i++) {
-            if (i == index) continue;
-            res[k++] = arr[i];
-        }
+        System.arraycopy(arr, 0, res, 0, index);
+        System.arraycopy(arr, index + 1, res, index, length - index);
         return res;
+    }
+
+    private static Object newArrayFor(final Object array, int length) {
+        return Array.newInstance(array.getClass().getComponentType(), length);
     }
 }
