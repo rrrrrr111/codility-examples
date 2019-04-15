@@ -17,15 +17,12 @@ class CountersExample {
         System.out.printf("Counters : %s%n", PrintUtil.printArray(counters, 3));
     }
 
-    private static int[] prepareCounters(int[] A, int maxValue) {
+    private static int[] prepareCounters(int[] arr, int maxValue) {
         int[] counters = new int[maxValue + 1];
-        for (int a : A) {
-            if (a > maxValue) {
-                throw new IllegalArgumentException("Value:" + a + " exceed max value:" + maxValue);
-            }
-            if (a < 0) {
-                throw new IllegalArgumentException("Value:" + a + " less then zero");
-            }
+        for (int a : arr) {
+            if (a > maxValue) throw new IllegalArgumentException("Value:" + a + " exceed max value:" + maxValue);
+            if (a < 0) throw new IllegalArgumentException("Value:" + a + " less then zero");
+
             counters[a]++;
         }
         return counters;

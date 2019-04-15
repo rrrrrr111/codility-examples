@@ -17,8 +17,9 @@ public class PermutationExample {
         Arrays.sort(arr);
 
         do {
-            StringBuffer b = new StringBuffer(arr.length);
+            StringBuilder b = new StringBuilder(arr.length);
             for (int c : arr) b.append((char) c);
+            
             System.out.println(b.toString());
         } while (nextPermutation(arr));
     }
