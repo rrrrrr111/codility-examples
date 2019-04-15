@@ -15,6 +15,7 @@ class Solution1AdjustStringsTest {
         [
                 ["", "", "EQUAL"],
                 ["a", "a", "EQUAL"],
+                ["acz", "acz", "EQUAL"],
 
                 ["tent", "test", "REPLACE n s"],
                 ["a", "s", "REPLACE a s"],
