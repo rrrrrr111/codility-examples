@@ -12,6 +12,8 @@ class GfgPalindromePartitioningTest {
     @DataProvider
     private Object[][] provider() {
         [
+                ["abcdefghijklmn", 13],
+                ["aaaaaaaaaaaaaa", 0],
                 ["ababbbabbababa", 3],
         ] as Object[][]
     }
