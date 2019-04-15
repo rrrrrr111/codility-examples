@@ -14,6 +14,11 @@ public class ArrayOperations {
         Preconditions.checkState(Arrays.equals(removeElement(new int[]{1, 2, 4, 3}, 2), new int[]{1, 2, 3}));
         Preconditions.checkState(Arrays.equals(removeElement(new int[]{1, 2, 4, 3}, 3), new int[]{1, 2, 4}));
 
+        Preconditions.checkState(Arrays.equals(removeElements(new int[]{1, 2, 4, 3}, 0, 0), new int[]{2, 4, 3}));
+        Preconditions.checkState(Arrays.equals(removeElements(new int[]{1, 2, 4, 3}, 3, 3), new int[]{1, 2, 4}));
+        Preconditions.checkState(Arrays.equals(removeElements(new int[]{1, 2, 4, 3}, 2, 2), new int[]{1, 2, 3}));
+        Preconditions.checkState(Arrays.equals(removeElements(new int[]{1, 2, 4, 3}, 3, 3), new int[]{1, 2, 4}));
+
         Preconditions.checkState(Arrays.equals(addElement(new int[]{1, 2, 3}, 69, 3), new int[]{1, 2, 3, 69}));
         Preconditions.checkState(Arrays.equals(addElement(new int[]{1, 2, 3}, 29, 0), new int[]{29, 1, 2, 3}));
         Preconditions.checkState(Arrays.equals(addElement(new int[]{1, 2, 3}, 69, 2), new int[]{1, 2, 69, 3}));
@@ -27,7 +32,9 @@ public class ArrayOperations {
 
 
     private static int[] removeElement(int[] arr, int index) {
-        if (arr == null || index < 0 || index >= arr.length) throw new IllegalArgumentException();
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (index < 0 || index >= arr.length) throw new IllegalArgumentException();
+
         final int length = Array.getLength(arr) - 1;
         final int[] res = (int[]) newArrayFor(arr, length);
 
@@ -36,8 +43,27 @@ public class ArrayOperations {
         return res;
     }
 
+    private static int[] removeElements(int[] arr, int from, int to) {
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (from < 0) throw new IllegalArgumentException("from < 0");
+        if (from >= arr.length) throw new IllegalArgumentException("from >= arr.length");
+        if (to < 0) throw new IllegalArgumentException("to < 0");
+        if (to >= arr.length) throw new IllegalArgumentException("to >= arr.length");
+        if (from > to) throw new IllegalArgumentException("from > to");
+
+
+        int removeCount = to - from + 1;
+        final int length = Array.getLength(arr) - removeCount;
+        final int[] res = (int[]) newArrayFor(arr, length);
+
+        System.arraycopy(arr, 0, res, 0, from);
+        System.arraycopy(arr, from, res, arr.length - to, arr.length - to);
+        return res;
+    }
+
     private static int[] addElement(int[] arr, int value, int index) {
-        if (arr == null || index < 0 || index >= arr.length + 1) throw new IllegalArgumentException();
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (index < 0 || index >= arr.length + 1) throw new IllegalArgumentException();
 
         final int length = Array.getLength(arr) + 1;
         final int[] res = (int[]) newArrayFor(arr, length);
@@ -48,8 +74,8 @@ public class ArrayOperations {
     }
 
     private static int[] strip(int headCount, int[] arr, int tailCount) {
-        if (arr == null
-                || headCount < 0 || tailCount < 0
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (headCount < 0 || tailCount < 0
                 || headCount > arr.length || tailCount > arr.length
                 || arr.length - headCount < tailCount) throw new IllegalArgumentException();
 
