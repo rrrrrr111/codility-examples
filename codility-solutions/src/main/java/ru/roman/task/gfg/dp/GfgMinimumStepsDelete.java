@@ -17,8 +17,8 @@ class GfgMinimumStepsDelete {
             Arrays.fill(ints, -1);
         }
 
-        //return recursiveAlg1(0, chars.length - 1, dp, chars);
-        return recursiveAlg2(0, chars.length - 1, dp, chars);
+        return recursiveAlg1(0, chars.length - 1, dp, chars);
+        //return recursiveAlg2(0, chars.length - 1, dp, chars);
     }
 
     private int recursiveAlg1(int from, int to, int[][] dp, char[] chars) {
@@ -73,7 +73,7 @@ class GfgMinimumStepsDelete {
 
     private static char[] reverse(char[] arr, int startIndexInclusive, int endIndexExclusive) {
         final int length = Array.getLength(arr);
-        final char[] res = (char[]) newArrayFor(arr, length);
+        final char[] res = (char[]) Array.newInstance(arr.getClass().getComponentType(), length);
 
         int i = startIndexInclusive, j = endIndexExclusive - 1;
 
@@ -90,9 +90,5 @@ class GfgMinimumStepsDelete {
             System.arraycopy(arr, endIndexExclusive, res, endIndexExclusive, length - endIndexExclusive);
         }
         return res;
-    }
-
-    private static Object newArrayFor(final Object array, int length) {
-        return Array.newInstance(array.getClass().getComponentType(), length);
     }
 }
