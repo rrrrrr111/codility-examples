@@ -14,6 +14,12 @@ class GfgMinimumStepsDeleteTest {
     private Object[][] provider() {
         [
                 ["abcddcba", 4],
+                ["ccccbbbbbbaaaabbbcccccccc", 3],
+                ["eeeeedcccbaabbcddde", 5],
+                ["abcdedcbabcdedcba", 9],
+                ["edcbabcde", 5],
+                ["aaaaaaaaaaaa", 1],
+                ["abcdefghijklmnopqrstuvwxyz", 26],
         ] as Object[][]
     }
 

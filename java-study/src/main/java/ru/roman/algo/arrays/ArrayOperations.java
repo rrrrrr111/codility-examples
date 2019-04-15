@@ -47,6 +47,15 @@ public class ArrayOperations {
         checkState(lastIndexOf(new int[]{1, 2, 3, 3, 2, 1}, 3, 4) == 3);
         checkState(lastIndexOf(new int[]{1, 2, 3, 3, 2, 1}, 3) == 3);
 
+        checkState(lengthOfSubSequence(new int[]{1, 2, 3}, 0, 2) == 1);
+        checkState(lengthOfSubSequence(new int[]{1, 2, 3}, 1, 2) == 1);
+        checkState(lengthOfSubSequence(new int[]{1, 2, 3}, 2, 2) == 1);
+        checkState(lengthOfSubSequence(new int[]{2, 2, 3}, 0, 2) == 2);
+        checkState(lengthOfSubSequence(new int[]{0, 3, 3}, 1, 2) == 2);
+        checkState(lengthOfSubSequence(new int[]{3, 3, 3}, 0, 2) == 3);
+        checkState(lengthOfSubSequence(new int[]{3, 3, 3}, 1, 2) == 2);
+        checkState(lengthOfSubSequence(new int[]{3, 3, 3}, 1, 1) == 1);
+
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3}), new int[]{3, 2, 1}));
         checkState(Arrays.equals(reverse(new int[1]), new int[1]));
         checkState(Arrays.equals(reverse(new int[]{1}, 0, 1), new int[]{1}));
@@ -54,9 +63,7 @@ public class ArrayOperations {
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 1, 4), new int[]{1, 4, 3, 2, 5}));
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 1, 5), new int[]{1, 5, 4, 3, 2}));
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 0, 3), new int[]{3, 2, 1, 4, 5}));
-
     }
-
 
     private static int[] remove(int[] arr, int index) {
         return removeRange(arr, index, index);
@@ -142,6 +149,21 @@ public class ArrayOperations {
             }
         }
         return -1;
+    }
+
+    private static int lengthOfSubSequence(int[] arr, int startIndex, int stopIndex) {
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (startIndex < 0) throw new IllegalArgumentException("startIndex < 0");
+        if (startIndex >= arr.length) throw new IllegalArgumentException("startIndex >= arr.length");
+
+        int value = arr[startIndex];
+        int length = 1;
+        for (int i = startIndex + 1; i <= stopIndex; i++) {
+            if (value != arr[i])
+                break;
+            length++;
+        }
+        return length;
     }
 
     private static int[] reverse(int[] arr) {
