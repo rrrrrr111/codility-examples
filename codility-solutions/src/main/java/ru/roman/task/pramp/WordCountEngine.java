@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * [input] string document
  * [output] array.array.string
  */
-public class WordCountEngine {
+class WordCountEngine {
 
     static String[][] wordCountEngine(String document) {
 

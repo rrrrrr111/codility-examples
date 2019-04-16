@@ -20,7 +20,7 @@ package ru.roman.task.pramp;
  * 1 ≤ arr.length ≤ 100
  * [output] integer
  */
-public class ArrayIndexElementEquality {
+class ArrayIndexElementEquality {
 
     static int indexEqualsValueSearch(int[] arr) {
         int beg = 0, end = arr.length - 1;
@@ -41,5 +41,4 @@ public class ArrayIndexElementEquality {
         }
         return res;
     }
-
 }

@@ -57,7 +57,4 @@ class ArrayQuadrupletSolution {
         }
         return new int[0];
     }
-
-    public static void main(String[] args) {
-    }
 }

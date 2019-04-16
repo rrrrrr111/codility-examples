@@ -24,11 +24,11 @@ public class DynamicCoinChangingLessonTask {
         int[] C = {1, 3, 4};  // coins
         int k = 6;            // Sum
 
-        twoDimArrayAlg(C, k);
-        oneDimArrayAlg(C, k);
+        dpAlg1(C, k);
+        //dpAlg2(C, k);
     }
 
-    private static void twoDimArrayAlg(int[] coins, int sum) {
+    private static void dpAlg1(int[] coins, int sum) {
         int[][] dp = new int[coins.length + 1][sum + 1];
         Arrays.fill(dp[0], Integer.MAX_VALUE);
         dp[0][0] = 0;
@@ -38,25 +38,25 @@ public class DynamicCoinChangingLessonTask {
             int coin = coins[c - 1];
 
             for (int idx = 0; idx < coin; idx++) {
-                System.out.printf("Prepare for idx:%s, coin %s   ", idx, coin);
+                System.out.printf("Prepare for idx:%s, coin %s%n", idx, coin);
 
                 dp[c][idx] = dp[c - 1][idx];
 
-                System.out.println(Arrays.deepToString(dp));
+                System.out.println(matrixToString(dp, 1));
             }
             for (int idx = coin; idx <= sum; idx++) {
-                System.out.printf("Calculate for idx:%s, coin %s ", idx, coin);
+                System.out.printf("Calculate for idx:%s, coin %s%n", idx, coin);
 
                 dp[c][idx] = Math.min(dp[c][idx - coin] + 1, dp[c - 1][idx]);
 
-                System.out.println(Arrays.deepToString(dp));
+                System.out.println(matrixToString(dp, 1));
             }
             System.out.println();
         }
         System.out.println();
     }
 
-    private static void oneDimArrayAlg(int[] coins, int sum) {
+    private static void dpAlg2(int[] coins, int sum) {
         int[] dp = new int[sum + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
@@ -73,5 +73,27 @@ public class DynamicCoinChangingLessonTask {
             System.out.println();
         }
         System.out.println();
+    }
+
+
+    private static String matrixToString(int[][] matrix, int leftPad) {
+        StringBuilder b = new StringBuilder("  [");
+        for (int[] arr : matrix) {
+            if (b.length() == 3) b.append("[");
+            else b.append("   [");
+
+            for (int a : arr) {
+                String str = String.valueOf(a);
+                for(int i = 1; str.length() + i <= leftPad; i++)
+                    b.append(" ");
+                b.append(str)
+                        .append(", ");
+            }
+
+            b.delete(b.length() - 2, b.length())
+                    .append("]").append(System.lineSeparator());
+        }
+        b.delete(b.length() - System.lineSeparator().length(), b.length()).append("]");
+        return b.toString();
     }
 }
