@@ -23,32 +23,20 @@ class CartesianTreeExample {
     }
 }
 
-class CtNode {
-    CtNode left, right;
-    int value;
-
-    /* Constructor */
-    CtNode() {
-        left = null;
-        right = null;
-        value = 0;
-    }
-}
-
 class CartesianTree {
-    private CtNode root;
+    private Node root;
 
     CartesianTree(int[] data) {
         root = build(data);
     }
 
-    static CtNode build(int[] data) {
+    static Node build(int[] data) {
         if (data == null || data.length == 0)
             return null;
         return build(data, 0, data.length - 1);
     }
 
-    private static CtNode build(int[] data, int start, int end) {
+    private static Node build(int[] data, int start, int end) {
         if (end < start)
             return null;
         int min = Integer.MAX_VALUE;
@@ -59,11 +47,11 @@ class CartesianTree {
                 minIndex = i;
             }
         }
-        CtNode node = new CtNode();
-        node.value = min;
-        node.left = build(data, start, minIndex - 1);
-        node.right = build(data, minIndex + 1, end);
-        return node;
+        return new Node(
+                min,
+                build(data, start, minIndex - 1),
+                build(data, minIndex + 1, end)
+        );
     }
 
     boolean isEmpty() {
@@ -74,7 +62,7 @@ class CartesianTree {
         return countNodes(root);
     }
 
-    private int countNodes(CtNode r) {
+    private int countNodes(Node r) {
         if (r == null)
             return 0;
         else {
@@ -97,7 +85,7 @@ class CartesianTree {
         traversePostOrder(root);
     }
 
-    private void traverseInOrder(CtNode r) {
+    private void traverseInOrder(Node r) {
         if (r != null) {
             traverseInOrder(r.left);
             System.out.print(r.value + " ");
@@ -105,7 +93,7 @@ class CartesianTree {
         }
     }
 
-    private void traversePreOrder(CtNode r) {
+    private void traversePreOrder(Node r) {
         if (r != null) {
             System.out.print(r.value + " ");
             traversePreOrder(r.left);
@@ -113,7 +101,7 @@ class CartesianTree {
         }
     }
 
-    private void traversePostOrder(CtNode r) {
+    private void traversePostOrder(Node r) {
         if (r != null) {
             traversePostOrder(r.left);
             traversePostOrder(r.right);
