@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * For a given set of denominations, you are asked to find the minimum number of coins with
  * which a given amount of money can be paid. Assume that you can use as many coins of
- * a particular denomination as necessary.
+ * a particular denomination as necessary
  * <pre>
  * 1 def dynamic_coin_changing(C, k):
  * 2    n = len(C)
@@ -25,8 +25,8 @@ public class CoinChangingProblem {
         //int coins[] = {1, 3, 4}, sum = 6;
 
         //int res = recursiveAlg(coins, sum);
-        //int res = dpAlg1(coins, sum);
-        int res = dpAlg2(coins, sum);
+        int res = dpAlg1(coins, sum);
+        //int res = dpAlg2(coins, sum);
         System.out.println(res);
     }
 
@@ -40,7 +40,7 @@ public class CoinChangingProblem {
         for (int coin : coins) {
             if (sum >= coin) {
                 int res = recursiveAlg(coins, sum - coin) + 1;   // we are looking for some min count which can be collected
-                if (res != -1) {                                       // without current coin
+                if (res != -1) {                                      // without current coin
                     min = min == -1 ? res : Math.min(min, res);       //  -1 if sum cannot be collected by given coins
                 }
             }
@@ -51,7 +51,7 @@ public class CoinChangingProblem {
     private static int dpAlg1(int[] coins, int sum) {
         int[][] dp = new int[coins.length + 1][sum + 1];  // the matrix contains min count of coins needed to get the sum
         Arrays.fill(dp[0], -1);                       // if some sum can not be calculated by given coins we preserve -1
-                                                          // every row for the coin also contains min count derived by prev coins
+        // every row for the coin also contains min count derived by prev coins
         dp[0][0] = 0;                      // basic value for convenience
 
         for (int cIdx = 1; cIdx < dp.length; cIdx++) {
@@ -59,7 +59,7 @@ public class CoinChangingProblem {
             int coin = coins[cIdx - 1];                   // just iterating coins
 
             for (int sIdx = 0; sIdx < coin; sIdx++) {     // The sums which is less then current count we fill by values for prev coins
-                                                          // so this sums can be collected only using previous coins
+                // so this sums can be collected only using previous coins
 
                 int prevMinorCoinsMinCount = dp[cIdx - 1][sIdx];
                 System.out.printf("Prepare min count for coin %s value [%s, %s] = %s from prev row%n", coin, cIdx, sIdx, prevMinorCoinsMinCount);
@@ -71,9 +71,10 @@ public class CoinChangingProblem {
             for (int sIdx = coin; sIdx <= sum; sIdx++) {
                 System.out.printf("Calculate for sIdx:%s, coin %s%n", sIdx, coin);
                 dp[cIdx][sIdx] = Math.min(
-                        dp[cIdx][sIdx - coin] + 1,    // +1 - current coin plus
-                                                      // value collected by minor coins prepared in previous loop or
-                                                      // some value collected previously in this loop
+                        dp[cIdx][sIdx - coin] == -1  // value collected by minor coins prepared in previous loop or
+                                ? -1                   // some value collected previously in this loop
+                                : dp[cIdx][sIdx - coin] + 1,   // +1 - current coin plus
+
                         dp[cIdx - 1][sIdx] == -1         // or min count collected by previous minor coins, indeed it could be more optimal
                                 ? Integer.MAX_VALUE      // we avoid the case there it was not calculated due to lack of suitable coins
                                 : dp[cIdx - 1][sIdx]
@@ -90,16 +91,19 @@ public class CoinChangingProblem {
         dp[0] = 0;
 
         for (int coin : coins) {                                 // hire we use one dimension array, we preserve all calculations in one row
-             for (int idx = coin; idx < dp.length; idx++) {        // and we fray through old value just after comparing it with
-                                                                   // new calculated count, if new count more optimal then
+            for (int idx = coin; idx < dp.length; idx++) {        // and we fray through old value just after comparing it with
+                // new calculated count, if new count more optimal then
                 System.out.printf("Calculate for coin:%s index:%s%n", coin, idx);     // count collected by previous minor coins
-                 int minCount = dp[idx - coin];           // min coins count for the sum = sum - current coin
-                 dp[idx] = Math.min(
-                        minCount + 1,
+                int minCount = dp[idx - coin];           // min coins count for the sum = sum - current coin
+                dp[idx] = Math.min(
+                        minCount == -1
+                                ? -1
+                                : minCount + 1,
+
                         dp[idx] == -1
                                 ? Integer.MAX_VALUE
                                 : dp[idx]
-                 );
+                );
             }
             System.out.println(Arrays.toString(dp));
         }
