@@ -23,6 +23,7 @@ package ru.roman.task.pramp;
 class ArrayIndexElementEquality {
 
     static int indexEqualsValueSearch(int[] arr) {
+
         int beg = 0, end = arr.length - 1;
 
         int res = -1;
