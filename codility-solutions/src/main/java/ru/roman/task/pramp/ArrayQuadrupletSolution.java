@@ -36,7 +36,7 @@ class ArrayQuadrupletSolution {
     static int[] findArrayQuadruplet(int[] arr, int s) {
         Arrays.sort(arr);
 
-        // o(n^3)
+        // O(n^3)
         for (int i = 0; i < arr.length - 3; i++) {
             for (int j = i + 1; j < arr.length - 2; j++) {
 
