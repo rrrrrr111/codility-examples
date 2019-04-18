@@ -21,7 +21,7 @@ import java.io.PrintStream;
  *
  * @author churganov_r 19.03.2011
  */
-class Puzzle3SystemOut {
+class PreventSystemOut {
 
     public static void main(String[] args) {
         System.out.println("Hello world");

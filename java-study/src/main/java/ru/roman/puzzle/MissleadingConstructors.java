@@ -4,6 +4,7 @@
  */
 package ru.roman.puzzle;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Random;
  *
  * @author churganov_r 15.03.2011
  */
-class Puzzle1StringBuffer {
+class MissleadingConstructors {
 
     private static Random rnd = new Random();
 
@@ -36,5 +37,8 @@ class Puzzle1StringBuffer {
         word.append('i');
         word.append('n');
         System.out.println(word);
+
+
+        new ArrayList<>(33);
     }
 }

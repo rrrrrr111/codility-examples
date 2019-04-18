@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author churganov_r 21.03.2011
  */
-class Puzzle2FloatingPoint {
+class FloatingPointNumbers {
 
     public static void main(String args[]) {
         System.out.println(2.00 - 1.10); // 0.8999999999999999
