@@ -85,27 +85,27 @@ class CartesianTree {
         traversePostOrder(root);
     }
 
-    private void traverseInOrder(Node r) {
-        if (r != null) {
-            traverseInOrder(r.left);
-            System.out.print(r.value + " ");
-            traverseInOrder(r.right);
+    private void traverseInOrder(Node node) {
+        if (node != null) {
+            traverseInOrder(node.left);
+            System.out.print(node.value + ", ");
+            traverseInOrder(node.right);
         }
     }
 
-    private void traversePreOrder(Node r) {
-        if (r != null) {
-            System.out.print(r.value + " ");
-            traversePreOrder(r.left);
-            traversePreOrder(r.right);
+    private void traversePreOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.value + ", ");
+            traversePreOrder(node.left);
+            traversePreOrder(node.right);
         }
     }
 
-    private void traversePostOrder(Node r) {
-        if (r != null) {
-            traversePostOrder(r.left);
-            traversePostOrder(r.right);
-            System.out.print(r.value + " ");
+    private void traversePostOrder(Node node) {
+        if (node != null) {
+            traversePostOrder(node.left);
+            traversePostOrder(node.right);
+            System.out.print(node.value + ", ");
         }
     }
 }
