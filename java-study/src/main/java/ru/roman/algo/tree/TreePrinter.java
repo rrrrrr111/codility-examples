@@ -93,7 +93,7 @@ class TreePrinter<T> {
             endTreeIndex--;
 
             // find max number of lines for tallest tree
-            int maxLines = allTreeLines.stream().mapToInt(list -> list.size()).max().orElse(0);
+            int maxLines = allTreeLines.stream().mapToInt(List::size).max().orElse(0);
 
             // print trees line by line
             for (int i = 0; i < maxLines; i++) {
