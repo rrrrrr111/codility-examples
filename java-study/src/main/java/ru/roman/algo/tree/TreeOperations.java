@@ -1,60 +1,97 @@
 package ru.roman.algo.tree;
 
+import java.util.ArrayList;
 import java.util.IdentityHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Queue;
+import java.util.StringJoiner;
 
 class TreeOperations {
 
-
-    static int countNodes(Node root) {
-        if (root == null)
-            return 0;
-        int count = 1;
-        count += countNodes(root.left);
-        count += countNodes(root.right);
-        return count;
+    /**
+     * In-order   (LNR) DFS
+     */
+    static List<Integer> traverseInOrder(Node node) {
+        List<Integer> list = new ArrayList<>(100);
+        traverseInOrder(node, list);
+        return list;
     }
 
-    static String traverseInOrder(Node node) {
-        StringBuilder sb = new StringBuilder(100);
-        traverseInOrder(node, sb);
-        return sb.toString();
-    }
-
-    static void traverseInOrder(Node node, StringBuilder sb) {
+    private static void traverseInOrder(Node node, List<Integer> list) {
         if (node != null) {
-            traverseInOrder(node.left, sb);
-            sb.append(node.value).append(", ");
-            traverseInOrder(node.right, sb);
+            traverseInOrder(node.left, list);
+            list.add(node.value);
+            traverseInOrder(node.right, list);
         }
     }
 
-    static String traversePreOrder(Node node) {
-        StringBuilder sb = new StringBuilder(100);
-        traversePreOrder(node, sb);
-        return sb.toString();
+    /**
+     * Out-order   (RNL) DFS
+     */
+    static List<Integer> traverseOutOrder(Node node) {
+        List<Integer> list = new ArrayList<>(100);
+        traverseOutOrder(node, list);
+        return list;
     }
 
-    static void traversePreOrder(Node node, StringBuilder sb) {
+    private static void traverseOutOrder(Node node, List<Integer> list) {
         if (node != null) {
-            sb.append(node.value).append(", ");
-            traversePreOrder(node.left, sb);
-            traversePreOrder(node.right, sb);
+            traverseOutOrder(node.right, list);
+            list.add(node.value);
+            traverseOutOrder(node.left, list);
         }
     }
 
-    static String traversePostOrder(Node node) {
-        StringBuilder sb = new StringBuilder(100);
-        traversePostOrder(node, sb);
-        return sb.toString();
+    /**
+     * Pre-order  (NLR) DFS
+     */
+    static List<Integer> traversePreOrder(Node node) {
+        List<Integer> list = new ArrayList<>(100);
+        traversePreOrder(node, list);
+        return list;
     }
 
-    static void traversePostOrder(Node node, StringBuilder sb) {
+    private static void traversePreOrder(Node node, List<Integer> list) {
         if (node != null) {
-            traversePostOrder(node.left, sb);
-            traversePostOrder(node.right, sb);
-            sb.append(node.value).append(", ");
+            list.add(node.value);
+            traversePreOrder(node.left, list);
+            traversePreOrder(node.right, list);
         }
+    }
+
+    /**
+     * Post-order (LRN) DFS
+     */
+    static List<Integer> traversePostOrder(Node node) {
+        List<Integer> list = new ArrayList<>(100);
+        traversePostOrder(node, list);
+        return list;
+    }
+
+    private static void traversePostOrder(Node node, List<Integer> list) {
+        if (node != null) {
+            traversePostOrder(node.left, list);
+            traversePostOrder(node.right, list);
+            list.add(node.value);
+        }
+    }
+
+    /**
+     * BFS
+     */
+    static List<Integer> traverseBfs(Node root) {
+        List<Integer> list = new ArrayList<>(100);
+        Queue<Node> queue = new LinkedList<>();
+
+        while (root != null) {
+            list.add(root.value);
+            queue.add(root.left);
+            queue.add(root.right);
+            root = queue.poll();
+        }
+        return list;
     }
 
     static int maxDepth(Node node) {
@@ -92,7 +129,16 @@ class TreeOperations {
         return node;
     }
 
-    static int leftMostValue(Node root) {
+    static int countNodes(Node root) {
+        if (root == null)
+            return 0;
+        int count = 1;
+        count += countNodes(root.left);
+        count += countNodes(root.right);
+        return count;
+    }
+
+    static int leftMost(Node root) {
         Node node = root;
         while (node.left != null) {
             node = node.left;
@@ -100,7 +146,7 @@ class TreeOperations {
         return node.value;
     }
 
-    static int rightMostValue(Node root) {
+    static int rightMost(Node root) {
         Node node = root;
         while (node.right != null) {
             node = node.right;
@@ -108,16 +154,41 @@ class TreeOperations {
         return node.value;
     }
 
-    //    public Node inorderSuccessor(Node node) {
-//
-//        if (node.getParent() == null) {
-//            return node.getRight();
-//
-//        } else {
-//            if (node.getParent().getLeft() == node) {
-//                return node.getParent();
-//            }
-//            return node.getRight();
-//        }
-//    }
+    /**
+     * Search node in Binary Search Tree
+     */
+    static Node searchFor(Node root, int value) {
+        if (root.value == value) return root;
+        if (root.value < value) return searchFor(root.right, value);
+        return searchFor(root.left, value);
+    }
+
+    static TreeStatistics getStatistics(Node root) {
+        return new TreeStatistics(countNodes(root), leftMost(root), rightMost(root), maxDepth(root));
+    }
+
+    static class TreeStatistics {
+        private final int nodesCount;
+        private final int leftMost;
+        private final int rightMost;
+        private final int maxDepth;
+
+
+        TreeStatistics(int nodesCount, int leftMost, int rightMost, int maxDepth) {
+            this.nodesCount = nodesCount;
+            this.leftMost = leftMost;
+            this.rightMost = rightMost;
+            this.maxDepth = maxDepth;
+        }
+
+        @Override
+        public String toString() {
+            return new StringJoiner(", ", "", "")
+                    .add("nodes count: " + nodesCount)
+                    .add("leftmost: " + leftMost)
+                    .add("rightmost: " + rightMost)
+                    .add("max depth: " + maxDepth)
+                    .toString();
+        }
+    }
 }

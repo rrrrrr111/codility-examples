@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static ru.roman.algo.tree.TreeOperations.getStatistics;
+import static ru.roman.algo.tree.TreeOperations.insert;
+import static ru.roman.algo.tree.TreeOperations.traverseBfs;
 import static ru.roman.algo.tree.TreeOperations.traverseInOrder;
+import static ru.roman.algo.tree.TreeOperations.traverseOutOrder;
 import static ru.roman.algo.tree.TreeOperations.traversePostOrder;
 import static ru.roman.algo.tree.TreeOperations.traversePreOrder;
 
@@ -21,7 +25,6 @@ public class TreeExamples {
         printCartesianTree();
         printCollatzTree();
         printBinarySearchTree();
-
         printRandomTree();
 
         //printEnumDAGTrees();
@@ -29,9 +32,62 @@ public class TreeExamples {
     }
 
     private static void printRandomTree() {
-        System.out.printf("%n Random tree %n");
         Node tree = randomTree(0, 200);
+        System.out.printf("%n Random tree %n %s %n", getStatistics(tree));
         printer.printTree(tree);
+    }
+
+    private static void printEnumTrees() {
+        System.out.printf("%n Enum trees%n");
+        List<Node> trees = enumTrees(1, 6);
+        printer.printTrees(trees, 120);
+    }
+
+    private static void printEnumDAGTrees() {
+        System.out.printf("%n Enum DAG trees%n");
+        List<Node> trees = enumTrees(7);
+        printer.printTrees(trees, 120);
+    }
+
+    private static void printBinarySearchTree() {
+        Node tree = createBinarySearchTree(7, 3, 12, 1, 6, 9, 13, 0, 2, 4, 8, 11, 15, 5, 14);
+        System.out.printf("%n Binary, not balanced, search tree%n %s %n", getStatistics(tree));
+        printer.printTree(tree);
+        System.out.printf("In-order   (LNR) DFS : %s%n", traverseInOrder(tree));
+        System.out.printf("Out-order  (RNL) DFS : %s%n", traverseOutOrder(tree));
+        System.out.printf("Post-order (LRN) DFS : %s%n", traversePostOrder(tree));
+        System.out.printf("Pre-order  (NLR) DFS : %s%n", traversePreOrder(tree));
+        System.out.printf("Traversing BFS : %s%n", traverseBfs(tree));
+    }
+
+    private static void printCollatzTree() {
+        // Collatz Conjecture: for every positive integer X, there is some N such that X appears in collatzTree(N)
+        Node tree = collatzTree(1, 1, 15);
+        System.out.printf("%n Collatz tree%n %s %n", getStatistics(tree));
+        printer.printTree(tree);
+    }
+
+    private static void printCartesianTree() {
+        int[] arr = {9, 3, 7, 1, 8, 12, 10, 20, 15, 18, 5};
+        Node tree = cartesianTree(arr, 0, arr.length - 1);
+        System.out.printf("%n Cartesian Tree%n %s %n", getStatistics(tree));
+        printer.printTree(tree);
+        System.out.printf("In-order   (LNR) DFS : %s%n", traverseInOrder(tree));
+    }
+
+    private static void printCompleteLevelOrderTree() {
+        Node tree = completeLevelOrderTree(90);
+        System.out.printf("%n Complete level order tree%n %s %n", getStatistics(tree));
+        printer.printTree(tree);
+        System.out.printf("Traversing BFS : %s%n", traverseBfs(tree));
+    }
+
+    private static void printCompleteInOrderTree() {
+        Node tree = completeInOrderTree(1, 90);
+        System.out.printf("%n Complete in order tree%n %s %n", getStatistics(tree));
+        printer.printTree(tree);
+        System.out.printf("In-order   (LNR) DFS : %s%n", traverseInOrder(tree));
+        System.out.printf("Out-order  (RNL) DFS : %s%n", traverseOutOrder(tree));
     }
 
     private static Node randomTree(int firstValue, int lastValue) {
@@ -43,60 +99,6 @@ public class TreeExamples {
         root.left = randomTree(firstValue, firstValue + leftCount - 1);
         root.right = randomTree(firstValue + leftCount + 1, lastValue);
         return root;
-    }
-
-    private static void printEnumTrees() {
-        System.out.printf("%nEnum trees%n");
-        List<Node> trees = enumTrees(1, 6);
-        printer.printTrees(trees, 120);
-    }
-
-    private static void printEnumDAGTrees() {
-        System.out.printf("%nEnum DAG trees%n");
-        List<Node> trees = enumTrees(7);
-        printer.printTrees(trees, 120);
-    }
-
-    private static void printBinarySearchTree() {
-        Node tree;
-        System.out.printf("%nBinary, not balanced, search tree%n");
-        tree = createBinarySearchTree(7, 3, 12, 1, 6, 9, 13, 0, 2, 4, 8, 11, 15, 5, 14);
-        printer.printTree(tree);
-        System.out.printf("Traverse post order : %s%n", traversePostOrder(tree));
-        System.out.printf("Traverse pre order : %s%n", traversePreOrder(tree));
-        System.out.printf("Traverse in order : %s%n", traverseInOrder(tree));
-    }
-
-    private static void printCollatzTree() {
-        Node tree;
-        System.out.printf("%nCollatz tree%n");
-        // Collatz Conjecture: for every positive integer X, there is some N such that X appears in collatzTree(N)
-        tree = collatzTree(1, 1, 15);
-        printer.printTree(tree);
-    }
-
-    private static void printCartesianTree() {
-        Node tree;
-        System.out.printf("%nCartesian Tree%n");
-        int[] arr = {9, 3, 7, 1, 8, 12, 10, 20, 15, 18, 5};
-        tree = cartesianTree(arr, 0, arr.length - 1);
-        printer.printTree(tree);
-        System.out.printf("Traverse post order : %s%n", traversePostOrder(tree));
-        System.out.printf("Traverse pre order : %s%n", traversePreOrder(tree));
-        System.out.printf("Traverse in order : %s%n", traverseInOrder(tree));
-    }
-
-    private static void printCompleteLevelOrderTree() {
-        Node tree;
-        System.out.printf("%nComplete level order tree%n");
-        tree = completeLevelOrderTree(90);
-        printer.printTree(tree);
-    }
-
-    private static void printCompleteInOrderTree() {
-        System.out.printf("%nComplete in order tree%n");
-        Node tree = completeInOrderTree(1, 90);
-        printer.printTree(tree);
     }
 
     private static Node completeInOrderTree(int first, int last) {
@@ -146,10 +148,9 @@ public class TreeExamples {
     }
 
     private static Node createBinarySearchTree(int... val) {
-
         Node root = null;
         for (int i : val) {
-            root = TreeOperations.insert(root, i);
+            root = insert(root, i);
         }
         return root;
     }
