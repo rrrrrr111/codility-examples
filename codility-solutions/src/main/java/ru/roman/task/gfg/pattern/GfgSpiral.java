@@ -6,10 +6,7 @@ package ru.roman.task.gfg.pattern;
 class GfgSpiral {
     public static void main(String[] args) {
 
-        // Get the size of size
         int size = 5;
-
-        // Print the Spiral Pattern
         printSpiral(size);
     }
 
@@ -106,13 +103,10 @@ class GfgSpiral {
         // Print the matrix
         for (r = 0; r < size; r++) {
             for (c = 0; c < size; c++) {
-
                 int n = matrix[r][c];
                 System.out.print((n < 10) ? n + "  " : n + " ");
             }
-
             System.out.println();
         }
     }
-    // Driver Code
 }
