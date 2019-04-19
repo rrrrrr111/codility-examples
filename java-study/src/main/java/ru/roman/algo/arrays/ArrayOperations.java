@@ -63,6 +63,23 @@ public class ArrayOperations {
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 1, 4), new int[]{1, 4, 3, 2, 5}));
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 1, 5), new int[]{1, 5, 4, 3, 2}));
         checkState(Arrays.equals(reverse(new int[]{1, 2, 3, 4, 5}, 0, 3), new int[]{3, 2, 1, 4, 5}));
+
+        checkState(Arrays.equals(swap(new int[]{1, 2, 3}, 1, 2), new int[]{1, 3, 2}));
+        checkState(Arrays.equals(swap(new int[]{1, 2, 3}, 0, 2), new int[]{3, 2, 1}));
+        checkState(Arrays.equals(swap(new int[]{1, 2, 3}, 0, 1), new int[]{2, 1, 3}));
+    }
+
+    private static int[] swap(int[] arr, int from, int to) {
+        if (arr == null) throw new IllegalArgumentException("Given array is null");
+        if (from < 0) throw new IllegalArgumentException("from < 0");
+        if (to < 0) throw new IllegalArgumentException("to < 0");
+        if (from > arr.length) throw new IllegalArgumentException("from > arr.length");
+        if (to > arr.length) throw new IllegalArgumentException("to > arr.length");
+
+        int tmp = arr[to];
+        arr[to] = arr[from];
+        arr[from] = tmp;
+        return arr;
     }
 
     private static int[] remove(int[] arr, int index) {
