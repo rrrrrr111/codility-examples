@@ -30,8 +30,9 @@ class GfgKnapsackProblem {
 
     String test(int Iv[], int Iw[], int W) {
         //return alg0Recursive(Iv, Iw, W, Iv.length) + "";
-        //return alg1Dp(Iv, Iw, W);
-        return alg2UsingBranchAndBound(W, Iv, Iw);
+        //return dpAlg1(Iv, Iw, W);
+        //return dp2Alg2BranchAndBound(W, Iv, Iw);
+        return dpAlg3(Iv, Iw, W);
     }
 
     /**
@@ -53,7 +54,7 @@ class GfgKnapsackProblem {
     /**
      * O(n*W)
      */
-    private String alg1Dp(int[] Iv, int[] Iw, int W) {
+    private String dpAlg1(int[] Iv, int[] Iw, int W) {
         int i, w;
         int[][] dp = new int[Iw.length + 1][W + 1];
 
@@ -95,7 +96,7 @@ class GfgKnapsackProblem {
         return result + " " + items;
     }
 
-    private String alg2UsingBranchAndBound(int W, int[] Iv, int[] Iw) {
+    private String dp2Alg2BranchAndBound(int W, int[] Iv, int[] Iw) {
 
         Item[] arr = new Item[Iv.length];
         int n = arr.length;
@@ -209,11 +210,65 @@ class GfgKnapsackProblem {
         return profit_bound;
     }
 
+    String dpAlg3(int[] profits, int[] weights, int capacity) {
+        // basic checks
+        if (capacity <= 0 || profits.length == 0 || weights.length != profits.length)
+            throw new IllegalStateException();
+
+        int n = profits.length;
+        int[][] dp = new int[n][capacity + 1];
+
+        // populate the capacity=0 columns, with '0' capacity we have '0' profit
+        for (int i = 0; i < n; i++)
+            dp[i][0] = 0;
+
+        // if we have only one weight, we will take it if it is not more than the capacity
+        for (int c = 0; c <= capacity; c++) {
+            if (weights[0] <= c)
+                dp[0][c] = profits[0];
+        }
+
+        // process all sub-arrays for all the capacities
+        for (int i = 1; i < n; i++) {
+            for (int c = 1; c <= capacity; c++) {
+                int profit1 = 0, profit2 = 0;
+                // include the item, if it is not more than the capacity
+                if (weights[i] <= c)
+                    profit1 = profits[i] + dp[i - 1][c - weights[i]];
+                // exclude the item
+                profit2 = dp[i - 1][c];
+                // take maximum
+                dp[i][c] = Math.max(profit1, profit2);
+            }
+        }
+
+        // maximum profit will be at the bottom-right corner.
+        return dp[n-1][capacity] + " " + Arrays.toString(getSelectedElements(dp, weights, profits, capacity));
+    }
+
+    private int[] getSelectedElements(int dp[][], int[] weights, int[] profits, int capacity) {
+
+        List<Integer> result = new ArrayList<>();
+        int totalProfit = dp[weights.length - 1][capacity];
+        for (int i = weights.length - 1; i > 0; i--) {
+            if (totalProfit != dp[i - 1][capacity]) {
+                result.add(weights[i]);
+                capacity -= weights[i];
+                totalProfit -= profits[i];
+            }
+        }
+
+        if (totalProfit != 0)
+            result.add(weights[0]);
+        return result.stream().mapToInt(i->i).sorted().toArray();
+    }
+
     private static class Item {
         float weight;
         int value;
 
     }
+
     private static class Node {
         // level --> Level of node in decision tree (or index
         //			 in arr[]
