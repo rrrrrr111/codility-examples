@@ -1,4 +1,4 @@
-package ru.roman.task.gfg.pattern;
+package ru.roman.task.gfg.patternprint;
 
 /**
  *
