@@ -105,7 +105,7 @@ class Lift {
 }
 
 
-public class YandexLift {
+class YandexLift {
 
     public static void main(String[] args) throws InterruptedException {
 
