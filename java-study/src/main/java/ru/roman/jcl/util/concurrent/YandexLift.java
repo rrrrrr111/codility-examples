@@ -1,5 +1,7 @@
 package ru.roman.jcl.util.concurrent;
 
+import java.io.Console;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -46,9 +48,13 @@ class Lift {
             return false;
         }
         int currentFlor = currentFlor(currentHeight);
-        if (floors.headSet(currentFlor).isEmpty()) {
+        Set<Integer> downWaiters = floors.headSet(currentFlor);
+        Set<Integer> upWaiters = floors.tailSet(currentFlor);
+        if (downWaiters.isEmpty()
+                || (liftState == LiftState.UP && !upWaiters.isEmpty())) {
             liftState = LiftState.UP;
-        } else {
+        } else if (upWaiters.isEmpty()
+                || liftState == LiftState.DOWN) {
             liftState = LiftState.DOWN;
         }
         return true;
@@ -94,7 +100,7 @@ class Lift {
     }
 
     private enum LiftState {
-        UP, DOWN, STOPPED;
+        UP, DOWN, STOPPED
     }
 }
 
@@ -105,12 +111,13 @@ public class YandexLift {
 
         Lift subj = new Lift();
         subj.init(10, 1, 1, 500);
-
         subj.start();
-        subj.addFloor(7);
-        subj.addFloor(9);
-        subj.addFloor(1);
 
-        Thread.sleep(200_000);
+        System.out.println("Input the floor:");
+        Console console = System.console();
+        while (true) {
+            int floor = Integer.parseInt(console.readLine());
+            subj.addFloor(floor);
+        }
     }
 }
