@@ -31,7 +31,6 @@ import java.util.Set;
  * </ul>
  * </blockquote></div>
  * <div style="margin-top:5px">
- * <small>Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.</small>
  * </div>
  *
  * </div>

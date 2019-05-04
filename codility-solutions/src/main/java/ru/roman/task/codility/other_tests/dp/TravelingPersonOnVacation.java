@@ -3,9 +3,8 @@ package ru.roman.task.codility.other_tests.dp;
 import java.util.Arrays;
 
 /**
- *
  * <div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
- *
+ * <p>
  * <meta http-equiv="content-type" content="text/html; charset=utf-8">
  *
  *
@@ -13,14 +12,14 @@ import java.util.Arrays;
  * <p>You want to spend your next vacation in a foreign country. In the summer you are free for N consecutive days. You have consulted Travel Agency and learned that they are offering a trip to some interesting location in the country every day. For simplicity, each location is identified by a number from 0 to N − 1. Trips are described in a non-empty array A: for each K (0 ≤ K &lt; N), A[K] is the identifier of a location which is the destination of a trip offered on day K. Travel Agency does not have to offer trips to all locations, and can offer more than one trip to some locations.</p>
  * <p>You want to go on a trip every day during your vacation. Moreover, you want to visit all locations offered by Travel Agency. You may visit the same location more than once, but you want to minimize duplicate visits. The goal is to find the shortest vacation (a range of consecutive days) that will allow you to visit all the locations offered by Travel Agency.</p>
  * <p>For example, consider array A such that:</p>
- * <tt style="white-space:pre-wrap">    A[0] = 7
- *     A[1] = 3
- *     A[2] = 7
- *     A[3] = 3
- *     A[4] = 1
- *     A[5] = 3
- *     A[6] = 4
- *     A[7] = 1</tt>
+ * <pre style="white-space:pre-wrap">    A[0] = 7
+ * A[1] = 3
+ * A[2] = 7
+ * A[3] = 3
+ * A[4] = 1
+ * A[5] = 3
+ * A[6] = 4
+ * A[7] = 1</pre>
  * <p>Travel Agency offers trips to four different locations (identified by numbers 1, 3, 4 and 7). The shortest vacation starting on day 0 that allows you to visit all these locations ends on day 6 (thus is seven days long). However, a shorter vacation of five days (starting on day 2 and ending on day 6) also permits you to visit all locations. On every vacation shorter than five days, you will have to miss at least one location.</p>
  * <p>Write a function:</p>
  * <blockquote><p style="font-family: monospace; font-size: 9pt; display: block; white-space: pre-wrap"><tt>class Solution { public int solution(int[] A); }</tt></p></blockquote>
@@ -34,12 +33,11 @@ import java.util.Arrays;
  * </ul>
  * </blockquote></div>
  * <div style="margin-top:5px">
- * <small>Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.</small>
  * </div>
  *
  * </div>
  */
-class TravelingPersonOnVocation {
+class TravelingPersonOnVacation {
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
