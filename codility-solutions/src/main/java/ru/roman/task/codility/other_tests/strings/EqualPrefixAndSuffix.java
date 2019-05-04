@@ -50,8 +50,7 @@ class EqualPrefixAndSuffix {
         }
 
         for (int i = chars.length - 1; i > 0; i--) {
-
-            if (suffs.contains(S.substring(0, i))) {
+            if (suffs.contains(S.substring(0, i))) {   // with rolling hash (Rabin Karp Algorithm) will be most efficient
                 return i;
             }
         }
