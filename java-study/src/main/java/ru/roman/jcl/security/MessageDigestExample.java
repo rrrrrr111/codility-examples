@@ -6,13 +6,13 @@ import java.security.NoSuchAlgorithmException;
 
 
 /**
- *
+ * see https://docs.oracle.com/javase/9/docs/specs/security/standard-names.html#additional-jsse-standard-names
  */
 class MessageDigestExample {
 
-    private static String getMd5(String input) throws NoSuchAlgorithmException {
+    private static String hash(String input, String algorithm) throws NoSuchAlgorithmException {
 
-        MessageDigest md = MessageDigest.getInstance("MD5");
+        MessageDigest md = MessageDigest.getInstance(algorithm);
         byte[] messageDigest = md.digest(input.getBytes());
 
         BigInteger no = new BigInteger(1, messageDigest);
@@ -25,6 +25,9 @@ class MessageDigestExample {
     }
 
     public static void main(String args[]) throws NoSuchAlgorithmException {
-        System.out.println("MD5 is: " + getMd5("Hello world"));
+        System.out.println("MD2 is: " + hash("Hello world", "MD2"));
+        System.out.println("MD5 is: " + hash("Hello world", "MD5"));
+        System.out.println("SHA-256 is: " + hash("Hello world", "SHA-256"));
+        System.out.println("SHA3-256 is: " + hash("Hello world", "SHA3-256"));
     }
 }
