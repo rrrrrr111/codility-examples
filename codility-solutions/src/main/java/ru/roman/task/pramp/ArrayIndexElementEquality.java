@@ -1,5 +1,7 @@
 package ru.roman.task.pramp;
 
+import java.util.Arrays;
+
 /**
  * Array Index & Element Equality
  * Given a sorted array arr of distinct integers, write a function indexEqualsValueSearch that returns the lowest index i for which arr[i] == i. Return -1 if there is no such index. Analyze the time and space complexities of your solution and explain its correctness.
@@ -23,6 +25,7 @@ package ru.roman.task.pramp;
 class ArrayIndexElementEquality {
 
     static int indexEqualsValueSearch(int[] arr) {
+        System.out.printf("On input: %s\n", Arrays.toString(arr));
 
         int beg = 0, end = arr.length - 1;
 

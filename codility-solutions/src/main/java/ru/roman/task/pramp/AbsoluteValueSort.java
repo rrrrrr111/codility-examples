@@ -24,6 +24,7 @@ import static java.lang.Math.abs;
 public class AbsoluteValueSort {
 
     int[] absSort(int[] arr) {
+        System.out.printf("On input: %s\n", Arrays.toString(arr));
 
         if (arr.length < 2)
             return arr;

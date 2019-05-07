@@ -1,5 +1,6 @@
 package ru.roman.task.pramp;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,6 +32,7 @@ import java.util.Map;
 public class PairsWithSpecificDifference {
 
     static int[][] findPairsWithGivenDifference(int[] arr, int k) {
+        System.out.printf("On input: %s\n", Arrays.toString(arr));
 
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++)

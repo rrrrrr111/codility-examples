@@ -36,6 +36,8 @@ public class KMessedArraySort {
      * Insertion sort with element no far when k positions from need
      */
     int[] test(int[] arr, int k) {
+        System.out.printf("On input: %s\n", Arrays.toString(arr));
+
         return swappingAlg(arr, k);
         //return linkedListAlg(arr, k);
     }

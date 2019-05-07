@@ -10,6 +10,8 @@ import java.util.Set;
 class Numbersum {
     static class Skilltester {
         static int[][] numbersum(int[] numbers, int k) {
+            System.out.printf("On input: %s\n", Arrays.toString(numbers));
+
             Set<Set<Integer>> set = new HashSet<>();
             for (int i = 0; i < numbers.length; i++)
                 for (int j = i + 1; j < numbers.length; j++)

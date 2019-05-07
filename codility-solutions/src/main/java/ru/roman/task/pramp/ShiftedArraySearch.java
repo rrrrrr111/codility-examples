@@ -1,5 +1,7 @@
 package ru.roman.task.pramp;
 
+import java.util.Arrays;
+
 /**
  * Shifted Array Search
  * <p>
@@ -31,6 +33,7 @@ package ru.roman.task.pramp;
 class ShiftedArraySearch {
 
     int shiftedArrSearch(int[] shiftArr, int num) {
+        System.out.printf("On input: %s\n", Arrays.toString(shiftArr));
 
         int point = findPivotPoint(shiftArr);
         if (point > -1) {

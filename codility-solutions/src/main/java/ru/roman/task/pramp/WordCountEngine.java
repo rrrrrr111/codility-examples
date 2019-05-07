@@ -39,6 +39,7 @@ import java.util.stream.Collectors;
 class WordCountEngine {
 
     static String[][] wordCountEngine(String document) {
+        System.out.printf("On input: %s\n", document);
 
         Map<String, Integer> map = new LinkedHashMap<>();
         document = document.replaceAll("[^a-zA-Z\\s]", "");

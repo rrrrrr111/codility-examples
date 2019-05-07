@@ -34,6 +34,8 @@ import java.util.Arrays;
 class ArrayQuadrupletSolution {
 
     static int[] findArrayQuadruplet(int[] arr, int s) {
+        System.out.printf("On input: %s %s\n", Arrays.toString(arr), s);
+
         Arrays.sort(arr);
 
         // O(n^3)
