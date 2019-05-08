@@ -1,6 +1,11 @@
-package ru.roman.task.codility.other_tests.dp;
+package ru.roman.task.codility.other_tests.caterpillar;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
@@ -37,11 +42,70 @@ import java.util.Arrays;
  *
  * </div>
  */
-class TravelingPersonOnVacation {
+class ShortestVacation {
     public int solution(int[] A) {
         System.out.printf("On input: %s%n", Arrays.toString(A));
 
+        Set<Integer> all = Arrays.stream(A).boxed()
+                .collect(Collectors.toSet());
 
-        return 0;
+        //return recursionAlg(A, 0, A.length - 1, all);
+        return caterpillarAlg(A, all);
+    }
+
+    private int caterpillarAlg(int[] arr, Set<Integer> all) {
+
+        Map<Integer, Integer> tmp = new HashMap<>(all.size());  // value to it's cardinality
+        int minLength = arr.length;
+        int lastTailIdx = arr.length - all.size();
+
+        for (int t = 0, h = 0; t <= lastTailIdx; t++) {
+
+            for (; tmp.size() < all.size() && h < arr.length; h++)
+                tmp.put(arr[h], tmp.getOrDefault(arr[h], 0) + 1);
+
+            if (tmp.size() != all.size())          // h reached end of array
+                break;
+
+            minLength = Math.min(minLength, h - t);
+
+            int tail = arr[t], tailCount = tmp.get(tail);
+            if (tailCount == 1)
+                tmp.remove(tail);
+            else if (tailCount > 1)
+                tmp.put(tail, tailCount - 1);
+            else
+                throw new IllegalStateException();
+
+            if (minLength == all.size())            // just optimisation
+                break;
+        }
+        return minLength;
+    }
+
+    private int recursionAlg(int[] arr, int from, int to, Set<Integer> all) {
+
+        if (from > to)
+            return Integer.MAX_VALUE;
+        if (!containsAll(arr, from, to, all))
+            return Integer.MAX_VALUE;
+
+        return Math.min(to - from + 1,
+                Math.min(
+                        recursionAlg(arr, from + 1, to, all),
+                        recursionAlg(arr, from, to - 1, all)
+                )
+        );
+    }
+
+    private boolean containsAll(int[] arr, int from, int to, Set<Integer> all) {
+
+        Set<Integer> t = new HashSet<>(all.size());
+        for (int i = from; i <= to; i++) {
+            t.add(arr[i]);
+            if (t.size() == all.size())
+                return true;
+        }
+        return false;
     }
 }
