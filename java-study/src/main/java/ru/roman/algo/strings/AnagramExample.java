@@ -46,10 +46,10 @@ public class AnagramExample {
     }
 
     private static Map<Character, Long> asMap(String a) {
-//        Map<Character, Integer> counters = new HashMap<>();
+//        Map<Character, Long> counters = new HashMap<>();
 //        char[] chars = a.toCharArray();
 //        for (char aChar : chars) {
-//            counters.put(aChar, counters.getOrDefault(aChar, 0) + 1);
+//            counters.put(aChar, counters.getOrDefault(aChar, 0L) + 1L);
 //        }
 //        return counters;
 
