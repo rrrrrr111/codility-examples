@@ -42,6 +42,7 @@ public class AnagramExample {
             return false;
 
         return asMap(b).equals(asMap(a));
+        //return Arrays.equals(signature(b), signature(a));
     }
 
     private static Map<Character, Long> asMap(String a) {
@@ -59,5 +60,17 @@ public class AnagramExample {
                                 right.forEach((key, value) ->
                                         left.merge(key, value, (old, newVal) -> old + newVal))
                 );
+    }
+
+    private static int[] signature(String str) {
+        if (str == null) throw new IllegalArgumentException("Given str is null");
+
+        int[] sign = new int[26];
+        for (char c : str.toCharArray()) {
+            int num = c - 'a';
+            if (num < 0 || 25 < num) throw new IllegalArgumentException("Char " + c + " is out of range");
+            sign[num]++;
+        }
+        return sign;
     }
 }
