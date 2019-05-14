@@ -163,6 +163,20 @@ class TreeOperations {
         return searchFor(root.left, value);
     }
 
+    static boolean isProperBinarySearchTree(Node root) {
+        return isProperBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private static boolean isProperBinarySearchTree(Node root, int min, int max) {
+        if (root == null)
+            return true;
+        if (root.value < min || root.value > max)
+            return false;
+
+        return isProperBinarySearchTree(root.left, min, root.value - 1)
+                && isProperBinarySearchTree(root.right, root.value + 1, max);
+    }
+
     static TreeStatistics getStatistics(Node root) {
         return new TreeStatistics(countNodes(root), leftMost(root), rightMost(root), maxDepth(root));
     }
