@@ -33,13 +33,10 @@ class MatrixSpiralCopy {
 
         int w = arr[0].length, h = arr.length;
         int[] res = new int[w * h];
-        int x = 0, y = 0, r = 0;
+        w++;                                // just to inscribe in common pattern
+        int x = -1, y = 0, r = 0;
+        Boolean forward = true, down = null;
 
-        for (int l = 0; l < w; l++)
-            res[r++] = arr[0][l];
-        x = x + w - 1;
-
-        Boolean forward = null, down = true;
         while (0 < w && 0 < h) {
             if (down == Boolean.TRUE) {
                 for (int l = y + 1; l < y + h; l++)
