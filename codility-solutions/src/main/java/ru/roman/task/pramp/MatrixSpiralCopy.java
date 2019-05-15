@@ -41,38 +41,38 @@ class MatrixSpiralCopy {
 
         Boolean forward = null, down = true;
         while (0 < w && 0 < h) {
-            if (down == Boolean.TRUE)
+            if (down == Boolean.TRUE) {
                 for (int l = y + 1; l < y + h; l++)
                     res[r++] = arr[l][x];
-            if (down == Boolean.FALSE)
-                for (int l = y - 1; l > y - h; l--)
-                    res[r++] = arr[l][x];
-            if (forward == Boolean.TRUE)
-                for (int l = x + 1; l < x + w; l++)
-                    res[r++] = arr[y][l];
-            if (forward == Boolean.FALSE)
-                for (int l = x - 1; l > x - w; l--)
-                    res[r++] = arr[y][l];
 
-            if (down == Boolean.TRUE) {
                 down = null;
                 forward = false;
                 y = y + h - 1;
                 h--;
-            } else if (forward == Boolean.FALSE) {
-                forward = null;
-                down = false;
-                x = x - w + 1;
-                w--;
+
             } else if (down == Boolean.FALSE) {
+                for (int l = y - 1; l > y - h; l--)
+                    res[r++] = arr[l][x];
+
                 down = null;
                 forward = true;
                 y = y - h + 1;
                 h--;
             } else if (forward == Boolean.TRUE) {
+                for (int l = x + 1; l < x + w; l++)
+                    res[r++] = arr[y][l];
+
                 forward = null;
                 down = true;
                 x = x + w - 1;
+                w--;
+            } else if (forward == Boolean.FALSE) {
+                for (int l = x - 1; l > x - w; l--)
+                    res[r++] = arr[y][l];
+
+                forward = null;
+                down = false;
+                x = x - w + 1;
                 w--;
             }
         }
