@@ -12,6 +12,8 @@ class MatrixSpiralCopyTest {
     @DataProvider
     private Object[][] provider() {
         [
+                [[[] as int[]] as int[][], [] as int[]],
+                [[[1] as int[]] as int[][], [1] as int[]],
                 [[
                          [1, 2, 3, 4] as int[],
                          [14, 15, 16, 5] as int[],
