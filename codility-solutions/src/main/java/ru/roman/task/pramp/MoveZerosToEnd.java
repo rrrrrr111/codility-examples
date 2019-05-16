@@ -23,7 +23,8 @@ class MoveZerosToEnd {
     public int[] solution(int[] arr) {
         System.out.printf("On input: %s%n", Arrays.toString(arr));
 
-        outer: for (int i = 0; i < arr.length - 1; i++) {
+        outer:
+        for (int i = 0; i < arr.length - 1; i++) {
 
             if (arr[i] == 0) {
                 int j = i + 1;
@@ -38,16 +39,9 @@ class MoveZerosToEnd {
         return arr;
     }
 
-    private static int[] swap(int[] arr, int from, int to) {
-        if (arr == null) throw new IllegalArgumentException("Given array is null");
-        if (from < 0) throw new IllegalArgumentException("from < 0");
-        if (to < 0) throw new IllegalArgumentException("to < 0");
-        if (from > arr.length) throw new IllegalArgumentException("from > arr.length");
-        if (to > arr.length) throw new IllegalArgumentException("to > arr.length");
-
+    private static void swap(int[] arr, int from, int to) {
         int tmp = arr[to];
         arr[to] = arr[from];
         arr[from] = tmp;
-        return arr;
     }
 }
