@@ -35,7 +35,7 @@ import java.util.LinkedList;
  * 1 ≤ text.length ≤ 5000
  * [output] integer
  */
-public class BracketMatch {
+class BracketMatch {
 
     public int solution(String text) {
         System.out.printf("On input: %s\n", text);

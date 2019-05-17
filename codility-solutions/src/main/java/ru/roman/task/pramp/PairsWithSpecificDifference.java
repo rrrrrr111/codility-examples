@@ -29,7 +29,7 @@ import java.util.Map;
  * k ≥ 0
  * [output] array.array.integer
  */
-public class PairsWithSpecificDifference {
+class PairsWithSpecificDifference {
 
     static int[][] findPairsWithGivenDifference(int[] arr, int k) {
         System.out.printf("On input: %s\n", Arrays.toString(arr));

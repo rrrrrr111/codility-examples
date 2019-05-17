@@ -30,7 +30,7 @@ import java.util.ListIterator;
  * 1 ≤ k ≤ 20
  * [output] array.integer
  */
-public class KMessedArraySort {
+class KMessedArraySort {
 
     /**
      * Insertion sort with element no far when k positions from need

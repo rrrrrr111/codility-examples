@@ -10,7 +10,7 @@ import java.util.Queue;
 /**
  *
  */
-public class FlattenDictionary {
+class FlattenDictionary {
 
     static Map<String, String> flattenDictionary(Map<String, Object> dict) {
 

@@ -21,7 +21,7 @@ import static java.lang.Math.abs;
  * 0 ≤ arr.length ≤ 10
  * [output] array.integer
  */
-public class AbsoluteValueSort {
+class AbsoluteValueSort {
 
     int[] absSort(int[] arr) {
         System.out.printf("On input: %s\n", Arrays.toString(arr));
