@@ -32,7 +32,7 @@ class StreamExamples {
                 .map(String::toUpperCase)
                 .collect(Collectors.joining(", "));
 
-        List<Integer> distinct = List.of(9, 10, 3, 4, 7, 3, 4)       // Create List of square of all distinct numbers
+        List<Integer> distinct = List.of(9, 10, 3, 4, 7, 3, 4)         // Create List of square of all distinct numbers
                 .stream()
                 .map(i -> i * i)
                 .distinct()
@@ -42,7 +42,7 @@ class StreamExamples {
                 .mapToInt((x) -> x)                                    // Get count, min, max, sum, and average for numbers
                 .summaryStatistics();
 
-        Integer lcm = Stream.iterate(0, i -> ++i)                // Find lcm of 2 and 3
+        Integer lcm = Stream.iterate(0, i -> ++i)                 // Find lcm of 2 and 3
                 .filter(i -> i % 2 == 0)
                 .filter(i -> i % 3 == 0)
                 .findFirst().get();                                    // findFirst()/findAny() returns Optional
@@ -50,7 +50,7 @@ class StreamExamples {
         Stream.of("aa", "bbb")                                         // print all
                 .forEach(System.out::println);
 
-        long i1 = List.of(1, 2, 3, 3, 3, 2, 1).stream()               // remove duplicates and count
+        long i1 = List.of(1, 2, 3, 3, 3, 2, 1).stream()                // remove duplicates and count
                 .mapToInt(i -> i)
                 .distinct()
                 .count();
@@ -91,7 +91,6 @@ class StreamExamples {
                                 Collectors.toCollection(LinkedHashSet::new)    // коллектору
                         )
                 );
-
 
         // комбинирование коллекторов для multimap
         Map<Sex, List<String>> namesByGender = List.of(new Person())
@@ -145,6 +144,10 @@ class StreamExamples {
         Map<Character, Long> m3 = Stream.of(m1, m2)                         // merge two maps
                 .flatMap(mapa -> mapa.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
+
+        int i2 = List.of(1, 2, 3, 3, 3, 2, 1)                      // calculate a sum using reduce function
+                .stream()
+                .reduce(0, (s, e) -> s + e);
     }
 
     private enum Sex {
@@ -155,11 +158,9 @@ class StreamExamples {
         Sex getGender() {
             return null;
         }
-
         String getName() {
             return null;
         }
-
         int getSalary() {
             return 0;
         }
