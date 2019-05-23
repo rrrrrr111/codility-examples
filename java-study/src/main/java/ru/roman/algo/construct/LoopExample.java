@@ -13,11 +13,11 @@ public class LoopExample {
         for (Long value : map.values()) {}
 
         int[] arr = null;
-        for (int i = 0; i < arr.length; i++) {}
-        for (int i = arr.length - 1; i >= 0; i--) {}
+        for (int i = 0; i < arr.length; i++) {}                // array
+        for (int i = arr.length - 1; i >= 0; i--) {}           // reverse array
 
         List<Long> list = null;
-        for (int i = 0; i < list.size(); i++) {}
-        for (int i = list.size() - 1; i >= 0; i--) {}
+        for (int i = 0; i < list.size(); i++) {}               // list
+        for (int i = list.size() - 1; i >= 0; i--) {}          // reverse list
     }
 }
