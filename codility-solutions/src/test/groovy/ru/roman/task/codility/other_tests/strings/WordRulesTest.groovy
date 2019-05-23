@@ -6,7 +6,7 @@ import org.testng.annotations.Test
 
 @CompileStatic
 @Test
-class SolutionTest {
+class WordRulesTest {
     private WordRules subj = new WordRules()
 
     @DataProvider

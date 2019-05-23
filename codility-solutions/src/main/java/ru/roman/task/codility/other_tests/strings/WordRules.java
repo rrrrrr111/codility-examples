@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 class WordRules {
 
     public String findWord(String[] rules) {
+        System.out.printf("On input: %s%n", Arrays.toString(rules));
 
         Map<Character, Character> map = Arrays.stream(rules)
                 .map(String::toCharArray)
@@ -31,10 +32,12 @@ class WordRules {
         placed.add(first.getKey());
         placed.add(first.getValue());
 
+        System.out.printf("Map:%s list:%s placed:%s%n", map, list, placed);
+
         while (placed.size() != map.size() + 1)
             for (Map.Entry<Character, Character> entry : map.entrySet()) {
 
-                if (placed.contains(entry.getKey()) || placed.contains(entry.getValue()))
+                if (placed.contains(entry.getKey()) && placed.contains(entry.getValue()))
                     continue;
 
                 for (int i = 0; i < list.size(); i++) {
