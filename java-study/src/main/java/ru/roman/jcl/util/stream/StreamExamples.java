@@ -145,8 +145,6 @@ class StreamExamples {
         Map<Character, Long> m3 = Stream.of(m1, m2)                         // merge two maps
                 .flatMap(mapa -> mapa.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
-
-
     }
 
     private enum Sex {
