@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * JCL API Examples
  */
-public class ConcurrentMapExamples {
+class ConcurrentMapExamples {
 
     void foo1() {
 

@@ -1,6 +1,6 @@
 package ru.roman.jcl.util.concurrent;
 
-public class ThreadExample {
+class ThreadExample {
 
     public static void main(String[] args) {
         var t = new Thread() {

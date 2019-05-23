@@ -1,6 +1,5 @@
 package ru.roman.jcl.util.stream;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,7 +19,7 @@ import java.util.stream.Stream;
 /**
  * JCL API Examples
  */
-public class StreamExamples {
+class StreamExamples {
 
     void foo1() {
 
@@ -51,7 +50,7 @@ public class StreamExamples {
         Stream.of("aa", "bbb")                                         // print all
                 .forEach(System.out::println);
 
-        long i1 = List.of(1, 2, 3, 3, 3, 2, 1).stream()               // remove duplicates
+        long i1 = List.of(1, 2, 3, 3, 3, 2, 1).stream()               // remove duplicates and count
                 .mapToInt(i -> i)
                 .distinct()
                 .count();
@@ -63,12 +62,14 @@ public class StreamExamples {
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,                                       // key function
                         Map.Entry::getValue,                                     // value function
-                        (e1, e2) -> e2,                                          // merge value function for key collisions
+                        (val1, val2) -> val2,                                    // merge value function for key collisions
                         LinkedHashMap::new)                                      // map factory
                 );
 
         Map<Integer, String> brandMap = List.of("11", "22").stream()             // List as Map
                 .collect(Collectors.toMap(String::hashCode, Function.identity()));
+        // Unlike a groupingBy operation, Map will throw as exception in case of key collisions,
+        // so, need to use overloading method with union function if keys duplicated
 
         // суммирующий коллектор
         Collector<Person, ?, Integer> summingSalaries = Collectors.summingInt(Person::getSalary);
@@ -91,55 +92,54 @@ public class StreamExamples {
                         )
                 );
 
-        Map<String, ArrayList<Person>> map = Map.of();
-        Collector<String, ?, Map<String, List<Person>>> c4 = Collectors.toMap(
-                Function.identity(),
-                (Function<String, ArrayList<Person>>) id -> map.getOrDefault(id, new ArrayList<>()),
-                (left, right) -> {                              // в отличии от groupingBy Map бросит екзепшн на
-                    left.addAll(right);                         // одинаковом ключе нужно указать функцию объединения
-                    return left;
-                },
-                LinkedHashMap::new);
 
         // комбинирование коллекторов для multimap
-        Map<Sex, List<String>> namesByGender = List.of(new Person()).stream().collect(     // собери
-                Collectors.groupingBy(                                // через коллектор группирующий, т е к Multimap
-                        Person::getGender,                            // classifier - функция ключа
-                        Collectors.mapping(               // значение мапы собирай коллектором мапящим (преобразование)
+        Map<Sex, List<String>> namesByGender = List.of(new Person())
+                .stream()
+                .collect(Collectors.groupingBy(           // через коллектор группирующий в Map, или в Multimap
+                        Person::getGender,                // classifier - функция ключа
+                        Collectors.mapping(               // значение мапы собирай коллектором мапящим (преобразование и складывание в ...)
                                 Person::getName,          // classifier - функция на что мапить сущность
-                                Collectors.toList())      // коллектор собирающий результаты в лист
+                                Collectors.toList())      // коллектор собирающий результаты всё переданное ему в лист
                 ));
 
-        Collector<Person, TreeSet<Person>, TreeSet<Person>> intoSet =       // свой Collector собрающий к TreeSet
+        Collector<Person, TreeSet<Person>, TreeSet<Person>> intoSet =     // свой Collector собрающий к TreeSet
                 Collector.of(
                         TreeSet::new,                // supplier() - Supplier - создание контейнера
                         TreeSet::add,                // accumulator() - BiConsumer - включение элемента в контейнер
-                        (set, element) -> {           // combiner() - BinaryOperator - сборка двух результирующих контейнеров в один
-                            set.addAll(element);
-                            return set;
+                        (left, right) -> {           // combiner() - BinaryOperator - сборка двух результирующих контейнеров в один
+                            left.addAll(right);
+                            return left;
                         }
                 );                          // finisher() - Function - опционально финализирующая трансформация
         // есть соотв оверлод
         // аналог но только с  Supplier
         Collector<Person, ?, NavigableSet<Person>> c = Collectors.toCollection(TreeSet::new);
 
-        Map<Character, Long> m1 = "aaabb".chars()              // сделаем Map['a'->3, 'b'->2]
-                .collect(HashMap::new,
-                        (mapa, ch) -> mapa.merge((char) ch, 1L, (oldVal, newVal) -> oldVal + newVal),
+        Map<Character, Long> m1 = "aaabb".chars()              // make a sign map for a string like Map['a'->3, 'b'->2]
+                .collect(HashMap::new,                                // prepare container
+                        (mapa, ch) ->                                 // put value to container
+                                mapa.merge(
+                                        (char) ch,                            // put key
+                                        1L,                             // put value
+                                        (oldVal, newVal) -> oldVal + newVal   // merge values in case of key collision
+                                ),
                         (left, right) ->
                                 right.forEach((key, value) ->              // merge right map two left map
                                         left.merge(key, value, (oldVal, newVal) -> oldVal + newVal))
                 );
 
-        Map<Character, Long> m5 = Map.of();                                    // merge two maps
+        Map<Character, Long> m5 = Map.of();                                // merge two maps
         Map<Character, Long> m4 = m1.entrySet().stream()
                 .collect(Collectors.toMap(
-                        Map.Entry::getKey, Map.Entry::getValue,
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
                         (value1, value2) -> value1 + value2,
-                        () -> new HashMap<>(m5)));
+                        () -> new HashMap<>(m5))                            // initial container function
+                );
 
         Map<Character, Long> m2 = Stream.concat(
-                m1.entrySet().stream(), m4.entrySet().stream()                           // merge two maps
+                m1.entrySet().stream(), m4.entrySet().stream()              // merge two maps
         ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
 
         Map<Character, Long> m3 = Stream.of(m1, m2)                         // merge two maps
@@ -165,10 +165,5 @@ public class StreamExamples {
         int getSalary() {
             return 0;
         }
-    }
-
-    public static void main(String[] args) {
-
-
     }
 }
