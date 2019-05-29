@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /**
@@ -145,9 +146,18 @@ class StreamExamples {
                 .flatMap(mapa -> mapa.entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + value2));
 
-        int i2 = List.of(1, 2, 3, 3, 3, 2, 1)                      // calculate a sum using reduce function
+        int i2 = List.of(1, 2, 3, 3, 3, 2, 1)                       // calculate a sum using reduce function
                 .stream()
                 .reduce(0, (s, e) -> s + e);
+
+        List<Long> l3 = LongStream.range(0, 10L)                     // put long values from 0 to 10 to list
+                .boxed().collect(Collectors.toList());
+
+        long l4 = LongStream.range(0, 10L)                           // sum long values from 0 to 10 exclusive
+                .sum();
+
+        List<Integer> l5 = Arrays.stream(new int[]{1, 2, 3, 3, 3, 2, 1})   // transform primitive array to List
+                .boxed().collect(Collectors.toList());
     }
 
     private enum Sex {
