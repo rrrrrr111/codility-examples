@@ -2,8 +2,8 @@ package ru.roman.algo.strings;
 
 import com.google.common.base.Preconditions;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -54,12 +54,8 @@ public class AnagramExample {
 //        return counters;
 
         return a.chars()
-                .collect(HashMap::new,
-                        (map, c) -> map.merge((char) c, 1L, (old, newVal) -> old + newVal),
-                        (left, right) ->
-                                right.forEach((key, value) ->
-                                        left.merge(key, value, (old, newVal) -> old + newVal))
-                );
+                .mapToObj(c0 -> (char) c0)
+                .collect(Collectors.toMap(c0 -> c0, c0 -> 1L, (x, y) -> x + y));
     }
 
     private static int[] signature(String str) {

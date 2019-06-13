@@ -129,6 +129,13 @@ class StreamExamples {
                                         left.merge(key, value, (oldVal, newVal) -> oldVal + newVal))
                 );
 
+        {                                                                    // make a sign map
+            Map<Character, Integer> map = "aaabb".chars()               // !! returns IntStream
+                    .mapToObj(c0 -> (char) c0)
+                    .collect(Collectors.toMap(c0 -> c0, c0 -> 1, (x, y) -> x + y));
+        }
+
+
         Map<Character, Long> m5 = Map.of();                                // merge two maps
         Map<Character, Long> m4 = m1.entrySet().stream()
                 .collect(Collectors.toMap(
@@ -168,9 +175,11 @@ class StreamExamples {
         Sex getGender() {
             return null;
         }
+
         String getName() {
             return null;
         }
+
         int getSalary() {
             return 0;
         }
