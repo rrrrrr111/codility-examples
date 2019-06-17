@@ -1,4 +1,4 @@
-package ru.roman.kotlin.certification.nonnull
+package ru.roman.kotlin.certification.nonNull
 
 
 fun main(args: Array<String>) {

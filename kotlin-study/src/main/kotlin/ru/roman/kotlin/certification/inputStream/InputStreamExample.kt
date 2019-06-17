@@ -1,4 +1,4 @@
-package ru.roman.kotlin.certification.inputstream
+package ru.roman.kotlin.certification.inputStream
 
 import java.nio.file.Files
 import java.nio.file.Paths
