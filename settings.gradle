@@ -2,6 +2,8 @@ rootProject.name = 'codility-examples'
 
 include 'codility-solutions'
 include 'java-study'
+include 'kotlin-study'
 
 project(":codility-solutions").projectDir = "$rootDir/codility-solutions" as File
 project(":java-study").projectDir = "$rootDir/java-study" as File
+project(":kotlin-study").projectDir = "$rootDir/kotlin-study" as File
