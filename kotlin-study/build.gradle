@@ -21,6 +21,6 @@ compileKotlin {
         suppressWarnings = false
         verbose = false
         freeCompilerArgs =[]
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
 }
