@@ -1,7 +1,7 @@
 package ru.roman.kotlin.certification.nonNull
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     val nullable: List<Any>? = null
 
