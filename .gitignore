@@ -1,20 +1,17 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 ### Artefacts ###
-/coverage
-/web/node_modules
-/build/
-/out/
-/logs/
+build/
+out/
+logs/
+classes/
 /conf/local/
-/parser/pages/
 
 ### IntelliJ IDEA ###
 *.iws
 *.iml
 *.ipr
-/.idea
-/classes
+.idea/
 
 ### Node,js ### 
 .DS_Store
@@ -29,5 +26,5 @@ yarn-error.log*
 
 ### Gradle ###
 .gradle
-!gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.jar
 /local.properties
