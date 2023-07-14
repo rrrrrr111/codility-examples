@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Write a program in Java to Calculate the smallest number of letters that must be removed in order for the letters of the remaining word to be sorted in lexicographical order (abcde…wxyz)
  * <p>
- * For example given “banana” the function should return 3 because we can remove three letters (the first 3rd and 6th) to get the word “aan” which is sorted. Please note that it is not possible to be remove fewer than three letters
+ * For example given “banana” the function should return 3 because we can remove three letters (the first, 3rd and 6th) to get the word “aan” which is sorted. Please note that it is not possible to be remove fewer than three letters
  * <p>
  * Max str length is 100_000, str consists only of a-z chars
  */
