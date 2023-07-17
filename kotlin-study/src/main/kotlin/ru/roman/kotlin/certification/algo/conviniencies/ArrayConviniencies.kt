@@ -1,18 +1,16 @@
-package ru.roman.kotlin.certification.algo
-
-import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.random.Random
+package ru.roman.kotlin.certification.algo.conviniencies
 
 fun main() {
     // iterate with indexes, can use break or continue
-    for ((i, c) in "word".toCharArray().withIndex()) {
+    for ((i, c) in Array<Int>(33) { -1 }.withIndex()) {
         break
     }
 
-    // search Char from tail
-    "word".lastIndexOfAny(charArrayOf('c', 'g'), "word".lastIndex, true)
+    // 2 Dimensional Array
+    val cache = Array(1000) { Array<Any?>(1000) { null } }
+
+    // search from tail
+    intArrayOf().lastIndexOf(11)
 
     // increment counters in map
     val map = HashMap<Char, Int>()
@@ -37,13 +35,8 @@ fun main() {
     List(33) { "x" }
     IntArray(33) { 7 }
 
-    // Math funs (import kotlin.math.*)
-    min(1, 2)
-    max(1, 2)
-    abs(-1)
+    // sub-array
+    intArrayOf().sliceArray(0..10)
 
-    // 0-based Char codes
-    ('a' + 2).toChar()  // 'c'
-    val c: Char = Random.nextInt().toChar()
-    c - 'a' // 'a' -> 0, 'c' -> 2, etc
+
 }
