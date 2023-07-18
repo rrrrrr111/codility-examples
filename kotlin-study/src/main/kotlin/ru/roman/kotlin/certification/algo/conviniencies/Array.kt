@@ -30,6 +30,7 @@ fun main() {
     1..100 // inclusive
     1 until 100 // exclusive last
     100 downTo 1 // inclusive reverse
+    100 downTo 1 step 3 // inclusive reverse, skips 2 after every next
 
     // prepare
     List(33) { "x" }
