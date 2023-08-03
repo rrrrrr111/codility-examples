@@ -6,15 +6,14 @@ fun main() {
         break
     }
 
+    // slice
+    intArrayOf().sliceArray(33..44)
+
     // 2 Dimensional Array
     val cache = Array(1000) { Array<Any?>(1000) { null } }
 
     // search from tail
     intArrayOf().lastIndexOf(11)
-
-    // increment counters in map
-    val map = HashMap<Char, Int>()
-    map['k'] = (map['k'] ?: 0) + 1
 
     // increment counters in array
     val array = IntArray(3)
