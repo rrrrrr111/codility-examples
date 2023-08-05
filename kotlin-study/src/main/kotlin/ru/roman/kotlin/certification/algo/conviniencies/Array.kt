@@ -38,5 +38,10 @@ fun main() {
     // sub-array
     intArrayOf().sliceArray(0..10)
 
+    // inplace sort - Dual-Pivot Quicksort
+    intArrayOf(3, 1, 2).sort()
+
+    // return new sorted List!!
+    val sorted = intArrayOf(3, 1, 2).sorted()
 
 }
