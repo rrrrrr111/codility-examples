@@ -15,6 +15,9 @@ fun main() {
     // search from tail
     intArrayOf().lastIndexOf(11)
 
+    // search from tail
+    intArrayOf().indexOfFirst { it > -1 }
+
     // increment counters in array
     val array = IntArray(3)
     array[0] += 1
