@@ -9,6 +9,7 @@ fun main() {
     // reverse order heap
     val heap2 = PriorityQueue<Int>(10, compareByDescending { it })
 
+    // return null if empty
     heap1.poll()
 
     heap1.add(112)
