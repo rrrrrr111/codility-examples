@@ -1,27 +1,31 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
 fun main() {
+    val arr1 = intArrayOf()
+    val arr2 = IntArray(100) { 0 }
+    val arr3 = IntArray(100)
+
     // iterate with indexes, can use break or continue
-    for ((i, c) in Array<Int>(33) { -1 }.withIndex()) {
+    for ((i, c) in arr1.withIndex()) {
         break
     }
 
     // slice
-    intArrayOf().sliceArray(33..44)
+    arr1.sliceArray(33..44)
 
     // 2 Dimensional Array
     val cache = Array(1000) { Array<Any?>(1000) { null } }
 
-    // search from tail
-    intArrayOf().lastIndexOf(11)
-
-    // search from tail
-    intArrayOf().indexOfFirst { it > -1 }
+    // search index
+    arr1.indexOf(1)
+    arr1.indexOfFirst { it > -1 }
+    // search index from tail
+    arr1.lastIndexOf(11)
+    arr1.indexOfLast { it > 0 }
 
     // increment counters in array
-    val array = IntArray(3)
-    array[0] += 1
-    array[2]++
+    arr1[0] += 1
+    arr1[2]++
 
     // coerce value
     1.coerceAtLeast(2)

@@ -1,5 +1,7 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
+import java.util.LinkedList
+
 fun main() {
 
     // init ArrayList
@@ -11,5 +13,9 @@ fun main() {
     // iterate with index
     for ((i, e) in res.withIndex()) {
     }
+
+    val list = intArrayOf().sorted().toCollection(LinkedList())
+
+    list.lastOrNull()
 
 }
