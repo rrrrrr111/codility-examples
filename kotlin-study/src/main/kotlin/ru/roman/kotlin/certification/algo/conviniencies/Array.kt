@@ -10,6 +10,9 @@ fun main() {
         break
     }
 
+    // iterate indices
+    for (i in arr1.indices) { }
+
     // slice
     arr1.sliceArray(33..44)
 
