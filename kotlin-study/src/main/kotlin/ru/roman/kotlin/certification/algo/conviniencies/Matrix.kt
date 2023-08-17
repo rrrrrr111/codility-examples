@@ -2,8 +2,21 @@ package ru.roman.kotlin.certification.algo.conviniencies
 
 
 fun main() {
+    // create
     val dp: Array<Array<Boolean?>> = Array(12) { Array<Boolean?>(12) { null } }
+
+    // log
     matrixToString(dp)
+
+    // iterate through martix
+    l@ for (row in dp) {
+        for (e in row) {
+
+            break@l  // break outer loop
+        }
+    }
+
+
 }
 
 fun <T> matrixToString(matrix: Array<Array<T?>>, leftPad: Int = 1): String {
