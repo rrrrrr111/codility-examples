@@ -21,11 +21,14 @@ fun main() {
     Int.MAX_VALUE
     Int.MIN_VALUE
 
-    // Math funs (import kotlin.math.*)
+    // Native Math funs (import kotlin.math.*)
     min(1, 2)
     max(1, 2)
     abs(-1)
 
+    // Kotlin funs (no imports needed)
+    minOf(1, 2)
+    maxOf(1, 2)
 
 
 }
