@@ -12,9 +12,10 @@ fun main() {
         break
     }
 
-    // increment counters in map
+    // increment/collect counters in map
     val map = HashMap<Char, Int>()
     map['k'] = (map['k'] ?: 0) + 1
+    HashMap<Char, MutableSet<Int>>().computeIfAbsent('k') { mutableSetOf() } .add(1)
 
     // mutable keys
     val keys = map.keys.toMutableSet()
