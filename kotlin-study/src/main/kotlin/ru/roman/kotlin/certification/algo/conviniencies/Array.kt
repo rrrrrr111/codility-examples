@@ -5,6 +5,12 @@ fun main() {
     val arr2 = IntArray(100) { 0 }
     val arr3 = IntArray(100)
 
+    // index of max value
+    arr2.withIndex().maxBy { it.value }?.index
+
+    // sort preserving index, makes List
+    val srt: List<IndexedValue<Int>> = arr2.withIndex().sortedByDescending { it.value }
+
     // iterate with indexes, can use break or continue
     for ((i, c) in arr1.withIndex()) {
         break

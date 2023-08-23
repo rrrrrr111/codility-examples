@@ -23,8 +23,13 @@ fun main() {
 }
 
 
-fun getWordSign(arr: CharArray, from: Int = 0, to: Int = arr.lastIndex): IntArray {
-    error("???")
+fun getWordSign(str: String, from: Int = 0, to: Int = str.lastIndex): IntArray {
+    // abcdefghijklmnopqrstuvwxyz (26 chars)
+    val arr = IntArray(26)
+    for (i in from..to) {
+        arr[str[i] - 'a']++
+    }
+    return arr
 }
 
 
