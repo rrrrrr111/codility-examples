@@ -3,6 +3,13 @@ package ru.roman.kotlin.certification.algo.conviniencies
 import kotlin.random.Random
 
 fun main() {
+
+    // builder
+    val b = StringBuilder("traliva")
+    b.append('0')
+    b.delete(0, 1)                              // delete 0 until 1
+    b.delete(b.length - 1, b.length)            // delete last Char
+
     // iterate with indexes, can use break or continue
     for ((i, c) in "word".toCharArray().withIndex()) {
         break
@@ -18,7 +25,6 @@ fun main() {
 
     // sub-string
     String("word".toCharArray().sliceArray(33..44))
-
 
 }
 
