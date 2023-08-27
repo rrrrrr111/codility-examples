@@ -1,5 +1,11 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
+
+/**
+ *  LSb - least significant bit, low-order bit
+ *  MSb - most significant bit, high-order bit
+ *
+ */
 fun main() {
     var v1 = 23423L
     var v2 = -13423L
