@@ -1,8 +1,15 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
-import java.util.HashMap
+import java.util.*
 
 fun main() {
+
+    // IdentityHashMap
+    val ihm = IdentityHashMap<Int, Int>()
+
+    // aka IdentityHashSet
+    val ihs: MutableSet<Throwable> = Collections.newSetFromMap(IdentityHashMap())
+
     // iterate map, can use break or continue
     for ((k, v) in mapOf<Int, Int>()) {
         break
@@ -15,7 +22,7 @@ fun main() {
     // increment/collect counters in map
     val map = HashMap<Char, Int>()
     map['k'] = (map['k'] ?: 0) + 1
-    HashMap<Char, MutableSet<Int>>().computeIfAbsent('k') { mutableSetOf() } .add(1)
+    HashMap<Char, MutableSet<Int>>().computeIfAbsent('k') { mutableSetOf() }.add(1)
 
     // mutable keys
     val keys = map.keys.toMutableSet()
@@ -25,5 +32,6 @@ fun main() {
     map.keys.first()
 
     val array = map.keys.toTypedArray()
+
 
 }
