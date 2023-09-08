@@ -5,6 +5,9 @@ fun main() {
     val arr2 = IntArray(100) { 0 }
     val arr3 = IntArray(100)
 
+    // last element
+    arr3.last()
+
     // index of max value
     arr2.withIndex().maxBy { it.value }?.index
 
