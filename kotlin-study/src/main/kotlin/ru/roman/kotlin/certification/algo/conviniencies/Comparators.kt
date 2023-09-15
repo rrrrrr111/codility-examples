@@ -13,3 +13,7 @@ fun main() {
     val entries2 = map2.entries.sortedByDescending { it.value }
 
 }
+
+data class Foo(val i: Int) : Comparable<Foo> {
+    override fun compareTo(other: Foo): Int = i.compareTo(other.i)
+}

@@ -16,6 +16,4 @@ fun main() {
     heap1.addAll(emptyList())
     heap1.addAll(emptyArray())
 
-    heap1.add(112)
-
 }
