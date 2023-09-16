@@ -16,4 +16,7 @@ fun main() {
     heap1.addAll(emptyList())
     heap1.addAll(emptyArray())
 
+    // take all elements from heap
+    val l: List<Int> = ArrayList(heap2)
+
 }
