@@ -9,7 +9,7 @@ fun main() {
     arr3.last()
 
     // index of max value
-    arr2.withIndex().maxBy { it.value }?.index
+    arr2.withIndex().maxByOrNull { it.value }?.index
 
     // sort preserving index, makes List
     val srt: List<IndexedValue<Int>> = arr2.withIndex().sortedByDescending { it.value }
