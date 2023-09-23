@@ -29,7 +29,9 @@ fun main() {
 }
 
 
+val cache = HashMap<String, IntArray>()
 fun getWordSign(str: String, from: Int = 0, to: Int = str.lastIndex): IntArray {
+    cache[str]?.also{ return@getWordSign it }
     // abcdefghijklmnopqrstuvwxyz (26 chars)
     val arr = IntArray(26)
     for (i in from..to) {
