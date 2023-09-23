@@ -1,6 +1,6 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
-import java.util.LinkedList
+import java.util.*
 
 fun main() {
 
@@ -22,10 +22,12 @@ fun main() {
     res.removeAt(0)
 
     // iterate list with fast remove
-    val iterator = LinkedList<Int>().listIterator()
+    val ll = LinkedList<Int>(listOf(1, 2, 3))
+    val iterator = ll.listIterator()
     for (e in iterator) {
+        // replace element on the fly
         iterator.remove()
+        iterator.add(22)
 
     }
-
 }

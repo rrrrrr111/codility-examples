@@ -12,6 +12,9 @@ fun main() {
     val entries1 = map2.entries.sortedBy { it.value }
     val entries2 = map2.entries.sortedByDescending { it.value }
 
+    // sort array with Comparator
+    arrayOf(3,1,2).sortWith( compareBy { it } )
+
 }
 
 data class Foo(val i: Int) : Comparable<Foo> {
