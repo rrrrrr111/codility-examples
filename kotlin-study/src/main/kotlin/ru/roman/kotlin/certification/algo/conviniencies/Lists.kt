@@ -18,4 +18,14 @@ fun main() {
 
     list.lastOrNull()
 
+    // remove by index
+    res.removeAt(0)
+
+    // iterate list with fast remove
+    val iterator = LinkedList<Int>().listIterator()
+    for (e in iterator) {
+        iterator.remove()
+
+    }
+
 }

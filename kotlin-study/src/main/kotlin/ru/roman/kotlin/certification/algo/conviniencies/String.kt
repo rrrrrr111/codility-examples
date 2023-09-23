@@ -37,6 +37,7 @@ fun getWordSign(str: String, from: Int = 0, to: Int = str.lastIndex): IntArray {
     for (i in from..to) {
         arr[str[i] - 'a']++
     }
+    cache[str] = arr
     return arr
 }
 
