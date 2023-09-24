@@ -4,10 +4,14 @@ import kotlin.random.Random
 
 fun main() {
 
+    // sub-string search
+    "str".indexOf("sub")
+
     // builder
     val b = StringBuilder("traliva")
     b.append('0')
     b.delete(0, 1)                              // delete 0 until 1
+    b.insert(1, 'c')                   // insert some char
     b.delete(b.length - 1, b.length)            // delete last Char
 
     // iterate with indexes, can use break or continue
@@ -23,7 +27,7 @@ fun main() {
     val c: Char = Random.nextInt().toChar()
     c - 'a' // 'a' -> 0, 'c' -> 2, etc
 
-    // sub-string
+    // sub-string of sub-array
     String("word".toCharArray().sliceArray(33..44))
 
 }
