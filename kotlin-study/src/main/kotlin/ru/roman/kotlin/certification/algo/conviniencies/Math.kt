@@ -5,6 +5,12 @@ import kotlin.math.max
 import kotlin.math.min
 
 fun main() {
+
+    // calculate sum of all elements from 1 to 100
+    (1..100).fold(0) { acc, e -> acc + e }
+    // with index
+    (1..100).foldIndexed(0) { i, acc, e  -> acc + e }
+
     // division
     0 / 2 // 0
     1 / 2 // 0

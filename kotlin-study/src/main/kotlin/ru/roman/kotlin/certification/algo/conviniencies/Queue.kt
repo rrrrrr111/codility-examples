@@ -5,14 +5,19 @@ import kotlin.properties.Delegates
 
 fun main() {
 
+    // String from LinkedList of Chars
+    String(LinkedList<Char>().toCharArray())
+
     // init
     val deque: Deque<Int> = LinkedList<Int>()
     val queue: Queue<Int> = LinkedList<Int>()
 
     deque.push(1)    // addFirst( .. )
     deque.add(1)        // addLast( .. )
-    deque.poll()        // pollFirst()
-    deque.peek()        // get first, but does not remove
+    deque.poll()        // remove first, null if empty
+    deque.pop()         // same as poll
+    deque.peek()        // get first, but does not remove, null if empty
+    deque.removeLast()  // remove last
 
     queue.add(1)
     queue.poll()
