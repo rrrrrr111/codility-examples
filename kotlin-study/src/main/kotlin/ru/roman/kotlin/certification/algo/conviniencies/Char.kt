@@ -7,7 +7,7 @@ fun main() {
     // is a digit ?
     'a'.isDigit()
 
-    // convert tot integer '1' => 1
+    // convert to integer '1' => 1
     ('1' - '0')
 
 }
