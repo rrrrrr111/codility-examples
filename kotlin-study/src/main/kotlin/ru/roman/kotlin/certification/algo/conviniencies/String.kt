@@ -4,6 +4,8 @@ import kotlin.random.Random
 
 fun main() {
 
+    // some trimmage
+    "sdfs".trim { it.isLetter() }
     // sub-string search
     "str".indexOf("sub")
 

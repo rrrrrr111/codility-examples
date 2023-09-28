@@ -2,6 +2,9 @@ package ru.roman.kotlin.certification.algo.conviniencies
 
 fun main() {
 
+    // indexOf
+    "str".indexOfFirst { it > 'a' }
+
 }
 
 /** Prepare LSP for KMP (Knuth Morris Pratt) Algorithm */

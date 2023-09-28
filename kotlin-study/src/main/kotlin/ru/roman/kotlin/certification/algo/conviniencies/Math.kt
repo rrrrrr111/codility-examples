@@ -39,3 +39,7 @@ fun main() {
 
     println(""" """ + ( -3 % 2))
 }
+class cc {
+    // some lazy calc
+    val preMax by lazy(LazyThreadSafetyMode.NONE) { Int.MAX_VALUE / 10 }
+}
