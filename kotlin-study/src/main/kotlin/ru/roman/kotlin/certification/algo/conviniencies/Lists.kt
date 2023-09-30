@@ -4,10 +4,17 @@ import java.util.*
 
 fun main() {
 
+
+
     // fold something, returns accumulator
     listOf(1, 2, 3, 4, 5).fold(0) { acc, next -> acc + next } // apply accumulator to 1 2 3 4 5, returns 15
     // same, but goes backward
     listOf(1, 2, 3, 4, 5).foldRight(0) { next, acc -> next + acc } // apply accumulator to 5, 4, 3, 2, 1, returns 15
+
+    // reduce something, just without accumulator
+    listOf(1, 2, 3, 4, 5).reduce { i1, i2 -> println(" $i1 $i2 "); i1 + i2 } // goes (1, 2) (3, 3) (6, 4) (10, 5) returns 15
+    // same, but goes ass-backward
+    listOf(1, 2, 3, 4, 5).reduceRight { i1, i2 -> println(" $i1 $i2 "); i1 + i2 } // goes  (4, 5) (3, 9) (2, 12) (1, 14) returns 15
 
     // windows - are ephemeral sub-lists, meaning should not be used outside the function
     // dy default step=1,
