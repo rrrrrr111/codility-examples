@@ -4,8 +4,6 @@ import java.util.*
 
 fun main() {
 
-
-
     // fold something, returns accumulator
     listOf(1, 2, 3, 4, 5).fold(0) { acc, next -> acc + next } // apply accumulator to 1 2 3 4 5, returns 15
     // same, but goes backward
