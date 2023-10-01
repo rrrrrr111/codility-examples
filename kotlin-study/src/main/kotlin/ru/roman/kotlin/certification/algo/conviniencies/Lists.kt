@@ -22,7 +22,7 @@ fun main() {
 
     // init ArrayList
     val res = MutableList(10) { it + 1 } //  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    println(" $res ");
+    println(" ${res} ");
 
     // analog to res.set(0, 1)
     res[0] = 1
