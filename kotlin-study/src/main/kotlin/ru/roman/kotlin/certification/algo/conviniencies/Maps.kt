@@ -7,9 +7,6 @@ fun main() {
     // IdentityHashMap
     val ihm = IdentityHashMap<Int, Int>()
 
-    // aka IdentityHashSet
-    val ihs: MutableSet<Throwable> = Collections.newSetFromMap(IdentityHashMap())
-
     // iterate map, can use break or continue
     for ((k, v) in mapOf<Int, Int>()) {
         break
