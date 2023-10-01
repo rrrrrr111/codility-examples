@@ -10,9 +10,9 @@ fun main() {
     listOf(1, 2, 3, 4, 5).foldRight(0) { next, acc -> next + acc } // apply accumulator to 5, 4, 3, 2, 1, returns 15
 
     // reduce something, just without accumulator
-    listOf(1, 2, 3, 4, 5).reduce { i1, i2 -> println(" $i1 $i2 "); i1 + i2 } // goes (1, 2) (3, 3) (6, 4) (10, 5) returns 15
+    listOf(1, 2, 3, 4, 5).reduce { i1, i2 -> i1 + i2 } // goes (1, 2) (3, 3) (6, 4) (10, 5) returns 15
     // same, but goes ass-backward
-    listOf(1, 2, 3, 4, 5).reduceRight { i1, i2 -> println(" $i1 $i2 "); i1 + i2 } // goes  (4, 5) (3, 9) (2, 12) (1, 14) returns 15
+    listOf(1, 2, 3, 4, 5).reduceRight { i1, i2 -> i1 + i2 } // goes  (4, 5) (3, 9) (2, 12) (1, 14) returns 15
 
     // windows - are ephemeral sub-lists, meaning should not be used outside the function
     // dy default step=1,
@@ -21,10 +21,11 @@ fun main() {
     listOf(1, 2, 3, 4, 5).windowed(3, 2, true) { subList -> } // [1, 2, 3], [3, 4, 5], [5]
 
     // init ArrayList
-    val res = MutableList(10) { false }
+    val res = MutableList(10) { it + 1 } //  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    println(" $res ");
 
-    // analog to res.set(0, true)
-    res[0] = true
+    // analog to res.set(0, 1)
+    res[0] = 1
 
     // iterate with index
     for ((i, e) in res.withIndex()) {
