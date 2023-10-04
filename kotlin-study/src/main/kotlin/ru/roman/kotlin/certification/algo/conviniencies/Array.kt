@@ -27,6 +27,8 @@ fun main() {
 
     // 2 Dimensional Array
     val cache = Array(1000) { Array<Any?>(1000) { null } }
+    // array of anything
+    val bucks: Array<Any?> = Array(1000) { null }
 
     // search index
     arr1.indexOf(1)
@@ -56,6 +58,8 @@ fun main() {
 
     // sub-array
     intArrayOf().sliceArray(0..10)
+    // of specified elements
+    intArrayOf().sliceArray(listOf(0, 2, 3))
 
     // inplace sort - Dual-Pivot Quicksort
     intArrayOf(3, 1, 2).sort()

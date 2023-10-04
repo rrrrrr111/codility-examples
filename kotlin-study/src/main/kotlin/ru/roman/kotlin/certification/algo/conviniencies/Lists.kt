@@ -45,6 +45,8 @@ fun main() {
         // replace element on the fly
         iterator.remove()
         iterator.add(22)
+        // or just
+        iterator.set(22)
 
     }
 }
