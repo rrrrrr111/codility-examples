@@ -6,6 +6,8 @@ fun main() {
 
     // some trimmage
     "sdfs".trim { it.isLetter() }
+    "str".trimEnd { it.isLetterOrDigit() }
+
     // sub-string search
     "str".indexOf("sub")
 
@@ -22,7 +24,7 @@ fun main() {
     }
 
     // search Char from tail
-    "word".lastIndexOfAny(charArrayOf('c', 'g'), "word".lastIndex, true)
+    "word".lastIndexOfAny(chars = charArrayOf('c', 'g'), startIndex = "word".lastIndex, ignoreCase = true)
 
     // 0-based Char codes
     ('a' + 2).toChar()  // 'c'
@@ -32,6 +34,13 @@ fun main() {
     // sub-string of sub-array
     String("word".toCharArray().sliceArray(33..44))
 
+    // sub-strings
+    "str".substring(startIndex = 1)
+    "str".substring(startIndex = 1, endIndex = "str".lastIndex)
+    "str".substringAfter("0", "0 not found")
+    "str".substringBefore("0", "0 not found")
+    "str".substringAfterLast("0", "0 not found")
+    "str".substringBeforeLast("0", "0 not found")
 }
 
 
