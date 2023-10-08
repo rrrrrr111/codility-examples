@@ -18,10 +18,12 @@ fun main() {
     b.insert(1, 'c')                   // insert some char
     b.delete(b.length - 1, b.length)            // delete last Char
 
-    // iterate with indexes, can use break or continue
+    // iterate with indices, can use break or continue
     for ((i, c) in "word".toCharArray().withIndex()) {
         break
     }
+    // iterate indices backward
+    for (i in "ddd".indices.reversed()) { }
 
     // search Char from tail
     "word".lastIndexOfAny(chars = charArrayOf('c', 'g'), startIndex = "word".lastIndex, ignoreCase = true)
