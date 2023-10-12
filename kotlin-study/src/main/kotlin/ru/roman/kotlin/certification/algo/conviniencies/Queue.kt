@@ -15,7 +15,7 @@ fun main() {
     deque.push(1)    // addFirst( .. )
     deque.add(1)        // addLast( .. )
     deque.poll()        // remove first, null if empty
-    deque.pop()         // same as poll
+    deque.pop()         // same as poll, but throws if empty
     deque.peek()        // get first, but does not remove, null if empty
     deque.removeLast()  // remove last
 

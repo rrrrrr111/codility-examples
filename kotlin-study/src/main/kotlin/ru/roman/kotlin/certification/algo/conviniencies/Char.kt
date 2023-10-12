@@ -8,6 +8,7 @@ fun main() {
     'a'.isDigit()
     'a'.isLetter()
     'a'.isUpperCase()
+    'a'.isLowerCase()
 
     // convert to int '1' => 1, not to code !!!
     ('1' - '0')
