@@ -35,8 +35,10 @@ fun main() {
 
     list.lastOrNull()
 
-    // remove by index
+    // by index
     res.removeAt(0)
+    res.get(0)
+    res.set(0, 1)
 
     // iterate list with fast remove
     val ll = LinkedList<Int>(listOf(1, 2, 3))

@@ -23,6 +23,7 @@ fun main() {
     3 % 2 // 1
    -3 % 2 // -1
     5 % 2 // 1
+    5.0 % 2 // 1.0
 
     // min / max
     Int.MAX_VALUE
