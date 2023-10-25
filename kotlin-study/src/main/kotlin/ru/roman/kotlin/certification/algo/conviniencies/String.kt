@@ -17,6 +17,10 @@ fun main() {
     b.delete(0, 1)                              // delete 0 until 1
     b.insert(1, 'c')                   // insert some char
     b.delete(b.length - 1, b.length)            // delete last Char
+    b.reverse()                                 // reversed in-place
+    b.reversed()                                // reversed, makes new instance
+    b.get(0)                                    // get char
+    String(b.foldIndexed(CharArray(b.length)) { i, acc, c ->  acc.also { acc[i] = c /* transform */ } })
 
     // iterate with indices, can use break or continue
     for ((i, c) in "word".toCharArray().withIndex()) {
