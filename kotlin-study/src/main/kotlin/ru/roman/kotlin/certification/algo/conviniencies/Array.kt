@@ -13,6 +13,8 @@ fun main() {
 
     // sort preserving index, makes List
     val srt: List<IndexedValue<Int>> = arr2.withIndex().sortedByDescending { it.value }
+    // sort with Comparator
+    val srt1: List<Int> = arr2.sortedWith( compareBy<Int> { it }.thenBy { it } )
 
     // iterate with indexes, can use break or continue
     for ((i, c) in arr1.withIndex()) {

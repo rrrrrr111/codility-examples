@@ -1,5 +1,7 @@
 package ru.roman.kotlin.certification.algo.conviniencies
 
+import kotlin.math.abs
+
 
 /**
  *  LSb - least significant bit, low-order bit
@@ -45,4 +47,22 @@ fun main() {
 
     // to check all bits are 1
     //  - if (num & -1) == -1 then all bits are 1
+}
+
+private val memo = HashMap<Int, Int>()
+
+/** Calc 1 bits in number */
+fun calcOneBits(num: Int): Int {
+    val m = memo[num]
+    if (m != null)
+        return m
+    var c = if (num >= 0) 0 else 1
+    var n = abs(num)
+    while (n > 0) {
+        if (1 and n == 1)
+            c++
+        n = n shr 1
+    }
+    memo[num] = c
+    return c
 }
