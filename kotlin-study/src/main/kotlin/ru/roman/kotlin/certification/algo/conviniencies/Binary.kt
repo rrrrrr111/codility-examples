@@ -26,7 +26,7 @@ fun main() {
     val s1 = java.lang.Long.toBinaryString(v1)  // 101101101111111
     val s2 = java.lang.Long.toBinaryString(v2)  // 1111111111111111111111111111111111111111111111111100101110010001
     //  Kotlin's makes negative 2-base number
-    //  Kotlin's also has ULong, tricky representation of bigger positive nums, which trickily coincides with negatives
+    //  Kotlin's also has ULong, to tricky represent bigger positive nums, which trickily coincides with negatives
     val s3 = v2.toString(radix = 2)             // kotlin makes negative 2-base number              -11010001101111
     val s4 = v2.toULong().toString(radix = 2)   // 1111111111111111111111111111111111111111111111111100101110010001
 
