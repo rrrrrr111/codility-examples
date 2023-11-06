@@ -5,8 +5,22 @@ fun main() {
     val arr2 = IntArray(100) { 0 }
     val arr3 = IntArray(100)
 
+    // making a String from Array
+    arr1.joinToString(separator = " ", prefix = "", postfix = "", limit = -1)
+
     // last element
     arr3.last()
+
+    // making a sub-array, trimming
+    arr2.drop(3)
+    arr2.dropLast(1)
+    arr2.dropWhile { it > 0 }
+    arr2.dropLastWhile { it > 0 }
+    arr2.dropLastWhile { it > 0 }
+    arr2.take(1)
+    arr2.takeLast(33)
+    arr2.takeWhile { it < 23 }
+    arr2.takeLastWhile { it < 33 }
 
     // index of max value
     arr2.withIndex().maxByOrNull { it.value }?.index
@@ -14,7 +28,7 @@ fun main() {
     // sort preserving index, makes List
     val srt: List<IndexedValue<Int>> = arr2.withIndex().sortedByDescending { it.value }
     // sort with Comparator
-    val srt1: List<Int> = arr2.sortedWith( compareBy<Int> { it }.thenBy { it } )
+    val srt1: List<Int> = arr2.sortedWith(compareBy<Int> { it }.thenBy { it })
 
     // iterate with indexes, can use break or continue
     for ((i, c) in arr1.withIndex()) {
@@ -22,9 +36,11 @@ fun main() {
     }
 
     // iterate indices
-    for (i in arr1.indices) { }
+    for (i in arr1.indices) {
+    }
     // iterate indices backward
-    for (i in arr1.indices.reversed()) { }
+    for (i in arr1.indices.reversed()) {
+    }
 
     // slice
     arr1.sliceArray(33..44)
@@ -70,5 +86,4 @@ fun main() {
 
     // return new sorted List!!
     val sorted = intArrayOf(3, 1, 2).sorted()
-
 }

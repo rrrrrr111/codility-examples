@@ -4,6 +4,9 @@ import kotlin.random.Random
 
 fun main() {
 
+    // make an Int from Char
+    "a1".last().digitToInt()
+
     // some trimmage
     "sdfs".trim { it.isLetter() }
     "str".trimEnd { it.isLetterOrDigit() }
@@ -20,14 +23,15 @@ fun main() {
     b.reverse()                                 // reversed in-place
     b.reversed()                                // reversed, makes new instance
     b.get(0)                                    // get char
-    String(b.foldIndexed(CharArray(b.length)) { i, acc, c ->  acc.also { acc[i] = c /* transform */ } })
+    String(b.foldIndexed(CharArray(b.length)) { i, acc, c -> acc.also { acc[i] = c /* transform */ } })
 
     // iterate with indices, can use break or continue
     for ((i, c) in "word".toCharArray().withIndex()) {
         break
     }
     // iterate indices backward
-    for (i in "ddd".indices.reversed()) { }
+    for (i in "ddd".indices.reversed()) {
+    }
 
     // search Char from tail
     "word".lastIndexOfAny(chars = charArrayOf('c', 'g'), startIndex = "word".lastIndex, ignoreCase = true)
@@ -47,12 +51,14 @@ fun main() {
     "str".substringBefore("0", "0 not found")
     "str".substringAfterLast("0", "0 not found")
     "str".substringBeforeLast("0", "0 not found")
+    "str".drop(1)        // tr
+    "str".dropLast(2)    // s
 }
 
 
 val cache = HashMap<String, IntArray>()
 fun getWordSign(str: String, from: Int = 0, to: Int = str.lastIndex): IntArray {
-    cache[str]?.also{ return@getWordSign it }
+    cache[str]?.also { return@getWordSign it }
     // abcdefghijklmnopqrstuvwxyz (26 chars)
     val arr = IntArray(26)
     for (i in from..to) {
