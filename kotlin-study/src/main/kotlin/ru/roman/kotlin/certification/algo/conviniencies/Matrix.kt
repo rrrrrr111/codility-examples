@@ -9,15 +9,15 @@ fun main() {
     matrixToString(dp)
 
     // iterate through matrix
-    l@ for (row in dp) {
+    o@ for (row in dp) {
         for (e in row) {
-            break@l  // break outer loop
+            break@o  // break outer loop
         }
     }
     // iterate through matrix with indices
-    l@ for ((i, row) in dp.withIndex()) {
+    o@ for ((i, row) in dp.withIndex()) {
         for ((j, e) in row.withIndex()) {
-            break@l  // break outer loop
+            break@o  // break outer loop
         }
     }
 

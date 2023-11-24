@@ -6,6 +6,11 @@ import kotlin.math.min
 
 fun main() {
 
+    // coerce value
+    33.coerceAtLeast(2)
+    33.coerceAtMost(-1)
+    33.coerceIn(1..3)
+
     // calculate sum of all elements from 1 to 100
     (1..100).fold(0) { acc, e -> acc + e }
     // with index
