@@ -22,8 +22,14 @@ fun main() {
     arr2.takeWhile { it < 23 }
     arr2.takeLastWhile { it < 33 }
 
+    // just max
+    arr2.maxOrNull()
     // index of max value
     arr2.withIndex().maxByOrNull { it.value }?.index
+    // max with comparator and selector, return null if empty
+    arr2.maxOfWithOrNull(comparator = compareBy<Int> { it }, selector = { it })
+    // max with selector
+    arr2.maxOfOrNull(selector = { it })
 
     // sort preserving index, makes List
     val srt: List<IndexedValue<Int>> = arr2.withIndex().sortedByDescending { it.value }
@@ -40,6 +46,12 @@ fun main() {
     }
     // iterate indices backward
     for (i in arr1.indices.reversed()) {
+    }
+    // nested loops
+    o@ for (i in arr1) {
+        for (i in arr1) {
+            continue@o             // continue outer
+        }
     }
 
     // slice
