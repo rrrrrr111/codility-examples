@@ -22,6 +22,10 @@ fun main() {
     var v2 = -13423L
 
     // integer => 2-base number (or we say binary ???)
+    //  1 -> 000000000000001
+    //  2 -> 000000000000010
+    //  3 -> 000000000000011
+    //  4 -> 000000000000100
     //  Java's methods read fair 2-compliment notation
     val s1 = java.lang.Long.toBinaryString(v1)  // 101101101111111
     val s2 = java.lang.Long.toBinaryString(v2)  // 1111111111111111111111111111111111111111111111111100101110010001
@@ -32,8 +36,8 @@ fun main() {
 
     // 2-base number => decimal
     java.lang.Long.parseLong(s1, 2)       // 23423
-    s1.toInt(2)
-    s1.toLong(2)                          // Kotlin's methods work same as Java's (has Java's under the hood)
+    s1.toInt(2)                           // Kotlin's methods work same as Java's (has Java's under the hood)
+    s1.toLong(2)
     s1.toBigInteger(2)
 
     // add leading zeros
@@ -41,6 +45,8 @@ fun main() {
         .padStart(64, '0')       // 0000000000000000000000000000000000000000000000000101101101111111
 
     // Convert positive to negative and vise versa
+    // Positive -> negative: Invert all bits and add (+) 1
+    // Negative -> positive: Invert all bits and subtract (-) 1
     //   Java method expects positive representation, so it can not read negative 2-base,
     //   but can read leading '-' char ( Kotlin's ...toString(radix = 2) )
     java.lang.Long.parseLong(s2)               // java.lang.NumberFormatException
@@ -53,20 +59,16 @@ fun main() {
     // or we can invert all bits, add 1 and negate
     java.lang.Long.parseLong(String(s2.map { if (it == '0') '1' else '0' }.toCharArray()), 2) * -1 - 1 // -13423
 
-    // Read certain bit
-    //  - move target bit to LSb position, and if (num & 1) == 1 then LSb is 1 otherwise LSb is 0
-
-    // Check all bits are 1
-    //  - if (num and -1) == -1 then all bits are 1
 }
 
-private val memo = HashMap<Int, Int>()
+/** Check all bits are 1 */
+fun checkAllBitsIs1(num: Int): Boolean = (-1 and num) == -1
+
+/** Read certain bit, idx - backward-based, LSb has 0 index */
+fun checkBit(num: Int, idx: Int): Boolean = (1 and (num shr idx)) == 1
 
 /** Calc 1 bits in number */
 fun calcOneBits(num: Int): Int {
-    val m = memo[num]
-    if (m != null)
-        return m
     var c = if (num >= 0) 0 else 1
     var n = abs(num)
     while (n > 0) {
@@ -74,6 +76,5 @@ fun calcOneBits(num: Int): Int {
             c++
         n = n shr 1
     }
-    memo[num] = c
     return c
 }
