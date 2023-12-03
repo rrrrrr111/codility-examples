@@ -8,13 +8,18 @@ import kotlin.math.abs
  *  MSb - most significant bit, high-order bit
  *
  * Kotlin Bitwise Operations
- *  Conjunction (and)	            a & b	    a and b
- *  Disjunction (or)	            a | b	    a or b
- *  Exclusive disjunction (xor)	    a ^ b	    a xor b
  *  Inversion	                    ~ a	        a.inv()
  *  Shift Left	                    a << bits   a shl bits
  *  Shift Right	                    a >> bits   a shr bits
  *  Unsigned Shift Right	        a >>> bits  a ushr bits
+ *
+ *                 Conjunction (and)    Disjunction (or)    Exclusive disjunction (xor)
+ * Java example:         a & b                a | b              a ^ b
+ * Kotlin example:       a and b              a or b             a xor b
+ * Result of 0, 0           0                   0                   0
+ * Result of 1, 0           0                   1                   1
+ * Result of 1, 1           1                   1                   0
+ *
  *
  */
 fun main() {
