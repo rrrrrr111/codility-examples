@@ -80,6 +80,12 @@ fun checkAllBitsIs1(num: Int): Boolean = (-1 and num) == -1
 /** Read certain bit, idx - backward-based, LSb has 0 index */
 fun checkBit(num: Int, idx: Int): Boolean = (1 and (num shr idx)) == 1
 
+/** Set certain bit to 1 */
+fun setBit(num: Int, idx: Int): Int = (1 shl idx) or num
+
+/** Clear certain bit to 0 */
+fun clearBit(num: Int, idx: Int): Int = (1 shl idx).inv() and num
+
 /** Calc 1 bits in number */
 fun calc1Bits(num: Int): Int {
     var c = if (num >= 0) 0 else 1
