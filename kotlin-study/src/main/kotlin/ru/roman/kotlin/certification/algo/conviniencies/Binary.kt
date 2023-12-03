@@ -19,12 +19,17 @@ import kotlin.math.abs
  */
 fun main() {
     // Shifts make multiplication and division
-    // Shift Right - make division on 2, with possible truncation like 23 >> 2 == 11
+    // Shift Right - make division on 2, with possible truncation like 23 >> 2 == 11 (rounding down)
     // Shift Left  - make multiplication on 2, with possible overflow
 
+    // Logical/Unsigned (>>>) vs Arithmetic (>>) right shift
+    // Logical fills empty MSb with 0
+    // Arithmetic fills empty MSb with previous value, so the division on 2 still works:
+    //  -23 >> 2 == -12 (rounding up)
+
+    // integer => 2-base number (or we say binary ???)
     val v1 = 23423L
     val v2 = -13423L
-    // integer => 2-base number (or we say binary ???)
     //  1 -> 000000000000001
     //  2 -> 000000000000010
     //  3 -> 000000000000011
