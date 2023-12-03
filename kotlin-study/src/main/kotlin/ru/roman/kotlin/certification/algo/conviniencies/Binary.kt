@@ -18,9 +18,12 @@ import kotlin.math.abs
  *
  */
 fun main() {
-    var v1 = 23423L
-    var v2 = -13423L
+    // Shifts make multiplication and division
+    // Shift Right - make division on 2, with possible truncation like 23 >> 2 == 11
+    // Shift Left  - make multiplication on 2, with possible overflow
 
+    val v1 = 23423L
+    val v2 = -13423L
     // integer => 2-base number (or we say binary ???)
     //  1 -> 000000000000001
     //  2 -> 000000000000010
@@ -68,7 +71,7 @@ fun checkAllBitsIs1(num: Int): Boolean = (-1 and num) == -1
 fun checkBit(num: Int, idx: Int): Boolean = (1 and (num shr idx)) == 1
 
 /** Calc 1 bits in number */
-fun calcOneBits(num: Int): Int {
+fun calc1Bits(num: Int): Int {
     var c = if (num >= 0) 0 else 1
     var n = abs(num)
     while (n > 0) {
