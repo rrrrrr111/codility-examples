@@ -12,8 +12,16 @@ fun main() {
     val entries1 = map2.entries.sortedBy { it.value }
     val entries2 = map2.entries.sortedByDescending { it.value }
 
-    // sort array with Comparator
-    arrayOf(3,1,2).sortWith( compareBy { it } )
+    // sort typed array with Comparator
+    arrayOf(3, 1, 2).sortWith(compareBy<Int> { it }.thenBy { it })
+    val sortedList: List<Int> = arrayOf(3, 1, 2).sortedWith(compareBy<Int> { it }.thenBy { it })
+
+    // sort Int array with Comparator
+    val sortedArr1: IntArray = intArrayOf(3, 1, 2).sortedWith(compareBy<Int> { it }.thenBy { it }).toIntArray()
+    val sortedArr2: IntArray = intArrayOf(3, 1, 2).toTypedArray()
+        .also { it.sortWith(compareBy<Int> { it }.thenBy { it }) }
+        .toIntArray()
+
 
 }
 
