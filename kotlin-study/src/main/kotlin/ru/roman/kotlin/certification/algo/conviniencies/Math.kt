@@ -3,8 +3,12 @@ package ru.roman.kotlin.certification.algo.conviniencies
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.ceil
+import kotlin.math.floor
 
 fun main() {
+    ceil(2.11)   // 3.0
+    floor(2.99)  // 2.0
 
     // coerce value
     33.coerceAtLeast(2)
@@ -14,7 +18,7 @@ fun main() {
     // calculate sum of all elements from 1 to 100
     (1..100).fold(0) { acc, e -> acc + e }
     // with index
-    (1..100).foldIndexed(0) { i, acc, e  -> acc + e }
+    (1..100).foldIndexed(0) { i, acc, e -> acc + e }
 
     // division
     0 / 2 // 0
@@ -26,7 +30,7 @@ fun main() {
     0 % 2 // 0
     1 % 2 // 1
     3 % 2 // 1
-   -3 % 2 // -1
+    -3 % 2 // -1
     5 % 2 // 1
     5.0 % 2 // 1.0
 
@@ -43,8 +47,9 @@ fun main() {
     minOf(1, 2)
     maxOf(1, 2)
 
-    println(""" """ + ( -3 % 2))
+    println(""" >>>>>>>>>>>> """ + (-3 % 2))
 }
+
 class cc {
     // some lazy calc
     val preMax by lazy(LazyThreadSafetyMode.NONE) { Int.MAX_VALUE / 10 }
