@@ -5,9 +5,11 @@ import java.util.*
 fun main() {
     var r1 = 0
 
-    // reverse order heap
+    // Sorted Map
     val map1 = TreeMap<Int, Comparable<Any?>>(compareBy { it })
     val map2 = TreeMap<Int, Comparable<Any?>>(compareByDescending { it })
+    val map3 = TreeMap<Int, Int>(Collections.reverseOrder())
+    val map4 = TreeMap<Int, Int>(Collections.reverseOrder(compareBy<Int> { it }))
 
     val entries1 = map2.entries.sortedBy { it.value }
     val entries2 = map2.entries.sortedByDescending { it.value }
@@ -21,8 +23,6 @@ fun main() {
     val sortedArr2: IntArray = intArrayOf(3, 1, 2).toTypedArray()
         .also { it.sortWith(compareBy<Int> { it }.thenBy { it }) }
         .toIntArray()
-
-
 }
 
 data class Foo(val i: Int) : Comparable<Foo> {

@@ -4,6 +4,12 @@ import java.util.*
 
 fun main() {
 
+    // Sorted Maps
+    val map1 = TreeMap<Int, Comparable<Any?>>(compareBy { it })
+    val map2 = TreeMap<Int, Comparable<Any?>>(compareByDescending { it })
+    val map3 = TreeMap<Int, Int>(Collections.reverseOrder())
+    val map4 = TreeMap<Int, Int>(Collections.reverseOrder(compareBy<Int> { it }))
+
     // IdentityHashMap
     val ihm = IdentityHashMap<Int, Int>()
 
@@ -11,7 +17,6 @@ fun main() {
     for ((k, v) in mapOf<Int, Int>()) {
         break
     }
-
     for ((i, entry) in mapOf<Int, Int>().entries.withIndex()) {
         break
     }
@@ -24,11 +29,9 @@ fun main() {
     // mutable keys
     val keys = map.keys.toMutableSet()
 
-    val c = map.remove('f')
+    val c: Int? = map.remove('f')
 
     map.keys.first()
 
     val array = map.keys.toTypedArray()
-
-
 }
