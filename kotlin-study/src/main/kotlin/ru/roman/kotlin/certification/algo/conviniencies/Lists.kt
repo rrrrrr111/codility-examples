@@ -6,6 +6,7 @@ fun main() {
 
     // fold something, returns accumulator
     listOf(1, 2, 3, 4, 5).fold(0) { acc, next -> acc + next } // apply accumulator to 1 2 3 4 5, returns 15
+    listOf(1, 2, 3, 4, 5).foldIndexed(0) { i, acc, next -> acc + next }
     // same, but goes backward
     listOf(1, 2, 3, 4, 5).foldRight(0) { next, acc -> next + acc } // apply accumulator to 5, 4, 3, 2, 1, returns 15
 
